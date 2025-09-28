@@ -1,0 +1,761 @@
+/* Global Styles for Minya Tourism Website */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* Egyptian Heritage Color Palette */
+:root {
+  --primary-color: #1A365D;      /* Deep Blue - Nile River */
+  --secondary-color: #2D5A87;    /* Medium Blue */
+  --accent-color: #B85450;       /* Terracotta - Ancient pottery */
+  --golden-sand: #D4A574;        /* Golden Sand - Desert heritage */
+  --background-color: #F7F5F3;   /* Light Cream - Papyrus */
+  --text-primary: #2D3748;       /* Dark Gray */
+  --text-secondary: #718096;     /* Medium Gray */
+  --white: #FFFFFF;
+  --shadow: rgba(0, 0, 0, 0.1);
+  
+  /* Gradients */
+  --primary-gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  --secondary-gradient: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+  --golden-gradient: linear-gradient(135deg, var(--golden-sand) 0%, #E6B887 100%);
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--background-color);
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+/* Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: var(--primary-gradient);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(26, 54, 93, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(26, 54, 93, 0.4);
+}
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+.btn-accent {
+  background: var(--golden-gradient);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
+}
+
+.btn-accent:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 165, 116, 0.4);
+}
+
+/* Card Styles */
+.card {
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px var(--shadow);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-image {
+  transform: scale(1.05);
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.card-description {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+/* Container and Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--golden-gradient);
+  border-radius: 2px;
+}
+
+/* Grid System */
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Flex Utilities */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+/* Spacing Utilities */
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+.p-1 { padding: 0.5rem; }
+.p-2 { padding: 1rem; }
+.p-3 { padding: 1.5rem; }
+.p-4 { padding: 2rem; }
+
+/* Text Utilities */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-primary { color: var(--primary-color); }
+.text-secondary { color: var(--text-secondary); }
+.text-accent { color: var(--accent-color); }
+.text-golden { color: var(--golden-sand); }
+
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+
+/* Background Utilities */
+.bg-primary { background: var(--primary-gradient); }
+.bg-secondary { background: var(--secondary-gradient); }
+.bg-accent { background: var(--accent-color); }
+.bg-golden { background: var(--golden-gradient); }
+.bg-white { background: var(--white); }
+
+/* Egyptian Pattern Background */
+.egyptian-pattern {
+  background-image: url('/assets/images/pattern_bg.png');
+  background-repeat: repeat;
+  background-size: 200px;
+  opacity: 0.05;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+/* Loading Spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--background-color);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  .section {
+    padding: 2rem 0;
+  }
+  
+  .grid {
+    gap: 1rem;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .card-content {
+    padding: 1rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus Styles */
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+
+/* RTL Support */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .container {
+  direction: rtl;
+}
+
+[dir="rtl"] .flex {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-links {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-actions {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .btn {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .card-actions {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .hero-actions {
+  flex-direction: row-reverse;
+}
+
+/* RTL Typography */
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
+  text-align: right;
+}
+
+[dir="rtl"] .text-center {
+  text-align: center;
+}
+
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+/* RTL Spacing adjustments */
+[dir="rtl"] .ml-1 {
+  margin-left: 0;
+  margin-right: var(--spacing-sm);
+}
+
+[dir="rtl"] .mr-1 {
+  margin-right: 0;
+  margin-left: var(--spacing-sm);
+}
+
+[dir="rtl"] .pl-1 {
+  padding-left: 0;
+  padding-right: var(--spacing-sm);
+}
+
+[dir="rtl"] .pr-1 {
+  padding-right: 0;
+  padding-left: var(--spacing-sm);
+}
+
+/* RTL Animations */
+[dir="rtl"] .slide-in-left {
+  animation: slideInRight 0.6s ease-out;
+}
+
+[dir="rtl"] .slide-in-right {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+/* Arabic Font Support */
+[dir="rtl"] {
+  font-family: 'Poppins', 'Noto Sans Arabic', 'Cairo', 'Amiri', sans-serif;
+}
+
+/* RTL Form Elements */
+[dir="rtl"] .form-input {
+  text-align: right;
+}
+
+[dir="rtl"] .search-input {
+  text-align: right;
+  padding-left: 1rem;
+  padding-right: 3rem;
+}
+
+[dir="rtl"] .search-icon {
+  left: auto;
+  right: 1rem;
+}
+
+/* RTL Navigation */
+[dir="rtl"] .nav-content {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-logo {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-link {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .mobile-nav-link {
+  flex-direction: row-reverse;
+}
+
+/* RTL Cards */
+[dir="rtl"] .card-meta {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .attraction-details {
+  flex-direction: column;
+}
+
+[dir="rtl"] .detail-item {
+  flex-direction: row-reverse;
+}
+
+/* RTL Breadcrumbs */
+[dir="rtl"] .breadcrumb {
+  flex-direction: row-reverse;
+}
+
+/* RTL Carousel Controls */
+[dir="rtl"] .carousel-controls {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .carousel-btn.prev {
+  transform: rotate(180deg);
+}
+
+[dir="rtl"] .carousel-btn.next {
+  transform: rotate(180deg);
+}
+
+
+/* RTL Support - Comprehensive Arabic Layout */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+  font-family: 'Poppins', 'Cairo', 'Amiri', 'Noto Sans Arabic', sans-serif;
+}
+
+[dir="rtl"] * {
+  direction: rtl;
+}
+
+[dir="rtl"] body {
+  text-align: right;
+}
+
+/* Container and Layout RTL */
+[dir="rtl"] .container {
+  direction: rtl;
+}
+
+[dir="rtl"] .row {
+  direction: rtl;
+}
+
+/* Navigation RTL */
+[dir="rtl"] .navbar-nav {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-link {
+  text-align: right;
+}
+
+[dir="rtl"] .navbar-brand {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* Content RTL */
+[dir="rtl"] .btn {
+  text-align: center;
+}
+
+[dir="rtl"] .card {
+  text-align: right;
+}
+
+[dir="rtl"] .card-title,
+[dir="rtl"] .card-text,
+[dir="rtl"] .card-body {
+  text-align: right;
+}
+
+[dir="rtl"] .form-control,
+[dir="rtl"] .form-select,
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+  text-align: right;
+  direction: rtl;
+}
+
+[dir="rtl"] .dropdown-menu {
+  right: 0;
+  left: auto;
+  text-align: right;
+}
+
+/* Flexbox RTL adjustments */
+[dir="rtl"] .d-flex {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .justify-content-start {
+  justify-content: flex-end;
+}
+
+[dir="rtl"] .justify-content-end {
+  justify-content: flex-start;
+}
+
+[dir="rtl"] .justify-content-between {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .text-start {
+  text-align: right;
+}
+
+[dir="rtl"] .text-end {
+  text-align: left;
+}
+
+/* Grid RTL */
+[dir="rtl"] .grid,
+[dir="rtl"] .grid-container {
+  direction: rtl;
+}
+
+/* Lists RTL */
+[dir="rtl"] ul,
+[dir="rtl"] ol {
+  padding-right: 1.5rem;
+  padding-left: 0;
+}
+
+[dir="rtl"] li {
+  text-align: right;
+}
+
+/* Tables RTL */
+[dir="rtl"] table {
+  direction: rtl;
+}
+
+[dir="rtl"] th,
+[dir="rtl"] td {
+  text-align: right;
+}
+
+/* Tourism-specific RTL */
+[dir="rtl"] .attraction-card,
+[dir="rtl"] .hotel-card,
+[dir="rtl"] .restaurant-card,
+[dir="rtl"] .event-card,
+[dir="rtl"] .itinerary-card,
+[dir="rtl"] .blog-card {
+  text-align: right;
+}
+
+[dir="rtl"] .attraction-card .card-body,
+[dir="rtl"] .hotel-card .card-body,
+[dir="rtl"] .restaurant-card .card-body,
+[dir="rtl"] .event-card .card-body,
+[dir="rtl"] .itinerary-card .card-body,
+[dir="rtl"] .blog-card .card-body {
+  text-align: right;
+}
+
+[dir="rtl"] .rating {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .price {
+  text-align: right;
+}
+
+[dir="rtl"] .amenities,
+[dir="rtl"] .features {
+  text-align: right;
+}
+
+[dir="rtl"] .amenities li,
+[dir="rtl"] .features li {
+  text-align: right;
+}
+
+/* Material Icons RTL */
+[dir="rtl"] .material-icons {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .material-icons.no-flip {
+  transform: none;
+}
+
+/* Responsive RTL adjustments */
+@media (max-width: 768px) {
+  [dir="rtl"] .mobile-menu {
+    text-align: right;
+  }
+  
+  [dir="rtl"] .mobile-nav {
+    direction: rtl;
+  }
+}

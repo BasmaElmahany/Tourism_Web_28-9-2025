@@ -1,0 +1,269 @@
+ <div class="itineraries-page" [attr.dir]="i18nService.isRTL() ? 'rtl' : 'ltr'">
+      <!-- Hero Section -->
+      <section class="itineraries-hero">
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="hero-title">{{ getTranslation('itinerariesTitle') }}</h1>
+            <p class="hero-subtitle">{{ getTranslation('itinerariesSubtitle') }}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filters Section -->
+      <section class="itineraries-filters">
+        <div class="container">
+          <div class="filters-header">
+            <h3>{{ getTranslation('findItinerary') }}</h3>
+          </div>
+          
+          <div class="filters-grid">
+            <div class="filter-group">
+              <label>{{ getTranslation('duration') }}</label>
+              <select [(ngModel)]="selectedDuration" (change)="filterItineraries()" class="filter-select">
+                <option value="">{{ getTranslation('allDurations') }}</option>
+                <option value="1-day">{{ getTranslation('oneDay') }}</option>
+                <option value="2-3-days">{{ getTranslation('twoDays') }}</option>
+                <option value="4-7-days">{{ getTranslation('weekLong') }}</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label>{{ getTranslation('difficulty') }}</label>
+              <select [(ngModel)]="selectedDifficulty" (change)="filterItineraries()" class="filter-select">
+                <option value="">{{ getTranslation('allDifficulties') }}</option>
+                <option value="easy">{{ getTranslation('easy') }}</option>
+                <option value="moderate">{{ getTranslation('moderate') }}</option>
+                <option value="challenging">{{ getTranslation('challenging') }}</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label>{{ getTranslation('priceRange') }}</label>
+              <select [(ngModel)]="selectedPriceRange" (change)="filterItineraries()" class="filter-select">
+                <option value="">{{ getTranslation('allPrices') }}</option>
+                <option value="budget">{{ getTranslation('budget') }}</option>
+                <option value="mid-range">{{ getTranslation('midRange') }}</option>
+                <option value="luxury">{{ getTranslation('luxury') }}</option>
+              </select>
+            </div>
+
+            <button class="btn btn-secondary" (click)="clearFilters()">
+              {{ i18nService.translate('clearFilters') }}
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Itineraries -->
+      <section class="featured-itineraries" *ngIf="featuredItineraries.length > 0">
+        <div class="container">
+          <h2 class="section-title">{{ getTranslation('featuredItineraries') }}</h2>
+          <div class="featured-grid">
+            <div 
+              *ngFor="let itinerary of featuredItineraries" 
+              class="featured-itinerary-card"
+              [class.rtl]="i18nService.isRTL()"
+            >
+              <div class="itinerary-image">
+                <img [src]="itinerary.image" [alt]="i18nService.isRTL() ? itinerary.titleAr : itinerary.title">
+                <div class="itinerary-duration-badge">
+                  {{ i18nService.isRTL() ? itinerary.durationAr : itinerary.duration }}
+                </div>
+                <div class="itinerary-difficulty-badge">
+                  {{ i18nService.isRTL() ? itinerary.difficultyAr : itinerary.difficulty }}
+                </div>
+              </div>
+              
+              <div class="itinerary-content">
+                <h3 class="itinerary-title">
+                  {{ i18nService.isRTL() ? itinerary.titleAr : itinerary.title }}
+                </h3>
+                
+                <p class="itinerary-description">
+                  {{ i18nService.isRTL() ? itinerary.descriptionAr : itinerary.description }}
+                </p>
+                
+                <div class="itinerary-highlights">
+                  <h4>{{ getTranslation('highlights') }}</h4>
+                  <ul>
+                    <li *ngFor="let highlight of (i18nService.isRTL() ? itinerary.highlightsAr : itinerary.highlights)">
+                      {{ highlight }}
+                    </li>
+                  </ul>
+                </div>
+                
+                <div class="itinerary-details">
+                  <div class="detail-item">
+                    <span class="material-icons">schedule</span>
+                    <span>{{ i18nService.isRTL() ? itinerary.durationAr : itinerary.duration }}</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="material-icons">group</span>
+                    <span>{{ i18nService.isRTL() ? itinerary.groupSizeAr : itinerary.groupSize }}</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="material-icons">attach_money</span>
+                    <span>{{ i18nService.isRTL() ? itinerary.priceAr : itinerary.price }}</span>
+                  </div>
+                </div>
+                
+                <div class="itinerary-actions">
+                  <button class="btn btn-primary" (click)="viewItinerary(itinerary)">
+                    {{ getTranslation('viewDetails') }}
+                  </button>
+                  <button class="btn btn-accent" (click)="bookItinerary(itinerary)">
+                    {{ getTranslation('bookNow') }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- All Itineraries -->
+      <section class="all-itineraries">
+        <div class="container">
+          <h2 class="section-title">{{ getTranslation('allItineraries') }}</h2>
+          
+          <div class="itineraries-grid">
+            <div 
+              *ngFor="let itinerary of filteredItineraries" 
+              class="itinerary-card"
+              [class.rtl]="i18nService.isRTL()"
+            >
+              <div class="itinerary-image">
+                <img [src]="itinerary.image" [alt]="i18nService.isRTL() ? itinerary.titleAr : itinerary.title">
+                <div class="itinerary-duration-badge">
+                  {{ i18nService.isRTL() ? itinerary.durationAr : itinerary.duration }}
+                </div>
+              </div>
+              
+              <div class="itinerary-content">
+                <div class="itinerary-header">
+                  <div class="itinerary-category">
+                    {{ i18nService.isRTL() ? itinerary.categoryAr : itinerary.category }}
+                  </div>
+                  <div class="itinerary-price">
+                    {{ i18nService.isRTL() ? itinerary.priceAr : itinerary.price }}
+                  </div>
+                </div>
+                
+                <h3 class="itinerary-title">
+                  {{ i18nService.isRTL() ? itinerary.titleAr : itinerary.title }}
+                </h3>
+                
+                <p class="itinerary-description">
+                  {{ i18nService.isRTL() ? itinerary.descriptionAr : itinerary.description }}
+                </p>
+                
+                <div class="itinerary-meta">
+                  <div class="meta-item">
+                    <span class="material-icons">schedule</span>
+                    <span>{{ i18nService.isRTL() ? itinerary.durationAr : itinerary.duration }}</span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="material-icons">trending_up</span>
+                    <span>{{ i18nService.isRTL() ? itinerary.difficultyAr : itinerary.difficulty }}</span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="material-icons">wb_sunny</span>
+                    <span>{{ i18nService.isRTL() ? itinerary.bestTimeAr : itinerary.bestTime }}</span>
+                  </div>
+                </div>
+                
+                <div class="itinerary-highlights-preview">
+                  <span 
+                    *ngFor="let highlight of (i18nService.isRTL() ? itinerary.highlightsAr : itinerary.highlights).slice(0, 3)" 
+                    class="highlight-tag"
+                  >
+                    {{ highlight }}
+                  </span>
+                </div>
+                
+                <div class="itinerary-actions">
+                  <button class="btn btn-primary" (click)="viewItinerary(itinerary)">
+                    {{ getTranslation('viewDetails') }}
+                  </button>
+                  <button class="btn btn-secondary" (click)="downloadItinerary(itinerary)">
+                    {{ getTranslation('download') }}
+                  </button>
+                  <button class="btn btn-accent" (click)="bookItinerary(itinerary)">
+                    {{ getTranslation('bookNow') }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- No Results -->
+          <div *ngIf="filteredItineraries.length === 0" class="no-results">
+            <div class="no-results-content">
+              <span class="material-icons">map</span>
+              <h3>{{ getTranslation('noItinerariesFound') }}</h3>
+              <p>{{ getTranslation('tryDifferentFilters') }}</p>
+              <button class="btn btn-primary" (click)="clearFilters()">
+                {{ i18nService.translate('clearFilters') }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Custom Itinerary Section -->
+      <section class="custom-itinerary">
+        <div class="container">
+          <div class="custom-content">
+            <h2 class="section-title">{{ getTranslation('customItinerary') }}</h2>
+            <p>{{ getTranslation('customItineraryDesc') }}</p>
+            <div class="custom-features">
+              <div class="feature-item" [class.rtl]="i18nService.isRTL()">
+                <span class="material-icons">person</span>
+                <span>{{ getTranslation('personalizedPlanning') }}</span>
+              </div>
+              <div class="feature-item" [class.rtl]="i18nService.isRTL()">
+                <span class="material-icons">schedule</span>
+                <span>{{ getTranslation('flexibleSchedule') }}</span>
+              </div>
+              <div class="feature-item" [class.rtl]="i18nService.isRTL()">
+                <span class="material-icons">support_agent</span>
+                <span>{{ getTranslation('expertGuidance') }}</span>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-large">
+              {{ getTranslation('createCustomItinerary') }}
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Planning Tips -->
+      <section class="planning-tips">
+        <div class="container">
+          <h2 class="section-title">{{ getTranslation('planningTips') }}</h2>
+          <div class="tips-grid">
+            <div class="tip-card" [class.rtl]="i18nService.isRTL()">
+              <div class="tip-icon">
+                <span class="material-icons">wb_sunny</span>
+              </div>
+              <h3>{{ getTranslation('bestTimeToVisit') }}</h3>
+              <p>{{ getTranslation('bestTimeToVisitDesc') }}</p>
+            </div>
+            <div class="tip-card" [class.rtl]="i18nService.isRTL()">
+              <div class="tip-icon">
+                <span class="material-icons">backpack</span>
+              </div>
+              <h3>{{ getTranslation('whatToPack') }}</h3>
+              <p>{{ getTranslation('whatToPackDesc') }}</p>
+            </div>
+            <div class="tip-card" [class.rtl]="i18nService.isRTL()">
+              <div class="tip-icon">
+                <span class="material-icons">local_atm</span>
+              </div>
+              <h3>{{ getTranslation('budgetPlanning') }}</h3>
+              <p>{{ getTranslation('budgetPlanningDesc') }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
