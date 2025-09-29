@@ -1,0 +1,117 @@
+<div class="blog-page" [attr.dir]="i18nService.isRTL() ? 'rtl' : 'ltr'">
+  <!-- Hero Section -->
+  <section class="blog-hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">{{ i18nService.translate('blogTitle') }}</h1>
+        <p class="hero-subtitle">{{ i18nService.translate('blogSubtitle') }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Content -->
+  <section class="blog-content">
+    <div class="container">
+      <!-- Categories Filter -->
+      <div class="blog-filters">
+        <h3>{{ i18nService.translate('categories') }}</h3>
+        <div class="filter-buttons">
+          <button 
+            *ngFor="let category of categories" 
+            class="filter-btn"
+            [class.active]="selectedCategory === category.key"
+            (click)="filterByCategory(category.key)"
+          >
+            {{ i18nService.isRTL() ? category.nameAr : category.name }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Blog Posts Grid -->
+      <div class="blog-grid">
+        <article 
+          *ngFor="let post of filteredPosts" 
+          class="blog-card"
+          [class.rtl]="i18nService.isRTL()"
+        >
+          <div class="blog-image">
+            <img [src]="post.image" [alt]="i18nService.isRTL() ? post.titleAr : post.title">
+            <div class="blog-category">
+              {{ i18nService.isRTL() ? post.categoryAr : post.category }}
+            </div>
+          </div>
+          
+          <div class="blog-content-card">
+            <div class="blog-meta">
+              <span class="blog-author">
+                <span class="material-icons">person</span>
+                {{ i18nService.isRTL() ? post.authorAr : post.author }}
+              </span>
+              <span class="blog-date">
+                <span class="material-icons">schedule</span>
+                {{ i18nService.formatDate(post.date) }}
+              </span>
+              <span class="blog-read-time">
+                <span class="material-icons">access_time</span>
+                {{ post.readTime }} {{ i18nService.translate('minutesRead') }}
+              </span>
+            </div>
+            
+            <h3 class="blog-title">
+              {{ i18nService.isRTL() ? post.titleAr : post.title }}
+            </h3>
+            
+            <p class="blog-excerpt">
+              {{ i18nService.isRTL() ? post.excerptAr : post.excerpt }}
+            </p>
+            
+            <div class="blog-tags">
+              <span 
+                *ngFor="let tag of (i18nService.isRTL() ? post.tagsAr : post.tags)" 
+                class="blog-tag"
+              >
+                #{{ tag }}
+              </span>
+            </div>
+            
+            <div class="blog-actions">
+              <button class="btn btn-primary" (click)="readPost(post)">
+                {{ i18nService.translate('readMore') }}
+                <span class="material-icons">{{ i18nService.isRTL() ? 'arrow_back' : 'arrow_forward' }}</span>
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Load More Button -->
+      <div class="load-more" *ngIf="hasMorePosts">
+        <button class="btn btn-secondary" (click)="loadMorePosts()">
+          {{ i18nService.translate('loadMorePosts') }}
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Signup -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-content">
+        <h3>{{ i18nService.translate('stayUpdated') }}</h3>
+        <p>{{ i18nService.translate('stayUpdatedDesc') }}</p>
+        <div class="newsletter-form">
+          <input 
+            type="email" 
+            [placeholder]="i18nService.translate('enterEmail')"
+            class="newsletter-input"
+            [style.text-align]="i18nService.isRTL() ? 'right' : 'left'"
+          >
+          <button class="btn btn-accent">
+            {{ i18nService.translate('subscribe') }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- End blog-page -->
+</div>

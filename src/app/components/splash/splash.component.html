@@ -1,0 +1,24 @@
+<div class="splash-container">
+  <div class="splash-background"></div>
+  <div class="splash-pattern"></div>
+  
+  <div class="splash-content" [class.fade-in]="showContent">
+    <div class="logo-container" [class.scale-in]="showLogo">
+      <img src="/assets/images/app_icon.png" alt="Minya Tourism" class="splash-logo">
+    </div>
+    
+    <div class="text-container" [class.slide-up]="showText">
+      <h1 class="splash-title">Minya Tourism</h1>
+      <p class="splash-subtitle">Discover Ancient Egypt</p>
+    </div>
+    
+    <div class="loading-container" [class.fade-in]="showLoading">
+      <div class="loading-spinner"></div>
+      <p class="loading-text">Exploring the treasures of Minya...</p>
+    </div>
+  </div>
+  
+  <div class="splash-footer" [class.fade-in]="showFooter">
+    <p>Experience the timeless beauty of the Nile</p>
+  </div>
+</div>

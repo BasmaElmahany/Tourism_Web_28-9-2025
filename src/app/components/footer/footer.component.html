@@ -1,0 +1,119 @@
+<footer class="footer">
+  <div class="footer-pattern"></div>
+  <div class="container">
+    <div class="footer-content">
+      <!-- Main Footer Content -->
+      <div class="footer-main">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <img src="/assets/images/app_icon.png" alt="Minya Tourism" class="footer-logo-icon">
+            <h3>Minya Tourism</h3>
+          </div>
+          <p class="footer-description">
+            Discover the hidden treasures of Minya, Egypt. Explore ancient attractions, 
+            rich culture, and unforgettable experiences along the Nile River.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">
+              <span class="material-icons">facebook</span>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+              <span class="material-icons">camera_alt</span>
+            </a>
+            <a href="#" class="social-link" aria-label="YouTube">
+              <span class="material-icons">play_circle</span>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter">
+              <span class="material-icons">alternate_email</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a routerLink="/attractions">Attractions</a></li>
+            <li><a routerLink="/hotels">Hotels</a></li>
+            <li><a routerLink="/restaurants">Restaurants</a></li>
+            <li><a routerLink="/events">Events</a></li>
+            <li><a routerLink="/itineraries">Itineraries</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Information</h4>
+          <ul class="footer-links">
+            <li><a routerLink="/visitor-info">Visitor Guide</a></li>
+            <li><a routerLink="/blog">Travel Blog</a></li>
+            <li><a routerLink="/map">Interactive Map</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#about">About Minya</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <div class="contact-info">
+            <div class="contact-item">
+              <span class="material-icons">location_on</span>
+              <span>Minya, Egypt</span>
+            </div>
+            <div class="contact-item">
+              <span class="material-icons">phone</span>
+              <span>+20 86 234 5555</span>
+            </div>
+            <div class="contact-item">
+              <span class="material-icons">email</span>
+              <span>info-minyatourism.com</span>
+            </div>
+          </div>
+          <!-- Mobile App Download -->
+          <div class="app-download">
+            <h5>Download Our App</h5>
+            <div class="download-buttons">
+              <a href="#" class="download-btn">
+                <span class="material-icons">smartphone</span>
+                <div>
+                  <small>Download for</small>
+                  <strong>Android & iOS</strong>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Newsletter Signup -->
+      <div class="newsletter-section">
+        <div class="newsletter-content">
+          <h4>Stay Updated</h4>
+          <p>Subscribe to our newsletter for the latest travel tips and updates about Minya.</p>
+        </div>
+        <form class="newsletter-form" (ngSubmit)="onNewsletterSubmit($event)">
+          <input 
+            type="email" 
+            placeholder="Enter your email address" 
+            class="newsletter-input"
+            required
+          >
+          <button type="submit" class="newsletter-btn">
+            <span class="material-icons">send</span>
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p>&copy; 2024 Minya Tourism. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#terms">Terms of Service</a>
+          <a href="#sitemap">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

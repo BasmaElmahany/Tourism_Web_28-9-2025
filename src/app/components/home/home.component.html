@@ -1,0 +1,199 @@
+<div class="home-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-background">
+      <img src="/assets/images/hero_banner.png" alt="Minya Tourism" class="hero-image">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="container">
+        <div class="hero-text fade-in">
+          <h1 class="hero-title">Discover Ancient Egypt in Minya</h1>
+          <p class="hero-subtitle">
+            Explore the hidden treasures of Minya, where ancient history meets the timeless beauty of the Nile River. 
+            Journey through millennia of Egyptian heritage and create unforgettable memories.
+          </p>
+          <div class="hero-actions">
+            <a routerLink="/attractions" class="btn btn-primary">
+              <span class="material-icons">explore</span>
+              Explore Attractions
+            </a>
+            <a routerLink="/itineraries" class="btn btn-secondary">
+              <span class="material-icons">map</span>
+              Plan Your Trip
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <span class="material-icons">keyboard_arrow_down</span>
+    </div>
+  </section>
+
+  <!-- Quick Actions -->
+  <section class="quick-actions-section">
+    <div class="container">
+      <div class="quick-actions-grid">
+        <a routerLink="/attractions" class="quick-action-card">
+          <div class="quick-action-icon">
+            <span class="material-icons">place</span>
+          </div>
+          <h3>Attractions</h3>
+          <p>Discover ancient sites</p>
+        </a>
+        <a routerLink="/hotels" class="quick-action-card">
+          <div class="quick-action-icon">
+            <span class="material-icons">hotel</span>
+          </div>
+          <h3>Hotels</h3>
+          <p>Find accommodation</p>
+        </a>
+        <a routerLink="/restaurants" class="quick-action-card">
+          <div class="quick-action-icon">
+            <span class="material-icons">restaurant</span>
+          </div>
+          <h3>Restaurants</h3>
+          <p>Taste local cuisine</p>
+        </a>
+        <a routerLink="/events" class="quick-action-card">
+          <div class="quick-action-icon">
+            <span class="material-icons">event</span>
+          </div>
+          <h3>Events</h3>
+          <p>Cultural experiences</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Attractions -->
+  <section class="featured-section">
+    <div class="container">
+      <h2 class="section-title">Featured Attractions</h2>
+      <div class="featured-carousel" *ngIf="featuredAttractions.length > 0">
+        <div class="carousel-container">
+          <div class="carousel-track" [style.transform]="'translateX(' + (-currentSlide * 100) + '%)'">
+            <div class="carousel-slide" *ngFor="let attraction of featuredAttractions">
+              <div class="attraction-card">
+                <div class="card-image">
+                  <img [src]="attraction.imageUrl" [alt]="attraction.name" loading="lazy">
+                  <div class="card-overlay">
+                    <div class="rating">
+                      <span class="material-icons">star</span>
+                      <span>{{ attraction.rating }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-content">
+                  <h3>{{ attraction.name }}</h3>
+                  <p>{{ attraction.description | slice:0:120 }}...</p>
+                  <div class="card-meta">
+                    <span class="category">{{ attraction.category }}</span>
+                    <span class="price">{{ attraction.ticketPrice }}</span>
+                  </div>
+                  <a [routerLink]="['/attractions', attraction.id]" class="btn btn-accent">
+                    Learn More
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn prev" (click)="previousSlide()" [disabled]="currentSlide === 0">
+            <span class="material-icons">chevron_left</span>
+          </button>
+          <button class="carousel-btn next" (click)="nextSlide()" [disabled]="currentSlide >= featuredAttractions.length - 1">
+            <span class="material-icons">chevron_right</span>
+          </button>
+        </div>
+        <div class="carousel-indicators">
+          <button 
+            *ngFor="let attraction of featuredAttractions; let i = index"
+            class="indicator"
+            [class.active]="i === currentSlide"
+            (click)="goToSlide(i)"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Section -->
+  <section class="stats-section bg-primary">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">12+</div>
+          <div class="stat-label">Historic Sites</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">8+</div>
+          <div class="stat-label">Hotels</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Restaurants</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">125K+</div>
+          <div class="stat-label">Annual Visitors</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Blog Posts -->
+  <section class="blog-section" *ngIf="latestBlogPosts.length > 0">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Latest Stories</h2>
+        <a routerLink="/blog" class="view-all-link">
+          View All Posts
+          <span class="material-icons">arrow_forward</span>
+        </a>
+      </div>
+      <div class="blog-grid">
+        <article class="blog-card" *ngFor="let post of latestBlogPosts">
+          <div class="blog-image">
+            <img [src]="post.imageUrl" [alt]="post.title" loading="lazy">
+            <div class="blog-category">{{ post.category }}</div>
+          </div>
+          <div class="blog-content">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.excerpt }}</p>
+            <div class="blog-meta">
+              <span class="author">By {{ post.author }}</span>
+              <span class="read-time">{{ post.readTime }} min read</span>
+            </div>
+            <a [routerLink]="['/blog', post.id]" class="read-more">
+              Read More
+              <span class="material-icons">arrow_forward</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Explore Minya?</h2>
+        <p>Start planning your journey through ancient Egypt today. Discover the treasures that await you in Minya.</p>
+        <div class="cta-actions">
+          <a routerLink="/itineraries" class="btn btn-primary">
+            <span class="material-icons">flight_takeoff</span>
+            Plan Your Trip
+          </a>
+          <a routerLink="/visitor-info" class="btn btn-secondary">
+            <span class="material-icons">info</span>
+            Visitor Guide
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
