@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { I18nService } from '../../services/i18n.service';
 import { TourismService } from '../../services/tourism.service';
+import { FormsModule } from '@angular/forms';
 
 interface BlogPost {
   id: string;
@@ -25,7 +26,9 @@ interface BlogPost {
 
 @Component({
   templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.scss']
+  styleUrls: ['./blog.component.scss'],
+  standalone: true,
+  imports: [CommonModule, RouterModule, FormsModule],
 })
 export class BlogComponent implements OnInit {
   blogPosts: BlogPost[] = [];
