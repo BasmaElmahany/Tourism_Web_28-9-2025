@@ -1,0 +1,38 @@
+<div class="language-switcher" [class.rtl]="i18nService.isRTL()">
+  <button 
+    class="language-toggle"
+    (click)="toggleDropdown()"
+    [attr.aria-label]="'Switch language'"
+  >
+    <span class="current-language">
+      <span class="flag">{{ currentLanguage.flag }}</span>
+      <span class="name">{{ currentLanguage.nativeName }}</span>
+    </span>
+    <span class="material-icons arrow" [class.open]="isDropdownOpen">
+      keyboard_arrow_down
+    </span>
+  </button>
+
+  <div class="language-dropdown" [class.open]="isDropdownOpen">
+    <button
+      *ngFor="let language of languages"
+      class="language-option"
+      [class.active]="language.code === currentLanguage.code"
+      (click)="selectLanguage(language.code)"
+    >
+      <span class="flag">{{ language.flag }}</span>
+      <span class="name">{{ language.nativeName }}</span>
+      <span class="english-name">({{ language.name }})</span>
+      <span class="material-icons check" *ngIf="language.code === currentLanguage.code">
+        check
+      </span>
+    </button>
+  </div>
+
+  <!-- Backdrop for mobile -->
+  <div 
+    class="dropdown-backdrop" 
+    [class.open]="isDropdownOpen"
+    (click)="closeDropdown()"
+  ></div>
+</div>

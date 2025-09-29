@@ -1,0 +1,181 @@
+<div class="events-page" [attr.dir]="i18nService.isRTL() ? 'rtl' : 'ltr'"></div>
+  <!-- Hero Section -->
+  <section class="events-hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">{{ getTranslation('eventsTitle') }}</h1>
+        <p class="hero-subtitle">{{ getTranslation('eventsSubtitle') }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters Section -->
+  <section class="events-filters">
+    <div class="container">
+      <div class="filters-header">
+        <h3>{{ getTranslation('findEvents') }}</h3>
+      </div>
+      <div class="filters-grid">
+        <div class="filter-group">
+          <label>{{ getTranslation('category') }}</label>
+          <select [(ngModel)]="selectedCategory" (change)="filterEvents()" class="filter-select">
+            <option value="">{{ getTranslation('allCategories') }}</option>
+            <option *ngFor="let category of eventCategories" [value]="category.key">
+              {{ i18nService.isRTL() ? category.nameAr : category.name }}
+            </option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>{{ getTranslation('dateRange') }}</label>
+          <select [(ngModel)]="selectedDateRange" (change)="filterEvents()" class="filter-select">
+            <option value="">{{ getTranslation('allDates') }}</option>
+            <option value="today">{{ getTranslation('today') }}</option>
+            <option value="this-week">{{ getTranslation('thisWeek') }}</option>
+            <option value="this-month">{{ getTranslation('thisMonth') }}</option>
+            <option value="upcoming">{{ getTranslation('upcoming') }}</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>{{ getTranslation('priceRange') }}</label>
+          <select [(ngModel)]="selectedPriceRange" (change)="filterEvents()" class="filter-select">
+            <option value="">{{ getTranslation('allPrices') }}</option>
+            <option value="free">{{ getTranslation('freeEvents') }}</option>
+            <option value="paid">{{ getTranslation('paidEvents') }}</option>
+          </select>
+        </div>
+        <button class="btn btn-secondary" (click)="clearFilters()">
+          {{ i18nService.translate('clearFilters') }}
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Events -->
+  <section class="featured-events" *ngIf="featuredEvents.length > 0">
+    <div class="container">
+      <h2 class="section-title">{{ getTranslation('featuredEvents') }}</h2>
+      <div class="featured-grid">
+        <div *ngFor="let event of featuredEvents" class="featured-event-card" [class.rtl]="i18nService.isRTL()">
+          <div class="event-image">
+            <img [src]="event.image" [alt]="i18nService.isRTL() ? event.titleAr : event.title">
+            <div class="event-date-badge">
+              <div class="date-day">{{ formatDay(event.date) }}</div>
+              <div class="date-month">{{ formatMonth(event.date) }}</div>
+            </div>
+            <div class="event-category-badge">
+              {{ i18nService.isRTL() ? event.categoryAr : event.category }}
+            </div>
+          </div>
+          <div class="event-content">
+            <h3 class="event-title">{{ i18nService.isRTL() ? event.titleAr : event.title }}</h3>
+            <p class="event-description">{{ i18nService.isRTL() ? event.descriptionAr : event.description }}</p>
+            <div class="event-details">
+              <div class="detail-item">
+                <span class="material-icons">schedule</span>
+                <span>{{ i18nService.isRTL() ? event.timeAr : event.time }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="material-icons">location_on</span>
+                <span>{{ i18nService.isRTL() ? event.locationAr : event.location }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="material-icons">confirmation_number</span>
+                <span>{{ i18nService.isRTL() ? event.priceAr : event.price }}</span>
+              </div>
+            </div>
+            <div class="event-actions">
+              <button class="btn btn-primary" (click)="viewEventDetails(event)">{{ getTranslation('viewDetails') }}</button>
+              <button class="btn btn-accent" (click)="registerForEvent(event)" *ngIf="event.registrationRequired">{{ getTranslation('register') }}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- All Events -->
+  <section class="all-events">
+    <div class="container">
+      <h2 class="section-title">{{ getTranslation('allEvents') }}</h2>
+      <div class="events-grid">
+        <div *ngFor="let event of filteredEvents" class="event-card" [class.rtl]="i18nService.isRTL()">
+          <div class="event-image">
+            <img [src]="event.image" [alt]="i18nService.isRTL() ? event.titleAr : event.title">
+            <div class="event-date-badge">
+              <div class="date-day">{{ formatDay(event.date) }}</div>
+              <div class="date-month">{{ formatMonth(event.date) }}</div>
+            </div>
+          </div>
+          <div class="event-content">
+            <div class="event-header">
+              <div class="event-category">{{ i18nService.isRTL() ? event.categoryAr : event.category }}</div>
+              <div class="event-price">{{ i18nService.isRTL() ? event.priceAr : event.price }}</div>
+            </div>
+            <h3 class="event-title">{{ i18nService.isRTL() ? event.titleAr : event.title }}</h3>
+            <p class="event-description">{{ i18nService.isRTL() ? event.descriptionAr : event.description }}</p>
+            <div class="event-meta">
+              <div class="meta-item">
+                <span class="material-icons">schedule</span>
+                <span>{{ i18nService.isRTL() ? event.timeAr : event.time }}</span>
+              </div>
+              <div class="meta-item">
+                <span class="material-icons">location_on</span>
+                <span>{{ i18nService.isRTL() ? event.locationAr : event.location }}</span>
+              </div>
+              <div class="meta-item" *ngIf="event.organizer">
+                <span class="material-icons">person</span>
+                <span>{{ i18nService.isRTL() ? event.organizerAr : event.organizer }}</span>
+              </div>
+            </div>
+            <div class="event-features" *ngIf="event.features.length > 0">
+              <span *ngFor="let feature of (i18nService.isRTL() ? event.featuresAr : event.features)" class="feature-tag">{{ feature }}</span>
+            </div>
+            <div class="event-actions">
+              <button class="btn btn-primary" (click)="viewEventDetails(event)">{{ getTranslation('viewDetails') }}</button>
+              <button class="btn btn-secondary" (click)="addToCalendar(event)">{{ getTranslation('addToCalendar') }}</button>
+              <button class="btn btn-accent" (click)="registerForEvent(event)" *ngIf="event.registrationRequired">{{ getTranslation('register') }}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- No Results -->
+      <div *ngIf="filteredEvents.length === 0" class="no-results">
+        <div class="no-results-content">
+          <span class="material-icons">event</span>
+          <h3>{{ getTranslation('noEventsFound') }}</h3>
+          <p>{{ getTranslation('tryDifferentFilters') }}</p>
+          <button class="btn btn-primary" (click)="clearFilters()">{{ i18nService.translate('clearFilters') }}</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Event Tips -->
+  <section class="event-tips">
+    <div class="container">
+      <h2 class="section-title">{{ getTranslation('eventTips') }}</h2>
+      <div class="tips-grid">
+        <div class="tip-card" [class.rtl]="i18nService.isRTL()">
+          <div class="tip-icon">
+            <span class="material-icons">schedule</span>
+          </div>
+          <h3>{{ getTranslation('planAhead') }}</h3>
+          <p>{{ getTranslation('planAheadDesc') }}</p>
+        </div>
+        <div class="tip-card" [class.rtl]="i18nService.isRTL()">
+          <div class="tip-icon">
+            <span class="material-icons">confirmation_number</span>
+          </div>
+          <h3>{{ getTranslation('bookEarly') }}</h3>
+          <p>{{ getTranslation('bookEarlyDesc') }}</p>
+        </div>
+        <div class="tip-card" [class.rtl]="i18nService.isRTL()">
+          <div class="tip-icon">
+            <span class="material-icons">info</span>
+          </div>
+          <h3>{{ getTranslation('checkDetails') }}</h3>
+          <p>{{ getTranslation('checkDetailsDesc') }}</p>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,186 @@
+<div class="attraction-details-container" *ngIf="attraction">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-background">
+      <img [src]="currentImage" [alt]="attraction.name" class="hero-image">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="container">
+        <div class="breadcrumb">
+          <a routerLink="/home">Home</a>
+          <span class="material-icons">chevron_right</span>
+          <a routerLink="/attractions">Attractions</a>
+          <span class="material-icons">chevron_right</span>
+          <span>{{ attraction.name }}</span>
+        </div>
+        <div class="hero-info">
+          <h1 class="attraction-title">{{ attraction.name }}</h1>
+          <div class="attraction-meta">
+            <div class="rating-info">
+              <div class="rating">
+                <span class="material-icons">star</span>
+                <span class="rating-value">{{ attraction.rating }}</span>
+              </div>
+              <span class="review-count">{{ attraction.reviewCount }} reviews</span>
+            </div>
+            <div class="category-badge">{{ attraction.category }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Image Gallery Navigation -->
+    <div class="gallery-nav" *ngIf="attraction.imageGallery.length > 1">
+      <button class="gallery-btn prev" (click)="previousImage()" [disabled]="currentImageIndex === 0">
+        <span class="material-icons">chevron_left</span>
+      </button>
+      <button class="gallery-btn next" (click)="nextImage()" [disabled]="currentImageIndex === attraction.imageGallery.length - 1">
+        <span class="material-icons">chevron_right</span>
+      </button>
+    </div>
+    <div class="gallery-indicators" *ngIf="attraction.imageGallery.length > 1">
+      <button *ngFor="let image of attraction.imageGallery; let i = index" class="indicator" [class.active]="i === currentImageIndex" (click)="goToImage(i)"></button>
+    </div>
+  </section>
+  <!-- Main Content -->
+  <section class="main-content">
+    <div class="container">
+      <div class="content-grid">
+        <!-- Left Column - Details -->
+        <div class="details-column">
+          <div class="content-section">
+            <h2>About This Attraction</h2>
+            <p class="description">{{ attraction.description }}</p>
+            <div class="historical-info" *ngIf="attraction.historicalPeriod || attraction.significance">
+              <div class="info-item" *ngIf="attraction.historicalPeriod">
+                <h4>Historical Period</h4>
+                <p>{{ attraction.historicalPeriod }}</p>
+              </div>
+              <div class="info-item" *ngIf="attraction.significance">
+                <h4>Historical Significance</h4>
+                <p>{{ attraction.significance }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="content-section" *ngIf="attraction.features.length > 0">
+            <h2>Features & Amenities</h2>
+            <div class="features-grid">
+              <div class="feature-item" *ngFor="let feature of attraction.features">
+                <span class="material-icons">check_circle</span>
+                <span>{{ feature }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="content-section" *ngIf="attraction.imageGallery.length > 1">
+            <h2>Photo Gallery</h2>
+            <div class="thumbnail-gallery">
+              <div class="thumbnail" *ngFor="let image of attraction.imageGallery; let i = index" [class.active]="i === currentImageIndex" (click)="goToImage(i)">
+                <img [src]="image" [alt]="attraction.name + ' - Image ' + (i + 1)" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Right Column - Info Card -->
+        <div class="info-column">
+          <div class="info-card">
+            <h3>Visit Information</h3>
+            <div class="info-item">
+              <div class="info-label">
+                <span class="material-icons">schedule</span>
+                Opening Hours
+              </div>
+              <div class="info-value">{{ attraction.openingHours }}</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">
+                <span class="material-icons">local_offer</span>
+                Ticket Price
+              </div>
+              <div class="info-value">{{ attraction.ticketPrice }}</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">
+                <span class="material-icons">place</span>
+                Location
+              </div>
+              <div class="info-value">{{ attraction.latitude.toFixed(4) }}, {{ attraction.longitude.toFixed(4) }}</div>
+            </div>
+            <div class="action-buttons">
+              <button class="btn btn-primary full-width">
+                <span class="material-icons">directions</span>
+                Get Directions
+              </button>
+              <button class="btn btn-secondary full-width" (click)="addToFavorites()">
+                <span class="material-icons">favorite_border</span>
+                Save to Favorites
+              </button>
+              <button class="btn btn-accent full-width">
+                <span class="material-icons">share</span>
+                Share
+              </button>
+            </div>
+          </div>
+          <div class="stats-card">
+            <h3>Quick Stats</h3>
+            <div class="stat-item">
+              <span class="stat-value">{{ attraction.rating }}/5</span>
+              <span class="stat-label">Average Rating</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">{{ attraction.reviewCount }}</span>
+              <span class="stat-label">Total Reviews</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">{{ getVisitorEstimate() }}</span>
+              <span class="stat-label">Annual Visitors</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Related Attractions -->
+  <section class="related-section" *ngIf="relatedAttractions.length > 0">
+    <div class="container">
+      <h2 class="section-title">You Might Also Like</h2>
+      <div class="related-grid">
+        <div class="related-card" *ngFor="let related of relatedAttractions">
+          <div class="related-image">
+            <img [src]="related.imageUrl" [alt]="related.name" loading="lazy">
+          </div>
+          <div class="related-content">
+            <h4>{{ related.name }}</h4>
+            <p>{{ related.description | slice:0:80 }}...</p>
+            <div class="related-meta">
+              <div class="rating">
+                <span class="material-icons">star</span>
+                <span>{{ related.rating }}</span>
+              </div>
+              <span class="price">{{ related.ticketPrice }}</span>
+            </div>
+            <a [routerLink]="['/attractions', related.id]" class="btn btn-primary btn-sm">
+              View Details
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- Loading State -->
+<div class="loading-container" *ngIf="!attraction && !error">
+  <div class="spinner"></div>
+  <p>Loading attraction details...</p>
+</div>
+<!-- Error State -->
+<div class="error-container" *ngIf="error">
+  <div class="error-icon">
+    <span class="material-icons">error_outline</span>
+  </div>
+  <h2>Attraction Not Found</h2>
+  <p>The attraction you're looking for doesn't exist or has been removed.</p>
+  <a routerLink="/attractions" class="btn btn-primary">
+    <span class="material-icons">arrow_back</span>
+    Back to Attractions
+  </a>
+</div>
