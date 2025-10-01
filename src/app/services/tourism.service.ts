@@ -12,6 +12,7 @@ import {
   MapLocation,
   TourismStats
 } from '../models/tourism.models';
+import { ATTRACTIONS } from '../data/attractions';
 
 @Injectable({
   providedIn: 'root'
@@ -22,89 +23,12 @@ export class TourismService {
 
   constructor() {}
 
-  // Attractions
+   // Attractions
   getAttractions(): Observable<Attraction[]> {
     this.setLoading(true);
-    const attractions: Attraction[] = [
-      {
-        id: '1',
-        name: 'Beni Hassan Tombs',
-        description: 'Ancient Egyptian tombs dating back to the Middle Kingdom, featuring well-preserved wall paintings and hieroglyphs that tell stories of daily life in ancient Egypt.',
-        imageUrl: '/assets/images/hero_banner.png',
-        imageGallery: [
-          '/assets/images/hero_banner.png',
-          '/assets/images/beni_hassan.webp',
-          '/assets/images/nile_river.jpg'
-        ],
-        latitude: 27.9158,
-        longitude: 30.8739,
-        openingHours: '8:00 AM - 5:00 PM',
-        ticketPrice: '100 EGP',
-        rating: 4.7,
-        reviewCount: 324,
-        category: 'Historical Site',
-        features: ['Guided Tours', 'Photography Allowed', 'Wheelchair Accessible'],
-        historicalPeriod: 'Middle Kingdom (2055-1650 BC)',
-        significance: 'One of the most important Middle Kingdom burial sites in Egypt'
-      },
-      {
-        id: '2',
-        name: 'Tuna el-Gebel',
-        description: 'An ancient necropolis and archaeological site featuring Greco-Roman tombs, catacombs, and the famous tomb of Petosiris.',
-        imageUrl: '/assets/images/beni_hassan.webp',
-        imageGallery: [
-          '/assets/images/beni_hassan.webp',
-          '/assets/images/hero_banner.png'
-        ],
-        latitude: 27.7667,
-        longitude: 30.7333,
-        openingHours: '8:00 AM - 4:00 PM',
-        ticketPrice: '80 EGP',
-        rating: 4.5,
-        reviewCount: 198,
-        category: 'Archaeological Site',
-        features: ['Guided Tours', 'Museum', 'Gift Shop'],
-        historicalPeriod: 'Greco-Roman Period (332 BC - 395 AD)',
-        significance: 'Important Greco-Roman necropolis with unique architectural blend'
-      },
-      {
-        id: '3',
-        name: 'Tell el-Amarna',
-        description: 'The ancient city of Akhetaten, capital of Egypt during the reign of Akhenaten, offering insights into the Amarna Period.',
-        imageUrl: '/assets/images/hero_banner.png',
-        imageGallery: ['/assets/images/hero_banner.png'],
-        latitude: 27.6500,
-        longitude: 30.9000,
-        openingHours: '8:00 AM - 5:00 PM',
-        ticketPrice: '120 EGP',
-        rating: 4.6,
-        reviewCount: 156,
-        category: 'Ancient City',
-        features: ['Archaeological Tours', 'Research Center', 'Educational Programs'],
-        historicalPeriod: 'New Kingdom - Amarna Period (1353-1336 BC)',
-        significance: 'Capital city of Pharaoh Akhenaten, center of monotheistic revolution'
-      },
-      {
-        id: '4',
-        name: 'Minya Corniche',
-        description: 'A beautiful waterfront promenade along the Nile River, perfect for evening walks and enjoying sunset views.',
-        imageUrl: '/assets/images/nile_river.jpg',
-        imageGallery: ['/assets/images/nile_river.jpg'],
-        latitude: 28.1099,
-        longitude: 30.7503,
-        openingHours: '24 hours',
-        ticketPrice: 'Free',
-        rating: 4.3,
-        reviewCount: 89,
-        category: 'Scenic Area',
-        features: ['Walking Path', 'Cafes', 'Boat Rides', 'Photography Spots'],
-        significance: 'Modern recreational area showcasing the beauty of the Nile River'
-      }
-    ];
-
-    return of(attractions).pipe(
+    return of(ATTRACTIONS).pipe(
       delay(800),
-      map(data => {
+      map((data) => {
         this.setLoading(false);
         return data;
       })
@@ -112,8 +36,9 @@ export class TourismService {
   }
 
   getAttractionById(id: string): Observable<Attraction | undefined> {
+    // Uses the same source; no duplicate data
     return this.getAttractions().pipe(
-      map(attractions => attractions.find(a => a.id === id))
+      map((attractions) => attractions.find((a) => a.id === id))
     );
   }
 
@@ -448,8 +373,8 @@ export class TourismService {
   }
 
   // Search functionality
-  searchAttractions(query: string): Observable<Attraction[]> {
-    return this.getAttractions().pipe(
+  searchAttractions(query: string)/*: Observable<Attraction[]>*/ {
+ /*   return this.getAttractions().pipe(
       map(attractions => 
         attractions.filter(attraction =>
           attraction.name.toLowerCase().includes(query.toLowerCase()) ||
@@ -457,7 +382,7 @@ export class TourismService {
           attraction.category.toLowerCase().includes(query.toLowerCase())
         )
       )
-    );
+    );*/
   }
 
   searchHotels(query: string): Observable<Hotel[]> {

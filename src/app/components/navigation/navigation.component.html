@@ -1,13 +1,16 @@
-<nav class="navbar" [class.scrolled]="isScrolled">
+<nav
+  class="navbar"
+  [class.scrolled]="isScrolled"
+  [attr.dir]="i18nService.isRTL() ? 'rtl' : 'ltr'"
+  [class.rtl]="i18nService.isRTL()"
+>
   <div class="container">
     <div class="nav-content">
-      <!-- Logo -->
       <div class="nav-logo" routerLink="/home">
         <img src="/assets/images/app_icon.png" alt="Minya Tourism" class="logo-icon">
-        <span class="logo-text">Minya Tourism</span>
+        <span class="logo-text">{{ i18nService.translate('Discover_Minya') }}</span>
       </div>
 
-      <!-- Desktop Navigation -->
       <div class="nav-links desktop-nav">
         <a routerLink="/home" routerLinkActive="active" class="nav-link">
           <span class="material-icons">home</span>
@@ -39,12 +42,10 @@
         </a>
       </div>
 
-      <!-- Language Switcher -->
       <div class="nav-actions">
         <app-language-switcher></app-language-switcher>
       </div>
 
-      <!-- Mobile Menu Button -->
       <button class="mobile-menu-btn" (click)="toggleMobileMenu()" [class.active]="isMobileMenuOpen">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
@@ -52,13 +53,12 @@
       </button>
     </div>
 
-    <!-- Mobile Navigation -->
     <div class="mobile-nav" [class.open]="isMobileMenuOpen">
       <div class="mobile-nav-content">
-        <!-- Language Switcher for Mobile -->
         <div class="mobile-language-switcher">
           <app-language-switcher></app-language-switcher>
         </div>
+
         <a routerLink="/home" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
           <span class="material-icons">home</span>
           {{ i18nService.translate('home') }}

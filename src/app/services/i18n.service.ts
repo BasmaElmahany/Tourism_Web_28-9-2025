@@ -115,14 +115,14 @@ export interface TranslationKeys {
   culturalHeritage: string;
   culturalHeritageDesc: string;
   blogTitle: string;
-  blogSubtitle : string;
-  categories :string;
-  minutesRead :string; 
-  loadMorePosts :string;
-  enterEmail : string;
-  stayUpdatedDesc: string; 
-  stayUpdated :string;
-  
+  blogSubtitle: string;
+  categories: string;
+  minutesRead: string;
+  loadMorePosts: string;
+  enterEmail: string;
+  stayUpdatedDesc: string;
+  stayUpdated: string;
+  Discover_Minya: string;
 }
 
 @Injectable({
@@ -263,6 +263,7 @@ export class I18nService {
       stayUpdated: 'Stay Updated',
       stayUpdatedDesc: 'Subscribe to get the latest articles, travel tips, and news directly to your inbox.',
       enterEmail: 'Enter your email',
+      Discover_Minya: "Discover Minya"
     },
     ar: {
       // Navigation
@@ -377,6 +378,7 @@ export class I18nService {
       stayUpdated: 'ابقَ على اطلاع',
       stayUpdatedDesc: 'اشترك للحصول على أحدث المقالات ونصائح السفر والأخبار مباشرة في بريدك.',
       enterEmail: 'أدخل بريدك الإلكتروني',
+      Discover_Minya: 'اكتشف المنيا'
     }
   };
 
@@ -434,6 +436,19 @@ export class I18nService {
   isRTL(): boolean {
     return this.getCurrentLanguageInfo().rtl;
   }
+  // في I18nService مثلاً
+  setDirection(isRTL: boolean) {
+    const html = document.documentElement;
+    const body = document.body;
+
+    // Set direction attribute
+    html.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+
+    // Optional: add/remove class for targeting in CSS
+    body.classList.toggle('rtl', isRTL);
+    body.classList.toggle('ltr', !isRTL);
+  }
+
 
   private isValidLanguage(languageCode: string): boolean {
     return this.languages.some(lang => lang.code === languageCode);
@@ -462,4 +477,16 @@ export class I18nService {
     const currentLang = this.getCurrentLanguage();
     return date.toLocaleDateString(currentLang === 'ar' ? 'ar-EG' : 'en-US');
   }
+
+
+  pick(text: string | Record<string, string>): string {
+    if (typeof text === 'string') return text; // supports legacy/plain strings
+    const lang = this.getCurrentLanguage();
+    return text?.[lang] ?? text?.['en'] ?? Object.values(text ?? {})[0] ?? '';
+  }
+
+  pickArray(items: Array<string | Record<string, string>>): string[] {
+    return (items ?? []).map(i => this.pick(i));
+  }
+
 }

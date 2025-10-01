@@ -1,22 +1,27 @@
 // Tourism Data Models for Minya Tourism Website
 
+// Add these helpers at the top (or in a shared types file)
+export type LocalizedText = string | { en: string; ar: string };
+export type LocalizedArray = Array<string | { en: string; ar: string }>;
+
 export interface Attraction {
   id: string;
-  name: string;
-  description: string;
+  name: LocalizedText;
+  description: LocalizedText;
   imageUrl: string;
   imageGallery: string[];
   latitude: number;
   longitude: number;
-  openingHours: string;
-  ticketPrice: string;
+  openingHours: LocalizedText;
+  ticketPrice: LocalizedText;
   rating: number;
   reviewCount: number;
-  category: string;
-  features: string[];
-  historicalPeriod?: string;
-  significance?: string;
+  category: LocalizedText;
+  features: LocalizedArray;
+  historicalPeriod?: LocalizedText;
+  significance?: LocalizedText;
 }
+
 
 export interface Hotel {
   id: string;
