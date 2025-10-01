@@ -86,11 +86,11 @@
                   </div>
                 </div>
                 <div class="card-content">
-                  <h3>{{ attraction.name }}</h3>
-                 <!-- <p>{{ attraction.description | slice:0:120 }}...</p> -->
+                  <h3>{{ i18n.pick(attraction.name ) }}</h3>
+                <p> {{ i18n.pick(attraction.description ) | slice:0:120 }}...</p> 
                   <div class="card-meta">
-                    <span class="category">{{ attraction.category }}</span>
-                    <span class="price">{{ attraction.ticketPrice }}</span>
+                    <span class="category">{{ i18n.pick((attraction).category) }}</span>
+                    <span class="price">{{ i18n.pick((attraction ).ticketPrice) }}</span>
                   </div>
                   <a [routerLink]="['/attractions', attraction.id]" class="btn btn-accent">
                     Learn More

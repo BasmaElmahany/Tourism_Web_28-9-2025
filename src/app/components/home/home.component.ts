@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TourismService } from '../../services/tourism.service';
 import { Attraction, Hotel, Restaurant, Event, BlogPost } from '../../models/tourism.models';
+import { I18nService } from 'src/app/services/i18n.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
   latestBlogPosts: BlogPost[] = [];
   currentSlide = 0;
 
-  constructor(private tourismService: TourismService) {}
+  constructor(private tourismService: TourismService, public i18n: I18nService) {}
 
   ngOnInit() {
     this.loadFeaturedAttractions();
