@@ -14,8 +14,8 @@ export const ATTRACTIONS /*: Attraction[]*/ = [
       '/assets/images/beni_hassan.webp',
       '/assets/images/nile_river.jpg'
     ],
-    latitude: 27.9158,
-    longitude: 30.8739,
+    latitude: 27.662056,
+    longitude: 30.905524,
     openingHours: { en: '8:00 AM - 5:00 PM', ar: '٨:٠٠ ص - ٥:٠٠ م' },
     ticketPrice: { en: '100 EGP', ar: '١٠٠ جنيه' },
     rating: 4.7,
@@ -43,9 +43,9 @@ export const ATTRACTIONS /*: Attraction[]*/ = [
       ar: 'يُشتق اسم المنطقة من الكلمة المصرية (تا-هوني) التي تعني (البحيرة)، إشارةً إلى البحيرة التي كانت تتشكل في المنطقة خلال الفيضان السنوي لنهر النيل. وفي اللغة اليونانية، أصبحت تُعرف باسم (توني) ثم (تونا) باللغة العربية، مع إضافة كلمة (جبل) لوقوعها في منطقة صحراوية جبلية. تتميز منطقة تونا الجبل بأهمية تاريخية وفنية كبيرة، حيث تُظهر مزيجاً فريداً من الفن المصري القديم والفن اليوناني. ويضم الموقع لوحة حدودية من مدينة أختاتون، بالإضافة إلى أنفاق تونا الجبل، وهي ممرات منحوتة في الصخور استخدمت لدفن طيور الإبيس المقدسة والقرود، وهما من رموز إله الحكمة المصري ثوته. كما تضم ​​المنطقة مقبرة بيتو سيريس، الكاهن الأكبر لثوت، المشهورة ببنائها المعماري الفريد ونقوشها الفنية الرائعة، بالإضافة إلى مقبرة إيزادورا، التي تُعد رمزاً للحب الخالد.جبانة وموقع أثري يضم مقابر وممرات تحت الأرض من العصرين اليوناني والروماني، ومن أشهرها مقبرة بتوسيريس.'
     },
     imageUrl: '/assets/images/tuna/tunaelgabel.jpeg',
-    imageGallery: ['/assets/images/tuna/tunaelgabel.jpeg', '/assets/images/tuna/tuna14.jpg', '/assets/images/tuna/tuna12.jpg','/assets/images/tuna/tuna6.jpg','/assets/images/tuna/tuna5.jpg','/assets/images/tuna/tuna3.jpg','/assets/images/tuna/tuna1.jpg'],
-    latitude: 27.7667,
-    longitude: 30.7333,
+    imageGallery: ['/assets/images/tuna/tunaelgabel.jpeg', '/assets/images/tuna/tuna14.jpg', '/assets/images/tuna/tuna12.jpg', '/assets/images/tuna/tuna6.jpg', '/assets/images/tuna/tuna5.jpg', '/assets/images/tuna/tuna3.jpg', '/assets/images/tuna/tuna1.jpg'],
+    latitude: 27.773628,
+    longitude: 30.738468,
     openingHours: { en: '8:00 AM - 4:00 PM', ar: '٨:٠٠ ص - ٤:٠٠ م' },
     ticketPrice: { en: '80 EGP', ar: '٨٠ جنيه' },
     rating: 4.5,
@@ -69,26 +69,27 @@ export const ATTRACTIONS /*: Attraction[]*/ = [
     id: '3',
     name: { en: 'Tell el-Amarna', ar: 'تل العمارنة' },
     description: {
-      en: 'The ancient city of Akhetaten, capital of Egypt during the reign of Akhenaten, offering insights into the Amarna Period.',
-      ar: 'مدينة أخيتاتون القديمة، عاصمة مصر في عهد إخناتون، وتكشف الكثير عن فترة العمارنة.'
+      en: "Akhenaten's Capital The first to call for monotheism, King Amenhotep IV (c. 1351-1336 BC) carried out what is often described as a religious revolution, primarily targeting the god Amun, whose main cult center was in Thebes (present-day Luxor). During his reign, Aten became the only deity worshipped. These changes coincided with the king changing his name to Akhenaten, followed by the establishment of a new capital in Middle Egypt (present-day Minya Governorate) called Akhetaten (Horizon of Aten). Akhetaten is located on the east bank of the Nile River, surrounded by hills where the tombs of prominent statesmen were carved. It was divided into two groups: the north and the south of the valley, leading to the site of the royal cemetery. Akhenaten is characterized by a clear layout: the Royal Road extends from the north to the south of the city, with the most important royal, religious, and administrative buildings located on both sides. At the southern end of the Royal Road is the Royal Palace, followed by the Great Temple of Aten. The senior officials of Akhenaten lived in luxurious houses surrounded by gardens. Artists' homes and workshops have also been discovered there. After the death of Akhenaten, the city was abandoned and destroyed. The Northern Palace: Located north of the city, the foundations and the large courtyard of the palace can still be seen, as well as the palace annexes (houses for servants and harem men). The floors of the palace were covered with colored tiles, parts of which are in the Egyptian Museum in Cairo. The Great and Small Temples of Aten: Akhenaten built two temples for the god Aten at Tell el-Amarna. It is worth noting that the Aten temples were distinguished from other temples of the other gods by their lack of roofs, allowing the sun's rays to penetrate them. The Northern Tombs Group: There are 6 tombs (the Tomb of Huya, the Tomb of Mery-Ra II, the Tomb of Ahmose, the Tomb of Mery-Ra, the Tomb of Bentu, and the Tomb of Panhesy). They are the tombs of princes and ministers. The Southern Tombs Group: There are 19 tombs, the most important of which is the Tomb of Ay, the High Priest of the god Aten. The tomb contains a hall with 15 columns in the form of papyrus belts. Among the most important scenes contained there are Akhenaten's hymns.",
+
+      ar: "عاصمة أخناتون أول من نـادى بالتوحيـد قــام المــلك أمنحتب الرابـــع (حوالي ١٣٥١ - ١٣٣٦ ق.م)  بما يوصف غالبـــا بـــأنها ثـــــــورة دينيــــــة، استهــــدفت بشكــل أســاسي المعبود أمون، والذي كان مركز عبادته الرئيسي  في طيبــة (الأقصــر حاليا). خلال فتــرة حكمه أصبـح أتــــون المعبـــــود الوحيـــد الذي عبد. تــزامنت هذه التغييــــرات مع تغيير الملك اسمـــــه إلى أخنــــــاتون، وتبع ذلك تــــــأسيس عاصمــــة جديـــــدة في مصر الوسطى (في محافظة المنيا حاليا) بــاسم آخت أتون (أفـــق أتون). تقـــع آخت أتون على الضفـــة الشرقيــة لنهر النيل، حيث تحيط بها التلال، التي نحتت فيها مقابر كبار رجال الدولة. وقد تم تقسيمها إلى مجموعتين: شمــــال وجنـــــوب الوادي، المــــؤدي إلى موقع المقبــــرة الملكيــــة. تتميز آخـــت أتـــون بتصميـم واضح: حيث يمتـــــد الطريـــق الملكي من الشمــــــال إلى الجنــــــوب من المدينـــــــة، حيث تقع على جانبيــــه أهم المباني الملكيــــــة والدينيـــــــة والإداريـــــة. وفي الطرف الجنوبي من الطريق الملكي يوجد القصـــر الملكي، ثم معبد أتون الكبير. عاش كبار  الموظفين  بآخت  أتون  في  منازل  فاخرة، محاطة  بالحدائق،  كما  تم  الكشف  فيها  عن منازل  الفنانين،  وورش  العمل  الخاصة  بهم. وبعد وفاة أخناتون، هجرت المدينة ودمرت .القصر الشمالي: يقع شمال المدينة ويمكن حتى الآن رؤية الأساسات والفناء الكبير للقصر، كذلك ملحقات القصر ( منزل الخدم والحريم)، وقد كانت أرضيات القصر مغطاة بالبلاط الملون ويوجد أجزاء منها بالمتحف المصري بالقاهرة. معبدي آتون الكبير والصغير: أقام إخناتون في تل العمارنة معبدين للآله آتون، ومن الجدير بالذكر أن معابد آتون كانت تتميز عن غيرها من معابد الآلهة الأخرى بأنها بلا سقف حتى تتخللها أشعة الشمس. مجموعة المقابر الشمالية: وعددها 6 مقابر ( مقبرة حويا – مقبرة مرى رع الثانى – مقبرة أحموزا – مقبرة مرى رع – مقبرة بنتو – مقبرة بانحسى ) وهى مقابر للأمراء والوزراء. مجموعة المقابر الجنوبية: وعددها 19 مقبرة وأهمها مقبرة (آي) كبير كهنة الآله آتون يوجد بالمقبرة صالة بها 15 عمود على شكل أحزمة البردي ومن أهم المناظر الموجودة بها أناشيد إخناتون."
     },
-    imageUrl: '/assets/images/hero_banner.png',
-    imageGallery: ['/assets/images/hero_banner.png'],
-    latitude: 27.65,
-    longitude: 30.9,
+    imageUrl: '/assets/images/tel_amarna/tel_amarna3.jpg',
+    imageGallery: ['/assets/images/tel_amarna/tel_amarna1.jpg', '/assets/images/tel_amarna/tel_amarna2.jpg', '/assets/images/tel_amarna/tel_amarna3.jpg', '/assets/images/tel_amarna/tel_amarna4.jpg', '/assets/images/tel_amarna/tel_amarna5.jpg', '/assets/images/tel_amarna/tel_amarna6.jpg'],
+    latitude: 27.662056,
+    longitude: 30.905524,
     openingHours: { en: '8:00 AM - 5:00 PM', ar: '٨:٠٠ ص - ٥:٠٠ م' },
     ticketPrice: { en: '120 EGP', ar: '١٢٠ جنيه' },
     rating: 4.6,
     reviewCount: 156,
-    category: { en: 'Ancient City', ar: 'مدينة قديمة' },
+    category: { en: 'Archaeological Site', ar: 'موقع أثري' },
     features: [
       { en: 'Archaeological Tours', ar: 'جولات أثرية' },
-      { en: 'Research Center', ar: 'مركز بحوث' },
-      { en: 'Educational Programs', ar: 'برامج تعليمية' }
+      { en: 'Museum', ar: 'متحف' },
+      { en: 'Gift Shop', ar: 'متجر هدايا' }
     ],
     historicalPeriod: {
-      en: 'New Kingdom – Amarna Period (1353–1336 BC)',
-      ar: 'الدولة الحديثة – فترة العمارنة (١٣٥٣–١٣٣٦ ق.م)'
+      en: 'New Kingdom – Amarna Period (1351–1334 BC)',
+      ar: 'الدولة الحديثة – فترة العمارنة (١٣٥١ - ١٣٣٤ ق.م)'
     },
     significance: {
       en: 'Capital city of Pharaoh Akhenaten and center of a monotheistic revolution',

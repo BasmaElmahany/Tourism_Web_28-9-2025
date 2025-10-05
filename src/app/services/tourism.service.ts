@@ -13,6 +13,7 @@ import {
   TourismStats
 } from '../models/tourism.models';
 import { ATTRACTIONS } from '../data/attractions';
+import { blogPosts } from '../data/blog_posts';
 
 @Injectable({
   providedIn: 'root'
@@ -263,35 +264,6 @@ export class TourismService {
   // Blog Posts
   getBlogPosts(): Observable<BlogPost[]> {
     this.setLoading(true);
-    const blogPosts: BlogPost[] = [
-      {
-        id: '1',
-        title: 'Discovering the Hidden Treasures of Beni Hassan',
-        content: 'The Beni Hassan tombs represent one of Egypt\'s most remarkable archaeological treasures...',
-        excerpt: 'Explore the fascinating Middle Kingdom tombs that showcase daily life in ancient Egypt through stunning wall paintings and hieroglyphs.',
-        imageUrl: '/assets/images/hero_banner.png',
-        author: 'Dr. Sarah Ahmed',
-        publishDate: new Date('2024-09-15'),
-        category: 'Archaeology',
-        tags: ['Beni Hassan', 'Middle Kingdom', 'Tombs', 'Ancient Egypt'],
-        readTime: 8,
-        featured: true
-      },
-      {
-        id: '2',
-        title: 'A Culinary Journey Through Minya',
-        content: 'Minya\'s cuisine reflects the rich agricultural heritage of Upper Egypt...',
-        excerpt: 'Discover the authentic flavors of Upper Egyptian cuisine and the traditional dishes that make Minya a culinary destination.',
-        imageUrl: '/assets/images/nile_river.jpg',
-        author: 'Chef Mohamed Hassan',
-        publishDate: new Date('2024-09-10'),
-        category: 'Food & Culture',
-        tags: ['Egyptian Cuisine', 'Traditional Food', 'Local Restaurants'],
-        readTime: 6,
-        featured: false
-      }
-    ];
-
     return of(blogPosts).pipe(
       delay(600),
       map(data => {
