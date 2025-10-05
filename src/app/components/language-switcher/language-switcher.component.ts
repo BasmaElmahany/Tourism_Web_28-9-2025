@@ -62,4 +62,9 @@ export class LanguageSwitcherComponent implements OnInit {
     }
     this.closeDropdown();
   }
+
+  switchLanguage(lang: string) {
+  this.i18nService.setLanguage(lang);
+  this.i18nService.setDirection(this.i18nService.isRTL());
+}
 }

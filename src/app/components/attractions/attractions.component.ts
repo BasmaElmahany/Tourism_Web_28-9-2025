@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { TourismService } from '../../services/tourism.service';
 import { Attraction } from '../../models/tourism.models';
-
+import { I18nService } from 'src/app/services/i18n.service';
 
 @Component({
   selector: 'app-attractions',
@@ -16,19 +16,20 @@ import { Attraction } from '../../models/tourism.models';
 export class AttractionsComponent implements OnInit {
   attractions: Attraction[] = [];
   filteredAttractions: Attraction[] = [];
-  totalAttractions: number = 0;
-  loading: boolean = true;
-  searchQuery: string = '';
-  selectedCategory: string = '';
+  totalAttractions = 0;
+  loading = true;
+
+  searchQuery = '';
+  selectedCategory = ''; // holds a localized category label or '' (all)
   viewMode: 'grid' | 'list' = 'grid';
 
-  constructor(private tourismService: TourismService) {}
+  constructor(private tourismService: TourismService, public i18n: I18nService) {}
 
   ngOnInit(): void {
     this.tourismService.getAttractions().subscribe((attractions) => {
-      this.attractions = attractions;
-      this.totalAttractions = attractions.length;
-      this.filteredAttractions = attractions;
+      this.attractions = attractions ?? [];
+      this.totalAttractions = this.attractions.length;
+      this.filteredAttractions = this.attractions;
       this.loading = false;
     });
   }
@@ -52,23 +53,57 @@ export class AttractionsComponent implements OnInit {
   }
 
   filterAttractions(): void {
-    let filtered = this.attractions;
-    if (this.searchQuery) {
-      filtered = filtered.filter(a => a.name.toLowerCase().includes(this.searchQuery.toLowerCase()));
-    }
-    if (this.selectedCategory) {
-      filtered = filtered.filter(a => a.category === this.selectedCategory);
-    }
-    this.filteredAttractions = filtered;
+    const list = this.attractions ?? [];
+    const qRaw = (this.searchQuery ?? '').trim();
+    const lang = this.i18n.getCurrentLanguage();
+
+    const norm = (s: string) =>
+      (s ?? '')
+        .toLocaleLowerCase(lang)
+        .normalize('NFKD');
+
+    const q = norm(qRaw);
+    const selectedCat = this.selectedCategory ?? '';
+
+    this.filteredAttractions = list.filter((a) => {
+      const name = norm(this.i18n.pick(a.name as any));
+      const desc = norm(this.i18n.pick(a.description as any));
+      const categoryLabel = this.i18n.pick((a as any).category);
+
+      const matchesQuery =
+        !q ||
+        name.includes(q) ||
+        desc.includes(q) ||
+        ((a as any).features ?? [])
+          .map((f: any) => norm(this.i18n.pick(f)))
+          .some((f: string) => f.includes(q));
+
+      const matchesCategory = !selectedCat || categoryLabel === selectedCat;
+
+      return matchesQuery && matchesCategory;
+    });
   }
 
   addToFavorites(attraction: Attraction) {
-    // Implement favorites functionality
-    console.log('Added to favorites:', attraction.name);
-    // You can add actual favorites logic here
+    // Implement favorites functionality as desired
+    console.log('Added to favorites:', this.i18n.pick(attraction.name as any));
   }
 
   trackByAttractionId(index: number, attraction: Attraction): string {
     return attraction.id;
+  }
+
+  // Helpers to bind localized category values used in data
+  get catHistoricalSite(): string {
+    return this.i18n.pick({ en: 'Historical Site', ar: 'موقع تاريخي' });
+  }
+  get catArchaeologicalSite(): string {
+    return this.i18n.pick({ en: 'Archaeological Site', ar: 'موقع أثري' });
+  }
+  get catAncientCity(): string {
+    return this.i18n.pick({ en: 'Ancient City', ar: 'مدينة قديمة' });
+  }
+  get catScenicArea(): string {
+    return this.i18n.pick({ en: 'Scenic Area', ar: 'منطقة طبيعية' });
   }
 }
