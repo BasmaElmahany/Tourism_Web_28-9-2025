@@ -78,4 +78,5 @@ filterByCategory(category: string) {
   loadMorePosts() {
     this.hasMorePosts = false;
   }
+  
 }
