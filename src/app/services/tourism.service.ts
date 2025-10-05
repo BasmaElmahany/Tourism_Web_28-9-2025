@@ -156,7 +156,7 @@ export class TourismService {
         latitude: 28.113914,
         longitude:  30.751081,
         rating: 3/5,
-        reviewCount: 0,
+        reviewCount: 2.096,
         priceRange: "",
         amenities: ["Free WiFi", "Swimming Pool", "Restaurant", "Parking"],
         roomTypes: [],
@@ -165,7 +165,7 @@ export class TourismService {
           email: "",
           website:""
         },
-        starRating: 0
+        starRating: 4
       },
       {
         id: "3",
