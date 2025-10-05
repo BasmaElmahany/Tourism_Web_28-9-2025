@@ -1,7 +1,10 @@
 .events-page {
-  min-height: 100vh;
-  padding-top: 80px;
+  min-height: auto;
+  /* اضبط البادينج العلوي لكي لا يلتصق المحتوى بالـ fixed navbar */
+  padding-top: var(--navbar-height, 80px);
 }
+
+
 
 .events-hero {
   background: var(--secondary-gradient);
@@ -9,6 +12,10 @@
   padding: 4rem 0;
   text-align: center;
 }
+
+  
+
+
 
 .hero-title {
   font-size: 3rem;

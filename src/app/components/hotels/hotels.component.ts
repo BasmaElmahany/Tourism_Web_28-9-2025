@@ -44,6 +44,12 @@ export class HotelsComponent implements OnInit {
   }
 
   private applyFilters() {
+    // إذا لم يكن هناك أي فلتر مفعل، اعرض كل الفنادق مباشرة
+    if (!this.searchQuery.trim() && !this.selectedStarRating && !this.selectedPriceRange) {
+      this.filteredHotels = this.hotels;
+      return;
+    }
+
     let filtered = this.hotels;
 
     // Apply search filter
@@ -61,17 +67,19 @@ export class HotelsComponent implements OnInit {
       filtered = filtered.filter(hotel => hotel.starRating === rating);
     }
 
-    // Apply price range filter
+    // Apply price range filter (parse price as number)
     if (this.selectedPriceRange) {
       filtered = filtered.filter(hotel => {
-        const priceRange = hotel.priceRange.toLowerCase();
+        // Extract first number from priceRange string
+        const priceMatch = hotel.priceRange.match(/\d+/);
+        const price = priceMatch ? parseInt(priceMatch[0]) : 0;
         switch (this.selectedPriceRange) {
           case 'budget':
-            return priceRange.includes('500') && !priceRange.includes('1000');
+            return price > 0 && price < 500;
           case 'mid':
-            return priceRange.includes('500') || priceRange.includes('900');
+            return price >= 500 && price < 1000;
           case 'luxury':
-            return priceRange.includes('1000') || priceRange.includes('1500');
+            return price >= 1000;
           default:
             return true;
         }
@@ -89,7 +97,9 @@ export class HotelsComponent implements OnInit {
   }
 
   getStarArray(rating: number): number[] {
-    return Array(rating).fill(0);
+    // Ensure rating is a valid, non-negative integer
+    const safeRating = Math.max(0, Math.round(Number(rating)) || 0);
+    return Array(safeRating).fill(0);
   }
 
   viewHotelDetails(hotel: Hotel) {
