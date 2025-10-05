@@ -111,14 +111,14 @@ export interface ItineraryDay {
 
 export interface BlogPost {
   id: string;
-  title: string;
-  content: string;
-  excerpt: string;
-  imageUrl: string;
-  author: string;
+  title: LocalizedText;
+  content: LocalizedText;
+  excerpt: LocalizedText;
+  imageUrl: LocalizedText;
+  author: LocalizedText;
   publishDate: Date;
-  category: string;
-  tags: string[];
+  category: LocalizedText;
+  tags: LocalizedArray[];
   readTime: number; // in minutes
   featured: boolean;
 }
