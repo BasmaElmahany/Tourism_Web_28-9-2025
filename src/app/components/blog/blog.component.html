@@ -22,7 +22,7 @@
             [class.active]="selectedCategory === category.key"
             (click)="filterByCategory(category.key)"
           >
-            {{ i18nService.isRTL() ? category.nameAr : category.name }}
+            {{ getLocalizedText(category.name) }}
           </button>
         </div>
       </div>
@@ -35,9 +35,9 @@
           [class.rtl]="i18nService.isRTL()"
         >
           <div class="blog-image">
-            <img [src]="post.image" [alt]="i18nService.isRTL() ? post.titleAr : post.title">
+            <img [src]="post.imageUrl" [alt]="getLocalizedText(post.title)">
             <div class="blog-category">
-              {{ i18nService.isRTL() ? post.categoryAr : post.category }}
+              {{ getLocalizedText(post.category) }}
             </div>
           </div>
           
@@ -45,11 +45,11 @@
             <div class="blog-meta">
               <span class="blog-author">
                 <span class="material-icons">person</span>
-                {{ i18nService.isRTL() ? post.authorAr : post.author }}
+                {{ getLocalizedText(post.author) }}
               </span>
               <span class="blog-date">
                 <span class="material-icons">schedule</span>
-                {{ i18nService.formatDate(post.date) }}
+                {{ i18nService.formatDate(post.publishDate) }}
               </span>
               <span class="blog-read-time">
                 <span class="material-icons">access_time</span>
@@ -58,19 +58,19 @@
             </div>
             
             <h3 class="blog-title">
-              {{ i18nService.isRTL() ? post.titleAr : post.title }}
+              {{ getLocalizedText(post.title) }}
             </h3>
             
             <p class="blog-excerpt">
-              {{ i18nService.isRTL() ? post.excerptAr : post.excerpt }}
+              {{ getLocalizedText(post.excerpt) }}
             </p>
             
             <div class="blog-tags">
               <span 
-                *ngFor="let tag of (i18nService.isRTL() ? post.tagsAr : post.tags)" 
+                *ngFor="let tag of post.tags[0]"
                 class="blog-tag"
               >
-                #{{ tag }}
+                #{{ getLocalizedText(tag) }}
               </span>
             </div>
             
@@ -113,5 +113,4 @@
       </div>
     </div>
   </section>
-<!-- End blog-page -->
 </div>
