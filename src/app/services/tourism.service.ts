@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, BehaviorSubject } from 'rxjs';
-import { delay, map } from 'rxjs/operators';
+import { delay, map, single } from 'rxjs/operators';
 import {
   Attraction,
   Hotel,
@@ -48,43 +48,386 @@ export class TourismService {
     this.setLoading(true);
     const hotels: Hotel[] = [
       {
-        id: '1',
-        name: 'Nile Palace Hotel',
-        description: 'Luxury hotel overlooking the Nile River with modern amenities and traditional Egyptian hospitality.',
-        imageUrl: '/assets/images/nile_river.jpg',
-        imageGallery: ['/assets/images/nile_river.jpg'],
-        latitude: 28.1050,
-        longitude: 30.7480,
-        rating: 4.5,
-        reviewCount: 234,
-        priceRange: '800-1500 EGP/night',
-        amenities: ['Free WiFi', 'Swimming Pool', 'Spa', 'Restaurant', 'Room Service', 'Parking'],
-        roomTypes: ['Standard Room', 'Deluxe Room', 'Suite', 'Nile View Room'],
+        id: "1",
+        name: "MG Nefertiti",
+        description: "Hotel on the Corniche (Minya).",
+        imageUrl: "https://scontent.fcai19-4.fna.fbcdn.net/v/t39.30808-6/490233321_1131608562312066_7251707255499770974_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=a_0RPYryHuUQ7kNvwHKM9Lu&_nc_oc=AdkYwF17LAwEGBV_aIiR9pgJsxe8Cjriza001xlXAHpSHEnwA3B329tHfkAglwnonuE&_nc_zt=23&_nc_ht=scontent.fcai19-4.fna&_nc_gid=62bahSXAp0B2oYFZ0FGpPA&oh=00_Afb9uMZ6p4AoeMWzSuhj90Bnm1WjVPTnxZjaxB5ZjhGLjA&oe=68E22207",
+        imageGallery: ["https://images.trvl-media.com/lodging/46000000/45550000/45540600/45540513/30342fe1.jpg?impolicy=resizecrop&rw=1200&ra=fit" , "https://images.trvl-media.com/lodging/46000000/45550000/45540600/45540513/48da3be1.jpg?impolicy=resizecrop&rw=1200&ra=fit" , "https://images.trvl-media.com/lodging/46000000/45550000/45540600/45540513/cf27dd9c.jpg?impolicy=resizecrop&rw=1200&ra=fit"],
+        latitude: 28.11391331310829, 
+        longitude: 30.74967797116394,
+        rating: 3.8,
+        reviewCount: 1800,
+        priceRange: "45$",
+        amenities: [
+  "Swimming Pool",
+  "Wi-Fi Access",
+  "Free",
+  "Air Conditioning",
+  "Breakfast"
+],
+        roomTypes: [],
         contactInfo: {
-          phone: '+20 86 234 5678',
-          email: 'info@nilepalace.com',
-          website: 'www.nilepalace.com'
+          phone: "01220883347",
+          email: "reservations@mgnefertiti.com",
+          website: "https://www.mgnefertiti.com/lander?fbclid=IwY2xjawNJH71leHRuA2FlbQIxMABicmlkETFMS3I2WFBwamJEYzNMbnVzAR4kohjMYtEGzNKGWXiEhefvm7BETklgQFAwQtapk0AEBzqh255pK8EfEFBXKQ_aem_PS0XpnGbzIvUdDsq6RaJew&oref=https%3A%2F%2Fl.facebook.com%2F"
         },
         starRating: 4
       },
       {
-        id: '2',
-        name: 'Minya Grand Hotel',
-        description: 'Modern business hotel in the heart of Minya with excellent facilities for both leisure and business travelers.',
-        imageUrl: '/assets/images/hero_banner.png',
-        imageGallery: ['/assets/images/hero_banner.png'],
-        latitude: 28.1100,
-        longitude: 30.7520,
-        rating: 4.2,
-        reviewCount: 156,
-        priceRange: '500-900 EGP/night',
-        amenities: ['Free WiFi', 'Business Center', 'Fitness Center', 'Restaurant', 'Conference Rooms'],
-        roomTypes: ['Standard Room', 'Business Room', 'Executive Suite'],
+          id: "2",
+        name: "Grand Aton",
+        description: "Hotel on the Corniche (Minya).",
+        imageUrl: "/assets/images/Grand.jpg",
+        imageGallery: ["/assets/images/Grand.jpg"],
+        latitude: 28.113914,
+        longitude:  30.751081,
+        rating: 3/5,
+        reviewCount: 2.096,
+        priceRange: "",
+        amenities: ["Free WiFi", "Swimming Pool", "Restaurant", "Parking"],
+        roomTypes: [],
         contactInfo: {
-          phone: '+20 86 234 9876',
-          email: 'reservations@minyagrand.com'
+          phone: "010 00308020",
+          email: "",
+          website:""
+        },
+        starRating: 4
+      },
+      {
+        id: "3",
+        name: "Horus",
+        description: "Hotel on the Corniche (Minya).",
+        imageUrl: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/a0/be/2c/horus-resort-menia.jpg?w=1400&h=-1&s=1",
+        imageGallery: ["https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/a0/be/28/horus-resort-menia.jpg?w=1400&h=-1&s=1" , "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/a0/be/2d/horus-resort-menia.jpg?w=1400&h=-1&s=1" , "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/a0/be/31/horus-resort-menia.jpg?w=1400&h=-1&s=1"],
+        latitude: 28.11533829131303, 
+        longitude: 30.750456813491823,
+        rating: 3.9,
+        reviewCount: 4400,
+        priceRange: "",
+        amenities: [
+  "Free parking",
+  "Free internet",
+  "Internet",
+  "Pool",
+  "Free breakfast",
+  "Bar / lounge",
+  "Restaurant",
+  "Children Activities (Kid / Family Friendly)"
+],
+        roomTypes: [],
+        contactInfo: {
+          phone: "086/2316660",
+          email: "horusresortmenia@yahoo.com",
+          website: "http://www.horusresortmenia.com/?fbclid=IwY2xjawNJIvBleHRuA2FlbQIxMABicmlkETFTb1RwWDE4OVk1NVNiRWNaAR6hVMNqFH-0x7Cf8UpAtARyTwawbifTyhx4VEukgPCwJnaF03mw4LUlV9DujA_aem_QvwPwjDkg1VaCxwryuPiyg"
+        },
+        starRating: 0
+      },
+      {
+        id: "4",
+        name: "Savoy",
+        description: "Hotel at El Mahatta Square (Minya).",
+        imageUrl: "/assets/images/Savoy.webp",
+        imageGallery: ["/assets/images/Savoy.webp"],
+        latitude: 28.09731855655996, 
+        longitude: 30.754475799999998,
+        rating: 4.5,
+        reviewCount: 182,
+        priceRange: "75$",
+        amenities: [
+  "Restaurant",
+  "Balcony",
+  "Private bathroom",
+  "Air conditioning",
+  "Free WiFi",
+  "View",
+  "Flat-screen TV",
+  "Parking",
+  "Room service",
+  "Non-smoking rooms"
+],
+        roomTypes: [],
+        contactInfo: {
+          phone: "086/2343494",
+          email: "Reservation@savoy-elminya.com",
+          website: "https://www.savoy-elminya.com/lander?fbclid=IwY2xjawNJJNJleHRuA2FlbQIxMABicmlkETFTb1RwWDE4OVk1NVNiRWNaAR5AXIAaNLpdGinXglys8chRNKXQFdHKQaLPCKimUkNcdAnN1Taw6yacYCppnw_aem_vkV8ditQQBCRhpoVyac4ZA&oref=https%3A%2F%2Fl.facebook.com%2F"
+        },
+        starRating: 4.5
+      },
+      {
+        id: "5",
+        name: "Armed Forces Hotel",
+        description: "Hotel on East Nile (Minya).",
+        imageUrl: "/assets/images/Armed Forces Hotel.jpg",
+        imageGallery: ["/assets/images/Armed Forces Hotel.jpg"  ],
+        latitude: 28.091573859365592,
+        longitude: 30.772246407930595,
+        rating: 3.9,
+        reviewCount: 373,
+        priceRange: "81$",
+        amenities: [
+  "Paid public parking on-site",
+  "Free High Speed Internet (WiFi)",
+  "Sauna",
+  "Pool",
+  "Restaurant",
+  "Bowling",
+  "Squash",
+  "Meeting rooms"
+],
+        roomTypes: [],
+        contactInfo: {
+          phone: "086/2366274",
+          email: "marketing@afh.jo",
+          website: "https://armedforceshotel.com/en/?page_id=61"
         },
         starRating: 3
+      },
+      {
+        id: "6",
+        name: "Sea Boat (Floating Hotel)",
+        description: "Floating hotel at the Evangelical Authority marina (Minya).",
+        imageUrl: "/assets/images/Sea Boat.jpg",
+        imageGallery: ["/assets/images/Sea Boat.jpg" ],
+        latitude: 28.10217791926841,
+        longitude: 30.758276448668266,
+        rating: 4.1,
+        reviewCount: 802,
+        priceRange: "60$",
+        amenities: [
+  "Free Wifi",
+  "Private bathroom",
+  "Air conditioning",
+  "View",
+  "Terrace",
+  "Non-smoking rooms",
+  "Tour desk",
+  "Shower",
+  "Bar"
+],
+        roomTypes: [],
+        contactInfo: {
+          phone: "01278722340",
+          email: "dahabiah@ceoss.org.eg",
+          website: ""
+        },
+        starRating: 3
+      },
+      {
+        id: "7",
+        name: "Holy Family",
+        description: "Hotel at Jabal al-Tair (Smalout).",
+        imageUrl: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/285407894.jpg?k=3fdb726e0ce4dc31d2999c0b1a05f680f783fbf38331dd79b9eca3433efea549&o=",
+        imageGallery: ["https://cf.bstatic.com/xdata/images/hotel/max1024x768/511994837.jpg?k=8f74935e8128eed1fee60c8d6b9d69fc3359b491cff4a9d1040c453ce93fe394&o=" , "https://cf.bstatic.com/xdata/images/hotel/max1024x768/492739028.jpg?k=b7fa78702b366bf2bc8175d00a3f02d7b9c63b625d6b2e2f0a75f4d84d81b091&o=" , "https://cf.bstatic.com/xdata/images/hotel/max1024x768/497660924.jpg?k=6d1bc77de402ef63a3be70c59c9e14926357e093be7c3650f1dedba07fc45499&o="],
+        latitude: 0,
+        longitude: 0,
+        rating: 4.4,
+        reviewCount: 100,
+        priceRange: "130$",
+        amenities:[
+  "Restaurant",
+  "Balcony",
+  "Private bathroom",
+  "Air conditioning",
+  "Free WiFi",
+  "View",
+  "Flat-screen TV",
+  "Parking",
+  "Terrace",
+  "Room service"
+],
+        roomTypes: [],
+        contactInfo: {
+          phone: "01090390178",
+          email: "Reservation@holyfamilyhotel.net",
+          website: "https://holyfamilyhotel.net/?fbclid=IwY2xjawNJKMFleHRuA2FlbQIxMABicmlkETFTb1RwWDE4OVk1NVNiRWNaAR56oNLHnGKbuyRbbG_Vwq-uzZUQuipjPLToY2NEUc4Rlb3rss7Vh-294jq45Q_aem_xhP3hkXeh_0-aK6orO4zdQ"
+        },
+        starRating: 3
+      },
+      {
+        id: "8",
+        name: "Cleopatra",
+        description: "Hotel on Taha Hussein St (Minya).",
+        imageUrl: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/71/05/71/ontbijtzaal-met-uitzicht.jpg?w=2000&h=-1&s=1",
+        imageGallery: ["https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/71/05/71/ontbijtzaal-met-uitzicht.jpg?w=2000&h=-1&s=1" , "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/fa/ba/2b/entrance.jpg?w=1600&h=-1&s=1" , "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/ac/4b/01/caption.jpg?w=1100&h=-1&s=1"],
+        latitude: 28.112403593728384,
+        longitude: 30.749438544180297,
+        rating: 3.5,
+        reviewCount: 1056,
+        priceRange: "",
+        amenities: ["Laundry Service"],
+        roomTypes: [],
+        contactInfo: {
+          phone: "086/2370800",
+          email: "info@cleopatra.com",
+          website: ""
+        },
+        starRating: 3
+      },
+      {
+        id: "9",
+        name: "Lotus",
+        description: "Hotel on Port Said St (Minya).",
+        imageUrl: "/assets/images/Lotus.webp",
+        imageGallery: ["/assets/images/Lotus.webp"],
+        latitude: 28.101631,
+        longitude: 30.752481,
+        rating: 2.0,
+        reviewCount: 0,
+        priceRange: "",
+        amenities: [],
+        roomTypes: [],
+        contactInfo: {
+          phone: "086/2364541",
+          email: "Loutsnk1965@gmail.com",
+          website: undefined
+        },
+        starRating: 2
+
+      },
+      {
+        id: "10",
+        name: "Al Shatee (The Beach)",
+        description: "Hotel on El Gomhoureya St (Minya).",
+        imageUrl: "/assets/images/Al Shatee.jpg",
+        imageGallery: ["/assets/images/Al Shatee.jpg"],
+        latitude: 0,
+        longitude: 0,
+        rating: 0,
+        reviewCount: 0,
+        priceRange: "",
+        amenities: [],
+        roomTypes: [],
+        contactInfo: {
+          phone: "086/2362307",
+          email: "",
+          website: undefined
+        },
+        starRating: 2
+      },
+      {
+        id: "11",
+        name: "Ibn Khasib",
+        description: "Hotel on Ragheb St (Minya).",
+        imageUrl: "/assets/images/abn alkseb.jpg",
+        imageGallery: ["/assets/images/abn alkseb.jpg"],
+        latitude: 28.09681,
+        longitude:  30.75541,
+        rating: 0,
+        reviewCount: 0,
+        priceRange: "",
+        amenities: [],
+        roomTypes: ["Double Room",
+          "2 Single beds", "1 Double bed"
+        ],
+        contactInfo: {
+          phone: "086/2364535",
+          email: "",
+          website: undefined
+        },
+        starRating: 3
+      },
+      {
+        id: "12",
+        name: "Akhenaton",
+        description: "Hotel on the Corniche (Minya), categorized as popular (شعبي).",
+        imageUrl: "/assets/images/Akhenaton.jpg",
+        imageGallery: ["/assets/images/Akhenaton.jpg"],
+        latitude: 28.100132,
+        longitude: 30.7490,
+        rating: 3.4,
+        reviewCount: 375,
+        priceRange: "",
+        amenities: ["Parking Free",
+          "24-hour front desk", "Wi-Fi in public areas",
+          "Restaurant", "Room service", "Garden",
+          "No smoking in public areas"],
+        roomTypes: ["Double Room", "Single Room", "Triple Room"],
+        contactInfo: {
+          phone: "086/2365918",
+          email: "",
+          website: "kingakhenatonhotel.com"
+        },
+        starRating: 3.4
+      },
+      {
+        id: "13",
+        name: "Omar Khayyam",
+        description: "Hotel on Damran St (Minya), popular category.",
+        imageUrl: "/assets/images/Omar Khayyam.webp",
+        imageGallery: ["/assets/images/Omar Khayyam.webp"],
+        latitude: 28.099108,
+        longitude: 30.758577,
+        rating: 8.8,
+        reviewCount: 66,
+        priceRange: "",
+        amenities: ["Airport shuttle service", "Room service", "Non-smoking rooms", "Free parking", "Free Wi-Fi", "Tea/coffee maker in all rooms", "Breakfast"],
+        roomTypes: ["Deluxe Twin Room", "Deluxe Suite", "Deluxe Queen Suite", "Deluxe Double Room", "Deluxe Triple Room", "Deluxe Single Room"],
+        contactInfo: {
+          phone: "086/2365666",
+          email: "",
+          website: undefined
+        },
+        starRating: 2
+      },
+      {
+        id: "14",
+        name: "Al Nile",
+        description: "Hotel on Taha Hussein St (Minya), popular category.",
+        imageUrl: "/assets/images/Al Nile.jpg",
+        imageGallery: ["/assets/images/Al Nile.jpg"],
+        latitude: 28.100132,
+        longitude: 30.7490,
+        rating: 0,
+        reviewCount: 0,
+        priceRange: "",
+        amenities: [],
+        roomTypes: [],
+        contactInfo: {
+          phone: "086/2363204",
+          email: "",
+          website: undefined
+        },
+        starRating: 0
+      },
+      {
+        id: "15",
+        name: "Palace",
+        description: "Hotel at Palace Square (Minya), popular category.",
+        imageUrl: "/assets/images/Palace.jpg",
+        imageGallery: ["/assets/images/Palace.jpg"],
+        latitude: 28.098467084224755, 
+        longitude: 30.75661284048028,
+        rating:2.4,
+        reviewCount: 49 ,
+        priceRange: "",
+        amenities: [],
+        roomTypes: ["Single", "Room Assigned on Arrival", "Superior", "Standard", "Standard Room with Twin Bed", "2 Twin Beds", "Private Bathroom", "City View", "Superior Twin Room", "2 Twin Beds", "Private Bathroom", "City View", "Family", "2 BEDS CITY VIEW FOR NON-SMOKERS", "SUPERIOR 2 TWIN BEDS CITY VIEW"],
+        contactInfo: {
+          phone: "086/2364021",
+          email: "mohamed.adel2010.ma@gmail.com",
+          website: "whitepalacehall.com"
+        },
+        starRating: 2
+      },
+      {
+        id: "16",
+        name: "Al Zahraa",
+        description: "Hotel on Port Said St (Minya), popular category.",
+        imageUrl: "/assets/images/Al Zahraa.jpg",
+        imageGallery: ["/assets/images/Al Zahraa.jpg"],
+        latitude: 0,
+        longitude: 0,
+        rating: 0,
+        reviewCount: 0,
+        priceRange: "",
+        amenities: [],
+        roomTypes: [],
+        contactInfo: {
+          phone: "086/2362979",
+          email: "mohamed.adel2010.ma@gmail.com",
+          website: "whitepalacehall.com"
+        },
+        starRating: 0
       }
     ];
 

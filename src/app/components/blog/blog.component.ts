@@ -9,10 +9,13 @@ import { blogPosts } from 'src/app/data/blog_posts';
      // import the data
 
 @Component({
+  standalone: true,
+  selector: 'app-blog',
   templateUrl: './blog.component.html',
   styleUrls: ['./blog.component.scss'],
   standalone: true,
   imports: [CommonModule, RouterModule, FormsModule],
+
 })
 export class BlogComponent implements OnInit {
   blogPosts: BlogPost[] = [];
