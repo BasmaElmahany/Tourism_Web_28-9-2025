@@ -6,7 +6,7 @@ export const restaurants = [
     name: { en: "Nile Breeze Restaurant", ar: "مطعم نسيم النيل" },
     description: {
       en: "Authentic Egyptian cuisine with a modern twist, featuring fresh ingredients and traditional recipes passed down through generations.",
-      ar: "مأكولات مصرية أصيلة بلمسة عصرية، مع مكونات طازجة ووصفات تقليدية متوارثة عبر الأجيال."
+      ar: "مأكولات مصرية أصيلة بلمسة عصرية، مع مكونات طازجة ووصفات تقليدية متوارثة عبر]."
     },
     imageUrl: "/assets/images/nile_river.jpg",
     latitude: 28.1080,
