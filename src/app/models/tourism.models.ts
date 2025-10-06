@@ -25,21 +25,21 @@ export interface Attraction {
 
 export interface Hotel {
   id: string;
-  name: string;
-  description: string;
+  name: LocalizedText;
+  description: LocalizedText;
   imageUrl: string;
   imageGallery: string[];
   latitude: number;
   longitude: number;
   rating: number;
   reviewCount: number;
-  priceRange: string;
-  amenities: string[];
-  roomTypes: string[];
+  priceRange: LocalizedText;
+  amenities: LocalizedArray;
+  roomTypes: LocalizedArray;
   contactInfo: {
-    phone: string;
-    email: string;
-    website?: string;
+    phone: LocalizedText;
+    email: LocalizedText;
+    website?: LocalizedText;
   };
   starRating: number;
 }

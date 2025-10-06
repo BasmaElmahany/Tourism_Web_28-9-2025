@@ -123,6 +123,18 @@ export interface TranslationKeys {
   stayUpdatedDesc: string;
   stayUpdated: string;
   Discover_Minya: string;
+  exploreHotels: string;
+  more: string;
+  reviews: string;
+  priceLuxury: string;
+  priceMid: string;
+  priceBudget: string;
+  twoStars: string;
+  threeStars: string;
+  fourStars: string;
+  fiveStars: string;
+
+
 }
 
 @Injectable({
@@ -263,7 +275,18 @@ export class I18nService {
       stayUpdated: 'Stay Updated',
       stayUpdatedDesc: 'Subscribe to get the latest articles, travel tips, and news directly to your inbox.',
       enterEmail: 'Enter your email',
-      Discover_Minya: "Discover Minya"
+      Discover_Minya: "Discover Minya",
+      exploreHotels: " Explore Hotels",
+      more : "More" ,
+      reviews : "Reviews",
+      priceLuxury : "Price Luxury",
+      priceMid : " Price Mid" ,
+      priceBudget : "Price Budget" ,
+      twoStars : "Two Stars" ,
+      threeStars : "Three Stars" ,
+      fourStars : "Four Stars",
+      fiveStars : "Five Stars"
+
     },
     ar: {
       // Navigation
@@ -318,6 +341,16 @@ export class I18nService {
       budget: 'اقتصادي (أقل من 500 جنيه)',
       midRange: 'متوسط (500-1000 جنيه)',
       luxury: 'فاخر (1000+ جنيه)',
+      exploreHotels: "اكتشف الفنادق",
+      more : "المزيد" ,
+      reviews : "الأراء",
+      priceLuxury : "اسعار فاخرة",
+      priceMid : "فئة متوسطة" ,
+      priceBudget : "فئة اقتصادية" ,
+      twoStars : "نجمتين" ,
+      threeStars : "ثلاث نجوم" ,
+      fourStars : "أربع نجوم",
+      fiveStars : "خمس نجوم",
 
       // Footer
       aboutUs: 'من نحن',
@@ -378,7 +411,8 @@ export class I18nService {
       stayUpdated: 'ابقَ على اطلاع',
       stayUpdatedDesc: 'اشترك للحصول على أحدث المقالات ونصائح السفر والأخبار مباشرة في بريدك.',
       enterEmail: 'أدخل بريدك الإلكتروني',
-      Discover_Minya: 'اكتشف المنيا'
+      Discover_Minya: 'اكتشف المنيا',
+
     }
   };
 

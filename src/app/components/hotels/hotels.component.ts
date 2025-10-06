@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { TourismService } from '../../services/tourism.service';
 import { Hotel } from '../../models/tourism.models';
+import { I18nService } from '../../services/i18n.service'; // <-- added i18n service
 
 @Component({
   selector: 'app-hotels',
@@ -13,16 +14,21 @@ import { Hotel } from '../../models/tourism.models';
   styleUrls: ['./hotels.component.scss']
 })
 export class HotelsComponent implements OnInit {
-  hotels: Hotel[] = [];
+   hotels: Hotel[] = [];
   filteredHotels: Hotel[] = [];
+  totalHotels = 0;                   // ← add
   loading = false;
   searchQuery = '';
   selectedStarRating = '';
   selectedPriceRange = '';
 
-  constructor(private tourismService: TourismService) {}
+  constructor(
+    private tourismService: TourismService,
+    public i18nService: I18nService
+  ) {}
 
-  ngOnInit() {
+
+    ngOnInit() {
     this.loadHotels();
   }
 
@@ -31,6 +37,7 @@ export class HotelsComponent implements OnInit {
     this.tourismService.getHotels().subscribe(hotels => {
       this.hotels = hotels;
       this.filteredHotels = hotels;
+      this.totalHotels = hotels.length;   // ← add
       this.loading = false;
     });
   }
@@ -43,52 +50,61 @@ export class HotelsComponent implements OnInit {
     this.applyFilters();
   }
 
+    // ... your existing methods ...
+
   private applyFilters() {
-    // إذا لم يكن هناك أي فلتر مفعل، اعرض كل الفنادق مباشرة
     if (!this.searchQuery.trim() && !this.selectedStarRating && !this.selectedPriceRange) {
       this.filteredHotels = this.hotels;
+      this.totalHotels = this.hotels.length; // ← keep count consistent
       return;
     }
 
     let filtered = this.hotels;
 
-    // Apply search filter
     if (this.searchQuery.trim()) {
       const query = this.searchQuery.toLowerCase();
       filtered = filtered.filter(hotel =>
-        hotel.name.toLowerCase().includes(query) ||
-        hotel.description.toLowerCase().includes(query)
+        this.getHotelName(hotel).toLowerCase().includes(query) ||
+        this.getHotelDescription(hotel).toLowerCase().includes(query)
       );
     }
 
-    // Apply star rating filter
     if (this.selectedStarRating) {
-      const rating = parseInt(this.selectedStarRating);
-      filtered = filtered.filter(hotel => hotel.starRating === rating);
+      const rating = parseInt(this.selectedStarRating, 10);
+      filtered = filtered.filter(hotel => Number(hotel.starRating) === rating);
     }
 
-    // Apply price range filter (parse price as number)
     if (this.selectedPriceRange) {
       filtered = filtered.filter(hotel => {
-        // Extract first number from priceRange string
-        const priceMatch = hotel.priceRange.match(/\d+/);
-        const price = priceMatch ? parseInt(priceMatch[0]) : 0;
+        const lang = this.lang() as 'en' | 'ar';
+        const priceText =
+          typeof hotel.priceRange === 'string'
+            ? hotel.priceRange
+            : hotel.priceRange?.[lang] || '';
+
+        const priceMatch = priceText.match(/\d+/);
+        const price = priceMatch ? parseInt(priceMatch[0], 10) : 0;
+
         switch (this.selectedPriceRange) {
-          case 'budget':
-            return price > 0 && price < 500;
-          case 'mid':
-            return price >= 500 && price < 1000;
-          case 'luxury':
-            return price >= 1000;
-          default:
-            return true;
+          case 'budget': return price > 0 && price < 500;
+          case 'mid':    return price >= 500 && price < 1000;
+          case 'luxury': return price >= 1000;
+          default:       return true;
         }
       });
     }
 
     this.filteredHotels = filtered;
+    this.totalHotels = this.hotels.length; // always show total base count
   }
 
+    // TrackBy for performance (used in template)
+  trackByHotelId = (_: number, h: Hotel) => h.id;
+
+  getStarArray(rating: number): number[] {
+    const safe = Math.min(5, Math.max(0, Math.floor(Number(rating) || 0)));
+    return Array.from({ length: safe });
+  }
   clearFilters() {
     this.searchQuery = '';
     this.selectedStarRating = '';
@@ -96,19 +112,32 @@ export class HotelsComponent implements OnInit {
     this.filteredHotels = this.hotels;
   }
 
-  getStarArray(rating: number): number[] {
-    // Ensure rating is a valid, non-negative integer
-    const safeRating = Math.max(0, Math.round(Number(rating)) || 0);
-    return Array(safeRating).fill(0);
-  }
+
 
   viewHotelDetails(hotel: Hotel) {
-    console.log('View hotel details:', hotel.name);
-    // Implement hotel details view
+    console.log('View hotel details:', this.getHotelName(hotel));
   }
 
   bookHotel(hotel: Hotel) {
-    console.log('Book hotel:', hotel.name);
-    // Implement hotel booking functionality
+    console.log('Book hotel:', this.getHotelName(hotel));
+  }
+
+  // ✅ Multi-language helpers
+  private lang(): string {
+    return this.i18nService.getCurrentLanguage();
+  }
+
+  getHotelName(hotel: Hotel): string {
+    const lang = this.lang() as 'en' | 'ar';
+    return typeof hotel.name === 'string' ? hotel.name : hotel.name[lang] || '';
+  }
+
+  getHotelDescription(hotel: Hotel): string {
+      const lang = this.lang() as 'en' | 'ar';
+    return typeof hotel.description === 'string' ? hotel.description : hotel.description[lang] || '';
+  }
+
+  getAmenity(amenity: any): string {
+    return typeof amenity === 'string' ? amenity : amenity[this.lang()] || '';
   }
 }
