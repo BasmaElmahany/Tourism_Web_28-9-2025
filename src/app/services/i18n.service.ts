@@ -118,6 +118,14 @@ export interface TranslationKeys {
   blogSubtitle: string;
   categories: string;
   minutesRead: string;
+  // Blog details / generic
+  about: string;
+  tags: string;
+  postInfo: string;
+  publishDate: string;
+  readTime: string;
+  minutes: string;
+  author: string;
   loadMorePosts: string;
   enterEmail: string;
   stayUpdatedDesc: string;
@@ -267,25 +275,33 @@ export class I18nService {
       scenicBeautyDesc: 'Experience the timeless beauty of the Nile River and surrounding desert landscapes.',
       culturalHeritage: 'Cultural Heritage',
       culturalHeritageDesc: 'Immerse yourself in authentic Egyptian culture and traditions that continue today.',
-      blogTitle: 'Tourism Blog',
-      blogSubtitle: 'Stay inspired with the latest stories, guides, and travel tips from Minya.',
-      categories: 'Categories',
-      minutesRead: 'minutes read',
-      loadMorePosts: 'Load More Posts',
-      stayUpdated: 'Stay Updated',
-      stayUpdatedDesc: 'Subscribe to get the latest articles, travel tips, and news directly to your inbox.',
-      enterEmail: 'Enter your email',
-      Discover_Minya: "Discover Minya",
-      exploreHotels: " Explore Hotels",
-      more : "More" ,
-      reviews : "Reviews",
-      priceLuxury : "Price Luxury",
-      priceMid : " Price Mid" ,
-      priceBudget : "Price Budget" ,
-      twoStars : "Two Stars" ,
-      threeStars : "Three Stars" ,
-      fourStars : "Four Stars",
-      fiveStars : "Five Stars"
+    blogTitle: 'Tourism Blog',
+    blogSubtitle: 'Stay inspired with the latest stories, guides, and travel tips from Minya.',
+    categories: 'Categories',
+    minutesRead: 'minutes read',
+    // Blog details / generic
+    about: 'About this post',
+    tags: 'Tags',
+    postInfo: 'Post Information',
+    publishDate: 'Publish Date',
+    readTime: 'Read Time',
+    minutes: 'minutes',
+    author: 'Author',
+    loadMorePosts: 'Load More Posts',
+    stayUpdated: 'Stay Updated',
+    stayUpdatedDesc: 'Subscribe to get the latest articles, travel tips, and news directly to your inbox.',
+    enterEmail: 'Enter your email',
+    Discover_Minya: "Discover Minya",
+    exploreHotels: " Explore Hotels",
+    more : "More" ,
+    reviews : "Reviews",
+    priceLuxury : "Price Luxury",
+    priceMid : " Price Mid" ,
+    priceBudget : "Price Budget" ,
+    twoStars : "Two Stars" ,
+    threeStars : "Three Stars" ,
+    fourStars : "Four Stars",
+    fiveStars : "Five Stars"
 
     },
     ar: {
@@ -405,8 +421,16 @@ export class I18nService {
       culturalHeritageDesc: 'انغمس في الثقافة والتقاليد المصرية الأصيلة التي تستمر حتى اليوم.',
       blogTitle: 'مدونة السياحة',
       blogSubtitle: 'ابقَ مُلهمًا مع أحدث القصص والأدلة ونصائح السفر من المنيا.',
-      categories: 'الفئات',
-      minutesRead: 'دقائق قراءة',
+  categories: 'الفئات',
+  minutesRead: 'دقائق قراءة',
+  // Blog details / generic
+  about: 'حول هذا المقال',
+  tags: 'الوسوم',
+  postInfo: 'معلومات المقال',
+  publishDate: 'تاريخ النشر',
+  readTime: 'مدة القراءة',
+  minutes: 'دقائق',
+  author: 'المؤلف',
       loadMorePosts: 'تحميل المزيد من المقالات',
       stayUpdated: 'ابقَ على اطلاع',
       stayUpdatedDesc: 'اشترك للحصول على أحدث المقالات ونصائح السفر والأخبار مباشرة في بريدك.',

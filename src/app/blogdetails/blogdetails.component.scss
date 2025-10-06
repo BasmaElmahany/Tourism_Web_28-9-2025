@@ -1,0 +1,16 @@
+.blog-details {
+  display: block;
+  min-height: 100vh;
+}
+
+@import '../components/attraction-details/attraction-details.component.scss';
+
+/* Local overrides for blog content */
+.article-content p {
+  white-space: pre-line;
+  color: var(--text-secondary);
+}
+
+.blog-details .attraction-title {
+  font-size: 2.5rem;
+}

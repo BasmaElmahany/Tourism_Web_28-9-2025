@@ -42,6 +42,10 @@ export const routes: Routes = [
     loadComponent: () => import('./components/blog/blog.component').then(m => m.BlogComponent)
   },
   {
+    path: 'blog/:id',
+    loadComponent: () => import('./blogdetails/blogdetails.component').then(m => m.BlogdetailsComponent)
+  },
+  {
     path: 'map',
     loadComponent: () => import('./components/map/map.component').then(m => m.MapComponent)
   },
