@@ -15,6 +15,7 @@ import {
 import { ATTRACTIONS } from '../data/attractions';
 import { blogPosts } from '../data/blog_posts';
 import { hotels } from '../data/hotels';
+import { restaurants } from '../data/restaurants';
 
 @Injectable({
   providedIn: 'root'
@@ -60,46 +61,6 @@ export class TourismService {
   // Restaurants
   getRestaurants(): Observable<Restaurant[]> {
     this.setLoading(true);
-    const restaurants: Restaurant[] = [
-      {
-        id: '1',
-        name: 'Nile Breeze Restaurant',
-        description: 'Authentic Egyptian cuisine with a modern twist, featuring fresh ingredients and traditional recipes passed down through generations.',
-        imageUrl: '/assets/images/nile_river.jpg',
-        latitude: 28.1080,
-        longitude: 30.7490,
-        rating: 4.6,
-        reviewCount: 187,
-        cuisineType: 'Egyptian',
-        priceRange: '150-300 EGP per person',
-        openingHours: '12:00 PM - 11:00 PM',
-        specialties: ['Koshari', 'Molokhia', 'Grilled Fish', 'Om Ali'],
-        contactInfo: {
-          phone: '+20 86 234 1234',
-          email: 'info@nilebreeze.com'
-        },
-        features: ['Nile View', 'Outdoor Seating', 'Live Music', 'Vegetarian Options']
-      },
-      {
-        id: '2',
-        name: 'Al Minya Traditional Kitchen',
-        description: 'Family-owned restaurant serving traditional Upper Egyptian dishes in a cozy, authentic atmosphere.',
-        imageUrl: '/assets/images/hero_banner.png',
-        latitude: 28.1120,
-        longitude: 30.7510,
-        rating: 4.4,
-        reviewCount: 98,
-        cuisineType: 'Traditional Egyptian',
-        priceRange: '80-200 EGP per person',
-        openingHours: '11:00 AM - 10:00 PM',
-        specialties: ['Fattah', 'Bamia', 'Roz Bel Laban', 'Fresh Bread'],
-        contactInfo: {
-          phone: '+20 86 234 5555'
-        },
-        features: ['Family Friendly', 'Traditional Decor', 'Local Ingredients', 'Takeaway']
-      }
-    ];
-
     return of(restaurants).pipe(
       delay(600),
       map(data => {
@@ -233,6 +194,8 @@ export class TourismService {
     );
   }
 
+   
+
   // Visitor Information
   getVisitorInfo(): Observable<VisitorInfo[]> {
     const visitorInfo: VisitorInfo[] = [
@@ -328,8 +291,8 @@ export class TourismService {
     );*/
   }
 
-  searchRestaurants(query: string): Observable<Restaurant[]> {
-    return this.getRestaurants().pipe(
+  searchRestaurants(query: string)/*: Observable<Restaurant[]> */{
+  /*  return this.getRestaurants().pipe(
       map(restaurants =>
         restaurants.filter(restaurant =>
           restaurant.name.toLowerCase().includes(query.toLowerCase()) ||
@@ -339,6 +302,6 @@ export class TourismService {
           )
         )
       )
-    );
+    );*/
   }
 }

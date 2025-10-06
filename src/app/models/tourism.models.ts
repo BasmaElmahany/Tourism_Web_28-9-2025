@@ -46,22 +46,22 @@ export interface Hotel {
 
 export interface Restaurant {
   id: string;
-  name: string;
-  description: string;
+  name: LocalizedText;
+  description: LocalizedText;
   imageUrl: string;
   latitude: number;
   longitude: number;
   rating: number;
   reviewCount: number;
-  cuisineType: string;
-  priceRange: string;
-  openingHours: string;
-  specialties: string[];
+  cuisineType: LocalizedText;
+  priceRange: LocalizedText;
+  openingHours: LocalizedText;
+  specialties: LocalizedArray;
   contactInfo: {
-    phone: string;
+    phone: LocalizedText;
     email?: string;
   };
-  features: string[];
+  features: LocalizedArray;
 }
 
 export interface Event {

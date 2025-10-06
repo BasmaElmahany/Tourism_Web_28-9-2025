@@ -3,8 +3,8 @@
   <section class="restaurants-hero">
     <div class="container">
       <div class="hero-content">
-        <h1 class="hero-title">{{ getTranslation('restaurantsTitle') }}</h1>
-        <p class="hero-subtitle">{{ getTranslation('restaurantsSubtitle') }}</p>
+        <h1 class="hero-title">{{ i18nService.translate('restaurantsTitle') }}</h1>
+        <p class="hero-subtitle">{{ i18nService.translate('restaurantsSubtitle') }}</p>
       </div>
     </div>
   </section>
@@ -17,7 +17,7 @@
           <span class="material-icons search-icon">search</span>
           <input 
             type="text" 
-            [placeholder]="getTranslation('searchRestaurants')"
+            [placeholder]="i18nService.translate('searchRestaurants')"
             class="search-input"
             [(ngModel)]="searchQuery"
             (input)="filterRestaurants()"
@@ -28,31 +28,31 @@
 
       <div class="filters">
         <div class="filter-group">
-          <label>{{ getTranslation('cuisine') }}</label>
+          <label>{{ i18nService.translate('cuisine') }}</label>
           <select [(ngModel)]="selectedCuisine" (change)="filterRestaurants()" class="filter-select">
-            <option value="">{{ getTranslation('allCuisines') }}</option>
+            <option value="">{{ i18nService.translate('allCuisines') }}</option>
             <option *ngFor="let cuisine of cuisineTypes" [value]="cuisine.key">
-              {{ i18nService.isRTL() ? cuisine.nameAr : cuisine.name }}
+              {{ i18nService.pick(cuisine) }}
             </option>
           </select>
         </div>
 
         <div class="filter-group">
-          <label>{{ getTranslation('priceRange') }}</label>
+          <label>{{ i18nService.translate('priceRange') }}</label>
           <select [(ngModel)]="selectedPriceRange" (change)="filterRestaurants()" class="filter-select">
             <option value="">{{ i18nService.translate('allPriceRanges') }}</option>
             <option *ngFor="let range of priceRanges" [value]="range.key">
-              {{ i18nService.isRTL() ? range.nameAr : range.name }}
+              {{ i18nService.pick(range) }}
             </option>
           </select>
         </div>
 
         <div class="filter-group">
-          <label>{{ getTranslation('rating') }}</label>
+          <label>{{ i18nService.translate('rating') }}</label>
           <select [(ngModel)]="selectedRating" (change)="filterRestaurants()" class="filter-select">
-            <option value="">{{ getTranslation('allRatings') }}</option>
-            <option value="4">4+ {{ getTranslation('stars') }}</option>
-            <option value="3">3+ {{ getTranslation('stars') }}</option>
+            <option value="">{{ i18nService.translate('allRatings') }}</option>
+            <option value="4">4+ {{ i18nService.translate('stars') }}</option>
+            <option value="3">3+ {{ i18nService.translate('stars') }}</option>
           </select>
         </div>
 
@@ -73,48 +73,44 @@
           [class.rtl]="i18nService.isRTL()"
         >
           <div class="restaurant-image">
-            <img [src]="restaurant.image" [alt]="i18nService.isRTL() ? restaurant.nameAr : restaurant.name">
+            <img [src]="restaurant.imageUrl" [alt]="i18nService.pick(restaurant.name)">
             <div class="restaurant-rating">
               <span class="material-icons">star</span>
               {{ restaurant.rating }}
             </div>
             <div class="restaurant-price-badge">
-              {{ i18nService.isRTL() ? restaurant.priceRangeAr : restaurant.priceRange }}
+              {{ i18nService.pick(restaurant.priceRange) }}
             </div>
           </div>
 
           <div class="restaurant-content">
             <div class="restaurant-header">
               <h3 class="restaurant-name">
-                {{ i18nService.isRTL() ? restaurant.nameAr : restaurant.name }}
+                {{ i18nService.pick(restaurant.name) }}
               </h3>
               <div class="restaurant-cuisine">
-                {{ i18nService.isRTL() ? restaurant.cuisineAr : restaurant.cuisine }}
+                {{ i18nService.pick(restaurant.cuisineType) }}
               </div>
             </div>
 
             <p class="restaurant-description">
-              {{ i18nService.isRTL() ? restaurant.descriptionAr : restaurant.description }}
+              {{ i18nService.pick(restaurant.description) }}
             </p>
 
             <div class="restaurant-details">
               <div class="detail-item">
-                <span class="material-icons">location_on</span>
-                <span>{{ i18nService.isRTL() ? restaurant.addressAr : restaurant.address }}</span>
-              </div>
-              <div class="detail-item">
                 <span class="material-icons">phone</span>
-                <span>{{ restaurant.phone }}</span>
+                <span>{{ i18nService.pick(restaurant.contactInfo.phone) }}</span>
               </div>
               <div class="detail-item">
                 <span class="material-icons">schedule</span>
-                <span>{{ i18nService.isRTL() ? restaurant.openingHoursAr : restaurant.openingHours }}</span>
+                <span>{{ i18nService.pick(restaurant.openingHours) }}</span>
               </div>
             </div>
 
             <div class="restaurant-features">
               <span 
-                *ngFor="let feature of (i18nService.isRTL() ? restaurant.featuresAr : restaurant.features)" 
+                *ngFor="let feature of i18nService.pickArray(restaurant.features)" 
                 class="feature-tag"
               >
                 {{ feature }}
@@ -122,10 +118,10 @@
             </div>
 
             <div class="restaurant-specialties">
-              <h4>{{ getTranslation('specialties') }}</h4>
+              <h4>{{ i18nService.translate('specialties') }}</h4>
               <div class="specialties-list">
                 <span 
-                  *ngFor="let specialty of (i18nService.isRTL() ? restaurant.specialtiesAr : restaurant.specialties)" 
+                  *ngFor="let specialty of i18nService.pickArray(restaurant.specialties)" 
                   class="specialty-item"
                 >
                   {{ specialty }}
@@ -135,10 +131,10 @@
 
             <div class="restaurant-actions">
               <button class="btn btn-primary" (click)="viewMenu(restaurant)">
-                {{ getTranslation('viewMenu') }}
+                {{ i18nService.translate('viewMenu') }}
               </button>
               <button class="btn btn-secondary" (click)="makeReservation(restaurant)">
-                {{ getTranslation('makeReservation') }}
+                {{ i18nService.translate('makeReservation') }}
               </button>
               <button class="btn btn-accent" (click)="getDirections(restaurant)">
                 {{ i18nService.translate('getDirections') }}
@@ -148,7 +144,7 @@
             <div class="restaurant-reviews">
               <div class="reviews-summary">
                 <span class="material-icons">reviews</span>
-                {{ restaurant.reviewCount }} {{ getTranslation('reviews') }}
+                {{ restaurant.reviewCount }} {{ i18nService.translate('reviews') }}
               </div>
             </div>
           </div>
@@ -159,8 +155,8 @@
       <div *ngIf="filteredRestaurants.length === 0" class="no-results">
         <div class="no-results-content">
           <span class="material-icons">restaurant</span>
-          <h3>{{ getTranslation('noRestaurantsFound') }}</h3>
-          <p>{{ getTranslation('tryDifferentFilters') }}</p>
+          <h3>{{ i18nService.translate('noRestaurantsFound') }}</h3>
+          <p>{{ i18nService.translate('tryDifferentFilters') }}</p>
           <button class="btn btn-primary" (click)="clearFilters()">
             {{ i18nService.translate('clearFilters') }}
           </button>
@@ -172,28 +168,28 @@
   <!-- Dining Tips Section -->
   <section class="dining-tips">
     <div class="container">
-      <h2 class="section-title">{{ getTranslation('diningTips') }}</h2>
+      <h2 class="section-title">{{ i18nService.translate('diningTips') }}</h2>
       <div class="tips-grid">
         <div class="tip-card" [class.rtl]="i18nService.isRTL()">
           <div class="tip-icon">
             <span class="material-icons">schedule</span>
           </div>
-          <h3>{{ getTranslation('reservationTip') }}</h3>
-          <p>{{ getTranslation('reservationTipDesc') }}</p>
+          <h3>{{ i18nService.translate('reservationTip') }}</h3>
+          <p>{{ i18nService.translate('reservationTipDesc') }}</p>
         </div>
         <div class="tip-card" [class.rtl]="i18nService.isRTL()">
           <div class="tip-icon">
             <span class="material-icons">local_dining</span>
           </div>
-          <h3>{{ getTranslation('localCuisineTip') }}</h3>
-          <p>{{ getTranslation('localCuisineTipDesc') }}</p>
+          <h3>{{ i18nService.translate('localCuisineTip') }}</h3>
+          <p>{{ i18nService.translate('localCuisineTipDesc') }}</p>
         </div>
         <div class="tip-card" [class.rtl]="i18nService.isRTL()">
           <div class="tip-icon">
             <span class="material-icons">payment</span>
           </div>
-          <h3>{{ getTranslation('paymentTip') }}</h3>
-          <p>{{ getTranslation('paymentTipDesc') }}</p>
+          <h3>{{ i18nService.translate('paymentTip') }}</h3>
+          <p>{{ i18nService.translate('paymentTipDesc') }}</p>
         </div>
       </div>
     </div>

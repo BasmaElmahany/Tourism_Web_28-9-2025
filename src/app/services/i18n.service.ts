@@ -134,7 +134,27 @@ export interface TranslationKeys {
   fourStars: string;
   fiveStars: string;
 
-
+  paymentTipDesc: string;
+  paymentTip: string;
+  localCuisineTipDesc: string;
+  localCuisineTip: string;
+  reservationTipDesc: string;
+  reservationTip: string;
+  diningTips: string;
+  tryDifferentFilters: string;
+  noRestaurantsFound: string;
+  makeReservation: string;
+  viewMenu: string;
+  specialties: string;
+  restaurantsSubtitle: string;
+  restaurantsTitle: string;
+  stars: string;
+  allRatings: string;
+  rating: string;
+  priceRange: string;
+  allCuisines: string;
+  cuisine: string;
+  searchRestaurants: string
 }
 
 @Injectable({
@@ -277,16 +297,36 @@ export class I18nService {
       enterEmail: 'Enter your email',
       Discover_Minya: "Discover Minya",
       exploreHotels: " Explore Hotels",
-      more : "More" ,
-      reviews : "Reviews",
-      priceLuxury : "Price Luxury",
-      priceMid : " Price Mid" ,
-      priceBudget : "Price Budget" ,
-      twoStars : "Two Stars" ,
-      threeStars : "Three Stars" ,
-      fourStars : "Four Stars",
-      fiveStars : "Five Stars"
-
+      more: "More",
+      reviews: "Reviews",
+      priceLuxury: "Price Luxury",
+      priceMid: " Price Mid",
+      priceBudget: "Price Budget",
+      twoStars: "Two Stars",
+      threeStars: "Three Stars",
+      fourStars: "Four Stars",
+      fiveStars: "Five Stars",
+      paymentTipDesc: "Payment Tip Desc",
+      paymentTip: "Payment Tip",
+      localCuisineTipDesc: "Local Cuisine Tip Desc",
+      localCuisineTip: "Local Cuisine Tip",
+      reservationTipDesc: "Reservation Tip Desc",
+      reservationTip: "Reservation Tip",
+      diningTips: "Dining Tips",
+      tryDifferentFilters: " Try Different Filters",
+      noRestaurantsFound: "No Restaurants Found",
+      makeReservation: "Make Reservation",
+      viewMenu: "View Menu ",
+      specialties: "Specialties",
+      restaurantsSubtitle: "Restaurants Subtitle",
+      restaurantsTitle: "Restaurants Title",
+      rating: "Rating",
+      priceRange: "Price Range",
+      allCuisines: "All Cuisines",
+      cuisine: "Cuisine",
+      searchRestaurants: "Search Restaurants",
+      stars: 'Stars',
+      allRatings: 'All Ratings'
     },
     ar: {
       // Navigation
@@ -342,15 +382,15 @@ export class I18nService {
       midRange: 'متوسط (500-1000 جنيه)',
       luxury: 'فاخر (1000+ جنيه)',
       exploreHotels: "اكتشف الفنادق",
-      more : "المزيد" ,
-      reviews : "الأراء",
-      priceLuxury : "اسعار فاخرة",
-      priceMid : "فئة متوسطة" ,
-      priceBudget : "فئة اقتصادية" ,
-      twoStars : "نجمتين" ,
-      threeStars : "ثلاث نجوم" ,
-      fourStars : "أربع نجوم",
-      fiveStars : "خمس نجوم",
+      more: "المزيد",
+      reviews: "الأراء",
+      priceLuxury: "اسعار فاخرة",
+      priceMid: "فئة متوسطة",
+      priceBudget: "فئة اقتصادية",
+      twoStars: "نجمتين",
+      threeStars: "ثلاث نجوم",
+      fourStars: "أربع نجوم",
+      fiveStars: "خمس نجوم",
 
       // Footer
       aboutUs: 'من نحن',
@@ -412,7 +452,27 @@ export class I18nService {
       stayUpdatedDesc: 'اشترك للحصول على أحدث المقالات ونصائح السفر والأخبار مباشرة في بريدك.',
       enterEmail: 'أدخل بريدك الإلكتروني',
       Discover_Minya: 'اكتشف المنيا',
-
+      paymentTipDesc: "وصف نصيحة الدفع",
+      paymentTip: "نصيحة الدفع",
+      localCuisineTipDesc: "وصف نصيحة المطبخ المحلي",
+      localCuisineTip: "نصيحة المطبخ المحلي",
+      reservationTipDesc: "وصف نصيحة الحجز",
+      reservationTip: "نصيحة الحجز",
+      diningTips: "نصائح الطعام",
+      tryDifferentFilters: "جرّب مرشحات مختلفة",
+      noRestaurantsFound: "لم يتم العثور على مطاعم",
+      makeReservation: "إجراء حجز",
+      viewMenu: "عرض القائمة",
+      specialties: "التخصصات",
+      restaurantsSubtitle: "عنوان فرعي للمطاعم",
+      restaurantsTitle: "عنوان المطعم",
+      rating: "التقييم",
+      priceRange: "نطاق السعر",
+      allCuisines: "جميع المطابخ",
+      cuisine: "المطبخ",
+      searchRestaurants: "البحث عن المطاعم",
+      stars: 'النجوم',
+      allRatings: 'جميع التقييمات '
     }
   };
 
