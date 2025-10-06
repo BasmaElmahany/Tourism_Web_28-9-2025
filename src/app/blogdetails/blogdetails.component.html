@@ -1,0 +1,87 @@
+<ng-container *ngIf="post$ | async as post; else loading">
+	<div class="attraction-details-container blog-details" *ngIf="post">
+		<!-- Hero Section -->
+		<section class="hero-section">
+			<div class="hero-background">
+				<img [src]="getLocalizedText(post.imageUrl) || post.imageUrl" [alt]="getLocalizedText(post.title)" class="hero-image" />
+				<div class="hero-overlay"></div>
+			</div>
+
+			<div class="hero-content">
+				<div class="container">
+					<div class="breadcrumb">
+						<a routerLink="/home">{{ i18nService.translate('home') }}</a>
+						<span class="material-icons">chevron_right</span>
+						<a routerLink="/blog">{{ i18nService.translate('blogTitle') }}</a>
+						<span class="material-icons">chevron_right</span>
+						<span>{{ getLocalizedText(post.title) }}</span>
+					</div>
+
+					<div class="hero-info">
+						<h1 class="attraction-title">{{ getLocalizedText(post.title) }}</h1>
+						<div class="attraction-meta">
+							<div class="rating-info">
+								<div class="rating">
+									<span class="material-icons">person</span>
+									<span class="rating-value">{{ getLocalizedText(post.author) }}</span>
+								</div>
+								<span class="review-count">{{ post.publishDate | date:'longDate' }}</span>
+							</div>
+							<div class="category-badge">{{ getLocalizedText(post.category) }}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Main Content -->
+		<section class="main-content">
+			<div class="container">
+				<div class="content-grid">
+					<div class="details-column">
+						<div class="content-section">
+							<h2>{{ i18nService.translate('about') }}</h2>
+							<div class="description article-content">
+								<!-- show as text; if HTML needed we can sanitize and use innerHTML -->
+								<p>{{ getLocalizedText(post.content) }}</p>
+							</div>
+						</div>
+
+						<div class="content-section">
+							<h2>{{ i18nService.translate('tags') }}</h2>
+							<div class="features-grid">
+								<div class="feature-item" *ngFor="let tag of post.tags[0]">
+									<span class="material-icons">label</span>
+									<span>{{ getLocalizedText(tag) }}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="info-column">
+						<div class="info-card">
+							<h3>{{ i18nService.translate('postInfo') }}</h3>
+							<div class="info-item">
+								<div class="info-label"><span class="material-icons">schedule</span>{{ i18nService.translate('publishDate') }}</div>
+								<div class="info-value">{{ post.publishDate | date:'longDate' }}</div>
+							</div>
+							<div class="info-item">
+								<div class="info-label"><span class="material-icons">access_time</span>{{ i18nService.translate('readTime') }}</div>
+								<div class="info-value">{{ post.readTime }} {{ i18nService.translate('minutes') }}</div>
+							</div>
+							<div class="info-item">
+								<div class="info-label"><span class="material-icons">person</span>{{ i18nService.translate('author') }}</div>
+								<div class="info-value">{{ getLocalizedText(post.author) }}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</div>
+</ng-container>
+
+<ng-template #loading>
+	<p>Loading post…</p>
+</ng-template>

@@ -118,6 +118,14 @@ export interface TranslationKeys {
   blogSubtitle: string;
   categories: string;
   minutesRead: string;
+  // Blog details / generic
+  about: string;
+  tags: string;
+  postInfo: string;
+  publishDate: string;
+  readTime: string;
+  minutes: string;
+  author: string;
   loadMorePosts: string;
   enterEmail: string;
   stayUpdatedDesc: string;
@@ -291,6 +299,14 @@ export class I18nService {
       blogSubtitle: 'Stay inspired with the latest stories, guides, and travel tips from Minya.',
       categories: 'Categories',
       minutesRead: 'minutes read',
+      // Blog details / generic
+      about: 'About this post',
+      tags: 'Tags',
+      postInfo: 'Post Information',
+      publishDate: 'Publish Date',
+      readTime: 'Read Time',
+      minutes: 'minutes',
+      author: 'Author',
       loadMorePosts: 'Load More Posts',
       stayUpdated: 'Stay Updated',
       stayUpdatedDesc: 'Subscribe to get the latest articles, travel tips, and news directly to your inbox.',
@@ -306,27 +322,27 @@ export class I18nService {
       threeStars: "Three Stars",
       fourStars: "Four Stars",
       fiveStars: "Five Stars",
-      paymentTipDesc: "Payment Tip Desc",
-      paymentTip: "Payment Tip",
-      localCuisineTipDesc: "Local Cuisine Tip Desc",
-      localCuisineTip: "Local Cuisine Tip",
-      reservationTipDesc: "Reservation Tip Desc",
-      reservationTip: "Reservation Tip",
-      diningTips: "Dining Tips",
-      tryDifferentFilters: " Try Different Filters",
-      noRestaurantsFound: "No Restaurants Found",
-      makeReservation: "Make Reservation",
-      viewMenu: "View Menu ",
-      specialties: "Specialties",
-      restaurantsSubtitle: "Restaurants Subtitle",
-      restaurantsTitle: "Restaurants Title",
-      rating: "Rating",
-      priceRange: "Price Range",
-      allCuisines: "All Cuisines",
-      cuisine: "Cuisine",
-      searchRestaurants: "Search Restaurants",
+      paymentTipDesc: 'Payment Tip Desc',
+      paymentTip: 'Payment Tip',
+      localCuisineTipDesc: 'Local Cuisine Tip Desc',
+      localCuisineTip: 'Local Cuisine Tip',
+      reservationTipDesc: 'Reservation Tip Desc',
+      reservationTip: 'Reservation Tip',
+      diningTips: 'Dining Tips',
+      tryDifferentFilters: 'Try Different Filters',
+      noRestaurantsFound: 'No Restaurants Found',
+      makeReservation: 'Make Reservation',
+      viewMenu: 'View Menu',
+      specialties: 'Specialties',
+      restaurantsSubtitle: 'Restaurants Subtitle',
+      restaurantsTitle: 'Restaurants Title',
       stars: 'Stars',
-      allRatings: 'All Ratings'
+      allRatings: 'All Ratings',
+      rating: 'Rating',
+      priceRange: 'Price Range',
+      allCuisines: 'All Cuisines',
+      cuisine: 'Cuisine',
+      searchRestaurants: 'Search Restaurants'
     },
     ar: {
       // Navigation
@@ -445,8 +461,16 @@ export class I18nService {
       culturalHeritageDesc: 'انغمس في الثقافة والتقاليد المصرية الأصيلة التي تستمر حتى اليوم.',
       blogTitle: 'مدونة السياحة',
       blogSubtitle: 'ابقَ مُلهمًا مع أحدث القصص والأدلة ونصائح السفر من المنيا.',
-      categories: 'الفئات',
-      minutesRead: 'دقائق قراءة',
+  categories: 'الفئات',
+  minutesRead: 'دقائق قراءة',
+  // Blog details / generic
+  about: 'حول هذا المقال',
+  tags: 'الوسوم',
+  postInfo: 'معلومات المقال',
+  publishDate: 'تاريخ النشر',
+  readTime: 'مدة القراءة',
+  minutes: 'دقائق',
+  author: 'المؤلف',
       loadMorePosts: 'تحميل المزيد من المقالات',
       stayUpdated: 'ابقَ على اطلاع',
       stayUpdatedDesc: 'اشترك للحصول على أحدث المقالات ونصائح السفر والأخبار مباشرة في بريدك.',

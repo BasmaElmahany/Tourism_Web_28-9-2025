@@ -194,7 +194,12 @@ export class TourismService {
     );
   }
 
-   
+  // Single blog post by id (same pattern used for attractions)
+  getBlogPostById(id: string): Observable<BlogPost | undefined> {
+    return this.getBlogPosts().pipe(
+      map((posts) => posts.find((p) => p.id === id))
+    );
+  }
 
   // Visitor Information
   getVisitorInfo(): Observable<VisitorInfo[]> {
