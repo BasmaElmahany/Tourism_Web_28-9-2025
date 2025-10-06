@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { I18nService } from '../../services/i18n.service';
 import { TourismService } from '../../services/tourism.service';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BlogPost } from '../../models/tourism.models'; // use the unified model
 import { blogPosts } from 'src/app/data/blog_posts';
@@ -33,7 +34,8 @@ export class BlogComponent implements OnInit {
 
   constructor(
     public i18nService: I18nService,
-    private tourismService: TourismService
+    private tourismService: TourismService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -76,6 +78,8 @@ filterByCategory(category: string) {
 
   readPost(post: BlogPost) {
     console.log('Reading post:', post.id);
+    // navigate to blog details route by id
+    this.router.navigate(['/blog', post.id]);
   }
 
   loadMorePosts() {
