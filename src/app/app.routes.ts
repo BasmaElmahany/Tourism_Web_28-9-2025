@@ -43,7 +43,7 @@ export const routes: Routes = [
   },
   {
     path: 'blog/:id',
-    loadComponent: () => import('./blogdetails/blogdetails.component').then(m => m.BlogdetailsComponent)
+    loadComponent: () => import('./components/blogdetails/blogdetails.component').then(m => m.BlogdetailsComponent)
   },
   {
     path: 'map',
