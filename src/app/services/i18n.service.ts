@@ -162,7 +162,10 @@ export interface TranslationKeys {
   priceRange: string;
   allCuisines: string;
   cuisine: string;
-  searchRestaurants: string
+  searchRestaurants: string,
+  Islamic_Religious_Site : string,
+  Christian_religious_site : string ,
+  Museum : string;
 }
 
 @Injectable({
@@ -342,7 +345,10 @@ export class I18nService {
       priceRange: 'Price Range',
       allCuisines: 'All Cuisines',
       cuisine: 'Cuisine',
-      searchRestaurants: 'Search Restaurants'
+      searchRestaurants: 'Search Restaurants',
+      Museum:'Museum',
+      Christian_religious_site : 'Christian Religious Site' ,
+      Islamic_Religious_Site  : ' Islamic Religious Site' ,
     },
     ar: {
       // Navigation
@@ -387,6 +393,9 @@ export class I18nService {
       archaeologicalSites: 'المواقع الأثرية',
       ancientCities: 'المدن القديمة',
       scenicAreas: 'المناطق الطبيعية',
+      Museum:'متحف',
+      Christian_religious_site : 'موقع ديني مسيحي' ,
+      Islamic_Religious_Site  : 'موقع ديني اسلامي' ,
 
       // Hotels
       hotelsTitle: 'فنادق المنيا',

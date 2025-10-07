@@ -167,8 +167,11 @@ The site also includes remains of houses, wells, and chapels related to ancient 
       en: 'A beautiful waterfront promenade along the Nile River, perfect for evening walks and enjoying sunset views.',
       ar: 'ممشى جميل على ضفاف النيل، مثالي للتنزه مساءً والاستمتاع بغروب الشمس.'
     },
-    imageUrl: '/assets/images/nile_river.jpg',
-    imageGallery: ['/assets/images/nile_river.jpg'],
+    imageUrl: '/assets/images/kornish/kornish4.jpg',
+    imageGallery: ['/assets/images/kornish/kornish4.jpg','/assets/images/kornish/kornish.webp','/assets/images/kornish/kornish1.jpg','/assets/images/kornish/kornish2.jpeg',
+      '/assets/images/kornish/kornish3.jpg','/assets/images/kornish/kornish5.jpg',
+      '/assets/images/kornish/kornish6.jpeg','/assets/images/kornish/kornish8.jpeg','/assets/images/kornish/kornish9.webp'
+    ],
     latitude: 28.1099,
     longitude: 30.7503,
     openingHours: { en: '24 hours', ar: 'على مدار ٢٤ ساعة' },
@@ -244,7 +247,7 @@ The site also includes remains of houses, wells, and chapels related to ancient 
     ticketPrice: { en: 'Free (no official fee known)', ar: 'مجاني (لا توجد رسوم رسمية معروفة)' },
     rating: 0,
     reviewCount: 0,
-    category: { en: 'Historical / Religious Site', ar: 'موقع تاريخي / ديني' },
+    category: { en: 'Islamic Religious Site', ar: ' موقع ديني اسلامي' },
     features: [
       { en: 'Mausoleums and Family Tombs', ar: 'مقابر عائلية وأضرحة' },
       { en: 'Shrines of Saints', ar: 'أضرحة الأولياء' },
@@ -283,7 +286,7 @@ The museum displays artifacts from various eras, notably a statue of one of King
     ticketPrice: { en: 'EGP 20 for Egyptians / EGP 100 for foreigners', ar: '٢٠ جنيهًا للمصريين / ١٠٠ جنيه للأجانب' },
     rating: 4.4,
     reviewCount: 87,
-    category: { en: 'Museum / Archaeological Site', ar: 'متحف / موقع أثري' },
+    category: { en: 'Museum', ar: 'متحف' },
     features: [
       { en: 'Ancient Artifacts and Statues', ar: 'قطع أثرية وتماثيل قديمة' },
       { en: 'Pharaonic, Greek, Roman, and Coptic Collections', ar: 'مجموعات فرعونية ويونانية ورومانية وقبطية' },
@@ -454,7 +457,7 @@ Today, Deir Abu Hinnis is an important stop on the Holy Family Route in Egypt, a
   ticketPrice: { en: 'Free Entry', ar: 'دخول مجاني' },
   rating: 4.7,
   reviewCount: 128,
-  category: { en: 'Religious Site', ar: 'موقع ديني' },
+  category: { en: 'Christian religious site', ar: ' موقع ديني مسيحي'  },
   features: [
     { en: 'Rock-cut churches and monasteries', ar: 'كنائس وأديرة منحوتة في الصخر' },
     { en: 'Coptic art and inscriptions', ar: 'فن ونقوش قبطية' },
@@ -500,7 +503,7 @@ Today, Al-Asqalani Mosque remains a symbol of Minya’s rich Islamic heritage, s
   ticketPrice: { en: 'Free Entry', ar: 'دخول مجاني' },
   rating: 4.6,
   reviewCount: 97,
-  category: { en: 'Religious Site', ar: 'موقع ديني' },
+  category: { en: 'Islamic Religious Site', ar: 'موقع ديني اسلامي' },
   features: [
     { en: 'Ottoman architectural style', ar: 'طراز معماري عثماني' },
     { en: 'Central dome and minaret', ar: 'قبة مركزية ومئذنة شامخة' },
@@ -549,7 +552,7 @@ Today, Al-Yousifi Mosque continues to serve as both a place of prayer and a hist
   ticketPrice: { en: 'Free Entry', ar: 'دخول مجاني' },
   rating: 4.7,
   reviewCount: 83,
-  category: { en: 'Religious Site', ar: 'موقع ديني' },
+  category: { en: 'Islamic Religious Site', ar: 'موقع ديني اسلامي' },
   features: [
     { en: 'Fatimid architectural style', ar: 'طراز معماري فاطمي' },
     { en: 'Decorated mihrab and pointed arches', ar: 'محراب مزخرف وأقواس مدببة' },
@@ -700,7 +703,7 @@ Today, the mosque stands as a symbol of Minya’s religious heritage, reflecting
   ticketPrice: { en: 'Free Entry', ar: 'دخول مجاني' },
   rating: 4.8,
   reviewCount: 102,
-  category: { en: 'Religious Site', ar: 'موقع ديني' },
+  category: { en: 'Islamic Religious Site', ar:  'موقع ديني اسلامي' },
   features: [
     { en: 'Ottoman-style dome and arches', ar: 'قبة وأقواس على الطراز العثماني' },
     { en: 'Wooden minbar and ornate mihrab', ar: 'منبر خشبي ومحراب مزخرف' },
@@ -751,7 +754,7 @@ Today, Al-Lamty Mosque stands as a testimony to the Islamic architectural legacy
   ticketPrice: { en: 'Free Entry', ar: 'دخول مجاني' },
   rating: 4.6,
   reviewCount: 132,
-  category: { en: 'Religious Site', ar: 'موقع ديني' },
+  category: { en: 'Islamic Religious Site', ar:  'موقع ديني اسلامي' },
   features: [
     { en: 'Ottoman-style dome and arches', ar: 'قبة وأقواس على الطراز العثماني' },
     { en: 'Wooden minbar and ornate mihrab', ar: 'منبر خشبي ومحراب مزخرف' },
@@ -802,7 +805,7 @@ Today, Al-Foli Mosque continues to stand as a beacon of faith and history, repre
   ticketPrice: { en: 'Free Entry', ar: 'دخول مجاني' },
   rating: 4.9,
   reviewCount: 178,
-  category: { en: 'Religious Site', ar: 'موقع ديني' },
+  category: { en: 'Islamic Religious Site', ar:  'موقع ديني اسلامي' },
   features: [
     { en: 'Blend of Ottoman and Mamluk architecture', ar: 'مزيج من العمارة العثمانية والمملوكية' },
     { en: 'Tomb of Sheikh Ahmed Al-Foli', ar: 'ضريح الشيخ أحمد الفولي' },
@@ -852,7 +855,7 @@ Today, the mosque stands as a testament to Minya’s rich religious and architec
   ticketPrice: { en: 'Free Entry', ar: 'دخول مجاني' },
   rating: 4.7,
   reviewCount: 143,
-  category: { en: 'Religious Site', ar: 'موقع ديني' },
+  category: { en: 'Islamic Religious Site', ar:  'موقع ديني اسلامي' },
   features: [
     { en: 'Neo-Islamic and Ottoman-inspired architecture', ar: 'عمارة إسلامية حديثة بتأثير عثماني' },
     { en: 'Elegant dome and tall minaret', ar: 'قبة أنيقة ومئذنة شامخة' },
@@ -901,7 +904,7 @@ Today, the church remains one of Minya’s key religious landmarks, symbolizing 
   ticketPrice: { en: 'Free Entry', ar: 'دخول مجاني' },
   rating: 4.9,
   reviewCount: 157,
-  category: { en: 'Religious Site', ar: 'موقع ديني' },
+  category: { en: 'Christian religious site',ar: 'موقع ديني مسيحي' },
   features: [
     { en: 'Traditional Coptic architecture', ar: 'طراز قبطي تقليدي' },
     { en: 'Hand-painted icons and domes', ar: 'أيقونات وقباب مرسومة يدويًا' },
@@ -955,7 +958,7 @@ Today, the Monastery of the Virgin Mary in Samalut stands as a beacon of Christi
   ticketPrice: { en: 'Free Entry', ar: 'دخول مجاني' },
   rating: 4.9,
   reviewCount: 284,
-  category: { en: 'Religious Site', ar: 'موقع ديني' },
+  category: { en: 'Christian religious site', ar:  'موقع ديني مسيحي'  },
   features: [
     { en: 'Rock-cut 4th century church', ar: 'كنيسة منحوتة في الجبل تعود للقرن الرابع الميلادي' },
     { en: 'Holy Family pilgrimage site', ar: 'إحدى محطات العائلة المقدسة' },
@@ -1020,7 +1023,7 @@ Al-Bahnasa thus stands as a symbol of Egypt’s layered history — Pharaonic, H
   ticketPrice: { en: 'Free Entry', ar: 'دخول مجاني' },
   rating: 4.8,
   reviewCount: 317,
-  category: { en: 'Historical & Religious Site', ar: 'موقع أثري وديني' },
+  category: { en: 'Islamic Religious Site', ar: 'موقع ديني اسلامي' },
   features: [
     { en: 'Ancient Greek-Roman city ruins (Oxyrhynchus)', ar: 'آثار المدينة اليونانية الرومانية القديمة (أوكسي رينخوس)' },
     { en: 'Islamic conquest battlefield', ar: 'موقع معركة الفتح الإسلامي' },
