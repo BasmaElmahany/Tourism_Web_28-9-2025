@@ -1,250 +1,264 @@
 /* =================================================================
-   Navbar Styling (LTR Default)
-   ================================================================= */
+  Navbar Styling (LTR Default)
+  ================================================================= */
 .navbar {
   position: fixed;
   inset-block-start: 0;
-  inset-inline: 0;
+  inset-inline: 0; // يضمن الامتداد من الحافة للحافة (L/R or Start/End)
   z-index: 1000;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   border-block-end: 1px solid rgba(0, 0, 0, 0.08);
   transition: background 0.3s ease, box-shadow 0.3s ease;
-}
-
-.navbar.scrolled {
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.12);
-}
-
-.nav-content {
-  display: flex;
-  align-items: center;
-  
-  padding-block: 0.75rem;
-  justify-content: flex-start;
-}
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  cursor: pointer;
-  text-decoration: none;
-  color: var(--text-primary);
-}
-
-.nav-logo .logo-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-}
-
-.nav-logo .logo-text {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--primary-color);
-}
-
-
-/* Desktop Navigation */
-.desktop-nav {
-  display: flex;
-  align-items: center;
-  gap: 1.75rem;
-  margin-inline-start: 2rem; /* Pushes the menu and actions to the end in LTR */
-}
-
-.nav-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 0.9rem;
-  border-radius: 8px;
-  text-decoration: none;
-  color: var(--text-secondary);
-  font-weight: 500;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-.nav-link .material-icons {
-  font-size: 1.25rem;
-}
-
-.nav-link:hover,
-.nav-link.active {
-  color: var(--primary-color);
-  background: rgba(26, 54, 93, 0.08);
-}
-
-/* Language & Actions */
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-inline-start: auto; /* Space between desktop links and actions */
-}
-
-/* Mobile Menu Button */
-.mobile-menu-btn {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.mobile-menu-btn .hamburger-line {
-  width: 100%;
-  height: 2px;
-  background: var(--primary-color);
-  margin: 3px 0;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-.mobile-menu-btn.active .hamburger-line:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.mobile-menu-btn.active .hamburger-line:nth-child(2) {
-  opacity: 0;
-}
-
-.mobile-menu-btn.active .hamburger-line:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
-}
-
-/* Mobile Nav (Dropdown/Drawer) */
-.mobile-nav {
-  position: absolute;
-  inset-block-start: 100%;
-  inset-inline: 0;
-  background: var(--white);
-  border-block-start: 1px solid rgba(0, 0, 0, 0.1);
-  transform: translateY(-100%); /* Hides it above the nav bar in LTR */
-  opacity: 0;
-  visibility: hidden;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
-}
-
-.mobile-nav.open {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
-}
-
-.mobile-nav .mobile-nav-content {
-  padding-block: 0.5rem;
-}
-
-.mobile-nav .mobile-language-switcher {
-  padding: 1rem;
-  border-block-end: 1px solid rgba(0, 0, 0, 0.1);
-  margin-block-end: 0.5rem;
-}
-
-.mobile-nav .mobile-nav-link {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1rem;
-  text-decoration: none;
-  color: var(--text-secondary);
-  font-weight: 500;
-  border-block-end: 1px solid rgba(0, 0, 0, 0.05);
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-.mobile-nav .mobile-nav-link .material-icons {
-  font-size: 1.25rem;
-}
-
-.mobile-nav .mobile-nav-link:hover,
-.mobile-nav .mobile-nav-link.active {
-  color: var(--primary-color);
-  background: rgba(26, 54, 93, 0.05);
-}
-
-/* =================================================================
-   RTL Overrides - Force Right-to-Left
-   ================================================================= */
-.navbar:dir(rtl) .nav-content {
-  flex-direction: row-reverse;
-}
-
-.navbar:dir(rtl) .desktop-nav {
-  margin-inline-end: auto;
-  margin-inline-start: 0;
-}
-
-.navbar:dir(rtl) .nav-actions {
-  margin-inline-end: 1rem;
-  margin-inline-start: 0;
-}
-
-.navbar:dir(rtl) .nav-link,
-.navbar:dir(rtl) .mobile-nav-link {
-  justify-content: flex-end;
-  text-align: end;
-}
-
-.navbar:dir(rtl) .nav-link .material-icons,
-.navbar:dir(rtl) .mobile-nav-link .material-icons {
-  margin-inline-start: 0.25rem;
-  margin-inline-end: 0;
-  order: 1;
-}
-
-.navbar:dir(rtl) .mobile-nav {
-  inset-inline: auto 0;
-  transform: translateX(100%);
-}
-.navbar:dir(rtl) .mobile-nav.open {
-  transform: translateX(0);
-  opacity: 1;
-  visibility: visible;
-}
-
-
-/* =================================================================
-   Responsive
-   ================================================================= */
-@media (max-width: 1024px) {
-  .desktop-nav {
-    gap: 1.25rem;
+.container {
+        // يمكنك إزالة الهوامش/الحشوات الافتراضية هنا إذا كانت موجودة
+        padding-inline: 0; 
+        margin-inline: auto; // للتأكد من توسيطه
+        width: 100%; // تأكد من أنه يأخذ العرض بالكامل
+        max-width: 100%; // تأكد من أنه لا يتقيد بعرض ثابت
+    }
+  &.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.12);
   }
 
-  .nav-link {
-    font-size: 0.95rem;
-    padding: 0.5rem 0.75rem;
+  .nav-content {
+    display: flex;
+    align-items: center;
+    padding-block: 0.75rem;
+    justify-content: flex-start; // يبدأ من اليسار في LTR
+    padding-inline: 1.5rem; 
+    width: 100%;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--text-primary);
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+    }
+
+    .logo-text {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+  }
+
+  /* Desktop Navigation */
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    margin-inline-start: 2rem; // يدفع الروابط بعيداً عن الشعار في LTR
+
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-weight: 500;
+      transition: background 0.3s ease, color 0.3s ease;
+
+      .material-icons {
+        font-size: 1.25rem;
+      }
+
+      &:hover,
+      &.active {
+        color: var(--primary-color);
+        background: rgba(26, 54, 93, 0.08);
+      }
+    }
+  }
+
+  /* Language & Actions */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-inline-start: auto; // يدفع الإجراءات لأقصى اليمين في LTR
+  }
+
+  /* Mobile Menu Button */
+  .mobile-menu-btn {
+    display: none; // مخفي في وضع سطح المكتب
+    flex-direction: column;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    .hamburger-line {
+      width: 100%;
+      height: 2px;
+      background: var(--primary-color);
+      margin: 3px 0;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    &.active {
+      .hamburger-line:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+    }
+  }
+
+  /* Mobile Nav (Dropdown/Drawer) */
+  .mobile-nav {
+    position: absolute;
+    inset-block-start: 100%;
+    inset-inline: 0;
+    background: var(--white);
+    border-block-start: 1px solid rgba(0, 0, 0, 0.1);
+    transform: translateY(-100%); // إخفاء أعلى الـ Nav
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+
+    &.open {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-nav-content {
+      padding-block: 0.5rem;
+    }
+
+    .mobile-language-switcher {
+      padding: 1rem;
+      border-block-end: 1px solid rgba(0, 0, 0, 0.1);
+      margin-block-end: 0.5rem;
+    }
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-weight: 500;
+      border-block-end: 1px solid rgba(0, 0, 0, 0.05);
+      transition: background 0.3s ease, color 0.3s ease;
+
+      .material-icons {
+        font-size: 1.25rem;
+      }
+
+      &:hover,
+      &.active {
+        color: var(--primary-color);
+        background: rgba(26, 54, 93, 0.05);
+      }
+    }
+  }
+
+  /* =================================================================
+    RTL Overrides (Start from Right)
+    ================================================================= */
+  &:dir(rtl) {
+ 
+    .desktop-nav {
+      margin-inline-end: auto;
+      margin-inline-start: 0; // إلغاء مسافة الـ 2rem لـ LTR
+    }
+
+    .nav-actions {
+        margin-inline-end: auto;
+      margin-inline-start: 0; // إلغاء مسافة الـ 2rem لـ LTR
+    }
+
+    .nav-link,
+    .mobile-nav-link {
+      justify-content: flex-end;
+      text-align: end;
+
+      .material-icons {
+        margin-inline-start: 0.25rem;
+        margin-inline-end: 0;
+        order: 1; // يضع الأيقونة على اليسار
+      }
+    }
+
+    .mobile-nav {
+      inset-inline: auto 0;
+      transform: translateX(100%); // إخفاء القائمة على اليمين
+
+      &.open {
+        transform: translateX(0); // إظهار القائمة من اليمين
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+/* =================================================================
+  Responsive
+  ================================================================= */
+@media (max-width: 1024px) {
+  .navbar {
+    .desktop-nav {
+      gap: 1.25rem;
+    }
+
+    .nav-link {
+      font-size: 0.95rem;
+      padding: 0.5rem 0.75rem;
+    }
   }
 }
 
 @media (max-width: 768px) {
-  /* Hide desktop menu elements */
-  .desktop-nav,
-  .nav-actions {
-    display: none;
-    margin-inline-start: auto; 
-  }
+  .navbar {
+    /* Hide desktop menu elements */
+    .desktop-nav,
+    .nav-actions {
+      display: none;
+      margin-inline-start: auto;
+    }
+    .nav-content {
+                // قد تحتاج لتقليل الحشوة على الأجهزة المحمولة
+                padding-inline: 1rem; 
+            }
 
-  /* Show mobile menu button */
-  .mobile-menu-btn {
-    display: flex;
-  }
+    /* Show mobile menu button */
+    .mobile-menu-btn {
+      display: flex;
+    }
 
-  /* Adjust logo size for mobile */
-  .nav-logo .logo-text {
-    font-size: 1.1rem;
-  }
+    /* Adjust logo size for mobile */
+    .nav-logo {
+      .logo-text {
+        font-size: 1.1rem;
+      }
 
-  .nav-logo .logo-icon {
-    width: 35px;
-    height: 35px;
+      .logo-icon {
+        width: 35px;
+        height: 35px;
+      }
+    }
   }
 }
