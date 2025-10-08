@@ -38,8 +38,8 @@
               <option [ngValue]="catHistoricalSite">{{ i18n.translate('historicalSites') }}</option>
               <option [ngValue]="catArchaeologicalSite">{{ i18n.translate('archaeologicalSites') }}</option>
               <option [ngValue]="museum">{{ i18n.translate('Museum') }}</option>
-               <option [ngValue]="catReligiouIsamicSite">{{ i18n.translate('Islamic_Religious_Site') }}</option>
-                <option [ngValue]="catReligiouChristianSite">{{ i18n.translate('Christian_religious_site') }}</option>
+              <option [ngValue]="catReligiouIsamicSite">{{ i18n.translate('Islamic_Religious_Site') }}</option>
+              <option [ngValue]="catReligiouChristianSite">{{ i18n.translate('Christian_religious_site') }}</option>
               <option [ngValue]="catScenicArea">{{ i18n.translate('scenicAreas') }}</option>
             </select>
           </div>
@@ -151,8 +151,9 @@
               </div>
             </div>
 
-            <p class="attraction-description">{{ i18n.pick(attraction.description) }}</p>
-
+            <p class="attraction-description">
+              {{ i18n.pick(attraction.description) | slice:0:150 }}...
+            </p>
             <div class="list-item-details">
               <div class="detail-group">
                 <div class="detail-item">

@@ -20,8 +20,9 @@
 .nav-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  
   padding-block: 0.75rem;
+  justify-content: flex-start;
 }
 
 .nav-logo {
@@ -51,7 +52,7 @@
   display: flex;
   align-items: center;
   gap: 1.75rem;
-  margin-inline-start: auto; /* Pushes the menu and actions to the end in LTR */
+  margin-inline-start: 2rem; /* Pushes the menu and actions to the end in LTR */
 }
 
 .nav-link {
@@ -81,7 +82,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-inline-start: 1rem; /* Space between desktop links and actions */
+  margin-inline-start: auto; /* Space between desktop links and actions */
 }
 
 /* Mobile Menu Button */
@@ -229,6 +230,7 @@
   .desktop-nav,
   .nav-actions {
     display: none;
+    margin-inline-start: auto; 
   }
 
   /* Show mobile menu button */

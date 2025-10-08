@@ -166,6 +166,9 @@ export interface TranslationKeys {
   Islamic_Religious_Site : string,
   Christian_religious_site : string ,
   Museum : string;
+  tourguide: string;
+  photographers : string;
+  services: string;
 }
 
 @Injectable({
@@ -204,7 +207,7 @@ export class I18nService {
       visitorInfo: 'Visitor Info',
       blog: 'Blog',
       map: 'Map',
-
+      services: 'Services',
       // Common
       search: 'Search',
       filter: 'Filter',
@@ -349,6 +352,8 @@ export class I18nService {
       Museum:'Museum',
       Christian_religious_site : 'Christian Religious Site' ,
       Islamic_Religious_Site  : ' Islamic Religious Site' ,
+      tourguide: 'Tourguide',
+      photographers: 'Photographers'
     },
     ar: {
       // Navigation
@@ -361,7 +366,8 @@ export class I18nService {
       visitorInfo: 'معلومات الزوار',
       blog: 'المدونة',
       map: 'الخريطة',
-
+      tourguide: 'المرشد السياحي',
+      services: 'الخدمات',
       // Common
       search: 'بحث',
       filter: 'تصفية',
@@ -373,7 +379,7 @@ export class I18nService {
       loading: 'جاري التحميل...',
       noResults: 'لم يتم العثور على نتائج',
       clearFilters: 'مسح المرشحات',
-
+      photographers: 'المصورين',
       // Home Page
       heroTitle: 'اكتشف مصر القديمة في المنيا',
       heroSubtitle: 'استكشف الكنوز المخفية في المنيا، حيث يلتقي التاريخ القديم بجمال نهر النيل الخالد. سافر عبر آلاف السنين من التراث المصري واصنع ذكريات لا تُنسى.',

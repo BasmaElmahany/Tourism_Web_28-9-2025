@@ -50,6 +50,26 @@ export const routes: Routes = [
     loadComponent: () => import('./components/map/map.component').then(m => m.MapComponent)
   },
   {
+    path: 'about-us',
+    loadComponent: () => import('./components/about-us/about-us.component').then(m => m.AboutUsComponent)
+  },
+  {
+    path: 'photographers',
+    loadComponent: () => import('./components/photographer/photographer.component').then(m => m.PhotographerComponent)
+  },
+  {
+    path: 'tourguides',
+    loadComponent: () => import('./components/tourguide/tourguide.component').then(m => m.TourguideComponent)
+  },
+  {
+    path: 'hotels/:id',
+    loadComponent: () => import('./components/hotel-details/hotel-details.component').then(m => m.HotelDetailsComponent)
+  },
+  {
+    path: 'services',
+    loadComponent: () => import('./components/services/services.component').then(m => m.ServicesComponent)
+  },
+  {
     path: '**',
     redirectTo: '/home'
   }
