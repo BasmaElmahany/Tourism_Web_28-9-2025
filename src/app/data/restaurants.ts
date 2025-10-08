@@ -1138,6 +1138,41 @@ openingHours: {
     { en: "Family-friendly", ar: "مناسب للعائلات" }
   ]
 }
+,
+{
+  id: "tallah_minya",
+  name: { en: "Tallah Restaurant & Café", ar: "مطعم وكافية طلة" },
+  description: {
+    en: "Nile-side café and restaurant in Minya on the Corniche, great view and cozy ambiance.", 
+    ar: "كافية ومطعم على كورنيش المنيا، إطلالة على النيل وجو مريح."
+  },
+  imageUrl: "assets/images/tallah_minya.jpg",
+  latitude: 28.1080581608185, 
+  longitude: 30.7527176904317,
+  rating:5.0
+,
+  reviewCount: 2,
+  cuisineType: { en: "Café / Mixed", ar: "كافيه / متنوع" },
+  priceRange: { en: "Mid-range", ar: "متوسط" },
+  openingHours: {
+    en: "Wed 10:00 AM – 12:00 AM\nThu 10:00 AM – 12:00 AM\nFri 10:00 AM – 12:00 AM\nSat 10:00 AM – 12:00 AM\nSun 10:00 AM – 12:00 AM\nMon 10:00 AM – 12:00 AM\nTue 10:00 AM – 12:00 AM",
+    ar: "الأربعاء ١٠:٠٠ص–١٢:٠٠ص\nالخميس ١٠:٠٠ص–١٢:٠٠ص\nالجمعة ١٠:٠٠ص–١٢:٠٠ص\nالسبت ١٠:٠٠ص–١٢:٠٠ص\nالأحد ١٠:٠٠ص–١٢:٠٠ص\nالاثنين ١٠:٠٠ص–١٢:٠٠ص\nالثلاثاء ١٠:٠٠ص–١٢:٠٠ص"
+  },
+ specialties: [
+    { en: "Grilled Fish & Seafood", ar: "سمك مشوي وأسماك" },
+    { en: "Coffee & Breakfast / Brunch", ar: "قهوة وفطار / برانش" },
+    { en: "Italian dishes (Pasta, Pizza)", ar: "أطباق إيطالية (باستا، بيتزا)" },
+    { en: "Mixed grills & Shawarma", ar: "مشاوي مشكلة وشاورما" }
+  ],
+  contactInfo: { phone: { en: "01044844052", ar: "٠١٠٤٤٨٤٤٠٥٢" }, email: "" },
+ features: [
+    { en: "Nile View", ar: "إطلالة على النيل" },
+    { en: "Outdoor Seating", ar: "جلسات خارجية" },
+    { en: "Reservations", ar: "حجز" },
+    { en: "Restroom", ar: "دورة مياه" }
+  ],
+
+}
 
   // === نهاية قائمة مطاعم مركز المنيا (نسخة مبدئية) ===
 ];
