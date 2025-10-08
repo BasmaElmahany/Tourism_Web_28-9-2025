@@ -1,1 +1,247 @@
-<p>hotel-details works!</p>
+<div
+	class="hotel-details-container"
+	*ngIf="hotel"
+	[class.rtl]="i18n.isRTL()"
+	[class.ltr]="!i18n.isRTL()"
+>
+	<!-- Hero Section -->
+	<section class="hero-section">
+		<div class="hero-background">
+			<img
+				[src]="currentImage"
+				[alt]="i18n.pick((hotel).name)"
+				class="hero-image"
+			/>
+			<div class="hero-overlay"></div>
+		</div>
+
+		<div class="hero-content">
+			<div class="container">
+				<div class="breadcrumb">
+					<a routerLink="/home">{{ i18n.translate('home') }}</a>
+					<span class="material-icons">chevron_right</span>
+					<a routerLink="/hotels">{{ i18n.translate('hotels') }}</a>
+					<span class="material-icons">chevron_right</span>
+					<span>{{ i18n.pick((hotel).name) }}</span>
+				</div>
+
+				<div class="hero-info">
+					<h1 class="hotel-title">
+						{{ i18n.pick((hotel).name) }}
+					</h1>
+
+					<div class="hotel-meta">
+						<div class="rating-info">
+							<div class="rating">
+								<span class="material-icons">star</span>
+								<span class="rating-value">
+									{{ i18n.formatNumber(hotel.rating) }}
+								</span>
+							</div>
+							<span class="review-count">
+								{{ i18n.formatNumber(hotel.reviewCount) }} {{ i18n.translate('totalReviews') }}
+							</span>
+						</div>
+						<div class="price-badge">
+							{{ i18n.pick((hotel).priceRange) }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Image Gallery Navigation -->
+		<div class="gallery-nav" *ngIf="(hotel.imageGallery?.length ?? 0) > 1">
+			<button class="gallery-btn prev" (click)="previousImage()" [disabled]="currentImageIndex === 0">
+				<span class="material-icons">chevron_left</span>
+			</button>
+			<button
+				class="gallery-btn next"
+				(click)="nextImage()"
+				[disabled]="currentImageIndex === (hotel.imageGallery?.length ?? 0) - 1"
+			>
+				<span class="material-icons">chevron_right</span>
+			</button>
+		</div>
+
+		<div class="gallery-indicators" *ngIf="(hotel.imageGallery?.length ?? 0) > 1">
+			<button
+				*ngFor="let image of hotel.imageGallery; let i = index"
+				class="indicator"
+				[class.active]="i === currentImageIndex"
+				(click)="goToImage(i)"
+			></button>
+		</div>
+	</section>
+
+	<!-- Main Content -->
+	<section class="main-content">
+		<div class="container">
+			<div class="content-grid">
+				<!-- Left Column - Details -->
+				<div class="details-column">
+					<div class="content-section">
+						<h2>{{ i18n.translate('aboutHotel') }}</h2>
+						<p class="description">
+							{{ i18n.pick((hotel).description) }}
+						</p>
+
+						<div class="info-list">
+							<div class="info-item" *ngIf="hotel.roomTypes?.length">
+								<h4>{{ i18n.translate('roomTypes') }}</h4>
+								<p>{{ i18n.pickArray(hotel.roomTypes).join(', ') }}</p>
+							</div>
+							<div class="info-item" *ngIf="hotel.contactInfo">
+								<h4>{{ i18n.translate('contact') }}</h4>
+								<p>{{ i18n.pick(hotel.contactInfo.phone) }}<br/>{{ i18n.pick(hotel.contactInfo.email) }}</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="content-section" *ngIf="(hotel.amenities?.length ?? 0) > 0">
+						<h2>{{ i18n.translate('featuresAmenities') }}</h2>
+						<div class="features-grid">
+							<div class="feature-item" *ngFor="let feature of pickedAmenities(hotel)">
+								<span class="material-icons">check_circle</span>
+								<span>{{ feature }}</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="content-section" *ngIf="(hotel.imageGallery?.length ?? 0) > 1">
+						<h2>{{ i18n.translate('photoGallery') }}</h2>
+						<div class="thumbnail-gallery">
+							<div
+								class="thumbnail"
+								*ngFor="let image of hotel.imageGallery; let i = index"
+								[class.active]="i === currentImageIndex"
+								(click)="goToImage(i)"
+							>
+								<img
+									[src]="image"
+									[alt]="i18n.pick((hotel).name) + ' - ' + (i18n.formatNumber(i + 1))"
+									loading="lazy"
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Right Column - Info Card -->
+				<div class="info-column">
+					<div class="info-card">
+						<h3>{{ i18n.translate('bookingInformation') }}</h3>
+
+						<div class="info-item">
+							<div class="info-label">
+								<span class="material-icons">place</span>
+								{{ i18n.translate('location') }}
+							</div>
+							<div class="info-value">
+								<a [href]="mapsHref()" target="_blank" rel="noopener">
+									{{ hotel.latitude.toFixed(4) }}, {{ hotel.longitude.toFixed(4) }}
+								</a>
+							</div>
+						</div>
+
+						<div class="info-item">
+							<div class="info-label">
+								<span class="material-icons">star_rate</span>
+								{{ i18n.translate('starRating') }}
+							</div>
+							<div class="info-value">
+								{{ hotel.starRating }} {{ i18n.translate('stars') }}
+							</div>
+						</div>
+
+						<div class="action-buttons">
+							<button class="btn btn-primary full-width">
+								<span class="material-icons">book_online</span>
+								{{ i18n.translate('bookNow') }}
+							</button>
+							<button class="btn btn-secondary full-width" (click)="addToFavorites()">
+								<span class="material-icons">favorite_border</span>
+								{{ i18n.translate('saveToFavorites') }}
+							</button>
+							<button class="btn btn-accent full-width">
+								<span class="material-icons">share</span>
+								{{ i18n.translate('share') }}
+							</button>
+						</div>
+					</div>
+
+					<div class="stats-card">
+						<h3>{{ i18n.translate('quickStats') }}</h3>
+						<div class="stat-item">
+							<span class="stat-value">{{ i18n.formatNumber(hotel.rating) }}/5</span>
+							<span class="stat-label">{{ i18n.translate('averageRating') }}</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-value">{{ i18n.formatNumber(hotel.reviewCount) }}</span>
+							<span class="stat-label">{{ i18n.translate('totalReviews') }}</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-value">{{ getVisitorEstimate() }}</span>
+							<span class="stat-label">{{ i18n.translate('annualVisitors') }}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Related Hotels -->
+	<section class="related-section" *ngIf="relatedHotels.length > 0">
+		<div class="container">
+			<h2 class="section-title">{{ i18n.translate('youMightAlsoLike') }}</h2>
+
+			<div class="related-grid">
+				<div class="related-card" *ngFor="let related of relatedHotels">
+					<div class="related-image">
+						<img
+							[src]="related.imageUrl"
+							[alt]="i18n.pick((related).name)"
+							loading="lazy"
+						/>
+					</div>
+
+					<div class="related-content">
+						<h4>{{ i18n.pick((related).name) }}</h4>
+						<p>{{ (i18n.pick((related).description) | slice:0:80) }}...</p>
+
+						<div class="related-meta">
+							<div class="rating">
+								<span class="material-icons">star</span>
+								<span>{{ i18n.formatNumber(related.rating) }}</span>
+							</div>
+							<span class="price">{{ i18n.pick((related).priceRange) }}</span>
+						</div>
+
+						<a [routerLink]="['/hotels', related.id]" class="btn btn-primary btn-sm">
+							{{ i18n.translate('viewDetails') }}
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<!-- Loading State -->
+<div class="loading-container" *ngIf="!hotel && !error">
+	<div class="spinner"></div>
+	<p>{{ i18n.translate('loading') }}</p>
+</div>
+
+<!-- Error State -->
+<div class="error-container" *ngIf="error">
+	<div class="error-icon">
+		<span class="material-icons">error_outline</span>
+	</div>
+	<h2>{{ i18n.translate('noResults') }}</h2>
+	<p>{{ i18n.translate('hotelsSubtitle') }}</p>
+	<a routerLink="/hotels" class="btn btn-primary">
+		<span class="material-icons">arrow_back</span>
+		{{ i18n.translate('hotels') }}
+	</a>
+</div>

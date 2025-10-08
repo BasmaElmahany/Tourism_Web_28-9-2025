@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { TourismService } from '../../services/tourism.service';
 import { Hotel } from '../../models/tourism.models';
@@ -24,7 +24,8 @@ export class HotelsComponent implements OnInit {
 
   constructor(
     private tourismService: TourismService,
-    public i18nService: I18nService
+    public i18nService: I18nService,
+    private router: Router
   ) {}
 
 
@@ -115,7 +116,9 @@ export class HotelsComponent implements OnInit {
 
 
   viewHotelDetails(hotel: Hotel) {
-    console.log('View hotel details:', this.getHotelName(hotel));
+    // navigate to /hotels/:id
+    if (!hotel || !hotel.id) return;
+    this.router.navigate(['/hotels', hotel.id]);
   }
 
   bookHotel(hotel: Hotel) {

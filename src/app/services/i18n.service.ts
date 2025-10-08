@@ -91,6 +91,13 @@ export interface TranslationKeys {
   annualVisitors: string;
   youMightAlsoLike: string;
 
+  // Hotel Details / Booking
+  aboutHotel: string;
+  roomTypes: string;
+  contact: string;
+  bookingInformation: string;
+  starRating: string;
+
   // Statistics
   historicSites: string;
   hotels: string;
@@ -278,6 +285,12 @@ export class I18nService {
       totalReviews: 'Total Reviews',
       annualVisitors: 'Annual Visitors',
       youMightAlsoLike: 'You Might Also Like',
+  // Hotel Details
+  aboutHotel: 'About This Hotel',
+  roomTypes: 'Room Types',
+  contact: 'Contact',
+  bookingInformation: 'Booking Information',
+  starRating: 'Star Rating',
 
       // Statistics
       historicSites: 'Historic Sites',
@@ -412,6 +425,12 @@ export class I18nService {
       budget: 'اقتصادي (أقل من 500 جنيه)',
       midRange: 'متوسط (500-1000 جنيه)',
       luxury: 'فاخر (1000+ جنيه)',
+  // Hotel Details
+  aboutHotel: 'عن هذا الفندق',
+  roomTypes: 'أنواع الغرف',
+  contact: 'معلومات الاتصال',
+  bookingInformation: 'معلومات الحجز',
+  starRating: 'تصنيف النجوم',
       exploreHotels: "اكتشف الفنادق",
       more: "المزيد",
       reviews: "الأراء",
