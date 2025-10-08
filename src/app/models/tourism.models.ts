@@ -229,3 +229,25 @@ export interface NewsletterSubscription {
   preferences: string[];
   subscribeDate: Date;
 }
+
+
+export interface ServiceItem {
+  id: string;
+  name: string;
+  nameAr: string;
+  description: string;
+  descriptionAr: string;
+  type: 'hospital' | 'ambulance' | 'police' | 'fire' | 'bank' | 'exchange';
+  typeAr: string;
+  phone: string;
+  address: string;
+  addressAr: string;
+  image: string;
+  isEmergency: boolean;
+  is24h: boolean;
+  isFeatured: boolean;
+  rating?: number;
+  distanceKm?: number;
+  features: string[];
+  featuresAr: string[];
+}
