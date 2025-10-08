@@ -100,10 +100,17 @@ export class AttractionsComponent implements OnInit {
   get catArchaeologicalSite(): string {
     return this.i18n.pick({ en: 'Archaeological Site', ar: 'موقع أثري' });
   }
-  get catAncientCity(): string {
-    return this.i18n.pick({ en: 'Ancient City', ar: 'مدينة قديمة' });
+  get catReligiouIsamicSite(): string {
+    return this.i18n.pick({ en: 'Islamic Religious Site', ar:  'موقع ديني اسلامي' });
   }
+    get catReligiouChristianSite(): string {
+    return this.i18n.pick({ en: 'Christian religious site', ar:  'موقع ديني مسيحي' });
+  }
+
   get catScenicArea(): string {
     return this.i18n.pick({ en: 'Scenic Area', ar: 'منطقة طبيعية' });
+  }
+  get museum() : string {
+    return this.i18n.pick({en: 'Museum' , ar : 'متحف'})
   }
 }

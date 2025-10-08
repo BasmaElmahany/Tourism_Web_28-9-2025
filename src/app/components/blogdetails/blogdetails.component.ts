@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { TourismService } from '../services/tourism.service';
-import { BlogPost, LocalizedText } from '../models/tourism.models';
-import { I18nService } from '../services/i18n.service';
+import { BlogPost, LocalizedText } from 'src/app/models/tourism.models';
+import { TourismService } from 'src/app/services/tourism.service';
+import { I18nService } from 'src/app/services/i18n.service';
+
 
 @Component({
   selector: 'app-blogdetails',
