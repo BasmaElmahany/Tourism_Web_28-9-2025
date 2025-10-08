@@ -1,1 +1,194 @@
-<p>services works!</p>
+<div class="services-page" [attr.dir]="i18nService.isRTL() ? 'rtl' : 'ltr'">
+  <!-- Hero -->
+  <section class="services-hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">{{ getTranslation('title') }}</h1>
+        <p class="hero-subtitle">{{ getTranslation('subtitle') }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="services-filters">
+    <div class="container">
+      <div class="filters-header">
+        <h3>{{ getTranslation('findServices') }}</h3>
+      </div>
+
+      <div class="filters-grid">
+        <div class="filter-group">
+          <label>{{ getTranslation('type') }}</label>
+          <select [(ngModel)]="selectedType" (change)="filterServices()" class="filter-select">
+            <option value="">{{ getTranslation('allTypes') }}</option>
+            <option *ngFor="let t of serviceTypes" [value]="t.key">
+              {{ i18nService.isRTL() ? t.nameAr : t.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label>{{ getTranslation('availability') }}</label>
+          <div class="toggle-row">
+            <label class="checkbox">
+              <input type="checkbox" [(ngModel)]="onlyEmergency" (change)="filterServices()">
+              <span>{{ getTranslation('emergencyOnly') }}</span>
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" [(ngModel)]="only24h" (change)="filterServices()">
+              <span>{{ getTranslation('open24h') }}</span>
+            </label>
+          </div>
+        </div>
+
+        <button class="btn btn-secondary" (click)="clearFilters()">
+          {{ i18nService.translate('clearFilters') }}
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured -->
+  <section class="featured-services" *ngIf="featuredServices.length > 0">
+    <div class="container">
+      <h2 class="section-title">{{ getTranslation('featured') }}</h2>
+      <div class="featured-grid">
+        <div *ngFor="let item of featuredServices" class="featured-card" [class.rtl]="i18nService.isRTL()">
+          <div class="service-image">
+            <img [src]="item.image" [alt]="i18nService.isRTL() ? item.nameAr : item.name">
+            <div class="service-type-badge">
+              {{ i18nService.isRTL() ? item.typeAr : (item.type | titlecase) }}
+            </div>
+            <div class="service-availability" [class.on]="item.is24h">24/7</div>
+          </div>
+
+          <div class="service-content">
+            <div class="service-header">
+              <div class="service-type">{{ i18nService.isRTL() ? item.typeAr : (item.type | titlecase) }}</div>
+              <div class="service-rating" *ngIf="item.rating">
+                ★ {{ item.rating?.toFixed(1) }}
+              </div>
+            </div>
+
+            <h3 class="service-title">{{ i18nService.isRTL() ? item.nameAr : item.name }}</h3>
+            <p class="service-description">{{ i18nService.isRTL() ? item.descriptionAr : item.description }}</p>
+
+            <div class="service-meta">
+              <div class="meta-item">
+                <span class="material-icons">place</span>
+                <span>{{ i18nService.isRTL() ? item.addressAr : item.address }}</span>
+              </div>
+              <div class="meta-item" *ngIf="item.phone">
+                <span class="material-icons">call</span>
+                <span>{{ item.phone }}</span>
+              </div>
+              <div class="meta-item" *ngIf="item.distanceKm != null">
+                <span class="material-icons">near_me</span>
+                <span>{{ formatDistance(item.distanceKm) }}</span>
+              </div>
+            </div>
+
+            <div class="service-features" *ngIf="item.features?.length">
+              <span *ngFor="let f of (i18nService.isRTL() ? item.featuresAr : item.features)" class="feature-tag">{{ f }}</span>
+            </div>
+
+            <div class="service-actions">
+              <a class="btn btn-primary" [href]="telHref(item.phone)">{{ getTranslation('callNow') }}</a>
+              <a class="btn btn-secondary" [href]="mapsHref(item)" target="_blank" rel="noopener">
+                {{ getTranslation('getDirections') }}
+              </a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- All Services -->
+  <section class="all-services">
+    <div class="container">
+      <h2 class="section-title">{{ getTranslation('all') }}</h2>
+
+      <div class="services-grid">
+        <div *ngFor="let item of filteredServices" class="service-card" [class.rtl]="i18nService.isRTL()">
+          <div class="service-image">
+            <img [src]="item.image" [alt]="i18nService.isRTL() ? item.nameAr : item.name">
+            <div class="service-type-badge">
+              {{ i18nService.isRTL() ? item.typeAr : (item.type | titlecase) }}
+            </div>
+            <div class="service-availability" [class.on]="item.is24h">24/7</div>
+          </div>
+
+          <div class="service-content">
+            <div class="service-header">
+              <div class="service-type">{{ i18nService.isRTL() ? item.typeAr : (item.type | titlecase) }}</div>
+              <div class="service-rating" *ngIf="item.rating">★ {{ item.rating?.toFixed(1) }}</div>
+            </div>
+
+            <h3 class="service-title">{{ i18nService.isRTL() ? item.nameAr : item.name }}</h3>
+            <p class="service-description">{{ i18nService.isRTL() ? item.descriptionAr : item.description }}</p>
+
+            <div class="service-meta">
+              <div class="meta-item">
+                <span class="material-icons">place</span>
+                <span>{{ i18nService.isRTL() ? item.addressAr : item.address }}</span>
+              </div>
+              <div class="meta-item" *ngIf="item.phone">
+                <span class="material-icons">call</span>
+                <span>{{ item.phone }}</span>
+              </div>
+              <div class="meta-item" *ngIf="item.distanceKm != null">
+                <span class="material-icons">near_me</span>
+                <span>{{ formatDistance(item.distanceKm) }}</span>
+              </div>
+            </div>
+
+            <div class="service-features" *ngIf="item.features?.length">
+              <span *ngFor="let f of (i18nService.isRTL() ? item.featuresAr : item.features)" class="feature-tag">{{ f }}</span>
+            </div>
+
+            <div class="service-actions">
+              <a class="btn btn-primary" [href]="telHref(item.phone)">{{ getTranslation('callNow') }}</a>
+              <a class="btn btn-secondary" [href]="mapsHref(item)" target="_blank" rel="noopener">
+                {{ getTranslation('getDirections') }}
+              </a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- No Results -->
+      <div *ngIf="filteredServices.length === 0" class="no-results">
+        <div class="no-results-content">
+          <span class="material-icons">local_hospital</span>
+          <h3>{{ getTranslation('noFound') }}</h3>
+          <p>{{ getTranslation('tryDifferent') }}</p>
+          <button class="btn btn-primary" (click)="clearFilters()">
+            {{ i18nService.translate('clearFilters') }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tips -->
+  <section class="service-tips">
+    <div class="container">
+      <h2 class="section-title">{{ getTranslation('tips') }}</h2>
+      <div class="tips-grid">
+        <div class="tip-card" [class.rtl]="i18nService.isRTL()">
+          <div class="tip-icon"><span class="material-icons">my_location</span></div>
+          <h3>{{ getTranslation('tipPlan') }}</h3>
+          <p>{{ getTranslation('tipPlanDesc') }}</p>
+        </div>
+        <div class="tip-card" [class.rtl]="i18nService.isRTL()">
+          <div class="tip-icon"><span class="material-icons">verified</span></div>
+          <h3>{{ getTranslation('tipVerify') }}</h3>
+          <p>{{ getTranslation('tipVerifyDesc') }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

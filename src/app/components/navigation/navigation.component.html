@@ -1,9 +1,5 @@
-<nav
-  class="navbar"
-  [class.scrolled]="isScrolled"
-  [attr.dir]="i18nService.isRTL() ? 'rtl' : 'ltr'"
-  [class.rtl]="i18nService.isRTL()"
->
+<nav class="navbar" [class.scrolled]="isScrolled" [attr.dir]="i18nService.isRTL() ? 'rtl' : 'ltr'"
+  [class.rtl]="i18nService.isRTL()">
   <div class="container">
     <div class="nav-content">
       <div class="nav-logo" routerLink="/home">
@@ -28,18 +24,31 @@
           <span class="material-icons">restaurant</span>
           {{ i18nService.translate('restaurants') }}
         </a>
-        <a routerLink="/events" routerLinkActive="active" class="nav-link">
+        <!-- <a routerLink="/events" routerLinkActive="active" class="nav-link">
           <span class="material-icons">event</span>
-          {{ i18nService.translate('events') }}
-        </a>
-        <a routerLink="/itineraries" routerLinkActive="active" class="nav-link">
+          {{ i18nService.translate('events') }} 
+        </a> -->
+        <!-- <a routerLink="/itineraries" routerLinkActive="active" class="nav-link">
           <span class="material-icons">map</span>
           {{ i18nService.translate('itineraries') }}
-        </a>
+        </a>-->
         <a routerLink="/blog" routerLinkActive="active" class="nav-link">
           <span class="material-icons">article</span>
           {{ i18nService.translate('blog') }}
         </a>
+        <a routerLink="/tourguides" routerLinkActive="active" class="nav-link">
+          <span class="material-icons">person</span>
+          {{ i18nService.translate('tourguide') }}
+        </a>
+        <a routerLink="/photographers" routerLinkActive="active" class="nav-link">
+          <span class="material-icons">camera</span>
+          {{ i18nService.translate('photographers') }}
+        </a>
+        <a routerLink="/services" routerLinkActive="active" class="nav-link">
+          <span class="material-icons">support</span>
+          {{ i18nService.translate('services') }}
+        </a>
+
       </div>
 
       <div class="nav-actions">
@@ -86,6 +95,10 @@
         <a routerLink="/blog" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
           <span class="material-icons">article</span>
           {{ i18nService.translate('blog') }}
+        </a>
+        <a routerLink="/tourguides" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
+          <span class="material-icons">tourguide</span>
+          {{ i18nService.translate('tourguide') }}
         </a>
         <a routerLink="/visitor-info" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
           <span class="material-icons">info</span>
