@@ -1,67 +1,1190 @@
 import { Restaurant } from "../models/tourism.models";
 
-export const restaurants = [
+export const restaurants: Restaurant[] = [
   {
-    id: "1",
-    name: { en: "Nile Breeze Restaurant", ar: "مطعم نسيم النيل" },
-    description: {
-      en: "Authentic Egyptian cuisine with a modern twist, featuring fresh ingredients and traditional recipes passed down through generations.",
-      ar: "مأكولات مصرية أصيلة بلمسة عصرية، مع مكونات طازجة ووصفات تقليدية متوارثة عبر الأجيال."
+    id: "minya_1",
+    name: {
+      en: "Orked Restaurant",
+      ar: "مطعم أوركيد"
     },
-    imageUrl: "/assets/images/nile_river.jpg",
-    latitude: 28.1080,
-    longitude: 30.7490,
-    rating: 4.6,
-    reviewCount: 187,
-    cuisineType: { en: "Egyptian", ar: "مصري" },
-    priceRange: { en: "150-300 EGP per person", ar: "١٥٠-٣٠٠ جنيه للفرد" },
-    openingHours: { en: "12:00 PM - 11:00 PM", ar: "١٢:٠٠ ظهرًا - ١١:٠٠ مساءً" },
-    specialties: [
-      { en: "Koshari", ar: "كشري" },
-      { en: "Molokhia", ar: "ملوخية" },
-      { en: "Grilled Fish", ar: "سمك مشوي" },
-      { en: "Om Ali", ar: "أم علي" }
-    ],
+    description: {
+      en: "Traditional Egyptian cuisine by the Nile with scenic views",
+      ar: "مأكولات مصرية تقليدية مطلة على النيل"
+    },
+    imageUrl: "assets/images/Orked Restaurant.webp",
+    latitude: 28.1099,
+    longitude: 30.7503,
+    rating: 4.3,
+    reviewCount: 2635,
+    cuisineType: {
+      en: "Egyptian",
+      ar: "مصري"
+    },
+    priceRange: {
+      en: "Mid-range",
+      ar: "متوسط"
+    },
+   openingHours: {
+  en: "Wed 12:00 PM – 2:00 AM\nThu 12:00 PM – 2:00 AM\nFri 12:00 PM – 2:00 AM\nSat 12:00 PM – 2:00 AM\nSun 12:00 PM – 2:00 AM\nMon 12:00 PM – 2:00 AM\nTue 12:00 PM – 2:00 AM",
+  ar: "الأربعاء ١٢:٠٠م–٢:٠٠ص\nالخميس ١٢:٠٠م–٢:٠٠ص\nالجمعة ١٢:٠٠م–٢:٠٠ص\nالسبت ١٢:٠٠م–٢:٠٠ص\nالأحد ١٢:٠٠م–٢:٠٠ص\nالاثنين ١٢:٠٠م–٢:٠٠ص\nالثلاثاء ١٢:٠٠م–٢:٠٠ص"
+},
+
+    specialties: [],
     contactInfo: {
-      phone: { en: "+20 86 234 1234", ar: "+٢٠ ٨٦ ٢٣٤ ١٢٣٤" },
-      email: "info@nilebreeze.com"
+      phone: {
+        en: "086 2356999",
+        ar: "٠٨٦ ٢٣٥٦٩٩٩"
+      },
+      email: ""
     },
     features: [
-      { en: "Nile View", ar: "إطلالة على النيل" },
-      { en: "Outdoor Seating", ar: "مقاعد خارجية" },
-      { en: "Live Music", ar: "موسيقى حية" },
-      { en: "Vegetarian Options", ar: "خيارات نباتية" }
+      {
+        en: "Nile View",
+        ar: "إطلالة على النيل"
+      }
     ]
   },
   {
-    id: "2",
-    name: { en: "Al Minya Traditional Kitchen", ar: "المطبخ التقليدي بالمنيا" },
-    description: {
-      en: "Family-owned restaurant serving traditional Upper Egyptian dishes in a cozy, authentic atmosphere.",
-      ar: "مطعم عائلي يقدم أطباق صعيدية تقليدية في أجواء دافئة وأصيلة."
+    id: "minya_2",
+    name: {
+      en: "Bayada Seafood",
+      ar: "مطعم البياضة"
     },
-    imageUrl: "/assets/images/hero_banner.png",
-    latitude: 28.1120,
-    longitude: 30.7510,
-    rating: 4.4,
-    reviewCount: 98,
-    cuisineType: { en: "Traditional Egyptian", ar: "مصري تقليدي" },
-    priceRange: { en: "80-200 EGP per person", ar: "٨٠-٢٠٠ جنيه للفرد" },
-    openingHours: { en: "11:00 AM - 10:00 PM", ar: "١١:٠٠ صباحًا - ١٠:٠٠ مساءً" },
+    description: {
+      en: "Seafood and classic Egyptian dishes",
+      ar: "أطباق سمك وأكلات مصرية كلاسيكية"
+    },
+    imageUrl: "assets/images/Minya-seafood-.jpg",
+    latitude: 28.099254419637028,
+    longitude: 30.756527154526424,
+    rating: 3.9,
+    reviewCount: 142,
+    cuisineType: {
+      en: "Seafood, Egyptian",
+      ar: "أسماك، مصري"
+    },
+    priceRange: {
+      en: "Mid-range",
+      ar: "متوسط"
+    },
+    openingHours: {
+  en: "Wed 8:00 AM – 2:00 AM\nThu 8:00 AM – 2:00 AM\nFri 8:00 AM – 2:00 AM\nSat 8:00 AM – 2:00 AM\nSun 8:00 AM – 12:00 AM\nMon 8:00 AM – 2:00 AM\nTue 8:00 AM – 2:00 AM",
+  ar: "الأربعاء ٨:٠٠ص–٢:٠٠ص\nالخميس ٨:٠٠ص–٢:٠٠ص\nالجمعة ٨:٠٠ص–٢:٠٠ص\nالسبت ٨:٠٠ص–٢:٠٠ص\nالأحد ٨:٠٠ص–١٢:٠٠ص\nالاثنين ٨:٠٠ص–٢:٠٠ص\nالثلاثاء ٨:٠٠ص–٢:٠٠ص"
+},
+
+    specialties: [],
+    contactInfo: {
+      phone: {
+        en: "086 2369550",
+        ar: "٠٨٦ ٢٣٦٩٥٥٠"
+      },
+      email: ""
+    },
+     features: [
+  { en: "Restroom", ar: "مرحاض" }
+]
+  },
+
+  // ======= باقي إدخالات المنيا =======
+//   {
+//     id: "minya_3",
+//     name: {
+//       en: "Fresh Food Grill Restaurant",
+//       ar: "مطعم فريش فود جريل"
+//     },
+//     description: {
+//       en: "Mediterranean and Egyptian grilled dishes",
+//       ar: "أطباق مشوية متوسطية ومصرية"
+//     },
+//     imageUrl: "assets/images/Fresh Food Grill Restaurant_n.jpg",
+//     latitude: 28.07367330527575, 
+//     longitude: 30.816348988009075,
+//     rating: 4.7,
+//     reviewCount: 448,
+//     cuisineType: {
+//       en: "Mediterranean, Egyptian",
+//       ar: "متوسطي، مصري"
+//     },
+//     priceRange: {
+//       en: "Mid-range",
+//       ar: "متوسط"
+//     },
+//    openingHours: {
+//   en: "Wed 11:30 AM – 3:00 AM\nThu 11:30 AM – 3:00 AM\nFri 1:00 PM – 3:00 AM\nSat 11:30 AM – 3:00 AM\nSun 11:30 AM – 3:00 AM\nMon 11:30 AM – 3:00 AM",
+//   ar: "الأربعاء ١١:٣٠ص–٣:٠٠ص\nالخميس ١١:٣٠ص–٣:٠٠ص\nالجمعة ١:٠٠م–٣:٠٠ص\nالسبت ١١:٣٠ص–٣:٠٠ص\nالأحد ١١:٣٠ص–٣:٠٠ص\nالاثنين ١١:٣٠ص–٣:٠٠ص"
+// },
+
+//     specialties: [],
+//     contactInfo: {
+//       phone: {
+//         en: "+20 102 000 4495",
+//         ar: "+٢٠ ١٠٢ ٠٠٠ ٤٤٩٥"
+//       },
+//       email: ""
+//     },
+//     features: [
+//   { en: "Restroom", ar: "مرحاض" }
+// ]
+
+//   },
+  // {
+  //   id: "minya_4",
+  //   name: {
+  //     en: "Toscanini",
+  //     ar: "توسكاني"
+  //   },
+  //   description: {
+  //     en: "Italian / mixed cuisine with Nile view",
+  //     ar: "مطبخ إيطالي / مختلط مع إطلالة على النيل"
+  //   },
+  //   imageUrl: "assets/images/توسكاني.jpg",
+  //   latitude: 0,
+  //   longitude: 0,
+  //   rating: 4.5,
+  //   reviewCount: 2,
+  //   cuisineType: {
+  //     en: "Italian, Mixed",
+  //     ar: "إيطالي، مختلط"
+  //   },
+  //   priceRange: {
+  //     en: "Mid-range",
+  //     ar: "متوسط"
+  //   },
+  //   openingHours: {
+  //     en: "",
+  //     ar: ""
+  //   },
+  //   specialties: [],
+  //   contactInfo: {
+  //     phone: {
+  //       en: "+20 127 272 7220",
+  //       ar: "+٢٠ ١٢٧ ٢٧٢ ٧٢٢٠"
+  //     },
+  //     email: ""
+  //   },
+  //   features: []
+  // },
+//   {
+//     id: "minya_5",
+//     name: {
+//       en: "Bondokah Restaurant",
+//       ar: "مطعم بوندقة"
+//     },
+//     description: {
+//       en: "Casual dining with Egyptian classics like koshari",
+//       ar: "مطعم عادي يقدم أكلات مصرية مثل الكشري"
+//     },
+//     imageUrl: "assets/images/Bondokah Restaurant.jpg",
+//     latitude: 28.102050188865025, 
+//     longitude: 30.754808388008396,
+//     rating: 3.8,
+//     reviewCount: 2458,
+//     cuisineType: {
+//       en: "Egyptian",
+//       ar: "مصري"
+//     },
+//     priceRange: {
+//       en: "Affordable",
+//       ar: "مناسب"
+//     },
+//    openingHours: {
+//   en: "Wednesday 9:00 AM–3:00 AM, Thursday 9:00 AM–3:00 AM, Friday 12:00 PM–3:00 AM, Saturday 12:00 PM–3:00 AM, Sunday 9:00 AM–3:00 AM, Monday 9:00 AM–3:00 AM, Tuesday 9:00 AM–3:00 AM",
+//   ar: "الأربعاء ٩:٠٠ص–٣:٠٠ص، الخميس ٩:٠٠ص–٣:٠٠ص، الجمعة ١٢:٠٠م–٣:٠٠ص، السبت ١٢:٠٠م–٣:٠٠ص، الأحد ٩:٠٠ص–٣:٠٠ص، الاثنين ٩:٠٠ص–٣:٠٠ص، الثلاثاء ٩:٠٠ص–٣:٠٠ص"
+// },
+
+//     specialties: [],
+//     contactInfo: {
+//       phone: {
+//         en: "086 2334141",
+//         ar: "٠٨٦ ٢٣٣٤١٤١"
+//       },
+//       email: ""
+//     },
+//        features: [
+//   { en: "Restroom", ar: "مرحاض" }
+// ]
+//   },
+
+  // ======= ملوي (Mallawi) =======
+  {
+    id: "mallawi_1",
+    name: {
+      en: "Chicky Door",
+      ar: "تشيكي دور"
+    },
+    description: {
+      en: "Fast food / take-away in Mallawi",
+      ar: "وجبات سريعة / تيك أواي في ملوي"
+    },
+    imageUrl: "assets/images/Chicky Door.jpg",
+    latitude: 27.7381296420425,
+    longitude:  30.847042457333302,
+    rating:3.9,
+    reviewCount: 81,
+    cuisineType: {
+      en: "Fast Food",
+      ar: "وجبات سريعة"
+    },
+    priceRange: {
+      en: "Low to Mid",
+      ar: "منخفض إلى متوسط"
+    },
+    openingHours: {
+      en: "",
+      ar: ""
+    },
+    specialties: [],
+    contactInfo: {
+      phone: {
+        en: "01050315333 / 01555291223",
+        ar: "01050315333 / 01555291223"
+      },
+      email: ""
+    },
+    features: []
+  },
+  {
+    id: "mallawi_2",
+    name: {
+      en: "Beit ElEzz (Beit El Ezz Mallawi)",
+      ar: "مطعم بيت العز"
+    },
+    description: {
+      en: "Family style restaurant specializing in grills, mandi, pizza",
+      ar: "مطعم عائلي متخصص في المشاوي، المندي، البيتزا والطواجن"
+    },
+    imageUrl: "assets/images/Beit ElEzz (Beit El Ezz Mallawi).jpg",
+    latitude: 27.738564389916235,
+    longitude: 30.84441498616867,
+    rating: 4.3,
+    reviewCount: 276,
+    cuisineType: {
+      en: "Grill, Mandi, Pizza",
+      ar: "مشاوي، مندي، بيتزا"
+    },
+    priceRange: {
+      en: "Mid-range",
+      ar: "متوسط"
+    },
+   openingHours: {
+  en: "Wed Open 24 hours\nThu 10:00 AM – 2:00 AM\nFri 10:00 AM – 12:00 AM\nSat Open 24 hours\nSun Open 24 hours\nMon Open 24 hours",
+  ar: "الأربعاء نعمل على مدار 24 ساعة\nالخميس ١٠:٠٠ص–٢:٠٠ص\nالجمعة ١٠:٠٠ص–١٢:٠٠ص\nالسبت نعمل على مدار 24 ساعة\nالأحد نعمل على مدار 24 ساعة\nالاثنين نعمل على مدار 24 ساعة"
+}
+,
+    specialties: [],
+    contactInfo: {
+      phone: {
+        en: "01110341113 / 01050205761",
+        ar: "01110341113 / 01050205761"
+      },
+      email: ""
+    },
+    features: []
+  },
+  // {
+  //   id: "mallawi_3",
+  //   name: {
+  //     en: "Duwwar El Omda (Dowar El Omda)",
+  //     ar: "مطعم دوار العمده"
+  //   },
+  //   description: {
+  //     en: "Local restaurant in Mallawi",
+  //     ar: "مطعم محلي في ملوي"
+  //   },
+  //   imageUrl: "assets/images/مطعم دوار العمده.jpg",
+  //   latitude: 0,
+  //   longitude: 0,
+  //   rating: 0,
+  //   reviewCount: 0,
+  //   cuisineType: {
+  //     en: "Egyptian / Grill",
+  //     ar: "مصري / مشاوي"
+  //   },
+  //   priceRange: {
+  //     en: "Low to Mid",
+  //     ar: "منخفض إلى متوسط"
+  //   },
+  //   openingHours: {
+  //     en: "10:00 AM - 10:00 PM",
+  //     ar: "10:00 صباحاً - 10:00 مساءً"
+  //   },
+  //   specialties: [],
+  //   contactInfo: {
+  //     phone: {
+  //       en: "01000907292",
+  //       ar: "01000907292"
+  //     },
+  //     email: ""
+  //   },
+  //   features: []
+  // },
+  {
+    id: "mallawi_4",
+    name: {
+      en: "Ayman Restaurant (مطعم أيمن)",
+      ar: "مطعم أيمن"
+    },
+    description: {
+      en: "Local eatery in Mallawi (delivery available)",
+      ar: "مطعم محلي في ملوي (توصيل متاح)"
+    },
+    imageUrl: "assets/images/Ayman Restaurant (مطعم أيمن).jpg",
+    latitude: 27.738153654342618,
+    longitude: 30.844708940717766,
+    rating: 4.2,
+    reviewCount: 27,
+    cuisineType: {
+      en: "Egyptian",
+      ar: "مصري"
+    },
+    priceRange: {
+      en: "Low to Mid",
+      ar: "منخفض إلى متوسط"
+    },
+   openingHours: {
+  en: "Wed 3:00 PM – 3:00 AM\nThu 3:00 PM – 3:00 AM\nFri 3:00 PM – 3:00 AM\nSat 3:00 PM – 3:00 AM\nSun 3:00 PM – 3:00 AM\nMon Closed",
+  ar: "الأربعاء ٣:٠٠م–٣:٠٠ص\nالخميس ٣:٠٠م–٣:٠٠ص\nالجمعة ٣:٠٠م–٣:٠٠ص\nالسبت ٣:٠٠م–٣:٠٠ص\nالأحد ٣:٠٠م–٣:٠٠ص\nالاثنين مغلق"
+}
+,
+    specialties: [],
+    contactInfo: {
+      phone: {
+        en: "01090751710 / 01140008535",
+        ar: "01090751710 / 01140008535"
+      },
+      email: ""
+    },
+    features: []
+  },
+
+  // ======= بني مزار (Beni Mazar) =======
+  {
+    id: "beni_1",
+    name: {
+      en: "Piano Cafe",
+      ar: "بيانو كافيه"
+    },
+    description: {
+      en: "Cafe & light meals — popular in Beni Mazar",
+      ar: "كافيه ووجبات خفيفة — مشهور في بني مزار"
+    },
+    imageUrl: "assets/images/Piano Cafe.jpg",
+    latitude: 28.495016204254583, 
+    longitude: 30.807570087998325,
+    rating: 3.8,
+    reviewCount: 137,
+    cuisineType: {
+      en: "Cafe",
+      ar: "كافيه"
+    },
+    priceRange: {
+      en: "Low to Mid",
+      ar: "منخفض إلى متوسط"
+    },
+   openingHours: {
+  en: "Wed 8:30 AM – 2:00 AM\nThu 8:30 AM – 2:00 AM\nFri 8:30 AM – 2:00 AM\nSat 8:30 AM – 2:00 AM\nSun 8:30 AM – 2:00 AM\nMon 8:30 AM – 2:00 AM",
+  ar: "الأربعاء ٨:٣٠ص–٢:٠٠ص\nالخميس ٨:٣٠ص–٢:٠٠ص\nالجمعة ٨:٣٠ص–٢:٠٠ص\nالسبت ٨:٣٠ص–٢:٠٠ص\nالأحد ٨:٣٠ص–٢:٠٠ص\nالاثنين ٨:٣٠ص–٢:٠٠ص"
+},
+
     specialties: [
-      { en: "Fattah", ar: "فتة" },
-      { en: "Bamia", ar: "بامية" },
-      { en: "Roz Bel Laban", ar: "أرز باللبن" },
-      { en: "Fresh Bread", ar: "خبز طازج" }
+      { en: "Coffee", ar: "قهوة" },
+      { en: "Sandwiches", ar: "ساندوتشات" }
     ],
     contactInfo: {
-      phone: { en: "+20 86 234 5555", ar: "+٢٠ ٨٦ ٢٣٤ ٥٥٥٥" }
+      phone: { en: "", ar: "" },
+      email: ""
     },
     features: [
-      { en: "Family Friendly", ar: "مناسب للعائلات" },
-      { en: "Traditional Decor", ar: "ديكور تقليدي" },
-      { en: "Local Ingredients", ar: "مكونات محلية" },
-      { en: "Takeaway", ar: "تيك أواي" }
+      { en: "Outdoor Seating", ar: "جلسات خارجية" }
     ]
-  }
-] satisfies Restaurant[];
+  },
+  {
+    id: "beni_2",
+    name: {
+      en: "El Omda (Al Omda)",
+      ar: "مطعم العمدة"
+    },
+    description: {
+      en: "Local grill & family restaurant in Beni Mazar",
+      ar: "مطعم مشاوي وعائلي في بني مزار"
+    },
+    imageUrl: "assets/images/El Omda (Al Omda).png",
+    latitude: 28.49868749709676, 
+    longitude:30.80452639764266,
+    rating: 3.7
+,
+    reviewCount: 101,
+    cuisineType: {
+      en: "Egyptian / Grill",
+      ar: "مصري / مشاوي"
+    },
+    priceRange: {
+      en: "Low to Mid",
+      ar: "منخفض إلى متوسط"
+    },
+    openingHours: {
+      en: "10:00 AM - 11:00 PM",
+      ar: "10:00 صباحاً - 11:00 مساءً"
+    },
+    specialties: [
+      { en: "Grills", ar: "مشاوي" },
+      { en: "Masry Dishes", ar: "أكلات مصرية" }
+    ],
+    contactInfo: {
+      phone: { en: "01092937948", ar: "٠١٠٩٢٩٣٧٩٤٨" },
+      email: ""
+    },
+    features: []
+  },
+  {
+    id: "beni_3",
+    name: {
+      en: "Tito's Restaurant - Beni Mazar",
+      ar: "مطعم تيتو"
+    },
+    description: {
+      en: "Casual local restaurant listed on TripAdvisor",
+      ar: "مطعم محلي مدرج في TripAdvisor"
+    },
+    imageUrl: "assets/images/Tito's Restaurant - Beni Mazar.jpg",
+    latitude: 28.495962531207283,
+    longitude: 30.813360059162747,
+    rating: 3.1
+,
+    reviewCount: 35,
+    cuisineType: {
+      en: "Egyptian",
+      ar: "مصري"
+    },
+    priceRange: {
+      en: "Low to Mid",
+      ar: "منخفض إلى متوسط"
+    },
+   openingHours: {
+  en: "Wed 10:00 AM – 12:00 AM\nThu 10:00 AM – 12:00 AM\nFri Closed\nSat 10:00 AM – 12:00 AM\nSun 10:00 AM – 12:00 AM\nMon 10:00 AM – 12:00 AM",
+  ar: "الأربعاء ١٠:٠٠ص–١٢:٠٠ص\nالخميس ١٠:٠٠ص–١٢:٠٠ص\nالجمعة مغلق\nالسبت ١٠:٠٠ص–١٢:٠٠ص\nالأحد ١٠:٠٠ص–١٢:٠٠ص\nالاثنين ١٠:٠٠ص–١٢:٠٠ص"
+}
+,
+    specialties: [],
+    contactInfo: {
+      phone: { en: "0867838400", ar: "٠٨٦٧٨٣٨٤٠٠" },
+      email: ""
+    },
+    features: []
+  },
+
+  // ======= دير مواس (Deir Mawas) =======
+  {
+    id: "deir_1",
+    name: {
+      en: "Abo Ali Fried Chicken",
+      ar: "أبو علي - دير مواس"
+    },
+    description: {
+      en: "Fried chicken / fast food chain",
+      ar: "وجبات دجاج مقلية / وجبات سريعة"
+    },
+    imageUrl: "assets/images/Abo Ali Fried Chicken.jpg",
+    latitude: 27.644351778537846,
+    longitude: 30.85822595123684,
+    rating: 3.9
+,
+    reviewCount: 23,
+    cuisineType: {
+      en: "Fast Food",
+      ar: "وجبات سريعة"
+    },
+    priceRange: {
+      en: "Low",
+      ar: "منخفض"
+    },
+   openingHours: {
+  en: "Wed: Open 24 hours, Thu: Open 24 hours, Fri: Closed, Sat: Open 24 hours, Sun: Open 24 hours, Mon: Open 24 hours, Tue: Open 24 hours",
+  ar: "الأربعاء: نعمل على مدار 24 ساعة، الخميس: نعمل على مدار 24 ساعة، الجمعة: مغلق، السبت: نعمل على مدار 24 ساعة، الأحد: نعمل على مدار 24 ساعة، الاثنين: نعمل على مدار 24 ساعة، الثلاثاء: نعمل على مدار 24 ساعة"
+},
+
+    specialties: [
+      { en: "Fried Chicken", ar: "دجاج مقلي" }
+    ],
+    contactInfo: {
+     phone: {
+  en: "01001436173",
+  ar: "٠١٠٠١٤٣٦١٧٣"
+},
+
+      email: ""
+    },
+    features: [
+      { en: "Delivery", ar: "توصيل" }
+    ]
+  },
+
+  // ======= أبو قرقاص (Abu Qurqas) =======
+  // {
+  //   id: "abuq_1",
+  //   name: {
+  //     en: "Samihah Restaurant",
+  //     ar: "مطعم سميحة"
+  //   },
+  //   description: {
+  //     en: "Local pizza/delivery and family restaurant in Abu Qurqas",
+  //     ar: "مطعم بيتزا وتوصيل عائلي في أبو قرقاص"
+  //   },
+  //   imageUrl: "https://www.yellowpages.com.eg/images/612625.jpg",
+  //   latitude: 0,
+  //   longitude: 0,
+  //   rating: 0,
+  //   reviewCount: 0,
+  //   cuisineType: {
+  //     en: "Pizza / Egyptian",
+  //     ar: "بيتزا / مصري"
+  //   },
+  //   priceRange: {
+  //     en: "Low to Mid",
+  //     ar: "منخفض إلى متوسط"
+  //   },
+  //   openingHours: {
+  //     en: "",
+  //     ar: ""
+  //   },
+  //   specialties: [
+  //     { en: "Pizza", ar: "بيتزا" }
+  //   ],
+  //   contactInfo: {
+  //     phone: { en: "", ar: "" },
+  //     email: ""
+  //   },
+  //   features: [
+  //     { en: "Delivery", ar: "توصيل" }
+  //   ]
+  // },
+  {
+    id: "abuq_2",
+    name: {
+      en: "Fritto Burger - Abu Qurqas",
+      ar: "فريتو برجر"
+    },
+    description: {
+      en: "Popular local burger chain/fast food listed for Abu Qurqas",
+      ar: "سلسلة برجر محلية / وجبات سريعة مدرجة لأبو قرقاص"
+    },
+    imageUrl: "assets/images/Fritto Burger - Abu Qurqas.jpg",
+    latitude: 27.935555521476903, 
+    longitude: 30.85822595123684,
+    rating: 4.6
+,
+    reviewCount: 10,
+    cuisineType: {
+      en: "Fast Food",
+      ar: "وجبات سريعة"
+    },
+    priceRange: {
+      en: "Low",
+      ar: "منخفض"
+    },
+   openingHours: {
+  en: "Wednesday: 2:00 PM–2:00 AM, Thursday: 2:00 PM–2:00 AM, Friday: Closed, Saturday: 2:00 PM–2:00 AM, Sunday: 2:00 PM–2:00 AM, Monday: 2:00 PM–2:00 AM, Tuesday: 2:00 PM–2:00 AM",
+  ar: "الأربعاء: ٢:٠٠م–٢:٠٠ص، الخميس: ٢:٠٠م–٢:٠٠ص، الجمعة: مغلق، السبت: ٢:٠٠م–٢:٠٠ص، الأحد: ٢:٠٠م–٢:٠٠ص، الاثنين: ٢:٠٠م–٢:٠٠ص، الثلاثاء: ٢:٠٠م–٢:٠٠ص"
+},
+
+    specialties: [
+      { en: "Burgers", ar: "برجر" }
+    ],
+    contactInfo: {
+      phone: { en: "01148263649", ar: "01148263649" },
+      email: ""
+    },
+    features: [
+      { en: "Delivery", ar: "توصيل" }
+    ]
+  },
+  {
+    id: "abuq_3",
+    name: {
+      en: "Chef Mayer & Mood's (Abu Qurqas)",
+      ar: "شيف ماير ومودز"
+    },
+    description: {
+      en: "Restaurant & drinks — local Abu Qurqas venue (Facebook page)",
+      ar: "مطعم ومشروبات — مكان محلي في أبو قرقاص (صفحة فيسبوك)"
+    },
+    imageUrl: "assets/images/Chef Mayer & Mood's (Abu Qurqas).jpg",
+    latitude: 27.936115949277433, 
+    longitude: 30.85822595123684,
+    rating: 4.3,
+    reviewCount:41,
+    cuisineType: {
+      en: "Mixed",
+      ar: "متنوع"
+    },
+    priceRange: {
+      en: "Mid-range",
+      ar: "متوسط"
+    },
+   openingHours: {
+  en: "Wed 1:00 PM – 2:00 AM\nThu 1:00 PM – 2:00 AM\nFri 1:00 PM – 2:00 AM\nSat 1:00 PM – 2:00 AM\nSun Closed\nMon 1:00 PM – 2:00 AM",
+  ar: "الأربعاء ١:٠٠م–٢:٠٠ص\nالخميس ١:٠٠م–٢:٠٠ص\nالجمعة ١:٠٠م–٢:٠٠ص\nالسبت ١:٠٠م–٢:٠٠ص\nالأحد مغلق\nالاثنين ١:٠٠م–٢:٠٠ص"
+}
+,
+    specialties: [],
+    contactInfo: {
+       phone: { en: "01282420500", ar: "٠١٢٨٢٤٢٠٥٠٠" },
+      email: ""
+    },
+    features: []
+  },
+
+  // ======= سمالوط (Samalut) =======
+  {
+    id: "sam_1",
+    name: {
+      en: "Beit ElSham",
+      ar: "بيت الشام - سمالوط"
+    },
+    description: {
+      en: "Syrian-style restaurant and shawarma, popular in Samalut",
+      ar: "مطعم سوري وشاورما، مشهور في سمالوط"
+    },
+    imageUrl: "assets/images/Beit ElSham.jpg",
+    latitude: 28.312556228503542,
+    longitude: 30.70910417266086,
+    rating: 3.8
+,
+    reviewCount:207,
+    cuisineType: {
+      en: "Syrian / Middle Eastern",
+      ar: "سوري / شرق أوسطي"
+    },
+    priceRange: {
+      en: "Low to Mid",
+      ar: "منخفض إلى متوسط"
+    },
+   openingHours: {
+  en: "Wed 1:00 PM – 3:00 AM\nThu 1:00 PM – 2:00 AM\nFri 3:00 PM – 3:00 AM\nSat 1:00 PM – 3:00 AM\nSun 1:00 PM – 3:00 AM\nMon 1:00 PM – 3:00 AM",
+  ar: "الأربعاء ١:٠٠م–٣:٠٠ص\nالخميس ١:٠٠م–٢:٠٠ص\nالجمعة ٣:٠٠م–٣:٠٠ص\nالسبت ١:٠٠م–٣:٠٠ص\nالأحد ١:٠٠م–٣:٠٠ص\nالاثنين ١:٠٠م–٣:٠٠ص"
+},
+
+    specialties: [
+      { en: "Shawarma", ar: "شاورما" }
+    ],
+    contactInfo: {
+      phone: { en: "01026879698", ar: "٠١٠٢٦٨٧٩٦٩٨" },
+      email: ""
+    },
+    features: [
+      { en: "Takeaway", ar: "تيك أواي" },
+      { en: "Delivery", ar: "توصيل" }
+    ]
+  },
+  // {
+  //   id: "sam_2",
+  //   name: {
+  //     en: "Plaza Club - Samalut",
+  //     ar: "نادي بلازا - سمالوط"
+  //   },
+  //   description: {
+  //     en: "Local restaurant / club offering casual dining",
+  //     ar: "مطعم محلي / نادي يقدم وجبات عادية"
+  //   },
+  //   imageUrl: "https://mindtrip-ai-images.s3.amazonaws.com/plaza_club_samalut.jpg",
+  //   latitude: 0,
+  //   longitude: 0,
+  //   rating: 0,
+  //   reviewCount: 0,
+  //   cuisineType: {
+  //     en: "Mixed",
+  //     ar: "متنوع"
+  //   },
+  //   priceRange: {
+  //     en: "Mid-range",
+  //     ar: "متوسط"
+  //   },
+  //   openingHours: {
+  //     en: "",
+  //     ar: ""
+  //   },
+  //   specialties: [],
+  //   contactInfo: {
+  //     phone: { en: "", ar: "" },
+  //     email: ""
+  //   },
+  //   features: []
+  // },
+
+  // ======= مطاي (Matai) =======
+  // {
+  //   id: "matai_1",
+  //   name: {
+  //     en: "Local Grills & Koshary - Matai",
+  //     ar: "مشاوي و كشري محلي - مطاي"
+  //   },
+  //   description: {
+  //     en: "Several local family restaurants in Matai appear in delivery/directory listings",
+  //     ar: "عدة مطاعم عائلية في مطاي تظهر في دلائل التوصيل"
+  //   },
+  //   imageUrl: "",
+  //   latitude: 0,
+  //   longitude: 0,
+  //   rating: 0,
+  //   reviewCount: 0,
+  //   cuisineType: {
+  //     en: "Egyptian",
+  //     ar: "مصري"
+  //   },
+  //   priceRange: {
+  //     en: "Low",
+  //     ar: "منخفض"
+  //   },
+  //   openingHours: {
+  //     en: "",
+  //     ar: ""
+  //   },
+  //   specialties: [],
+  //   contactInfo: {
+  //     phone: { en: "", ar: "" },
+  //     email: ""
+  //   },
+  //   features: []
+  // },
+
+  // ======= مغاغة (Maghagha) =======
+  // {
+  //   id: "mag_1",
+  //   name: {
+  //     en: "Local restaurants - Maghagha",
+  //     ar: "مطاعم محلية - مغاغة"
+  //   },
+  //   description: {
+  //     en: "Maghagha has multiple local restaurants and grills listed on YellowPages and Facebook groups",
+  //     ar: "مغاغة تحتوي على عدة مطاعم ومشاوي محلية مدرجة على YellowPages ومجموعات فيسبوك"
+  //   },
+  //   imageUrl: "",
+  //   latitude: 0,
+  //   longitude: 0,
+  //   rating: 0,
+  //   reviewCount: 0,
+  //   cuisineType: {
+  //     en: "Egyptian",
+  //     ar: "مصري"
+  //   },
+  //   priceRange: {
+  //     en: "Low to Mid",
+  //     ar: "منخفض إلى متوسط"
+  //   },
+  //   openingHours: {
+  //     en: "",
+  //     ar: ""
+  //   },
+  //   specialties: [],
+  //   contactInfo: {
+  //     phone: { en: "", ar: "" },
+  //     email: ""
+  //   },
+  //   features: []
+  // },
+
+  // ======= العدوة (El Adwa) =======
+  // {
+  //   id: "adwa_1",
+  //   name: {
+  //     en: "Local eateries - El Adwa",
+  //     ar: "مطاعم محلية - العدوة"
+  //   },
+  //   description: {
+  //     en: "Small local restaurants appear on local directories and Facebook community pages",
+  //     ar: "مطاعم صغيرة محلية تظهر على دلائل محلية وصفحات المجتمع على فيسبوك"
+  //   },
+  //   imageUrl: "",
+  //   latitude: 0,
+  //   longitude: 0,
+  //   rating: 0,
+  //   reviewCount: 0,
+  //   cuisineType: {
+  //     en: "Egyptian",
+  //     ar: "مصري"
+  //   },
+  //   priceRange: {
+  //     en: "Low",
+  //     ar: "منخفض"
+  //   },
+  //   openingHours: {
+  //     en: "",
+  //     ar: ""
+  //   },
+  //   specialties: [],
+  //   contactInfo: {
+  //     phone: { en: "", ar: "" },
+  //     email: ""
+  //   },
+  //   features: []
+  // }
+
+
+
+
+
+
+  // ====== مطاعم مركز المنيا (مجمعة دفعة واحدة) ======
+
+ // دفعة محدثة — مدخَلات متوافقة 1:1 مع نمط الـ object المطلوب
+{
+  id: "freika_minya",
+  name: { en: "Freekeh Restaurant Minya", ar: "مطعم فريكة المنيا" },
+  description: { en: "Syrian-style fast food & shawarma; branch on Taha Hussein near Sports Club (New Minya).", ar: "مطبخ سوري وشاورما؛ فرع في شارع طه حسين قرب سور النادي (المنيا الجديدة)." },
+  imageUrl: "assets/images/مطعم فريكة.jpg",
+  latitude:28.10200304070646,
+  longitude:  30.754193601501832,
+  rating: 4.0
+,
+  reviewCount:936,
+  cuisineType: { en: "Syrian / Fast Food", ar: "سوري / وجبات سريعة" },
+  priceRange: { en: "Low to Mid", ar: "منخفض إلى متوسط" },
+  openingHours: { en: "Mon–Sun 10:00 AM – 04:00 AM", ar: "الاثنين–الأحد ١٠:٠٠ ص – ٤:٠٠ ص" },
+  specialties: [ { en: "Shawarma", ar: "شاورما" }, { en: "Broasted Chicken", ar: "بروستد" } ],
+  contactInfo: { phone: { en: "01030022700, 01555511777, 01128848054", ar: "٠١٠٣٠٠٢٢٧٠٠، ٠١٥٥٥٥١١٧٧٧، ٠١١٢٨٨٤٨٠٥٤" }, email: "" },
+  features: [ { en: "Restroom", ar: "دورة مياه" } ]
+}
+// مصادر: Menuegypt / Elmenus / Evendo. :contentReference[oaicite:0]{index=0}
+
+,
+{
+  id: "bondokah_minya",
+  name: { en: "Bondokah Restaurant", ar: "مطعم بندقة" },
+  description: { en: "Casual grill house known across Minya; serves koshary at some branches.", ar: "مطعم مشاوي شعبي وله فروع بالمنيا؛ يقدم كشري أحيانًا في بعض الفروع." },
+  imageUrl: "assets/images/Bondokah Restaurant.jpg",
+   latitude: 28.102050188865025, 
+    longitude: 30.754808388008396,
+    rating: 3.8,
+    reviewCount: 2458,
+  cuisineType: { en: "Egyptian / Grill", ar: "مصري / مشاوي" },
+  priceRange: { en: "Affordable", ar: "مناسب" },
+  openingHours: { en: "11:00 AM – 03:00 AM (approx.)", ar: "١١:٠٠ ص – ٠٣:٠٠ ص (تقريبى)" },
+  specialties: [ { en: "Mixed Grill", ar: "مشويات مشكلة" }, { en: "Koshary (some branches)", ar: "كشري (بعض الفروع)" } ],
+  contactInfo: { phone: { en: "+20 86 2334141 / 01030800072 / 01030800073", ar: "+٢٠ ٨٦ ٢٣٣٤١٤١ / ٠١٠٣٠٨٠٠٠٧٢ / ٠١٠٣٠٨٠٠٠٧٣" }, email: "" },
+  features: [ { en: "Restroom", ar: "دورة مياه" }, { en: "Delivery", ar: "توصيل" } ]
+}
+// مصادر: الموقع الرسمي / صفحة فيسبوك / دلائل محلية. :contentReference[oaicite:1]{index=1}
+
+,
+{
+  id: "fresh_food_grill",
+  name: { en: "Fresh Food Grill Restaurant", ar: "مطعم فريش فود جريل" },
+  description: { en: "Mediterranean & Egyptian grilled dishes; listed on TripAdvisor and local directories.", ar: "أطباق مشوية متوسّطية ومصرية؛ مذكور في TripAdvisor وقوائم محلية." },
+  imageUrl: "assets/images/Fresh Food Grill Restaurant_n.jpg",
+
+ latitude: 28.07367330527575, 
+    longitude: 30.816348988009075,
+    rating: 4.7,
+    reviewCount: 448,
+  cuisineType: { en: "Mediterranean / Grill", ar: "متوسطي / مشاوي" },
+  priceRange: { en: "Mid-range", ar: "متوسط" },
+  openingHours: { en: "12:00 PM – 01:00 AM", ar: "١٢:٠٠ م – ٠١:٠٠ ص" },
+  specialties: [ { en: "Mixed Grill", ar: "مشويات مشكلة" }, { en: "Seafood platters", ar: "أطباق سي فود" } ],
+  contactInfo: { phone: { en: "+20 102 000 4495, 01027020307", ar: "+٢٠ ١٠٢ ٠٠٠ ٤٤٩٥، ٠١٠٢٧٠٢٠٣٠٧" }, email: "" },
+  features: [ { en: "Restroom", ar: "دورة مياه" }, { en: "Delivery", ar: "توصيل" } ]
+}
+// مصدر: TripAdvisor، دلائل محلية. :contentReference[oaicite:2]{index=2}
+
+// ,
+// {
+//   id: "toscanini_minya",
+//   name: { en: "Toscanini", ar: "توسكاني" },
+//   description: { en: "Italian / mixed cuisine with Nile view (Corniche area / above sports club).", ar: "مطبخ إيطالي ومتنوّع مع إطلالة قرب كورنيش النيل ودور نادي المنيا." },
+//   imageUrl: "assets/images/توسكاني.jpg",
+//   latitude: 0,
+//   longitude: 0,
+//   rating: 4.5,
+//   reviewCount: 2,
+//   cuisineType: { en: "Italian, Mixed", ar: "إيطالي، مختلط" },
+//   priceRange: { en: "Mid-range", ar: "متوسط" },
+//   openingHours: { en: "12:00 PM – 11:00 PM", ar: "١٢:٠٠ م – ١١:٠٠ م" },
+//   specialties: [ { en: "Pasta", ar: "معكرونة" }, { en: "Pizza", ar: "بيتزا" } ],
+//   contactInfo: { phone: { en: "+20 127 272 7220", ar: "+٢٠ ١٢٧ ٢٧٢ ٧٢٢٠" }, email: "" },
+//   features: [ { en: "Restroom", ar: "دورة مياه" }, { en: "Nile View", ar: "إطلالة على النيل" } ]
+// }
+// مصدر: TripAdvisor + دلائل محلية. :contentReference[oaicite:3]{index=3}
+
+,
+{
+  id: "cboat_minya",
+  name: { en: "C-Boat", ar: "C-Boat" },
+  description: { en: "Nile-side restaurant with views; evening dining spot in Minya.", ar: "مطعم على ضفاف النيل مع إطلالة؛ وجهة شائعة للعشاء في المنيا." },
+  imageUrl: "assets/images/C-Boat.webp",
+  latitude: 28.102192108605227,
+  longitude: 30.758244263146523,
+  rating: 4.1,
+  reviewCount: 802,
+  cuisineType: { en: "Egyptian / Seafood", ar: "مصري / سي فود" },
+  priceRange: { en: "Mid-range", ar: "متوسط" },
+  openingHours: {
+  en: "Wed 8:00 AM – 11:45 PM\nThu 8:00 AM – 11:45 PM\nFri 8:00 AM – 11:45 PM\nSat 8:00 AM – 11:45 PM\nSun 8:00 AM – 11:45 PM\nMon 8:00 AM – 11:45 PM\nTue 8:00 AM – 11:45 PM",
+  ar: "الأربعاء ٨:٠٠ص–١١:٤٥م\nالخميس ٨:٠٠ص–١١:٤٥م\nالجمعة ٨:٠٠ص–١١:٤٥م\nالسبت ٨:٠٠ص–١١:٤٥م\nالأحد ٨:٠٠ص–١١:٤٥م\nالاثنين ٨:٠٠ص–١١:٤٥م\nالثلاثاء ٨:٠٠ص–١١:٤٥م"
+},
+
+  specialties: [ { en: "Grilled Fish", ar: "سمك مشوي" } ],
+  contactInfo: { phone: { en: "", ar: "" }, email: "" },
+  features: [ { en: "Nile View", ar: "إطلالة على النيل" }, { en: "Restroom", ar: "دورة مياه" } ]
+}
+// مصادر: Evendo / CEOSS listing / صفحات محلية. :contentReference[oaicite:4]{index=4}
+
+,
+{
+  id: "casa_bella_minya",
+  name: { en: "Casa Bella Restaurant", ar: "كازا بيلا" },
+  description: { en: "Italian & mixed menu; local listings show menu and phone for New Minya branch.", ar: "قائمة إيطالية ومتنوعة؛ القوائم المحلية تعرض المنيو ورقم الفرع بالمنيا الجديدة." },
+  imageUrl: "assets/images/casa_bella_minya.jpg",
+  latitude:28.109110928333763,  longitude:  30.751969259024474,
+
+  rating: 4.4
+,
+  reviewCount:414,
+  cuisineType: { en: "Italian / Mixed", ar: "إيطالي / متنوع" },
+  priceRange: { en: "Mid-range", ar: "متوسط" },
+ openingHours: {
+  en: "Wed 10:00 AM – 2:00 AM\nThu 10:00 AM – 2:00 AM\nFri 10:00 AM – 2:00 AM\nSat 10:00 AM – 2:00 AM\nSun 10:00 AM – 2:00 AM\nMon 10:00 AM – 2:00 AM\nTue 10:00 AM – 2:00 AM",
+  ar: "الأربعاء ١٠:٠٠ص–٢:٠٠ص\nالخميس ١٠:٠٠ص–٢:٠٠ص\nالجمعة ١٠:٠٠ص–٢:٠٠ص\nالسبت ١٠:٠٠ص–٢:٠٠ص\nالأحد ١٠:٠٠ص–٢:٠٠ص\nالاثنين ١٠:٠٠ص–٢:٠٠ص\nالثلاثاء ١٠:٠٠ص–٢:٠٠ص"
+},
+
+  specialties: [ { en: "Pizza", ar: "بيتزا" }, { en: "Pasta", ar: "باستا" } ],
+  contactInfo: { phone: { en: "01003397905, 01018101015", ar: "٠١٠٠٣٣٩٧٩٠٥، ٠١٠١٨١٠١٠١٥" }, email: "" },
+  features: [ { en: "Restroom", ar: "دورة مياه" } ]
+}
+// مصدر: دلائل محلية (Menuegypt, elmenus). :contentReference[oaicite:5]{index=5}
+
+,
+{
+  id: "el_baron_minya",
+  name: { en: "El Baron", ar: "البارون" },
+  description: { en: "Upper-floor dining near Teachers Union Tower; mixed menu and evening hours.", ar: "مطعم بالدور العلوي قرب برج نقابة المعلمين؛ قائمة متنوّعة وساعات مسائية." },
+  imageUrl: "assets/images/el_baron_minya.jpg",
+  latitude:28.095285283199047,
+  longitude:  30.7558151846579,
+  rating: 4.0,
+  reviewCount:294,
+  cuisineType: { en: "Mixed", ar: "متنوع" },
+  priceRange: { en: "Mid-range", ar: "متوسط" },
+  openingHours: { en: "10:00 AM – 02:00 AM", ar: "١٠:٠٠ ص – ٢:٠٠ ص" },
+ specialties: [
+    { en: "Grilled Fish", ar: "سمك مشوي" },
+    { en: "Seafood Platter", ar: "طبق سي فود" },
+    { en: "Breakfast & Brunch", ar: "فطار وبرانش" },
+    { en: "Event Catering / Banquets", ar: "تموين حفلات / قاعات" }
+  ],
+  contactInfo: { phone: { en: "0862334667, 01022998668, 01125654501", ar: "٠٨٦٢٣٣٤٦٦٧، ٠١٠٢٢٩٩٨٦٦٨، ٠١١٢٥٦٥٤٥٠١" }, email: "" },
+  features: [ { en: "Restroom", ar: "دورة مياه" } ]
+}
+// مصدر: دلائل محلية وTripAdvisor. :contentReference[oaicite:6]{index=6}
+
+,
+{
+  id: "orchid_palace_minya",
+  name: { en: "Orchid Palace", ar: "قصر الاوركيد" },
+  description: { en: "Large Nile-side restaurant & events venue; outdoor seating & seafood specialties.", ar: "مطعم كبير على النيل ومكان فعاليات؛ جلسات خارجية وتخصصات بحرية." },
+  imageUrl: "assets/images/orchid_palace_minya.jpg",
+  latitude: 28.107475956014888, 
+  longitude:30.753097126986848,
+  rating: 3.6,
+  reviewCount:51,
+  cuisineType: { en: "Mixed / Seafood", ar: "متنوع / أسماك" },
+  priceRange: { en: "Mid-range to High", ar: "متوسط إلى مرتفع" },
+  openingHours: { en: "10:00 AM – 12:00 AM (varies)", ar: "١٠:٠٠ ص – ١٢:٠٠ ص (متغير)" },
+  specialties: [ { en: "Seafood", ar: "أسماك" }, { en: "Events & Banquets", ar: "حفلات ومناسبات" } ],
+  contactInfo: { phone: { en: "01555544433, 01000239239", ar: "٠١٥٥٥٥٤٤٤٣٣، ٠١٠٠٠٢٣٩٢٣٩" }, email: "" },
+  features: [ { en: "Nile View", ar: "إطلالة على النيل" }, { en: "Restroom", ar: "دورة مياه" } ]
+}
+// مصادر: Evendo / دلائل محلية / صفحات المؤسسة. :contentReference[oaicite:7]{index=7}
+
+,
+
+  {
+  id: "alkasrawy_minya",
+  name: { en: "Al-Kasrawy", ar: "الكسراوى" },
+  description: {
+    en: "Popular crepes, pizzas and mixed grill spot in Minya (local branch posts and menu on Facebook).",
+    ar: "مطعم يقدم كريب، بيتزا ومشاوي؛ مشهور محليًا وله منشورات وقوائم على صفحة فيسبوك."
+  },
+  imageUrl: "assets/images/alkasrawy_minya.jpg",
+  latitude: 28.09405459419683, 
+  longitude: 30.758448103350602,
+  rating:4.1
+,
+  reviewCount: 10,
+  cuisineType: { en: "Crepes / Pizza / Grill", ar: "كريب / بيتزا / مشاوي" },
+  priceRange: { en: "Low to Mid", ar: "منخفض إلى متوسط" },
+openingHours: {
+  en: "Wed 12:00 PM – 2:00 AM\nThu 12:00 PM – 2:00 AM\nFri 12:00 PM – 2:00 AM\nSat 12:00 PM – 2:00 AM\nSun 12:00 PM – 2:00 AM\nMon 12:00 PM – 2:00 AM\nTue 12:00 PM – 2:00 AM",
+  ar: "الأربعاء ١٢:٠٠م–٢:٠٠ص\nالخميس ١٢:٠٠م–٢:٠٠ص\nالجمعة ١٢:٠٠م–٢:٠٠ص\nالسبت ١٢:٠٠م–٢:٠٠ص\nالأحد ١٢:٠٠م–٢:٠٠ص\nالاثنين ١٢:٠٠م–٢:٠٠ص\nالثلاثاء ١٢:٠٠م–٢:٠٠ص"
+}
+,
+  specialties: [
+    { en: "Crepes", ar: "كريب" },
+    { en: "Stone-baked Pizza", ar: "بيتزا حجرية" },
+    { en: "Mixed Grill", ar: "مشويات مشكلة" },
+    { en: "Desserts", ar: "حلويات" }
+  ],
+  contactInfo: { phone: { en: "01004875750, 01220074479", ar: "٠١٠٠٤٨٧٥٧٥٠، ٠١٢٢٠٠٧٤٤٧٩" }, email: "" },
+  features: [
+     { en: "Restroom", ar: "دورة مياه" },
+    { en: "Delivery", ar: "توصيل" },
+    { en: "Takeaway", ar: "تيك أواي" }
+  ],
+
+},
+ 
+{
+  id: "festival_crepiano_minya",
+  name: { en: "Festival Crepiano", ar: "Festival Crepiano" },
+  description: { en: "Crepes, desserts and fast casual — active branch in Minya with delivery and hotline numbers.", ar: "كريب وحلويات وسريع؛ فرع نشط بالمنيا مع أرقام توصيل وخط ساخن." },
+  imageUrl: "assets/images/f.jpg",
+  latitude:28.10036480864857, 
+  longitude:30.75511633218607,
+  rating: 3.9,
+  reviewCount: 36,
+  cuisineType: { en: "Crepes / Desserts", ar: "كريب / حلويات" },
+  priceRange: { en: "Low to Mid", ar: "منخفض إلى متوسط" },
+ openingHours: {
+    en: "Wed 8:00 AM – 10:00 PM\nThu 8:00 AM – 10:00 PM\nFri 8:00 AM – 10:00 PM\nSat 8:00 AM – 10:00 PM\nSun 8:00 AM – 10:00 PM\nMon 8:00 AM – 10:00 PM\nTue 8:00 AM – 10:00 PM",
+    ar: "الأربعاء ٨:٠٠ص–١٠:٠٠م\nالخميس ٨:٠٠ص–١٠:٠٠م\nالجمعة ٨:٠٠ص–١٠:٠٠م\nالسبت ٨:٠٠ص–١٠:٠٠م\nالأحد ٨:٠٠ص–١٠:٠٠م\nالاثنين ٨:٠٠ص–١٠:٠٠م\nالثلاثاء ٨:٠٠ص–١٠:٠٠م"
+  },
+ specialties: [
+    { en: "Filled Crepes (savory & sweet)", ar: "كريب محشو (مالح وحلو)" },
+    { en: "Stone-baked Pizza", ar: "بيتزا حجرية" },
+    { en: "Chicken Sandwiches & Shawarma", ar: "سندوتشات فراخ وشاورما" },
+    { en: "Desserts & Pastries", ar: "حلويات وفطائر" }
+  ],
+  contactInfo: { phone: { en: "01013739999, 01159454820, 0862375444", ar: "٠١٠١٣٧٣٩٩٩٩، ٠١١٥٩٤٥٤٨٢٠، ٠٨٦٢٣٧٥٤٤٤" }, email: "" },
+   features: [
+    { en: "Delivery", ar: "توصيل" },
+    { en: "Takeaway", ar: "تيك أواي" },
+    { en: "Online Ordering (Talabat)", ar: "توصيل أونلاين (طلبات)" }
+  ]
+
+},
+  
+ {
+  id: "house_crepe_minya",
+  name: { en: "House Crepe", ar: "House Crepe" },
+  description: { en: "Crepes & cafe branch in New Minya — menu and contact listed on Elmenus.", ar: "فرع كريب وكافيه بالمنيا الجديدة؛ المنيو ورقم التوصيل مذكورين في Elmenus." },
+  imageUrl: "assets/images/house_crepe_minya.jpg",
+  latitude: 28.108783632707468,
+  longitude:  30.749385289856875,
+  rating: 3.9
+,
+  reviewCount:134,
+  cuisineType: { en: "Crepes / Cafe", ar: "كريب / كافيه" },
+  priceRange: { en: "Low to Mid", ar: "منخفض إلى متوسط" },
+   openingHours: {
+    en: "Wed 8:00 AM – 2:00 AM\nThu 8:00 AM – 2:00 AM\nFri 8:00 AM – 2:00 AM\nSat 8:00 AM – 2:00 AM\nSun 8:00 AM – 2:00 AM\nMon 8:00 AM – 2:00 AM\nTue 8:00 AM – 2:00 AM",
+    ar: "الأربعاء ٨:٠٠ص–٢:٠٠ص\nالخميس ٨:٠٠ص–٢:٠٠ص\nالجمعة ٨:٠٠ص–٢:٠٠ص\nالسبت ٨:٠٠ص–٢:٠٠ص\nالأحد ٨:٠٠ص–٢:٠٠ص\nالاثنين ٨:٠٠ص–٢:٠٠ص\nالثلاثاء ٨:٠٠ص–٢:٠٠ص"
+  },
+  specialties: [
+    { en: "Filled Crepes (savory & sweet)", ar: "كريب محشو (مالح وحلو)" },
+    { en: "Pizza & Pasta", ar: "بيتزا ومعكرونة" },
+    { en: "Sandwiches & Wraps", ar: "سندوتشات ولفائف" },
+    { en: "Desserts & Pastries", ar: "حلويات وفطائر" }
+  ],
+  contactInfo: { phone: { en: "086 236 2252", ar: "٠٨٦ ٢٣٦ ٢٢٥٢" }, email: "" },
+   features: [
+    { en: "Delivery", ar: "توصيل" },
+    { en: "Takeaway", ar: "تيك أواي" },
+    { en: "Restroom", ar: "دورة مياه" }
+  ]
+
+},
+
+// {
+//   id: "al_bashaer_foul_minya",
+//   name: { en: "Al-Bashaer (Foul & Falafel)", ar: "فول وفلافل مطعم البشائر" },
+//   description: { en: "Local foul & falafel place in Minya (good local rating on review directories).", ar: "مطعم فول وفلافل محلي بالمنيا (حاصل على تقييم جيد في دلائل التقييم)." },
+//   imageUrl: "assets/images/al_bashaer_foul.jpg",
+//   latitude: 0,
+//   longitude: 0,
+//   rating: 4.3,
+//   reviewCount: 16,
+//   cuisineType: { en: "Foul & Falafel", ar: "فول و فلافل" },
+//   priceRange: { en: "Low", ar: "منخفض" },
+//   openingHours: { en: "Open 05:00 AM – 01:00 AM (as listed)", ar: "مفتوح ٠٥:٠٠ ص – ٠١:٠٠ ص (مذكور)" },
+//   specialties: [],
+//   contactInfo: { phone: { en: "", ar: "" }, email: "" },
+//   features: [],
+  
+// },
+
+ {
+  id: "saman_ala_asal_minya",
+  name: { en: "Saman Ala Asal", ar: "سمن على عسل" },
+  description: { en: "Desserts & sweets shop — active Facebook page and local delivery hotline.", ar: "محل حلويات؛ له صفحة فيسبوك نشطة وخط توصيل محلي." },
+  imageUrl: "assets/images/سمن على عسل.jpg",
+  latitude:28.111059519928908,
+  longitude: 30.750139361021255,
+  rating:4.0,
+  reviewCount: 6,
+  cuisineType: { en: "Desserts / Sweets", ar: "حلويات" },
+  priceRange: { en: "Low to Mid", ar: "منخفض إلى متوسط" },
+ openingHours: {
+    en: "Wed 10:00 AM – 1:00 AM\nThu 10:00 AM – 1:00 AM\nFri 10:00 AM – 1:00 AM\nSat 10:00 AM – 1:00 AM\nSun 10:00 AM – 1:00 AM\nMon 10:00 AM – 1:00 AM\nTue 10:00 AM – 1:00 AM",
+    ar: "الأربعاء ١٠:٠٠ص–١:٠٠ص\nالخميس ١٠:٠٠ص–١:٠٠ص\nالجمعة ١٠:٠٠ص–١:٠٠ص\nالسبت ١٠:٠٠ص–١:٠٠ص\nالأحد ١٠:٠٠ص–١:٠٠ص\nالاثنين ١٠:٠٠ص–١:٠٠ص\nالثلاثاء ١٠:٠٠ص–١:٠٠ص"
+  },
+  specialties: [
+    { en: "Oriental Sweets (Konafa, Basbousa, Baklava)", ar: "حلويات شرقية (كنافة، بسبوسة، بقلاوة)" },
+    { en: "Western Cakes & Pastries", ar: "تورت وحلويات غربية" },
+    { en: "Ice Cream & Parfait Cups", ar: "آيس كريم وكاسات بارفيه" },
+    { en: "Custom Birthday Cakes", ar: "تورت أعياد ميلاد حسب الطلب" }
+  ],
+  contactInfo: { phone: { en: "Hotline 16912, pages list other numbers", ar: "الخط الساخن 16912" }, email: "" },
+   features: [
+    { en: "Delivery", ar: "توصيل" },
+    { en: "Takeaway", ar: "تيك أواي" },
+    { en: "Family-friendly", ar: "مناسب للعائلات" }
+  ]
+}
+,
+{
+  id: "tallah_minya",
+  name: { en: "Tallah Restaurant & Café", ar: "مطعم وكافية طلة" },
+  description: {
+    en: "Nile-side café and restaurant in Minya on the Corniche, great view and cozy ambiance.", 
+    ar: "كافية ومطعم على كورنيش المنيا، إطلالة على النيل وجو مريح."
+  },
+  imageUrl: "assets/images/tallah_minya.jpg",
+  latitude: 28.1080581608185, 
+  longitude: 30.7527176904317,
+  rating:5.0
+,
+  reviewCount: 2,
+  cuisineType: { en: "Café / Mixed", ar: "كافيه / متنوع" },
+  priceRange: { en: "Mid-range", ar: "متوسط" },
+  openingHours: {
+    en: "Wed 10:00 AM – 12:00 AM\nThu 10:00 AM – 12:00 AM\nFri 10:00 AM – 12:00 AM\nSat 10:00 AM – 12:00 AM\nSun 10:00 AM – 12:00 AM\nMon 10:00 AM – 12:00 AM\nTue 10:00 AM – 12:00 AM",
+    ar: "الأربعاء ١٠:٠٠ص–١٢:٠٠ص\nالخميس ١٠:٠٠ص–١٢:٠٠ص\nالجمعة ١٠:٠٠ص–١٢:٠٠ص\nالسبت ١٠:٠٠ص–١٢:٠٠ص\nالأحد ١٠:٠٠ص–١٢:٠٠ص\nالاثنين ١٠:٠٠ص–١٢:٠٠ص\nالثلاثاء ١٠:٠٠ص–١٢:٠٠ص"
+  },
+ specialties: [
+    { en: "Grilled Fish & Seafood", ar: "سمك مشوي وأسماك" },
+    { en: "Coffee & Breakfast / Brunch", ar: "قهوة وفطار / برانش" },
+    { en: "Italian dishes (Pasta, Pizza)", ar: "أطباق إيطالية (باستا، بيتزا)" },
+    { en: "Mixed grills & Shawarma", ar: "مشاوي مشكلة وشاورما" }
+  ],
+  contactInfo: { phone: { en: "01044844052", ar: "٠١٠٤٤٨٤٤٠٥٢" }, email: "" },
+ features: [
+    { en: "Nile View", ar: "إطلالة على النيل" },
+    { en: "Outdoor Seating", ar: "جلسات خارجية" },
+    { en: "Reservations", ar: "حجز" },
+    { en: "Restroom", ar: "دورة مياه" }
+  ],
+
+}
+
+  // === نهاية قائمة مطاعم مركز المنيا (نسخة مبدئية) ===
+];
+
+
+
+
+
+
+
+
+
+
+
+

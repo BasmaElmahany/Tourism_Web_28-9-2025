@@ -4,29 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { I18nService } from '../../services/i18n.service';
 import { restaurants } from '../../data/restaurants';
-
-interface Restaurant {
-  id: string;
-  name: Record<string, string>;
-  description: Record<string, string>;
-  imageUrl: string;
-  latitude: number;
-  longitude: number;
-  rating: number;
-  reviewCount: number;
-  cuisineType: Record<string, string>;
-  priceRange: Record<string, string>;
-  openingHours: Record<string, string>;
-  specialties: Record<string, string>[];
-  contactInfo: {
-    phone: Record<string, string>;
-    email?: string;
-  };
-  
-  features: Record<string, string>[];
-  
-
-}
+import { Restaurant } from '../../models/tourism.models';
 
 @Component({
   selector: 'app-restaurants',
@@ -63,26 +41,49 @@ export class RestaurantsComponent implements OnInit {
   }
 
   private loadRestaurants() {
-    this.restaurants = restaurants;
+    // Normalize the imported raw data into the app's Restaurant model so templates and
+    // type-checking remain consistent regardless of source shape.
+    const raw: any[] = Array.isArray(restaurants) ? restaurants : [];
+    this.restaurants = raw.map(r => this.normalizeRawRestaurant(r));
     this.filteredRestaurants = this.restaurants;
   }
 
+  private normalizeRawRestaurant(r: any): Restaurant {
+    const toLocalized = (val: any, alt?: any) => {
+      if (!val && !alt) return '';
+      if (typeof val === 'string') return { en: val, ar: alt ?? '' } as any;
+      return val as any;
+    };
+
+    return {
+      id: r?.id ?? r?.ID ?? '',
+      name: toLocalized(r?.name, r?.nameAr),
+      description: toLocalized(r?.description, r?.descriptionAr),
+      imageUrl: r?.imageUrl ?? r?.image ?? '',
+      latitude: r?.latitude ?? r?.location?.lat ?? 0,
+      longitude: r?.longitude ?? r?.location?.lng ?? 0,
+      rating: r?.rating ?? 0,
+      reviewCount: r?.reviewCount ?? 0,
+      cuisineType: toLocalized(r?.cuisineType ?? r?.cuisine, r?.cuisineAr),
+      priceRange: toLocalized(r?.priceRange, r?.priceRangeAr),
+      openingHours: toLocalized(r?.openingHours, r?.openingHoursAr),
+      specialties: (r?.specialties ?? []).map((s: any) => (typeof s === 'string' ? { en: s, ar: '' } : s)),
+      contactInfo: { phone: toLocalized(r?.contactInfo?.phone ?? r?.phone) } as any,
+      features: (r?.features ?? []).map((f: any) => (typeof f === 'string' ? { en: f, ar: '' } : f)),
+    } as unknown as Restaurant;
+  }
+
   filterRestaurants() {
-    const lang = this.i18nService.getCurrentLanguage();
-
+    const q = this.searchQuery.trim().toLowerCase();
     this.filteredRestaurants = this.restaurants.filter(restaurant => {
-      const matchesSearch = this.searchQuery === '' ||
-        restaurant.name[lang]?.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        restaurant.cuisineType[lang]?.toLowerCase().includes(this.searchQuery.toLowerCase());
+      const name = String(this.i18nService.pick(restaurant.name)).toLowerCase();
+      const cuisine = String(this.i18nService.pick(restaurant.cuisineType)).toLowerCase();
+      const price = String(this.i18nService.pick(restaurant.priceRange)).toLowerCase();
 
-      const matchesCuisine = this.selectedCuisine === '' ||
-        restaurant.cuisineType['en'].toLowerCase().includes(this.selectedCuisine.toLowerCase());
-
-      const matchesPriceRange = this.selectedPriceRange === '' ||
-        restaurant.priceRange['en'].toLowerCase().includes(this.selectedPriceRange.toLowerCase());
-
-      const matchesRating = this.selectedRating === '' ||
-        restaurant.rating >= parseFloat(this.selectedRating);
+      const matchesSearch = q === '' || name.includes(q) || cuisine.includes(q) || price.includes(q);
+      const matchesCuisine = this.selectedCuisine === '' || cuisine.includes(this.selectedCuisine.toLowerCase());
+      const matchesPriceRange = this.selectedPriceRange === '' || price.includes(this.selectedPriceRange.toLowerCase());
+      const matchesRating = this.selectedRating === '' || restaurant.rating >= parseFloat(this.selectedRating);
 
       return matchesSearch && matchesCuisine && matchesPriceRange && matchesRating;
     });
