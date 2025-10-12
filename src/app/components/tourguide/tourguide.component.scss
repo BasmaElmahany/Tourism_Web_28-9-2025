@@ -1,0 +1,210 @@
+.tourguide-container {
+	padding: 2rem 0;
+}
+
+.guides-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 1.25rem;
+}
+
+.guide-card {
+	display: flex;
+	gap: 1rem;
+	background: var(--white);
+	border-radius: 14px;
+	padding: 1rem;
+	box-shadow: 0 10px 30px rgba(6, 24, 55, 0.06);
+	transition: transform 0.18s ease, box-shadow 0.18s ease;
+	align-items: center;
+}
+
+.guide-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 18px 40px rgba(6, 24, 55, 0.12);
+}
+
+.guide-image {
+	flex: 0 0 84px;
+	height: 84px;
+	border-radius: 50%;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 6px 18px rgba(6, 24, 55, 0.06);
+}
+
+.guide-image img {
+	width: 84px;
+	height: 84px;
+	object-fit: cover;
+	border-radius: 50%;
+}
+
+/* Card entrance animation */
+.guide-card {
+	opacity: 0;
+	transform: translateY(10px);
+	animation: cardIn 420ms cubic-bezier(.2,.9,.3,1) forwards;
+}
+
+@keyframes cardIn {
+	to { opacity: 1; transform: translateY(0); }
+}
+
+/* Social icon styles */
+.social-links {
+	display: flex;
+	gap: 0.45rem;
+	align-items: center;
+	margin-left: auto;
+}
+
+.social {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background: rgba(0,0,0,0.06);
+	color: #fff;
+	text-decoration: none;
+	font-size: 0.95rem;
+	transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+	box-shadow: 0 6px 14px rgba(6,24,55,0.06);
+}
+
+.social:hover {
+	transform: translateY(-4px) scale(1.06);
+	box-shadow: 0 14px 30px rgba(6,24,55,0.12);
+}
+
+.social[aria-label="Facebook"] { background: #1877F2 }
+.social[aria-label="Instagram"] { background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af) }
+.social[aria-label="Twitter"] { background: #1DA1F2 }
+.social[aria-label="YouTube"] { background: #FF0000 }
+
+/* Ensure inline SVGs get proper sizing and contrast */
+.social svg { width: 18px; height: 18px; display: block }
+.social path { opacity: 0.95 }
+
+/* Badges (language chips) */
+.badge { background: rgba(0,0,0,0.05); color: var(--text-primary); padding: 0.25rem 0.5rem; border-radius: 999px; font-size: 0.78rem }
+
+/* Rating badge */
+.rating-badge { background: linear-gradient(90deg,#ffdd57,#ffb86b); padding: 0.18rem 0.5rem; border-radius: 8px; color: #1a1a1a; font-weight: 700 }
+
+/* Slightly bigger image on desktop */
+@media (min-width: 960px) {
+	.guide-image { flex: 0 0 100px; height: 100px }
+	.guide-image img { width: 100px; height: 100px }
+}
+
+/* Small tooltip effect using title attribute (optional) */
+.social[title] { position: relative }
+.social[title]:hover::after {
+	content: attr(title);
+	position: absolute;
+	top: -34px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: rgba(0,0,0,0.75);
+	color: #fff;
+	padding: 4px 8px;
+	border-radius: 6px;
+	font-size: 0.8rem;
+	white-space: nowrap;
+	pointer-events: none;
+}
+
+/* Tidy actions area */
+.contact-buttons { display: flex; gap: .5rem; flex-wrap: wrap }
+.actions { display: flex; align-items: center; gap: .75rem }
+
+@media (max-width: 520px) {
+	.social-links { margin: .5rem 0 0 0 }
+}
+
+.guide-content {
+	flex: 1 1 auto;
+}
+
+.guide-content h3 {
+	margin: 0;
+	font-size: 1.05rem;
+	font-weight: 600;
+}
+
+.guide-content .bio {
+	color: var(--text-secondary);
+	margin: 0.3rem 0 0.6rem 0;
+	font-size: 0.95rem;
+}
+
+.badges {
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+	margin-bottom: 0.6rem;
+}
+
+.badge {
+	background: var(--background-color);
+	color: var(--text-primary);
+	padding: 0.25rem 0.6rem;
+	border-radius: 999px;
+	font-size: 0.8rem;
+	border: 1px solid rgba(0,0,0,0.04);
+}
+
+.meta {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+}
+
+.rating { color: var(--accent-color); font-weight: 600 }
+
+.actions {
+	display: flex;
+	gap: 0.5rem;
+	margin-top: 0.6rem;
+}
+
+.actions .btn {
+	padding: 0.5rem 0.75rem;
+	font-size: 0.9rem;
+	border-radius: 8px;
+	text-decoration: none;
+}
+
+@media (max-width: 520px) {
+	.guide-card { flex-direction: column; align-items: stretch }
+	.guide-image { margin: 0 auto }
+	.meta { flex-direction: column; align-items: flex-start; gap: .25rem }
+}
+
+.phone-display {
+	margin-top: 0.5rem;
+	background: rgba(0,0,0,0.06);
+	padding: 0.35rem 0.6rem;
+	border-radius: 8px;
+	font-weight: 600;
+}
+
+.email-display {
+	margin-top: 0.5rem;
+	background: rgba(0,0,0,0.04);
+	padding: 0.32rem 0.6rem;
+	border-radius: 8px;
+	font-weight: 600;
+	color: var(--text-primary);
+}
+
+.contact-badges { display:flex; gap:0.4rem; align-items:center; margin-left:0.6rem }
+.contact-badges .badge { background: rgba(0,0,0,0.06); padding: .28rem .5rem; border-radius: 999px; font-weight:600; font-size:0.9rem; animation: fadeIn .18s ease }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-4px) } to { opacity:1; transform: translateY(0) } }

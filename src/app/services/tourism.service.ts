@@ -16,6 +16,8 @@ import { ATTRACTIONS } from '../data/attractions';
 import { blogPosts } from '../data/blog_posts';
 import { hotels } from '../data/hotels';
 import { restaurants } from '../data/restaurants';
+import { tourGuides } from '../data/tourguide';
+import { photographers } from '../data/photographe';
 
 @Injectable({
   providedIn: 'root'
@@ -258,6 +260,42 @@ export class TourismService {
     ];
 
     return of(locations).pipe(delay(400));
+  }
+
+  // Tour Guides
+  getTourGuides(): Observable<any[]> {
+    this.setLoading(true);
+    return of(tourGuides).pipe(
+      delay(600),
+      map(data => {
+        this.setLoading(false);
+        return data;
+      })
+    );
+  }
+
+  getTourGuideById(id: string) {
+    return this.getTourGuides().pipe(
+      map((items: any[]) => items.find((t) => t.id === id))
+    );
+  }
+
+  // Photographers
+  getPhotographers(): Observable<any[]> {
+    this.setLoading(true);
+    return of(photographers).pipe(
+      delay(600),
+      map(data => {
+        this.setLoading(false);
+        return data;
+      })
+    );
+  }
+
+  getPhotographerById(id: string) {
+    return this.getPhotographers().pipe(
+      map((items: any[]) => items.find((p) => p.id === id))
+    );
   }
 
   // Tourism Statistics
