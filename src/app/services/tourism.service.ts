@@ -58,6 +58,13 @@ export class TourismService {
     );
   }
 
+  // Single hotel by id (same pattern used for attractions)
+  getHotelById(id: string): Observable<Hotel | undefined> {
+    return this.getHotels().pipe(
+      map((items) => items.find((h) => h.id === id))
+    );
+  }
+
   // Restaurants
   getRestaurants(): Observable<Restaurant[]> {
     this.setLoading(true);
@@ -272,106 +279,41 @@ export class TourismService {
     this.loadingSubject.next(loading);
   }
 
-/// Helper function to safely extract text in both languages
-private getText(value: any): { en: string; ar: string } {
-  if (typeof value === 'object' && value !== null) {
-    return {
-      en: value.en?.toString().toLowerCase() || '',
-      ar: value.ar?.toString().toLowerCase() || ''
-    };
-  } else if (typeof value === 'string') {
-    return { en: value.toLowerCase(), ar: value.toLowerCase() };
-  } else {
-    return { en: '', ar: '' };
+  // Search functionality
+  searchAttractions(query: string)/*: Observable<Attraction[]>*/ {
+    /*   return this.getAttractions().pipe(
+         map(attractions => 
+           attractions.filter(attraction =>
+             attraction.name.toLowerCase().includes(query.toLowerCase()) ||
+             attraction.description.toLowerCase().includes(query.toLowerCase()) ||
+             attraction.category.toLowerCase().includes(query.toLowerCase())
+           )
+         )
+       );*/
   }
-}
 
-// Updated search function
-searchAttractions(query: string): Observable<Attraction[]> {
-  const lowerQuery = query.trim().toLowerCase();
+  searchHotels(query: string)/*: Observable<Hotel[]>*/ {
+   /* return this.getHotels().pipe(
+      map(hotels =>
+        hotels.filter(hotel =>
+          hotel.name.toLowerCase().includes(query.toLowerCase()) ||
+          hotel.description.toLowerCase().includes(query.toLowerCase())
+        )
+      )
+    );*/
+  }
 
-  return this.getAttractions().pipe(
-    map(attractions =>
-      attractions.filter(attraction => {
-        const name = this.getText(attraction.name);
-        const desc = this.getText(attraction.description);
-        const cat = this.getText(attraction.category);
-
-        return (
-          name.en.includes(lowerQuery) ||
-          name.ar.includes(lowerQuery) ||
-          desc.en.includes(lowerQuery) ||
-          desc.ar.includes(lowerQuery) ||
-          cat.en.includes(lowerQuery) ||
-          cat.ar.includes(lowerQuery)
-        );
-      })
-    )
-  );
-}
-
-
-// 🔍 Search Hotels
-// =============================
-searchHotels(query: string): Observable<Hotel[]> {
-  const lowerQuery = query.trim().toLowerCase();
-
-  return this.getHotels().pipe(
-    map(hotels =>
-      hotels.filter(hotel => {
-        const name = this.getText(hotel.name);
-        const desc = this.getText(hotel.description);
-        const category = this.getText(hotel.starRating);
-        const location = this.getText(hotel.priceRange);
-
-        return (
-          name.en.includes(lowerQuery) ||
-          name.ar.includes(lowerQuery) ||
-          desc.en.includes(lowerQuery) ||
-          desc.ar.includes(lowerQuery) ||
-          category.en.includes(lowerQuery) ||
-          category.ar.includes(lowerQuery) ||
-          location.en.includes(lowerQuery) ||
-          location.ar.includes(lowerQuery)
-        );
-      })
-    )
-  );
-}
-
-// =============================
-// 🍽️ Search Restaurants
-// =============================
-searchRestaurants(query: string): Observable<Restaurant[]> {
-  const lowerQuery = query.trim().toLowerCase();
-
-  return this.getRestaurants().pipe(
-    map(restaurants =>
-      restaurants.filter(restaurant => {
-        const name = this.getText(restaurant.name);
-        const cuisine = this.getText(restaurant.cuisineType);
-        const desc = this.getText(restaurant.description);
-
-        // Handle specialties array (multi-language)
-        const specialties = (restaurant.specialties || []).some((specialty: any) => {
-          const spec = this.getText(specialty);
-          return (
-            spec.en.includes(lowerQuery) ||
-            spec.ar.includes(lowerQuery)
-          );
-        });
-
-        return (
-          name.en.includes(lowerQuery) ||
-          name.ar.includes(lowerQuery) ||
-          cuisine.en.includes(lowerQuery) ||
-          cuisine.ar.includes(lowerQuery) ||
-          desc.en.includes(lowerQuery) ||
-          desc.ar.includes(lowerQuery) ||
-          specialties
-        );
-      })
-    )
-  );
-}
+  searchRestaurants(query: string)/*: Observable<Restaurant[]> */{
+  /*  return this.getRestaurants().pipe(
+      map(restaurants =>
+        restaurants.filter(restaurant =>
+          restaurant.name.toLowerCase().includes(query.toLowerCase()) ||
+          restaurant.cuisineType.toLowerCase().includes(query.toLowerCase()) ||
+          restaurant.specialties.some(specialty =>
+            specialty.toLowerCase().includes(query.toLowerCase())
+          )
+        )
+      )
+    );*/
+  }
 }
