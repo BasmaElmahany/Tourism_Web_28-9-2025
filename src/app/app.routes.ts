@@ -70,6 +70,10 @@ export const routes: Routes = [
     loadComponent: () => import('./components/services/services.component').then(m => m.ServicesComponent)
   },
   {
+    path: 'souviners',
+    loadComponent: () => import('./components/souvenirs/souvenirs.component').then(m => m.SouvenirsComponent)
+  },
+  {
     path: '**',
     redirectTo: '/home'
   }

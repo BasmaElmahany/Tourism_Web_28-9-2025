@@ -102,4 +102,21 @@ export class AttractionDetailsComponent implements OnInit {
     const raw = (a as any)?.features ?? [];
     return this.i18n.pickArray(raw);
   }
+
+
+  getMapsUrl(): string {
+  if (!this.attraction) return '#';
+  const { latitude, longitude } = this.attraction;
+  // Opens the pin on Maps
+  return `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
+}
+
+getDirectionsUrl(): string {
+  if (!this.attraction) return '#';
+  const { latitude, longitude } = this.attraction;
+  // Starts directions to the lat,lng
+  // Optionally include a label (best-effort – Google ignores it if unsupported)
+  const label = encodeURIComponent(this.i18n.pick((this.attraction as any).name) || '');
+  return `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}&destination_place_id=&destination_name=${label}`;
+}
 }

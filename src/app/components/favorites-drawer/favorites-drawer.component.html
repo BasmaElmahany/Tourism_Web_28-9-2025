@@ -1,0 +1,137 @@
+<div class="favorites-drawer-container" [attr.dir]="i18n.isRTL() ? 'rtl' : 'ltr'">
+  <!-- Overlay -->
+  <div class="drawer-overlay" *ngIf="isOpen" (click)="close()"></div>
+
+  <!-- Drawer -->
+  <div class="favorites-drawer" [class.open]="isOpen">
+    <!-- Header -->
+    <div class="drawer-header">
+      <div class="header-content">
+        <h2>
+          <span class="material-icons">favorite</span>
+          {{ i18n.translate('myFavorites') || 'My Favorites' }}
+        </h2>
+        <span class="favorites-count">{{ favorites.length }}</span>
+      </div>
+      <button class="btn-close" (click)="close()" [attr.aria-label]="i18n.translate('close') || 'Close'">
+        <span class="material-icons">close</span>
+      </button>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs">
+      <button 
+        class="filter-tab" 
+        [class.active]="selectedFilter === 'all'"
+        (click)="setFilter('all')">
+        <span class="material-icons">apps</span>
+        <span>{{ i18n.translate('all') || 'All' }}</span>
+        <span class="count">{{ getFilterCount('all') }}</span>
+      </button>
+      
+      <button 
+        class="filter-tab" 
+        [class.active]="selectedFilter === 'attraction'"
+        (click)="setFilter('attraction')">
+        <span class="material-icons">place</span>
+        <span>{{ i18n.translate('attractions') || 'Attractions' }}</span>
+        <span class="count">{{ getFilterCount('attraction') }}</span>
+      </button>
+      
+      <button 
+        class="filter-tab" 
+        [class.active]="selectedFilter === 'hotel'"
+        (click)="setFilter('hotel')">
+        <span class="material-icons">hotel</span>
+        <span>{{ i18n.translate('hotels') || 'Hotels' }}</span>
+        <span class="count">{{ getFilterCount('hotel') }}</span>
+      </button>
+      
+      <button 
+        class="filter-tab" 
+        [class.active]="selectedFilter === 'restaurant'"
+        (click)="setFilter('restaurant')">
+        <span class="material-icons">restaurant</span>
+        <span>{{ i18n.translate('restaurants') || 'Restaurants' }}</span>
+        <span class="count">{{ getFilterCount('restaurant') }}</span>
+      </button>
+      
+      <button 
+        class="filter-tab" 
+        [class.active]="selectedFilter === 'shop'"
+        (click)="setFilter('shop')">
+        <span class="material-icons">store</span>
+        <span>{{ i18n.translate('shops') || 'Shops' }}</span>
+        <span class="count">{{ getFilterCount('shop') }}</span>
+      </button>
+      
+      <button 
+        class="filter-tab" 
+        [class.active]="selectedFilter === 'service'"
+        (click)="setFilter('service')">
+        <span class="material-icons">medical_services</span>
+        <span>{{ i18n.translate('services') || 'Services' }}</span>
+        <span class="count">{{ getFilterCount('service') }}</span>
+      </button>
+    </div>
+
+    <!-- Favorites List -->
+    <div class="drawer-content">
+      <div class="favorites-list" *ngIf="filteredFavorites.length > 0">
+        <div 
+          class="favorite-item" 
+          *ngFor="let item of filteredFavorites; trackBy: trackByFavoriteId"
+          [routerLink]="getItemRoute(item)"
+          (click)="close()">
+          
+          <div class="item-image">
+            <img [src]="item.image" [alt]="i18n.pick({ en: item.name, ar: item.nameAr })" loading="lazy" />
+            <div class="item-type-badge">
+              <span class="material-icons">{{ getTypeIcon(item.type) }}</span>
+            </div>
+          </div>
+
+          <div class="item-details">
+            <h3>{{ i18n.pick({ en: item.name, ar: item.nameAr }) }}</h3>
+            
+            <div class="item-meta">
+              <span class="item-category" *ngIf="item.category">
+                {{ i18n.pick({ en: item.category, ar: item.categoryAr || item.category }) }}
+              </span>
+              
+              <div class="item-rating" *ngIf="item.rating">
+                <span class="material-icons">star</span>
+                <span>{{ item.rating.toFixed(1) }}</span>
+              </div>
+            </div>
+          </div>
+
+          <button 
+            class="btn-remove" 
+            (click)="removeFromFavorites(item.id); $event.stopPropagation(); $event.preventDefault()"
+            [attr.aria-label]="i18n.translate('removeFromFavorites') || 'Remove from favorites'">
+            <span class="material-icons">delete</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" *ngIf="filteredFavorites.length === 0">
+        <div class="empty-icon">
+          <span class="material-icons">favorite_border</span>
+        </div>
+        <h3>{{ i18n.translate('noFavorites') || 'No favorites yet' }}</h3>
+        <p>{{ i18n.translate('noFavoritesDesc') || 'Start adding your favorite places, hotels, and restaurants!' }}</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="drawer-footer" *ngIf="favorites.length > 0">
+      <button class="btn-clear-all" (click)="clearAll()">
+        <span class="material-icons">delete_sweep</span>
+        {{ i18n.translate('clearAll') || 'Clear All' }}
+      </button>
+    </div>
+  </div>
+</div>
+

@@ -1039,9 +1039,69 @@ Al-Bahnasa thus stands as a symbol of Egypt’s layered history — Pharaonic, H
     en: 'A city that witnessed the convergence of civilizations — from the Hellenistic and Roman ages to the early Islamic conquests — and became a sacred burial site for thousands of martyrs, symbolizing Egypt’s deep historical and spiritual legacy.',
     ar: 'مدينة تجمعت فيها حضارات متعددة من اليونانية والرومانية إلى صدر الإسلام، واحتضنت رفات آلاف الشهداء، لتكون رمزًا لعظمة التاريخ والقداسة في مصر.'
   },
+},
+{
+  id: '23',
+  name: { 
+    en: 'The Aten Museum (Aton Museum) - Minya', 
+    ar: 'المتحف الأتوني - المنيا' 
+  },
+  description: {
+    en: `The Aten Museum, also known as the Aton Museum, is one of Egypt’s most remarkable modern museums, located on the eastern bank of the Nile River in Minya. Dedicated to the era of Pharaoh Akhenaten and Queen Nefertiti, the museum celebrates the Amarna Period — a revolutionary chapter in ancient Egyptian history that emphasized monotheism and artistic transformation.
+
+Construction of the Aten Museum began in 2002 through Egyptian-German cooperation, designed to reflect the spirit of Akhenaten’s capital city, Akhetaten (modern-day Tell el-Amarna). The architectural design resembles a series of interconnected temples and open courtyards, symbolizing light, openness, and devotion to the sun god Aten.
+
+The museum’s exhibits showcase:
+- Artifacts from the Amarna Period (14th century BC), including statues, pottery, and reliefs depicting Akhenaten, Nefertiti, and their six daughters.
+- A collection of daily life objects from ancient Minya.
+- Models and multimedia displays illustrating the unique religious and cultural revolution led by Akhenaten.
+- A special hall dedicated to the relationship between Minya and Germany in archaeology and heritage preservation.
+
+The Aten Museum also features a Nile promenade, outdoor amphitheater, and large open-air areas for cultural events, making it both a historical and cultural landmark in Upper Egypt.
+
+Once fully completed and open to the public, the Aten Museum is expected to become a major attraction for visitors interested in Egypt’s Amarna heritage and the vision of Akhenaten — the Pharaoh who changed the course of ancient Egyptian religion and art.`,
+    
+    ar: `يُعد **المتحف الأتوني** أحد أهم المعالم الثقافية الحديثة في صعيد مصر، ويقع على الضفة الشرقية لنهر النيل بمدينة المنيا. يخلّد المتحف حقبة **الملك إخناتون والملكة نفرتيتي**، ويُبرز فترة العمارنة التي مثّلت ثورة دينية وفنية فريدة في تاريخ مصر القديمة، حيث دعا إخناتون إلى عبادة الإله الواحد "آتون" إله الشمس.
+
+بدأ إنشاء المتحف عام 2002 بالتعاون بين الحكومتين المصرية والألمانية، وجاء تصميمه المعماري مستوحى من مدينة إخناتون القديمة **أخيتاتون (تل العمارنة حاليًا)**. يتميز تصميمه بسلسلة من القاعات المفتوحة والساحات المتصلة التي تجسد فلسفة النور والانفتاح والعبادة للإله آتون.
+
+يضم المتحف مجموعة مميزة من المعروضات تشمل:
+- **قطع أثرية من عصر العمارنة** (القرن الرابع عشر قبل الميلاد) مثل التماثيل والفخار والنقوش التي تُصور إخناتون ونفرتيتي وبناتهما الست.
+- **مقتنيات من الحياة اليومية** في مصر القديمة وخاصة منطقة المنيا.
+- **عروضًا تفاعلية ووسائط متعددة** تشرح التحول الديني والثقافي الذي قاده إخناتون.
+- **قاعة مخصصة للتعاون الأثري المصري الألماني** في حفظ التراث.
+
+يضم المتحف أيضًا ممشى على النيل ومسرحًا مكشوفًا ومساحات مفتوحة لإقامة الفعاليات الثقافية، ليكون صرحًا يجمع بين التاريخ والفن والحياة المعاصرة.
+
+وعند افتتاحه الكامل للجمهور، يُتوقع أن يصبح المتحف الأتوني من أبرز المقاصد السياحية في مصر، إذ يجسد رؤية إخناتون الذي غيّر وجه الديانة والفن المصري القديم.`
+  },
+  imageUrl: '/assets/images/atony.jpg',
+  imageGallery: [
+    '/assets/images/atony.jpg', '/assets/images/atony1.jpg', '/assets/images/atony2.jpg', '/assets/images/atony3.jpg'
+  ],
+  latitude: 28.0935,
+  longitude: 30.7513,
+  openingHours: { en: 'Daily, 9:00 AM – 5:00 PM', ar: 'يوميًا من 9 صباحًا حتى 5 مساءً' },
+  ticketPrice: { en: 'EGP 100 for foreigners, EGP 20 for Egyptians', ar: '100 جنيه للأجانب و20 جنيه للمصريين' },
+  rating: 4.7,
+  reviewCount: 198,
+  category: { en: 'Archaeological Museum', ar: 'متحف أثري' },
+  features: [
+    { en: 'Dedicated to Pharaoh Akhenaten and the Amarna Period', ar: 'مكرس للملك إخناتون وعصر العمارنة' },
+    { en: 'Egyptian-German cooperation project', ar: 'مشروع بالتعاون المصري الألماني' },
+    { en: 'Displays rare Amarna artifacts', ar: 'يعرض قطعًا أثرية نادرة من العمارنة' },
+    { en: 'Located on the Nile in Minya city', ar: 'يقع على ضفة النيل بمدينة المنيا' },
+    { en: 'Cultural venue for events and exhibitions', ar: 'مكان ثقافي لإقامة الفعاليات والمعارض' }
+  ],
+  historicalPeriod: {
+    en: 'Amarna Period (14th century BC)', 
+    ar: 'عصر العمارنة (القرن الرابع عشر قبل الميلاد)'
+  },
+  significance: {
+    en: 'A modern cultural landmark celebrating the legacy of Akhenaten and the Amarna revolution — a symbol of Egypt’s enduring spirit of innovation and spirituality.',
+    ar: 'صرح ثقافي حديث يخلد إرث إخناتون وثورته العمارنية، ويعكس روح الإبداع والروحانية التي تميزت بها الحضارة المصرية.'
+  },
 }
-
-
 
 
 

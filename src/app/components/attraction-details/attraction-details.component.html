@@ -1,17 +1,8 @@
-<div
-  class="attraction-details-container"
-  *ngIf="attraction"
-  [class.rtl]="i18n.isRTL()"
-  [class.ltr]="!i18n.isRTL()"
->
+<div class="attraction-details-container" *ngIf="attraction" [class.rtl]="i18n.isRTL()" [class.ltr]="!i18n.isRTL()">
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="hero-background">
-      <img
-        [src]="currentImage"
-        [alt]="i18n.pick((attraction ).name)"
-        class="hero-image"
-      />
+      <img [src]="currentImage" [alt]="i18n.pick((attraction ).name)" class="hero-image" />
       <div class="hero-overlay"></div>
     </div>
 
@@ -55,22 +46,15 @@
       <button class="gallery-btn prev" (click)="previousImage()" [disabled]="currentImageIndex === 0">
         <span class="material-icons">chevron_left</span>
       </button>
-      <button
-        class="gallery-btn next"
-        (click)="nextImage()"
-        [disabled]="currentImageIndex === (attraction.imageGallery?.length ?? 0) - 1"
-      >
+      <button class="gallery-btn next" (click)="nextImage()"
+        [disabled]="currentImageIndex === (attraction.imageGallery?.length ?? 0) - 1">
         <span class="material-icons">chevron_right</span>
       </button>
     </div>
 
     <div class="gallery-indicators" *ngIf="(attraction.imageGallery?.length ?? 0) > 1">
-      <button
-        *ngFor="let image of attraction.imageGallery; let i = index"
-        class="indicator"
-        [class.active]="i === currentImageIndex"
-        (click)="goToImage(i)"
-      ></button>
+      <button *ngFor="let image of attraction.imageGallery; let i = index" class="indicator"
+        [class.active]="i === currentImageIndex" (click)="goToImage(i)"></button>
     </div>
   </section>
 
@@ -111,17 +95,10 @@
           <div class="content-section" *ngIf="(attraction.imageGallery?.length ?? 0) > 1">
             <h2>{{ i18n.translate('photoGallery') }}</h2>
             <div class="thumbnail-gallery">
-              <div
-                class="thumbnail"
-                *ngFor="let image of attraction.imageGallery; let i = index"
-                [class.active]="i === currentImageIndex"
-                (click)="goToImage(i)"
-              >
-                <img
-                  [src]="image"
-                  [alt]="i18n.pick((attraction ).name) + ' - ' + (i18n.formatNumber(i + 1))"
-                  loading="lazy"
-                />
+              <div class="thumbnail" *ngFor="let image of attraction.imageGallery; let i = index"
+                [class.active]="i === currentImageIndex" (click)="goToImage(i)">
+                <img [src]="image" [alt]="i18n.pick((attraction ).name) + ' - ' + (i18n.formatNumber(i + 1))"
+                  loading="lazy" />
               </div>
             </div>
           </div>
@@ -163,19 +140,20 @@
             </div>
 
             <div class="action-buttons">
-              <button class="btn btn-primary full-width">
+              <a class="btn btn-primary full-width" [href]="getDirectionsUrl()" target="_blank" rel="noopener">
                 <span class="material-icons">directions</span>
                 {{ i18n.translate('getDirections') }}
-              </button>
+              </a>
               <button class="btn btn-secondary full-width" (click)="addToFavorites()">
                 <span class="material-icons">favorite_border</span>
                 {{ i18n.translate('saveToFavorites') }}
               </button>
               <button class="btn btn-accent full-width">
-                <span class="material-icons">share</span>
-                {{ i18n.translate('share') }}
+                <span class="material-icons"></span>
+                {{ i18n.translate('Book_A_Ticket') }}
               </button>
             </div>
+
           </div>
 
           <div class="stats-card">
@@ -206,11 +184,7 @@
       <div class="related-grid">
         <div class="related-card" *ngFor="let related of relatedAttractions">
           <div class="related-image">
-            <img
-              [src]="related.imageUrl"
-              [alt]="i18n.pick((related ).name)"
-              loading="lazy"
-            />
+            <img [src]="related.imageUrl" [alt]="i18n.pick((related ).name)" loading="lazy" />
           </div>
 
           <div class="related-content">

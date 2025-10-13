@@ -230,26 +230,36 @@ export interface NewsletterSubscription {
   subscribeDate: Date;
 }
 
-
 export interface ServiceItem {
   id: string;
   name: string;
   nameAr: string;
+  type: 'hospital' | 'clinic' | 'pharmacy' | 'ambulance' | 'police' | 'fire' | 'bank' | 'exchange';
+  typeAr: string;
   description: string;
   descriptionAr: string;
-  type: 'hospital' | 'ambulance' | 'police' | 'fire' | 'bank' | 'exchange';
-  typeAr: string;
-  phone: string;
   address: string;
   addressAr: string;
+  phone: string;
+  email?: string;
   image: string;
-  isEmergency: boolean;
-  is24h: boolean;
-  isFeatured: boolean;
-  rating?: number;
+  latitude?: number;
+  longitude?: number;
   distanceKm?: number;
-  features: string[];
-  featuresAr: string[];
+  rating?: number;
+  is24h?: boolean;
+  isEmergency?: boolean;
+  isFeatured?: boolean;
+  features?: string[];
+  featuresAr?: string[];
+  
+  // Additional fields for clinics
+  specialty?: string;
+  specialtyAr?: string;
+  
+  // Additional fields for pharmacies
+  hasDelivery?: boolean;
+  acceptsInsurance?: boolean;
 }
 
 export interface TourGuide {
@@ -314,4 +324,68 @@ export interface TourGuide {
     address?: LocalizedText;
   };
   rating?: number;
+}
+
+
+
+
+
+export interface SouvenirShop {
+  id: string;
+  name: string;
+  nameAr: string;
+  description: string;
+  descriptionAr: string;
+  category: 'handicrafts' | 'jewelry' | 'textiles' | 'pottery' | 'papyrus' | 'market' | 'gallery';
+  categoryAr: string;
+  address: string;
+  addressAr: string;
+  phone: string;
+  email?: string;
+  image: string;
+  images?: string[];
+  latitude: number;
+  longitude: number;
+  distanceKm?: number;
+  rating?: number;
+  reviewCount?: number;
+  priceRange: '$' | '$$' | '$$$';
+  openingHours: string;
+  openingHoursAr: string;
+  isFeatured?: boolean;
+  acceptsCreditCard?: boolean;
+  hasDelivery?: boolean;
+  hasOnlineStore?: boolean;
+  specialties: string[];
+  specialtiesAr: string[];
+  products?: SouvenirProduct[];
+}
+
+export interface SouvenirProduct {
+  id: string;
+  name: string;
+  nameAr: string;
+  description: string;
+  descriptionAr: string;
+  category: string;
+  categoryAr: string;
+  price: number;
+  currency: string;
+  image: string;
+  images?: string[];
+  inStock: boolean;
+  handmade?: boolean;
+  material?: string;
+  materialAr?: string;
+  origin?: string;
+  originAr?: string;
+}
+
+export interface SouvenirCategory {
+  key: string;
+  name: string;
+  nameAr: string;
+  icon: string;
+  description: string;
+  descriptionAr: string;
 }

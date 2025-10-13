@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { TourismService } from '../../services/tourism.service';
+import { FavoritesService, FavoriteItem } from '../../services/favorites.service';
 import { Attraction } from '../../models/tourism.models';
 import { I18nService } from 'src/app/services/i18n.service';
 
@@ -20,10 +21,14 @@ export class AttractionsComponent implements OnInit {
   loading = true;
 
   searchQuery = '';
-  selectedCategory = ''; // holds a localized category label or '' (all)
+  selectedCategory = '';
   viewMode: 'grid' | 'list' = 'grid';
 
-  constructor(private tourismService: TourismService, public i18n: I18nService) {}
+  constructor(
+    private tourismService: TourismService,
+    public favoritesService: FavoritesService,
+    public i18n: I18nService
+  ) {}
 
   ngOnInit(): void {
     this.tourismService.getAttractions().subscribe((attractions) => {
@@ -84,16 +89,52 @@ export class AttractionsComponent implements OnInit {
     });
   }
 
-  addToFavorites(attraction: Attraction) {
-    // Implement favorites functionality as desired
-    console.log('Added to favorites:', this.i18n.pick(attraction.name as any));
+  /**
+   * Toggle favorite for attraction
+   * @param attraction - The attraction to toggle
+   * @param event - Mouse event (optional) to prevent bubbling
+   */
+  toggleFavorite(attraction: Attraction, event?: MouseEvent): void {
+    if (event) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
+
+    const favoriteItem: FavoriteItem = {
+      id: attraction.id,
+      type: 'attraction',
+      name: typeof attraction.name === 'string' ? attraction.name : attraction.name.en,
+      nameAr: typeof attraction.name === 'string' ? attraction.name : attraction.name.ar,
+      image: attraction.imageGallery?.[0] || '/assets/images/placeholder.jpg',
+      category: typeof attraction.category === 'string' ? attraction.category : attraction.category?.en,
+      categoryAr: typeof attraction.category === 'string' ? attraction.category : attraction.category?.ar,
+      rating: attraction.rating,
+      addedAt: new Date()
+    };
+
+    const isNowFavorite = this.favoritesService.toggleFavorite(favoriteItem);
+    
+    // Optional: Show toast notification
+    // const message = isNowFavorite 
+    //   ? this.i18n.translate('addedToFavorites') 
+    //   : this.i18n.translate('removedFromFavorites');
+    // this.showToast(message);
+  }
+
+  /**
+   * Check if attraction is favorite
+   * @param attractionId - The ID of the attraction to check
+   * @returns true if the attraction is in favorites
+   */
+  isFavorite(attractionId: string): boolean {
+    return this.favoritesService.isFavorite(attractionId);
   }
 
   trackByAttractionId(index: number, attraction: Attraction): string {
     return attraction.id;
   }
 
-  // Helpers to bind localized category values used in data
+  // Category helpers
   get catHistoricalSite(): string {
     return this.i18n.pick({ en: 'Historical Site', ar: 'موقع تاريخي' });
   }
@@ -103,10 +144,9 @@ export class AttractionsComponent implements OnInit {
   get catReligiouIsamicSite(): string {
     return this.i18n.pick({ en: 'Islamic Religious Site', ar:  'موقع ديني اسلامي' });
   }
-    get catReligiouChristianSite(): string {
+  get catReligiouChristianSite(): string {
     return this.i18n.pick({ en: 'Christian religious site', ar:  'موقع ديني مسيحي' });
   }
-
   get catScenicArea(): string {
     return this.i18n.pick({ en: 'Scenic Area', ar: 'منطقة طبيعية' });
   }

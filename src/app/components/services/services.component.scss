@@ -1,135 +1,982 @@
+// ========================================
+// SERVICES PAGE - WITH CLINICS & PHARMACIES
+// ========================================
+
 .services-page {
-  min-height: auto;
-  padding-top: 0; /* hero will sit under navbar */
+  min-height: 100vh;
+  padding-top: 0;
 }
 
-/* Hero */
+// ========================================
+// MAXIMIZED PAGE HEADER
+// ========================================
 
-/* Page header hero (same visual style as hotels/tourguide) */
 .page-header {
   position: relative;
-  /* make the hero taller so the image feels larger */
-  height: 360px;
-  margin-bottom: 0.8rem;
+  height: 450px;
+  margin-bottom: 0;
+  overflow: hidden;
+  
+  .header-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 0%, rgba(6,24,55,0.2) 100%);
+      pointer-events: none;
+    }
+  }
+  
+  .header-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transform: scale(1.05);
+    transition: transform 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    
+    .page-header:hover & {
+      transform: scale(1.1);
+    }
+  }
+  
+  .header-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(6, 24, 55, 0.4) 0%,
+      rgba(6, 24, 55, 0.7) 100%
+    );
+    z-index: 1;
+  }
+  
+  .header-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  
+  .page-title {
+    color: #fff;
+    font-size: 3.75rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+                 0 2px 8px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
+  }
+  
+  .page-subtitle {
+    color: rgba(255, 255, 255, 0.95);
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+    max-width: 800px;
+    line-height: 1.6;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .header-decoration {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to top, #ffffff, transparent);
+    z-index: 2;
+    pointer-events: none;
+  }
 }
-.page-header .header-background { position: absolute; inset: 0; overflow: hidden }
-.page-header .header-image {
+
+.fade-in {
+  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+  
+  &:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ========================================
+// ENHANCED FILTERS SECTION
+// ========================================
+
+.services-filters {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  padding: 3rem 0;
+  border-bottom: 1px solid rgba(6, 24, 55, 0.08);
+  box-shadow: 0 4px 12px rgba(6, 24, 55, 0.04);
+}
+
+.filters-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  
+  .filters-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color, #061837);
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .filters-subtitle {
+    color: var(--text-secondary, #6b7280);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+}
+
+.filters-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.filters-grid {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 900px;
+  
+  [dir="rtl"] & {
+    flex-direction: row-reverse;
+  }
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 200px;
+}
+
+.filter-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--primary-color, #061837);
+  font-size: 0.95rem;
+  
+  .material-icons {
+    font-size: 1.2rem;
+    color: var(--accent-color, #D4AF37);
+  }
+}
+
+.filter-select {
+  padding: 0.875rem 1.25rem;
+  border: 2px solid rgba(6, 24, 55, 0.15);
+  border-radius: 12px;
+  background: white;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary, #1a1a1a);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+  &:hover {
+    border-color: var(--accent-color, #D4AF37);
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: var(--accent-color, #D4AF37);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+  }
+}
+
+.toggle-row {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+  
+  &:hover {
+    background: rgba(6, 24, 55, 0.04);
+  }
+  
+  input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--accent-color, #D4AF37);
+  }
+  
+  .checkbox-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary, #1a1a1a);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    
+    .material-icons {
+      font-size: 1.1rem;
+      color: var(--accent-color, #D4AF37);
+    }
+  }
+  
+  &.checkbox-large {
+    padding: 0.75rem 1.25rem;
+    background: white;
+    border: 2px solid rgba(6, 24, 55, 0.15);
+    border-radius: 12px;
+    
+    &:hover {
+      border-color: var(--accent-color, #D4AF37);
+      background: white;
+    }
+    
+    .checkbox-label {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.btn-clear {
+  padding: 0.875rem 2rem;
+  background: linear-gradient(135deg, var(--primary-color, #061837), #0a2a5a);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(6, 24, 55, 0.2);
+  
+  .material-icons {
+    font-size: 1.2rem;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(6, 24, 55, 0.3);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-clear-small {
+  padding: 0.6rem 1.25rem;
+  background: linear-gradient(135deg, var(--accent-color, #D4AF37), #c49b2e);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(212, 175, 55, 0.2);
+  
+  .material-icons {
+    font-size: 1rem;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+  }
+}
+
+// ========================================
+// SECTION HEADERS
+// ========================================
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color, #061837);
+    margin: 0 0 0.75rem 0;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    
+    .section-icon {
+      font-size: 2.5rem;
+      color: var(--accent-color, #D4AF37);
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-color, #D4AF37), rgba(212, 175, 55, 0.3));
+      border-radius: 2px;
+    }
+  }
+  
+  .section-subtitle {
+    color: var(--text-secondary, #6b7280);
+    font-size: 1.1rem;
+    margin: 1rem 0 0 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// ========================================
+// CLINICS & PHARMACIES SECTIONS
+// ========================================
+
+.clinics-section,
+.pharmacies-section {
+  padding: 5rem 0;
+  background: white;
+  
+  &:nth-child(even) {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
+  }
+}
+
+.specialty-filters {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+// ========================================
+// CARD STYLING
+// ========================================
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.service-card,
+.clinic-card,
+.pharmacy-card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(6, 24, 55, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(6, 24, 55, 0.05);
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(6, 24, 55, 0.15);
+    border-color: rgba(212, 175, 55, 0.25);
+  }
+}
+
+.clinic-card {
+  border-left: 4px solid #10b981;
+  
+  &:hover {
+    border-left-color: #059669;
+  }
+}
+
+.pharmacy-card {
+  border-left: 4px solid #3b82f6;
+  
+  &:hover {
+    border-left-color: #2563eb;
+  }
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.featured-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(6, 24, 55, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(6, 24, 55, 0.05);
+  
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(6, 24, 55, 0.2);
+    border-color: rgba(212, 175, 55, 0.3);
+  }
+}
+
+// ========================================
+// CARD IMAGE & BADGES
+// ========================================
+
+.card-image-wrapper {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  
+  .featured-card & {
+    height: 260px;
+  }
+}
+
+.card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* focus toward the top so the image occupies space under the navbar */
-  object-position: center top;
-  display:block;
-  transform: scale(1.03);
-  transition: transform 700ms cubic-bezier(.2,.9,.3,1);
-}
-.page-header:hover .header-image { transform: scale(1.06) }
-.page-header .header-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,24,55,0.25), rgba(6,24,55,0.45)); }
-.page-header .header-content { position: relative; z-index: 2; display:flex; align-items:center; height:100% }
-.page-header .page-title { color: #fff; font-size: 2.1rem; margin: 0 }
-.page-header .page-subtitle { color: rgba(255,255,255,0.94); margin-top: 0.5rem; font-size: 1.05rem }
-.fade-in { animation: fadeInUp .6s ease both }
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: translateY(0) } }
-
-/* Filters */
-.services-filters {
-  background: white; padding: 2rem 0; border-bottom: 1px solid var(--border-color);
-}
-.filters-header { text-align: center; margin-bottom: 2rem; }
-.filters-header h3 { color: var(--text-primary); font-size: 1.5rem; }
-.filters-grid { display: flex; gap: 1.5rem; align-items: end; justify-content: center; flex-wrap: wrap; }
-[dir="rtl"] .filters-grid { flex-direction: row-reverse; }
-.filter-group { display: flex; flex-direction: column; gap: .5rem; }
-.filter-group label { font-weight: 500; color: var(--text-primary); font-size: .9rem; }
-.filter-select { padding: .75rem 1rem; border: 2px solid var(--border-color); border-radius: var(--radius-md); background: white; font-size: .9rem; min-width: 150px; }
-.toggle-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-.checkbox { display: flex; align-items: center; gap: .5rem; cursor: pointer; user-select: none; }
-
-/* Featured */
-.featured-services { padding: 4rem 0; background: var(--background-color); }
-.featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 2rem; margin-top: 2rem; }
-.featured-card {
-  background: white; border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg); transition: all var(--transition-normal);
-  &:hover { transform: translateY(-6px); box-shadow: var(--shadow-xl); }
+  transition: transform 0.5s ease;
+  
+  .service-card:hover &,
+  .clinic-card:hover &,
+  .pharmacy-card:hover &,
+  .featured-card:hover & {
+    transform: scale(1.08);
+  }
 }
 
-/* Cards grid */
-.all-services { padding: 4rem 0; }
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 2rem; }
-.service-card {
-  background: white; border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-md); transition: all var(--transition-normal);
-  &:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(6, 24, 55, 0.1) 50%,
+    rgba(6, 24, 55, 0.3) 100%
+  );
+  pointer-events: none;
 }
 
-/* Image + badges */
-.service-image { position: relative; height: 200px; overflow: hidden; }
-.service-image img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-normal); }
-.service-card:hover .service-image img,
-.featured-card:hover .service-image img { transform: scale(1.05); }
-
-.service-type-badge {
-  position: absolute; top: 1rem; right: 1rem;
-  background: var(--accent-color); color: white; padding: .5rem 1rem; border-radius: var(--radius-full); font-size: .875rem; font-weight: 500;
+.card-badges {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  z-index: 2;
+  
+  .featured-card.rtl &,
+  .service-card.rtl &,
+  .clinic-card.rtl &,
+  .pharmacy-card.rtl & {
+    flex-direction: row-reverse;
+  }
 }
-.featured-card.rtl .service-type-badge, .service-card.rtl .service-type-badge { right: auto; left: 1rem; }
 
-.service-availability {
-  position: absolute; top: 1rem; left: 1rem;
-  background: var(--border-color); color: var(--text-primary); padding: .4rem .7rem; border-radius: var(--radius-md); font-size: .75rem; font-weight: 600;
-  &.on { background: var(--primary-color); color: #fff; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  
+  .material-icons {
+    font-size: 1rem;
+  }
+  
+  &.badge-type {
+    background: rgba(212, 175, 55, 0.95);
+    color: var(--primary-color, #061837);
+  }
+  
+  &.badge-specialty {
+    background: rgba(16, 185, 129, 0.95);
+    color: white;
+  }
+  
+  &.badge-pharmacy {
+    background: rgba(59, 130, 246, 0.95);
+    color: white;
+  }
+  
+  &.badge-availability {
+    background: rgba(107, 114, 128, 0.9);
+    color: white;
+    
+    &.active {
+      background: linear-gradient(135deg, #10b981, #059669);
+      animation: pulse 2s ease-in-out infinite;
+    }
+  }
 }
-.service-card.rtl .service-availability, .featured-card.rtl .service-availability { left: auto; right: 1rem; }
 
-/* Content */
-.service-content { padding: 1.5rem; }
-.service-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-.service-card.rtl .service-header { flex-direction: row-reverse; }
-.service-type { background: var(--background-color); color: var(--primary-color); padding: .25rem .75rem; border-radius: var(--radius-full); font-size: .8rem; font-weight: 500; }
-.service-rating { font-weight: 700; color: var(--golden-sand); }
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+}
 
-.service-title { font-size: 1.25rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; line-height: 1.4; }
-.featured-card .service-title { font-size: 1.5rem; }
-.service-description { color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem; }
+.card-rating {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(255, 221, 87, 0.95);
+  color: var(--primary-color, #061837);
+  padding: 0.5rem 0.875rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(255, 184, 107, 0.4);
+  z-index: 2;
+  
+  .material-icons {
+    font-size: 1.1rem;
+    color: #f59e0b;
+  }
+  
+  .featured-card.rtl &,
+  .service-card.rtl &,
+  .clinic-card.rtl &,
+  .pharmacy-card.rtl & {
+    right: auto;
+    left: 1rem;
+  }
+}
 
-.service-meta { margin-bottom: 1.25rem; }
-.meta-item { display: flex; align-items: center; gap: .5rem; margin-bottom: .5rem; font-size: .9rem; color: var(--text-secondary); }
-.service-card.rtl .meta-item, .featured-card.rtl .meta-item { flex-direction: row-reverse; }
-.meta-item .material-icons { font-size: 1.1rem; color: var(--primary-color); }
+// ========================================
+// CARD CONTENT
+// ========================================
 
-/* Features */
-.service-features { display: flex; gap: .5rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
-.service-card.rtl .service-features, .featured-card.rtl .service-features { flex-direction: row-reverse; }
-.feature-tag { background: var(--golden-sand); color: var(--primary-color); padding: .25rem .75rem; border-radius: var(--radius-full); font-size: .8rem; font-weight: 500; }
+.card-content {
+  padding: 1.75rem;
+  
+  .featured-card & {
+    padding: 2rem;
+  }
+}
 
-/* Actions */
-.service-actions { display: flex; gap: .75rem; flex-wrap: wrap; }
-.service-card.rtl .service-actions, .featured-card.rtl .service-actions { flex-direction: row-reverse; }
-.service-actions .btn { flex: 1; min-width: 120px; font-size: .875rem; padding: .5rem 1rem; }
+.card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--primary-color, #061837);
+  margin: 0 0 1rem 0;
+  line-height: 1.4;
+  
+  .featured-card & {
+    font-size: 1.6rem;
+  }
+}
 
-/* No results + tips reuse from events */
-.no-results { text-align: center; padding: 4rem 0; }
-.no-results-content { max-width: 400px; margin: 0 auto; }
-.no-results .material-icons { font-size: 4rem; color: var(--text-light); margin-bottom: 1rem; }
+.card-description {
+  color: var(--text-secondary, #6b7280);
+  line-height: 1.7;
+  margin: 0 0 1.5rem 0;
+  font-size: 0.95rem;
+}
 
-.service-tips { background: var(--background-color); padding: 4rem 0; }
-.tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
-.tip-card { background: white; padding: 2rem; border-radius: var(--radius-xl); text-align: center; box-shadow: var(--shadow-sm); }
-.tip-icon { width: 60px; height: 60px; background: var(--secondary-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
-.tip-icon .material-icons { color: white; font-size: 1.5rem; }
+.card-meta {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
 
-/* Mobile */
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary, #6b7280);
+  
+  .service-card.rtl &,
+  .clinic-card.rtl &,
+  .pharmacy-card.rtl &,
+  .featured-card.rtl & {
+    flex-direction: row-reverse;
+  }
+  
+  .material-icons {
+    font-size: 1.2rem;
+    color: var(--accent-color, #D4AF37);
+  }
+}
+
+.card-features {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  
+  .service-card.rtl &,
+  .clinic-card.rtl &,
+  .pharmacy-card.rtl &,
+  .featured-card.rtl & {
+    flex-direction: row-reverse;
+  }
+}
+
+.feature-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.1));
+  color: var(--primary-color, #061837);
+  padding: 0.4rem 0.875rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  transition: all 0.2s ease;
+  
+  .material-icons {
+    font-size: 0.95rem;
+    color: var(--accent-color, #D4AF37);
+  }
+  
+  &:hover {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.2));
+    transform: translateY(-1px);
+  }
+}
+
+// ========================================
+// CARD ACTIONS
+// ========================================
+
+.card-actions {
+  display: flex;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+  
+  .service-card.rtl &,
+  .clinic-card.rtl &,
+  .pharmacy-card.rtl &,
+  .featured-card.rtl & {
+    flex-direction: row-reverse;
+  }
+}
+
+.btn {
+  flex: 1;
+  min-width: 140px;
+  padding: 0.875rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 12px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  
+  .material-icons {
+    font-size: 1.1rem;
+  }
+  
+  &.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color, #061837), #0a2a5a);
+    color: white;
+    box-shadow: 0 4px 12px rgba(6, 24, 55, 0.25);
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(6, 24, 55, 0.35);
+    }
+  }
+  
+  &.btn-secondary {
+    background: linear-gradient(135deg, var(--accent-color, #D4AF37), #c49b2e);
+    color: white;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+    }
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// ========================================
+// NO RESULTS
+// ========================================
+
+.no-results {
+  text-align: center;
+  padding: 5rem 0;
+}
+
+.no-results-content {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.no-results-icon {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  
+  .material-icons {
+    font-size: 4rem;
+    color: var(--text-secondary, #6b7280);
+  }
+}
+
+.no-results-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--primary-color, #061837);
+  margin: 0 0 1rem 0;
+}
+
+.no-results-text {
+  color: var(--text-secondary, #6b7280);
+  font-size: 1.05rem;
+  margin: 0 0 2rem 0;
+  line-height: 1.6;
+}
+
+// ========================================
+// ALL SERVICES & FEATURED
+// ========================================
+
+.all-services {
+  padding: 5rem 0;
+  background: white;
+}
+
+.featured-services {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+// ========================================
+// SERVICE TIPS
+// ========================================
+
+.service-tips {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  padding: 5rem 0;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.tip-card {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(6, 24, 55, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(6, 24, 55, 0.05);
+  
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(6, 24, 55, 0.15);
+    border-color: rgba(212, 175, 55, 0.25);
+  }
+}
+
+.tip-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--accent-color, #D4AF37), #c49b2e);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+  
+  .material-icons {
+    color: white;
+    font-size: 2rem;
+  }
+}
+
+.tip-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-color, #061837);
+  margin: 0 0 1rem 0;
+}
+
+.tip-description {
+  color: var(--text-secondary, #6b7280);
+  line-height: 1.7;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+// ========================================
+// RESPONSIVE DESIGN
+// ========================================
+
+@media (min-width: 960px) {
+  .page-header {
+    height: 500px;
+  }
+  
+  .page-title {
+    font-size: 4.25rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
-  .hero-title { font-size: 2.5rem; }
-  .filters-grid { flex-direction: column; align-items: stretch; }
-  .filter-group { width: 100%; }
-  .featured-grid { grid-template-columns: 1fr; }
-  .services-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-  .service-actions { flex-direction: column; }
-  .service-actions .btn { flex: none; }
+  .page-header {
+    height: 360px;
+  }
+  
+  .page-title {
+    font-size: 2.75rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1.15rem;
+  }
+  
+  .filters-grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .filter-group {
+    width: 100%;
+  }
+  
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .card-actions {
+    flex-direction: column;
+    
+    .btn {
+      width: 100%;
+    }
+  }
+  
+  .section-header .section-title {
+    font-size: 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
 
 @media (max-width: 480px) {
-  .hero-title { font-size: 2rem; }
-  .service-content { padding: 1rem; }
-  .service-actions .btn { font-size: .8rem; padding: .4rem .8rem; }
+  .page-header {
+    height: 300px;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1rem;
+  }
+  
+  .card-content {
+    padding: 1.25rem;
+  }
+  
+  .featured-card .card-content {
+    padding: 1.5rem;
+  }
+  
+  .section-header .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .filters-header .filters-title {
+    font-size: 1.5rem;
+  }
 }
+

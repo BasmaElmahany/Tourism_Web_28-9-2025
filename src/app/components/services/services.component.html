@@ -1,8 +1,8 @@
 <div class="services-page" [attr.dir]="i18nService.isRTL() ? 'rtl' : 'ltr'">
-  <!-- Hero -->
+  <!-- Enhanced Hero Header -->
   <section class="page-header">
     <div class="header-background">
-  <img src="/assets/images/s.webp" alt="Services in Minya" class="header-image" />
+      <img src="/assets/images/s.webp" alt="Services in Minya" class="header-image" />
       <div class="header-overlay"></div>
     </div>
     <div class="header-content">
@@ -11,73 +11,46 @@
         <p class="page-subtitle fade-in">{{ getTranslation('subtitle') }}</p>
       </div>
     </div>
+    <div class="header-decoration"></div>
   </section>
 
-  <!-- Filters -->
-  <section class="services-filters">
-    <div class="container">
-      <div class="filters-header">
-        <h3>{{ getTranslation('findServices') }}</h3>
-      </div>
 
-      <div class="filters-grid">
-        <div class="filter-group">
-          <label>{{ getTranslation('type') }}</label>
-          <select [(ngModel)]="selectedType" (change)="filterServices()" class="filter-select">
-            <option value="">{{ getTranslation('allTypes') }}</option>
-            <option *ngFor="let t of serviceTypes" [value]="t.key">
-              {{ i18nService.isRTL() ? t.nameAr : t.name }}
-            </option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label>{{ getTranslation('availability') }}</label>
-          <div class="toggle-row">
-            <label class="checkbox">
-              <input type="checkbox" [(ngModel)]="onlyEmergency" (change)="filterServices()">
-              <span>{{ getTranslation('emergencyOnly') }}</span>
-            </label>
-            <label class="checkbox">
-              <input type="checkbox" [(ngModel)]="only24h" (change)="filterServices()">
-              <span>{{ getTranslation('open24h') }}</span>
-            </label>
-          </div>
-        </div>
-
-        <button class="btn btn-secondary" (click)="clearFilters()">
-          {{ i18nService.translate('clearFilters') }}
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured -->
+    <!-- Featured Services -->
   <section class="featured-services" *ngIf="featuredServices.length > 0">
     <div class="container">
-      <h2 class="section-title">{{ getTranslation('featured') }}</h2>
+      <div class="section-header">
+        <h2 class="section-title">{{ getTranslation('featured') }}</h2>
+        <p class="section-subtitle">{{ getTranslation('featuredDescription') || 'Top-rated services recommended for you' }}</p>
+      </div>
+
       <div class="featured-grid">
         <div *ngFor="let item of featuredServices" class="featured-card" [class.rtl]="i18nService.isRTL()">
-          <div class="service-image">
-            <img [src]="item.image" [alt]="i18nService.isRTL() ? item.nameAr : item.name">
-            <div class="service-type-badge">
-              {{ i18nService.isRTL() ? item.typeAr : (item.type | titlecase) }}
+          <div class="card-image-wrapper">
+            <img [src]="item.image" [alt]="i18nService.isRTL() ? item.nameAr : item.name" class="card-image">
+            <div class="image-overlay"></div>
+            
+            <div class="card-badges">
+              <span class="badge badge-type">
+                <span class="material-icons">medical_services</span>
+                {{ i18nService.isRTL() ? item.typeAr : (item.type | titlecase) }}
+              </span>
+              <span class="badge badge-availability" [class.active]="item.is24h">
+                <span class="material-icons">schedule</span>
+                24/7
+              </span>
             </div>
-            <div class="service-availability" [class.on]="item.is24h">24/7</div>
+
+            <div class="card-rating" *ngIf="item.rating">
+              <span class="material-icons">star</span>
+              <span>{{ item.rating?.toFixed(1) }}</span>
+            </div>
           </div>
 
-          <div class="service-content">
-            <div class="service-header">
-              <div class="service-type">{{ i18nService.isRTL() ? item.typeAr : (item.type | titlecase) }}</div>
-              <div class="service-rating" *ngIf="item.rating">
-                ★ {{ item.rating?.toFixed(1) }}
-              </div>
-            </div>
+          <div class="card-content">
+            <h3 class="card-title">{{ i18nService.isRTL() ? item.nameAr : item.name }}</h3>
+            <p class="card-description">{{ i18nService.isRTL() ? item.descriptionAr : item.description }}</p>
 
-            <h3 class="service-title">{{ i18nService.isRTL() ? item.nameAr : item.name }}</h3>
-            <p class="service-description">{{ i18nService.isRTL() ? item.descriptionAr : item.description }}</p>
-
-            <div class="service-meta">
+            <div class="card-meta">
               <div class="meta-item">
                 <span class="material-icons">place</span>
                 <span>{{ i18nService.isRTL() ? item.addressAr : item.address }}</span>
@@ -92,19 +65,74 @@
               </div>
             </div>
 
-            <div class="service-features" *ngIf="item.features?.length">
-              <span *ngFor="let f of (i18nService.isRTL() ? item.featuresAr : item.features)" class="feature-tag">{{ f }}</span>
+            <div class="card-features" *ngIf="item.features?.length">
+              <span *ngFor="let f of (i18nService.isRTL() ? item.featuresAr : item.features)" class="feature-tag">
+                <span class="material-icons">check_circle</span>
+                {{ f }}
+              </span>
             </div>
 
-            <div class="service-actions">
-              <a class="btn btn-primary" [href]="telHref(item.phone)">{{ getTranslation('callNow') }}</a>
+            <div class="card-actions">
+              <a class="btn btn-primary" [href]="telHref(item.phone)">
+                <span class="material-icons">call</span>
+                {{ getTranslation('callNow') }}
+              </a>
               <a class="btn btn-secondary" [href]="mapsHref(item)" target="_blank" rel="noopener">
+                <span class="material-icons">directions</span>
                 {{ getTranslation('getDirections') }}
               </a>
-              
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section> 
+
+  <!-- Enhanced Filters Section -->
+  <section class="services-filters">
+    <div class="container">
+      <div class="filters-header">
+        <h2 class="filters-title">{{ getTranslation('findServices') }}</h2>
+        <p class="filters-subtitle">{{ getTranslation('filterDescription') || 'Find the perfect service for your needs' }}</p>
+      </div>
+
+      <div class="filters-wrapper">
+        <div class="filters-grid">
+          <div class="filter-group">
+            <label class="filter-label">
+              <span class="material-icons">category</span>
+              {{ getTranslation('type') }}
+            </label>
+            <select [(ngModel)]="selectedType" (change)="filterServices()" class="filter-select">
+              <option value="">{{ getTranslation('allTypes') }}</option>
+              <option *ngFor="let t of serviceTypes" [value]="t.key">
+                {{ i18nService.isRTL() ? t.nameAr : t.name }}
+              </option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label">
+              <span class="material-icons">schedule</span>
+              {{ getTranslation('availability') }}
+            </label>
+            <div class="toggle-row">
+              <label class="checkbox-wrapper">
+                <input type="checkbox" [(ngModel)]="onlyEmergency" (change)="filterServices()">
+                <span class="checkbox-label">{{ getTranslation('emergencyOnly') }}</span>
+              </label>
+              <label class="checkbox-wrapper">
+                <input type="checkbox" [(ngModel)]="only24h" (change)="filterServices()">
+                <span class="checkbox-label">{{ getTranslation('open24h') }}</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-clear" (click)="clearFilters()">
+          <span class="material-icons">clear_all</span>
+          {{ i18nService.translate('clearFilters') }}
+        </button>
       </div>
     </div>
   </section>
@@ -112,28 +140,35 @@
   <!-- All Services -->
   <section class="all-services">
     <div class="container">
-      <h2 class="section-title">{{ getTranslation('all') }}</h2>
+      <div class="section-header">
+        <h2 class="section-title">{{ getTranslation('all') }}</h2>
+        <p class="section-subtitle">{{ getTranslation('allDescription') || 'Browse all available services' }}</p>
+      </div>
 
       <div class="services-grid">
         <div *ngFor="let item of filteredServices" class="service-card" [class.rtl]="i18nService.isRTL()">
-          <div class="service-image">
-            <img [src]="item.image" [alt]="i18nService.isRTL() ? item.nameAr : item.name">
-            <div class="service-type-badge">
-              {{ i18nService.isRTL() ? item.typeAr : (item.type | titlecase) }}
+          <div class="card-image-wrapper">
+            <img [src]="item.image" [alt]="i18nService.isRTL() ? item.nameAr : item.name" class="card-image">
+            <div class="image-overlay"></div>
+            
+            <div class="card-badges">
+              <span class="badge badge-type">
+                {{ i18nService.isRTL() ? item.typeAr : (item.type | titlecase) }}
+              </span>
+              <span class="badge badge-availability" [class.active]="item.is24h">24/7</span>
             </div>
-            <div class="service-availability" [class.on]="item.is24h">24/7</div>
+
+            <div class="card-rating" *ngIf="item.rating">
+              <span class="material-icons">star</span>
+              <span>{{ item.rating?.toFixed(1) }}</span>
+            </div>
           </div>
 
-          <div class="service-content">
-            <div class="service-header">
-              <div class="service-type">{{ i18nService.isRTL() ? item.typeAr : (item.type | titlecase) }}</div>
-              <div class="service-rating" *ngIf="item.rating">★ {{ item.rating?.toFixed(1) }}</div>
-            </div>
+          <div class="card-content">
+            <h3 class="card-title">{{ i18nService.isRTL() ? item.nameAr : item.name }}</h3>
+            <p class="card-description">{{ i18nService.isRTL() ? item.descriptionAr : item.description }}</p>
 
-            <h3 class="service-title">{{ i18nService.isRTL() ? item.nameAr : item.name }}</h3>
-            <p class="service-description">{{ i18nService.isRTL() ? item.descriptionAr : item.description }}</p>
-
-            <div class="service-meta">
+            <div class="card-meta">
               <div class="meta-item">
                 <span class="material-icons">place</span>
                 <span>{{ i18nService.isRTL() ? item.addressAr : item.address }}</span>
@@ -148,16 +183,21 @@
               </div>
             </div>
 
-            <div class="service-features" *ngIf="item.features?.length">
-              <span *ngFor="let f of (i18nService.isRTL() ? item.featuresAr : item.features)" class="feature-tag">{{ f }}</span>
+            <div class="card-features" *ngIf="item.features?.length">
+              <span *ngFor="let f of (i18nService.isRTL() ? item.featuresAr : item.features)" class="feature-tag">
+                {{ f }}
+              </span>
             </div>
 
-            <div class="service-actions">
-              <a class="btn btn-primary" [href]="telHref(item.phone)">{{ getTranslation('callNow') }}</a>
+            <div class="card-actions">
+              <a class="btn btn-primary" [href]="telHref(item.phone)">
+                <span class="material-icons">call</span>
+                {{ getTranslation('callNow') }}
+              </a>
               <a class="btn btn-secondary" [href]="mapsHref(item)" target="_blank" rel="noopener">
+                <span class="material-icons">directions</span>
                 {{ getTranslation('getDirections') }}
               </a>
-              
             </div>
           </div>
         </div>
@@ -166,10 +206,13 @@
       <!-- No Results -->
       <div *ngIf="filteredServices.length === 0" class="no-results">
         <div class="no-results-content">
-          <span class="material-icons">local_hospital</span>
-          <h3>{{ getTranslation('noFound') }}</h3>
-          <p>{{ getTranslation('tryDifferent') }}</p>
+          <div class="no-results-icon">
+            <span class="material-icons">search_off</span>
+          </div>
+          <h3 class="no-results-title">{{ getTranslation('noFound') }}</h3>
+          <p class="no-results-text">{{ getTranslation('tryDifferent') }}</p>
           <button class="btn btn-primary" (click)="clearFilters()">
+            <span class="material-icons">refresh</span>
             {{ i18nService.translate('clearFilters') }}
           </button>
         </div>
@@ -177,22 +220,255 @@
     </div>
   </section>
 
-  <!-- Tips -->
+  <!-- Medical Clinics Section -->
+  <section class="clinics-section" *ngIf="clinics.length > 0">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="material-icons section-icon">local_hospital</span>
+          {{ getTranslation('clinicsSection') }}
+        </h2>
+        <p class="section-subtitle">{{ getTranslation('clinicsDescription') }}</p>
+      </div>
+
+      <!-- Clinic Filters -->
+      <div class="specialty-filters">
+        <div class="filter-group">
+          <label class="filter-label">
+            <span class="material-icons">medical_services</span>
+            {{ getTranslation('clinicType') }}
+          </label>
+          <select [(ngModel)]="selectedClinicType" (change)="filterClinics()" class="filter-select">
+            <option value="">{{ getTranslation('allSpecialties') }}</option>
+            <option *ngFor="let t of clinicTypes" [value]="t.key">
+              {{ i18nService.isRTL() ? t.nameAr : t.name }}
+            </option>
+          </select>
+        </div>
+        <button class="btn btn-clear-small" (click)="clearClinicFilters()" *ngIf="selectedClinicType">
+          <span class="material-icons">clear</span>
+          {{ i18nService.translate('clearFilters') }}
+        </button>
+      </div>
+
+      <!-- Clinics Grid -->
+      <div class="services-grid">
+        <div *ngFor="let clinic of filteredClinics" class="service-card clinic-card" [class.rtl]="i18nService.isRTL()">
+          <div class="card-image-wrapper">
+            <img [src]="clinic.image" [alt]="i18nService.isRTL() ? clinic.nameAr : clinic.name" class="card-image">
+            <div class="image-overlay"></div>
+            
+            <div class="card-badges">
+              <span class="badge badge-specialty">
+                <span class="material-icons">medical_services</span>
+                {{ clinic.specialty ? (i18nService.isRTL() ? clinic.specialtyAr : clinic.specialty) : (i18nService.isRTL() ? clinic.typeAr : 'Clinic') }}
+              </span>
+            </div>
+
+            <div class="card-rating" *ngIf="clinic.rating">
+              <span class="material-icons">star</span>
+              <span>{{ clinic.rating?.toFixed(1) }}</span>
+            </div>
+          </div>
+
+          <div class="card-content">
+            <h3 class="card-title">{{ i18nService.isRTL() ? clinic.nameAr : clinic.name }}</h3>
+            <p class="card-description">{{ i18nService.isRTL() ? clinic.descriptionAr : clinic.description }}</p>
+
+            <div class="card-meta">
+              <div class="meta-item">
+                <span class="material-icons">place</span>
+                <span>{{ i18nService.isRTL() ? clinic.addressAr : clinic.address }}</span>
+              </div>
+              <div class="meta-item" *ngIf="clinic.phone">
+                <span class="material-icons">call</span>
+                <span>{{ clinic.phone }}</span>
+              </div>
+              <div class="meta-item" *ngIf="clinic.distanceKm != null">
+                <span class="material-icons">near_me</span>
+                <span>{{ formatDistance(clinic.distanceKm) }}</span>
+              </div>
+            </div>
+
+            <div class="card-features" *ngIf="clinic.features?.length">
+              <span *ngFor="let f of (i18nService.isRTL() ? clinic.featuresAr : clinic.features)" class="feature-tag">
+                {{ f }}
+              </span>
+            </div>
+
+            <div class="card-actions">
+              <a class="btn btn-primary" [href]="telHref(clinic.phone)">
+                <span class="material-icons">call</span>
+                {{ getTranslation('callNow') }}
+              </a>
+              <a class="btn btn-secondary" [href]="mapsHref(clinic)" target="_blank" rel="noopener">
+                <span class="material-icons">directions</span>
+                {{ getTranslation('getDirections') }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- No Clinics Found -->
+      <div *ngIf="filteredClinics.length === 0" class="no-results">
+        <div class="no-results-content">
+          <div class="no-results-icon">
+            <span class="material-icons">local_hospital</span>
+          </div>
+          <h3 class="no-results-title">{{ getTranslation('noClinicsFound') }}</h3>
+          <p class="no-results-text">{{ getTranslation('tryDifferent') }}</p>
+          <button class="btn btn-primary" (click)="clearClinicFilters()">
+            <span class="material-icons">refresh</span>
+            {{ i18nService.translate('clearFilters') }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pharmacies Section -->
+  <section class="pharmacies-section" *ngIf="pharmacies.length > 0">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="material-icons section-icon">local_pharmacy</span>
+          {{ getTranslation('pharmaciesSection') }}
+        </h2>
+        <p class="section-subtitle">{{ getTranslation('pharmaciesDescription') }}</p>
+      </div>
+
+      <!-- Pharmacy Filters -->
+      <div class="specialty-filters">
+        <label class="checkbox-wrapper checkbox-large">
+          <input type="checkbox" [(ngModel)]="only24hPharmacy" (change)="filterPharmacies()">
+          <span class="checkbox-label">
+            <span class="material-icons">schedule</span>
+            {{ getTranslation('open24h') }}
+          </span>
+        </label>
+        <button class="btn btn-clear-small" (click)="clearPharmacyFilters()" *ngIf="only24hPharmacy">
+          <span class="material-icons">clear</span>
+          {{ i18nService.translate('clearFilters') }}
+        </button>
+      </div>
+
+      <!-- Pharmacies Grid -->
+      <div class="services-grid">
+        <div *ngFor="let pharmacy of filteredPharmacies" class="service-card pharmacy-card" [class.rtl]="i18nService.isRTL()">
+          <div class="card-image-wrapper">
+            <img [src]="pharmacy.image" [alt]="i18nService.isRTL() ? pharmacy.nameAr : pharmacy.name" class="card-image">
+            <div class="image-overlay"></div>
+            
+            <div class="card-badges">
+              <span class="badge badge-pharmacy">
+                <span class="material-icons">local_pharmacy</span>
+                {{ i18nService.isRTL() ? 'صيدلية' : 'Pharmacy' }}
+              </span>
+              <span class="badge badge-availability" [class.active]="pharmacy.is24h">
+                <span class="material-icons">schedule</span>
+                24/7
+              </span>
+            </div>
+
+            <div class="card-rating" *ngIf="pharmacy.rating">
+              <span class="material-icons">star</span>
+              <span>{{ pharmacy.rating?.toFixed(1) }}</span>
+            </div>
+          </div>
+
+          <div class="card-content">
+            <h3 class="card-title">{{ i18nService.isRTL() ? pharmacy.nameAr : pharmacy.name }}</h3>
+            <p class="card-description">{{ i18nService.isRTL() ? pharmacy.descriptionAr : pharmacy.description }}</p>
+
+            <div class="card-meta">
+              <div class="meta-item">
+                <span class="material-icons">place</span>
+                <span>{{ i18nService.isRTL() ? pharmacy.addressAr : pharmacy.address }}</span>
+              </div>
+              <div class="meta-item" *ngIf="pharmacy.phone">
+                <span class="material-icons">call</span>
+                <span>{{ pharmacy.phone }}</span>
+              </div>
+              <div class="meta-item" *ngIf="pharmacy.distanceKm != null">
+                <span class="material-icons">near_me</span>
+                <span>{{ formatDistance(pharmacy.distanceKm) }}</span>
+              </div>
+            </div>
+
+            <div class="card-features" *ngIf="pharmacy.features?.length">
+              <span *ngFor="let f of (i18nService.isRTL() ? pharmacy.featuresAr : pharmacy.features)" class="feature-tag">
+                {{ f }}
+              </span>
+            </div>
+
+            <div class="card-actions">
+              <a class="btn btn-primary" [href]="telHref(pharmacy.phone)">
+                <span class="material-icons">call</span>
+                {{ getTranslation('callNow') }}
+              </a>
+              <a class="btn btn-secondary" [href]="mapsHref(pharmacy)" target="_blank" rel="noopener">
+                <span class="material-icons">directions</span>
+                {{ getTranslation('getDirections') }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- No Pharmacies Found -->
+      <div *ngIf="filteredPharmacies.length === 0" class="no-results">
+        <div class="no-results-content">
+          <div class="no-results-icon">
+            <span class="material-icons">local_pharmacy</span>
+          </div>
+          <h3 class="no-results-title">{{ getTranslation('noPharmaciesFound') }}</h3>
+          <p class="no-results-text">{{ getTranslation('tryDifferent') }}</p>
+          <button class="btn btn-primary" (click)="clearPharmacyFilters()">
+            <span class="material-icons">refresh</span>
+            {{ i18nService.translate('clearFilters') }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Service Tips -->
   <section class="service-tips">
     <div class="container">
-      <h2 class="section-title">{{ getTranslation('tips') }}</h2>
+      <div class="section-header">
+        <h2 class="section-title">{{ getTranslation('tips') }}</h2>
+        <p class="section-subtitle">{{ getTranslation('tipsDescription') || 'Helpful tips for using our services' }}</p>
+      </div>
+
       <div class="tips-grid">
         <div class="tip-card" [class.rtl]="i18nService.isRTL()">
-          <div class="tip-icon"><span class="material-icons">my_location</span></div>
-          <h3>{{ getTranslation('tipPlan') }}</h3>
-          <p>{{ getTranslation('tipPlanDesc') }}</p>
+          <div class="tip-icon">
+            <span class="material-icons">my_location</span>
+          </div>
+          <h3 class="tip-title">{{ getTranslation('tipPlan') }}</h3>
+          <p class="tip-description">{{ getTranslation('tipPlanDesc') }}</p>
         </div>
+
         <div class="tip-card" [class.rtl]="i18nService.isRTL()">
-          <div class="tip-icon"><span class="material-icons">verified</span></div>
-          <h3>{{ getTranslation('tipVerify') }}</h3>
-          <p>{{ getTranslation('tipVerifyDesc') }}</p>
+          <div class="tip-icon">
+            <span class="material-icons">verified</span>
+          </div>
+          <h3 class="tip-title">{{ getTranslation('tipVerify') }}</h3>
+          <p class="tip-description">{{ getTranslation('tipVerifyDesc') }}</p>
+        </div>
+
+        <div class="tip-card" [class.rtl]="i18nService.isRTL()">
+          <div class="tip-icon">
+            <span class="material-icons">schedule</span>
+          </div>
+          <h3 class="tip-title">{{ getTranslation('tipTime') }}</h3>
+          <p class="tip-description">{{ getTranslation('tipTimeDesc') }}</p>
         </div>
       </div>
     </div>
   </section>
 </div>
+
