@@ -2,6 +2,21 @@
 	padding: 2rem 0;
 }
 
+/* Page header hero (same visual style as hotels) */
+.page-header {
+	position: relative;
+	height: 240px;
+	margin-bottom: 1.25rem;
+}
+.page-header .header-background { position: absolute; inset: 0; overflow: hidden }
+.page-header .header-image { width: 100%; height: 100%; object-fit: cover; display:block }
+.page-header .header-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,24,55,0.25), rgba(6,24,55,0.45)); }
+.page-header .header-content { position: relative; z-index: 2; display:flex; align-items:center; height:100% }
+.page-header .page-title { color: #fff; font-size: 2rem; margin: 0 }
+.page-header .page-subtitle { color: rgba(255,255,255,0.92); margin-top: 0.5rem }
+.fade-in { animation: fadeInUp .6s ease both }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: translateY(0) } }
+
 .guides-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

@@ -1,10 +1,14 @@
 <div class="services-page" [attr.dir]="i18nService.isRTL() ? 'rtl' : 'ltr'">
   <!-- Hero -->
-  <section class="services-hero">
-    <div class="container">
-      <div class="hero-content">
-        <h1 class="hero-title">{{ getTranslation('title') }}</h1>
-        <p class="hero-subtitle">{{ getTranslation('subtitle') }}</p>
+  <section class="page-header">
+    <div class="header-background">
+  <img src="/assets/images/s.webp" alt="Services in Minya" class="header-image" />
+      <div class="header-overlay"></div>
+    </div>
+    <div class="header-content">
+      <div class="container">
+        <h1 class="page-title fade-in">{{ getTranslation('title') }}</h1>
+        <p class="page-subtitle fade-in">{{ getTranslation('subtitle') }}</p>
       </div>
     </div>
   </section>

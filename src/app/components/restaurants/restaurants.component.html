@@ -1,10 +1,18 @@
 <div class="restaurants-page" [attr.dir]="i18nService.isRTL() ? 'rtl' : 'ltr'">
   <!-- Hero Section -->
-  <section class="restaurants-hero">
-    <div class="container">
-      <div class="hero-content">
-        <h1 class="hero-title">{{ i18nService.translate('restaurantsTitle') }}</h1>
-        <p class="hero-subtitle">{{ i18nService.translate('restaurantsSubtitle') }}</p>
+  <section class="page-header">
+    <div class="header-background">
+      <img src="/assets/images/A Culinary Journey Through Minya.webp" alt="Restaurants" class="header-image" />
+      <div class="header-overlay"></div>
+    </div>
+    <div class="header-content">
+      <div class="container">
+        <h1 class="page-title fade-in">
+          {{ i18nService.translate('restaurantsTitle') }}
+        </h1>
+        <p class="page-subtitle fade-in">
+          {{ i18nService.translate('restaurantsSubtitle') }}
+        </p>
       </div>
     </div>
   </section>

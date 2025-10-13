@@ -178,8 +178,10 @@ export interface TranslationKeys {
   Christian_religious_site : string ,
   Museum : string;
   tourguide: string;
+  tourguideSubtitle: string;
   photographer: string;
   photographers : string;
+  photographerSubtitle: string;
   services: string;
 }
 
@@ -374,9 +376,11 @@ export class I18nService {
       Museum:'Museum',
       Christian_religious_site : 'Christian Religious Site' ,
       Islamic_Religious_Site  : ' Islamic Religious Site' ,
-      tourguide: 'Tourguide',
-      photographer: 'Photographer',
-      photographers: 'Photographers'
+  tourguide: 'Tourguide',
+  tourguideSubtitle: 'Find licensed local guides, interpreters, and experts to lead your Minya experience.',
+  photographer: 'Photographer',
+      photographers: 'Photographers',
+      photographerSubtitle: 'Local and professional photographers available for events, tours, and photo sessions.'
     },
     ar: {
       // Navigation
@@ -389,8 +393,10 @@ export class I18nService {
       visitorInfo: 'معلومات الزوار',
       blog: 'المدونة',
       map: 'الخريطة',
-      tourguide: 'المرشد السياحي',
-  photographer: 'المصور',
+    tourguide: 'المرشد السياحي',
+    tourguideSubtitle: 'اعثر على مرشدين محليين مرخصين ومترجمين وخبراء ليقودوا تجربتك في المنيا.',
+    photographer: 'المصور',
+    photographerSubtitle: 'مصورون محليون ومحترفون متاحون لتغطية الفعاليات والجولات وجلسات التصوير.',
       services: 'الخدمات',
       // Common
       search: 'بحث',
