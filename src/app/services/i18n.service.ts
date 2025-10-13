@@ -125,6 +125,10 @@ export interface TranslationKeys {
   blogSubtitle: string;
   categories: string;
   minutesRead: string;
+  // Tourguide
+  languages: string;
+  call: string;
+  email: string;
   // Blog details / generic
   about: string;
   tags: string;
@@ -174,6 +178,7 @@ export interface TranslationKeys {
   Christian_religious_site : string ,
   Museum : string;
   tourguide: string;
+  photographer: string;
   photographers : string;
   services: string;
 }
@@ -285,6 +290,10 @@ export class I18nService {
       totalReviews: 'Total Reviews',
       annualVisitors: 'Annual Visitors',
       youMightAlsoLike: 'You Might Also Like',
+  // Tourguide
+  languages: 'Languages',
+  call: 'Call',
+  email: 'Email',
   // Hotel Details
   aboutHotel: 'About This Hotel',
   roomTypes: 'Room Types',
@@ -366,6 +375,7 @@ export class I18nService {
       Christian_religious_site : 'Christian Religious Site' ,
       Islamic_Religious_Site  : ' Islamic Religious Site' ,
       tourguide: 'Tourguide',
+      photographer: 'Photographer',
       photographers: 'Photographers'
     },
     ar: {
@@ -380,6 +390,7 @@ export class I18nService {
       blog: 'المدونة',
       map: 'الخريطة',
       tourguide: 'المرشد السياحي',
+  photographer: 'المصور',
       services: 'الخدمات',
       // Common
       search: 'بحث',
@@ -470,6 +481,10 @@ export class I18nService {
       totalReviews: 'إجمالي المراجعات',
       annualVisitors: 'الزوار السنويون',
       youMightAlsoLike: 'قد يعجبك أيضاً',
+  // Tourguide
+  languages: 'اللغات',
+  call: 'اتصل',
+  email: 'البريد الإلكتروني',
 
       // Statistics
       historicSites: 'المواقع التاريخية',

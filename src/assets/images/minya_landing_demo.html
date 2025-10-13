@@ -1,0 +1,171 @@
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>محافظة المنيا - نموذج Landing Page</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue1:#aee6ff;
+    --blue2:#77cff0;
+    --accent:#25478b;
+    --card-bg:#ffffff;
+  }
+  *{box-sizing:border-box;font-family:'Cairo',sans-serif}
+  body{margin:0;background:#f4f7fb;color:#111;line-height:1.4}
+  .hero{
+    background: linear-gradient(180deg,var(--blue1), #eaf9ff);
+    padding:28px 16px 120px 16px;
+    position:relative;
+    overflow:hidden;
+  }
+  /* decorative top waves */
+  .hero .waves{
+    position:absolute;left:0;right:0;top:0;height:84px; background:
+      radial-gradient(ellipse at top left, rgba(255,255,255,0.6), transparent 40%),
+      linear-gradient(90deg, rgba(255,255,255,0.35), transparent 55%);
+    pointer-events:none;
+  }
+  .container{max-width:1100px;margin:0 auto;padding:0 16px}
+  .brand{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand .title{font-size:34px;color:var(--accent);font-weight:700}
+  .brand .subtitle{font-size:16px;color:#0b3a66;margin-top:4px}
+  .lang-switch button{margin-inline-start:8px;padding:8px 12px;border-radius:6px;border:none;background:#0b5ea8;color:white;cursor:pointer}
+  .lang-switch{display:flex;align-items:center}
+
+  /* Watermark big logo */
+  .watermark{
+    position:absolute;left:50%;top:180px;transform:translateX(-50%);opacity:0.08;width:540px;height:540px;border-radius:50%;
+    background:radial-gradient(circle at 40% 30%, #fff 0%, transparent 40%), #bfe8f7;
+    display:flex;align-items:center;justify-content:center;font-size:120px;color:#5aa1c6;
+    pointer-events:none;
+  }
+  main{position:relative;padding:40px 0 80px}
+  .intro{text-align:center;margin-top:36px}
+  .intro h2{font-size:26px;color:var(--accent);margin:0 0 8px}
+  .intro p{margin:0;color:#333}
+
+  .guides-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:36px;position:relative;z-index:2}
+  .card{
+    display:flex;gap:12px;align-items:center;background:var(--card-bg);padding:14px;border-radius:10px;
+    box-shadow:0 8px 20px rgba(23,43,77,0.06);border:1px solid rgba(0,0,0,0.03)
+  }
+  .avatar{
+    width:88px;height:88px;border-radius:8px;flex:0 0 88px;background:#eef6fb;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)
+  }
+  .info h3{margin:0;font-size:18px;color:#0b3a66}
+  .info p{margin:6px 0 0;color:#333}
+  .contact{margin-top:8px;color:#0b5ea8;font-weight:600}
+
+  /* small footer */
+  footer{padding:24px 0;text-align:center;color:#666;font-size:14px}
+
+  /* RTL adjustments for small screens */
+  @media (max-width:640px){
+    .brand{flex-direction:column;align-items:flex-start}
+    .watermark{width:360px;height:360px;top:240px}
+  }
+</style>
+</head>
+<body>
+  <header class="hero">
+    <div class="waves"></div>
+    <div class="container">
+      <div class="brand" role="banner">
+        <div>
+          <div class="title">محافظة المنيا</div>
+          <div class="subtitle">الإدارة العامة للسياحة</div>
+        </div>
+        <div class="lang-switch" aria-hidden="false">
+          <button onclick="switchLang('ar')">العربية</button>
+          <button onclick="switchLang('en')">English</button>
+        </div>
+      </div>
+    </div>
+    <div class="watermark" aria-hidden="true">ن⟂</div>
+  </header>
+
+  <main class="container" id="main">
+    <section class="intro">
+      <h2 id="cardTitle">بطاقة عضوية</h2>
+      <p id="cardLead">مرشدون مرخصون من الإدارة العامة للسياحة — تواصل للحجز والمزيد من المعلومات.</p>
+    </section>
+
+    <section class="guides-grid" id="guidesGrid">
+      <!-- cards injected by JS -->
+    </section>
+  </main>
+
+  <footer>
+    © محافظة المنيا — الصفحة التجريبية
+  </footer>
+
+<script>
+  // sample guides data (from your JSON)
+  const guides = [
+    {
+      id: 'tg-1',
+      name: { en: 'Ahmed Hassan', ar: 'أحمد حسن' },
+      bio: { en: 'Experienced Egyptologist with 10+ years guiding in Minya.', ar: 'عالم آثار وخبير سياحة مع خبرة تزيد عن 10 سنوات في المنيا.' },
+      phone: { en: '+20 100 000 0001', ar: '+20 100 000 0001' }
+    },
+    {
+      id: 'tg-2',
+      name: { en: 'Neveen Nagy', ar: 'د. نيفين ناجي' },
+      bio: { en: 'Tour guide and cultural interpreter based in Minya.', ar: 'مرشدة سياحية ومترجمة ثقافية مقيمة في المنيا.' },
+      phone: { en: '+20 122 760 5604', ar: '٠١٢٢٧٦٠٥٦٠٤' }
+    },
+    {
+      id: 'tg-3',
+      name: { en: 'Dr. Mohammed Farghal', ar: 'د. محمد فرغلي' },
+      bio: { en: 'Personal tour guide offering custom tours in Minya.', ar: 'مرشد سياحي مرشد شخصي — يقدم جولات مخصصة في المنيا.' },
+      phone: { en: '+20 100 642 4635', ar: '٠١٠٠٦٤٢٤٦٣٥' }
+    }
+  ];
+
+  const grid = document.getElementById('guidesGrid');
+
+  function render(lang='ar'){
+    grid.innerHTML = '';
+    document.documentElement.lang = (lang==='ar') ? 'ar' : 'en';
+    document.documentElement.dir = (lang==='ar') ? 'rtl' : 'ltr';
+    // text changes
+    document.getElementById('cardTitle').textContent = (lang==='ar') ? 'بطاقة عضوية' : 'Membership Card';
+    document.getElementById('cardLead').textContent = (lang==='ar') ? 'مرشدون مرخصون من الإدارة العامة للسياحة — تواصل للحجز والمزيد من المعلومات.' : 'Licensed guides from the General Directorate of Tourism — contact to book.';
+    guides.forEach(g=>{
+      const card = document.createElement('article');
+      card.className='card';
+      const avatar = document.createElement('div');
+      avatar.className='avatar';
+      // initials placeholder
+      const initials = (lang==='ar') ? g.name.ar.split(' ').map(s=>s[0]).slice(0,2).join('') : g.name.en.split(' ').map(s=>s[0]).slice(0,2).join('');
+      avatar.textContent = initials;
+      const info = document.createElement('div');
+      info.className='info';
+      const h3 = document.createElement('h3');
+      h3.textContent = (lang==='ar') ? g.name.ar : g.name.en;
+      const p = document.createElement('p');
+      p.textContent = (lang==='ar') ? g.bio.ar : g.bio.en;
+      const contact = document.createElement('div');
+      contact.className='contact';
+      contact.textContent = (lang==='ar') ? g.phone.ar : g.phone.en;
+      info.appendChild(h3);
+      info.appendChild(p);
+      info.appendChild(contact);
+      card.appendChild(avatar);
+      card.appendChild(info);
+      grid.appendChild(card);
+    });
+  }
+
+  function switchLang(lang){
+    render(lang);
+  }
+
+  // initial render Arabic (rtl)
+  render('ar');
+</script>
+</body>
+</html>

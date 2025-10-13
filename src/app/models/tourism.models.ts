@@ -251,3 +251,67 @@ export interface ServiceItem {
   features: string[];
   featuresAr: string[];
 }
+
+export interface TourGuide {
+  id: string;
+  name: LocalizedText;
+  bio?: LocalizedText;
+  languages: LocalizedArray; // languages spoken
+  imageUrl?: string;
+  phone?: LocalizedText;
+  email?: LocalizedText;
+  location?: {
+    latitude?: number;
+    longitude?: number;
+    address?: LocalizedText;
+  };
+  rating?: number;
+}
+
+export interface Photographer {
+  id: string;
+  name: LocalizedText;
+  bio?: LocalizedText;
+  specialties?: LocalizedArray;
+  imageUrl?: string;
+  phone?: LocalizedText;
+  email?: LocalizedText;
+  social?: {
+    instagram?: string;
+    facebook?: string;
+    tiktok?: string;
+  };
+  location?: {
+    latitude?: number;
+    longitude?: number;
+    address?: LocalizedText;
+  };
+  rating?: number;
+}
+
+// Optional social links container for tour guides
+export interface SocialLinks {
+  facebook?: string;
+  instagram?: string;
+  twitter?: string;
+  tiktok?: string;
+  youtube?: string;
+}
+
+// Extend TourGuide with optional social links
+export interface TourGuide {
+  id: string;
+  name: LocalizedText;
+  bio?: LocalizedText;
+  languages: LocalizedArray; // languages spoken
+  imageUrl?: string;
+  phone?: LocalizedText;
+  email?: LocalizedText;
+  social?: SocialLinks;
+  location?: {
+    latitude?: number;
+    longitude?: number;
+    address?: LocalizedText;
+  };
+  rating?: number;
+}
