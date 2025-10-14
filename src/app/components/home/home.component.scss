@@ -574,3 +574,55 @@
     font-size: 2.5rem;
   }
 }
+
+/* Chatbot floating button */
+.chatbot-fab {
+  position: fixed;
+  right: 18px !important;
+  left: auto !important;
+  bottom: 18px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(6,24,55,0.12);
+  cursor: pointer;
+  z-index: 9999;
+  direction: ltr; /* keep icon/layout LTR so it doesn't flip */
+}
+.chatbot-fab .material-icons { font-size: 24px }
+
+.chatbot-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); display:block; z-index: 9998 }
+/* Ensure the panel itself is fixed to the right-bottom corner and does not move when page dir changes */
+.chatbot-overlay .chatbot-panel {
+  position: fixed;
+  right: 18px !important;
+  left: auto !important;
+  bottom: 18px !important;
+  width: 380px;
+  max-width: 95%;
+  height: 520px;
+  margin: 0;
+  background: white;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 30px 80px rgba(6,24,55,0.2);
+  z-index:10001;
+}
+.close-chat {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background: transparent;
+  font-size: 26px;
+  line-height: 1;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+}
+

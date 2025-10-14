@@ -196,4 +196,22 @@
       </div>
     </div>
   </section>
-</div>
+    <!-- Weather widget -->
+    <div style="position:fixed; top:120px; right:28px; z-index:1200;">
+      <app-weather city="Minya"></app-weather>
+    </div>
+
+    <!-- Chatbot floating button -->
+    <!-- <div *ngIf="!showChat" class="chatbot-fab" (click)="toggleChat()" [title]="i18n.translate('openChat')">
+      <span class="material-icons">chat</span>
+    </div> -->
+
+    <!-- Chatbot overlay -->
+    <!-- <div class="chatbot-overlay" *ngIf="showChat">
+      <div class="chatbot-panel">
+        <button class="close-chat" (click)="toggleChat()" [attr.aria-label]="i18n.translate('closeChat')" [title]="i18n.translate('closeChat')">×</button>
+       
+      </div>
+    </div>
+</div> -->
+ <app-chatbot></app-chatbot>

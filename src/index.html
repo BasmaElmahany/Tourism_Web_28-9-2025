@@ -27,6 +27,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script>
+    // Inject the Gemini endpoint for the chat service (testing).
+    // The key is included as a query parameter in this endpoint URL.
+    window.__GMANIA_ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAHEb7DYVPzAmc9q-7CGo-L74F0BCUBZX0';
+    // No client API key variable required because key is in the URL above.
+  window.__GMANIA_API_KEY = '041f7408456c0fb4f8458e13cbe60bd2';
+  // --- OpenWeather API key helper (paste your key here locally) ---
+  // Example and actual key set below (local only):
+  window.__OPENWEATHER_API_KEY = '041f7408456c0fb4f8458e13cbe60bd2';
+    // WARNING: don't commit your API key to source control.
+  </script>
 </head>
 <body>
   <app-root></app-root>

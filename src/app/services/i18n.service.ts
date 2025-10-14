@@ -41,6 +41,11 @@ export interface TranslationKeys {
   latestStories: string;
   readyToExplore: string;
   readyToExploreDesc: string;
+  chatPlaceholder: string;
+  chatSend: string;
+  chatSending: string;
+  openChat: string;
+  closeChat: string;
 
   // Attractions
   attractionsTitle: string;
@@ -381,6 +386,12 @@ export class I18nService {
   photographer: 'Photographer',
       photographers: 'Photographers',
       photographerSubtitle: 'Local and professional photographers available for events, tours, and photo sessions.'
+      ,
+      chatPlaceholder: 'Ask me about Minya...',
+      chatSend: 'Send',
+      chatSending: 'Sending...',
+      openChat: 'Open chat',
+      closeChat: 'Close chat'
     },
     ar: {
       // Navigation
@@ -397,6 +408,11 @@ export class I18nService {
     tourguideSubtitle: 'اعثر على مرشدين محليين مرخصين ومترجمين وخبراء ليقودوا تجربتك في المنيا.',
     photographer: 'المصور',
     photographerSubtitle: 'مصورون محليون ومحترفون متاحون لتغطية الفعاليات والجولات وجلسات التصوير.',
+    chatPlaceholder: 'اكتب سؤالك عن المنيا...',
+    chatSend: 'أرسل',
+    chatSending: 'جاري الإرسال...',
+    openChat: 'افتح الشات',
+    closeChat: 'اغلق الشات',
       services: 'الخدمات',
       // Common
       search: 'بحث',
