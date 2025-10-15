@@ -6,11 +6,13 @@ import { FavoritesService, FavoriteItem } from '../../services/favorites.service
 import { Attraction, BlogPost } from '../../models/tourism.models';
 import { I18nService } from 'src/app/services/i18n.service';
 import { FavoritesDrawerComponent } from '../favorites-drawer/favorites-drawer.component';
+import { ChatbotComponent } from '../chatbot/chatbot.component';
+import { WeatherComponent } from '../weather/weather.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, FavoritesDrawerComponent],
+  imports: [CommonModule, RouterModule, FavoritesDrawerComponent, ChatbotComponent, WeatherComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -21,7 +23,7 @@ export class HomeComponent implements OnInit {
   latestBlogPosts: BlogPost[] = [];
   currentSlide = 0;
   favoritesCount = 0;
-
+showChat = false;
   constructor(
     private tourismService: TourismService,
     public favoritesService: FavoritesService,
@@ -111,5 +113,9 @@ export class HomeComponent implements OnInit {
       this.favoritesDrawer.open();
     }
   }
+
+  toggleChat() { this.showChat = !this.showChat }
 }
+
+
 

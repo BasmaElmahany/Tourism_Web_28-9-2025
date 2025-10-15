@@ -549,7 +549,12 @@ export class I18nService {
       culturalExperiences: 'Cultural Experiences',
       tasteLocalCuisine: 'Taste LocalCuisine',
       findAccommodation: 'Find Accommodation',
-      discoverAncientSites: 'Discover AncientSites'
+      discoverAncientSites: 'Discover AncientSites',
+      chatPlaceholder: 'Chat Place holder',
+      chatSend: 'Chat Send',
+      chatSending: 'Chat Sending',
+      openChat: 'Open Chat',
+      closeChat: 'Close Chat'
     },
     ar: {
       // Navigation
@@ -774,32 +779,31 @@ export class I18nService {
       categoryGallery: 'المعارض الفنية',
 
       // Price Ranges
-
       priceModerate: 'متوسط',
       pricePremium: 'فاخر',
 
       // Additional
       resultsCount: 'نتيجة',
-         myFavorites: 'المفضلة',
-    favorites: 'المفضلة',
-    addToFavorites: 'إضافة للمفضلة',
-    removeFromFavorites: 'إزالة من المفضلة',
-    noFavorites: 'لا توجد مفضلات بعد',
-    noFavoritesDesc: 'ابدأ بإضافة أماكنك وفنادقك ومطاعمك المفضلة!',
-    clearAll: 'مسح الكل',
-    confirmClearFavorites: 'هل أنت متأكد من مسح جميع المفضلات؟',
-    
-    // Filter Labels
-    all: 'الكل',
-   
-    close: 'إغلاق',
-   
-    // Messages
-    addedToFavorites: 'تمت الإضافة للمفضلة',
-    removedFromFavorites: 'تمت الإزالة من المفضلة',
-    favoriteAdded: 'تمت إضافة المفضلة بنجاح',
-    favoriteRemoved: 'تمت إزالة المفضلة بنجاح',
-    visitorGuide: 'دليل الزوار',
+      myFavorites: 'المفضلة',
+      favorites: 'المفضلة',
+      addToFavorites: 'إضافة للمفضلة',
+      removeFromFavorites: 'إزالة من المفضلة',
+      noFavorites: 'لا توجد مفضلات بعد',
+      noFavoritesDesc: 'ابدأ بإضافة أماكنك وفنادقك ومطاعمك المفضلة!',
+      clearAll: 'مسح الكل',
+      confirmClearFavorites: 'هل أنت متأكد من مسح جميع المفضلات؟',
+
+      // Filter Labels
+      all: 'الكل',
+
+      close: 'إغلاق',
+
+      // Messages
+      addedToFavorites: 'تمت الإضافة للمفضلة',
+      removedFromFavorites: 'تمت الإزالة من المفضلة',
+      favoriteAdded: 'تمت إضافة المفضلة بنجاح',
+      favoriteRemoved: 'تمت إزالة المفضلة بنجاح',
+      visitorGuide: 'دليل الزوار',
       ctaDescription: 'وصف دعوة العمل',
       minRead: ' مدة القراءة',
       by: ' بواسطة',
@@ -807,8 +811,12 @@ export class I18nService {
       culturalExperiences: 'تجارب ثقافية',
       tasteLocalCuisine: 'تذوق المأكولات المحلية',
       findAccommodation: 'البحث عن سكن',
-      discoverAncientSites: 'اكتشاف المواقع الأثرية'
-
+      discoverAncientSites: 'اكتشاف المواقع الأثرية',
+      chatPlaceholder: 'مكان الدردشة',
+      chatSend: 'إرسال',
+      chatSending: 'جاري الارسال',
+      openChat: 'فتح الدردشة',
+      closeChat: 'غلق الدردشة'
     }
   };
 
