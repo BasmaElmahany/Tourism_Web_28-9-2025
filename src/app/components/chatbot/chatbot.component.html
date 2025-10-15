@@ -1,0 +1,36 @@
+<!-- Floating chat icon (always visible) -->
+<div class="chatbot-icon-wrapper">
+  <button type="button"
+          class="chatbot-icon-btn"
+          (click)="toggleChat()"
+          [attr.aria-label]="i18n.translate('openChat')">
+    <span class="material-icons">chat</span>
+  </button>
+</div>
+
+<!-- Chat panel (render only when opened) -->
+<div class="chatbot-container" *ngIf="showChat">
+  <div class="chat-window">
+    <div *ngFor="let m of messages" class="message" [ngClass]="m.from">
+      <div class="bubble">{{ m.text }}</div>
+    </div>
+    <div *ngIf="loading" class="message bot"><div class="bubble">...</div></div>
+  </div>
+
+  <form (submit)="send(); $event.preventDefault();" class="chat-input" novalidate>
+    <textarea #ta
+              [(ngModel)]="input"
+              name="q"
+              [placeholder]="i18n.translate('chatPlaceholder')"
+              rows="1"
+              (input)="resize(ta)"></textarea>
+
+    <button type="submit"
+            class="send-btn"
+            [disabled]="loading || !input.trim()"
+            [attr.aria-label]="i18n.translate('chatSend')">
+      <span *ngIf="!loading" class="material-icons">send</span>
+      <span *ngIf="loading">{{ i18n.translate('chatSending') }}</span>
+    </button>
+  </form>
+</div>

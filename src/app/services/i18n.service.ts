@@ -41,6 +41,11 @@ export interface TranslationKeys {
   latestStories: string;
   readyToExplore: string;
   readyToExploreDesc: string;
+  chatPlaceholder: string;
+  chatSend: string;
+  chatSending: string;
+  openChat: string;
+  closeChat: string;
 
   // Attractions
   attractionsTitle: string;

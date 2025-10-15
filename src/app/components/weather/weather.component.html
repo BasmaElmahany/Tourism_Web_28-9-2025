@@ -1,0 +1,43 @@
+<div class="weather-widget tourism-theme">
+  <div class="weather-bg">
+    <svg viewBox="0 0 240 100" width="100%" height="80" class="weather-svg-bg" aria-hidden="true">
+      <!-- Sun -->
+      <circle class="sun" cx="48" cy="36" r="18" fill="#FFD93B" />
+      <!-- Clouds -->
+      <ellipse class="cloud cloud1" cx="90" cy="38" rx="18" ry="8" fill="#e0f2fe" />
+      <ellipse class="cloud cloud2" cx="120" cy="32" rx="14" ry="7" fill="#bae6fd" />
+      <!-- Pyramids -->
+      <polygon points="180,80 210,80 195,50" fill="#fbbf24" stroke="#eab308" stroke-width="2" />
+      <polygon points="160,80 190,80 175,60" fill="#fde68a" stroke="#fbbf24" stroke-width="2" />
+      <!-- Nile -->
+      <path d="M0,90 Q60,95 120,85 T240,90" fill="none" stroke="#38bdf8" stroke-width="6" opacity="0.5" />
+    </svg>
+  </div>
+  <div class="weather-header">
+    <strong>{{ city }}</strong>
+    <button class="refresh" (click)="fetch()" aria-label="Refresh">⟳</button>
+  </div>
+  <div *ngIf="loading" class="weather-loading">Loading...</div>
+  <div *ngIf="!loading && !weather" class="weather-error">Weather not available (set OPENWEATHER API key in window.__OPENWEATHER_API_KEY)</div>
+  <div *ngIf="weather" class="weather-body">
+    <ng-container [ngSwitch]="weather.description?.toLowerCase()">
+      <!-- Sunny/clear -->
+      <svg *ngSwitchCase="'clear sky'" width="48" height="48" viewBox="0 0 48 48" class="weather-icon"><circle cx="24" cy="24" r="14" fill="#FFD93B" stroke="#FBBF24" stroke-width="3" /></svg>
+      <!-- Clouds -->
+      <svg *ngSwitchCase="'few clouds'" width="48" height="48" viewBox="0 0 48 48" class="weather-icon"><ellipse cx="28" cy="28" rx="14" ry="10" fill="#bae6fd" /><ellipse cx="20" cy="24" rx="10" ry="7" fill="#e0f2fe" /></svg>
+      <svg *ngSwitchCase="'scattered clouds'" width="48" height="48" viewBox="0 0 48 48" class="weather-icon"><ellipse cx="28" cy="28" rx="14" ry="10" fill="#bae6fd" /><ellipse cx="20" cy="24" rx="10" ry="7" fill="#e0f2fe" /></svg>
+      <svg *ngSwitchCase="'broken clouds'" width="48" height="48" viewBox="0 0 48 48" class="weather-icon"><ellipse cx="28" cy="28" rx="14" ry="10" fill="#bae6fd" /><ellipse cx="20" cy="24" rx="10" ry="7" fill="#e0f2fe" /></svg>
+      <!-- Rain -->
+      <svg *ngSwitchCase="'shower rain'" width="48" height="48" viewBox="0 0 48 48" class="weather-icon"><ellipse cx="28" cy="28" rx="14" ry="10" fill="#bae6fd" /><ellipse cx="20" cy="24" rx="10" ry="7" fill="#e0f2fe" /><line x1="18" y1="38" x2="18" y2="44" stroke="#38bdf8" stroke-width="3" /><line x1="24" y1="38" x2="24" y2="44" stroke="#38bdf8" stroke-width="3" /><line x1="30" y1="38" x2="30" y2="44" stroke="#38bdf8" stroke-width="3" /></svg>
+      <svg *ngSwitchCase="'rain'" width="48" height="48" viewBox="0 0 48 48" class="weather-icon"><ellipse cx="28" cy="28" rx="14" ry="10" fill="#bae6fd" /><ellipse cx="20" cy="24" rx="10" ry="7" fill="#e0f2fe" /><line x1="18" y1="38" x2="18" y2="44" stroke="#38bdf8" stroke-width="3" /><line x1="24" y1="38" x2="24" y2="44" stroke="#38bdf8" stroke-width="3" /><line x1="30" y1="38" x2="30" y2="44" stroke="#38bdf8" stroke-width="3" /></svg>
+      <!-- Thunderstorm -->
+      <svg *ngSwitchCase="'thunderstorm'" width="48" height="48" viewBox="0 0 48 48" class="weather-icon"><ellipse cx="28" cy="28" rx="14" ry="10" fill="#bae6fd" /><ellipse cx="20" cy="24" rx="10" ry="7" fill="#e0f2fe" /><polygon points="24,34 28,44 22,44 26,34" fill="#fbbf24" stroke="#f59e42" stroke-width="2" /></svg>
+      <!-- Default fallback: OpenWeather icon -->
+      <img *ngSwitchDefault [src]="weather.icon" alt="weather" class="weather-icon-img" />
+    </ng-container>
+    <div class="weather-info">
+      <div class="temp">{{ weather.tempC | number:'1.0-0' }}°C</div>
+      <div class="desc">{{ weather.description }}</div>
+    </div>
+  </div>
+</div>
