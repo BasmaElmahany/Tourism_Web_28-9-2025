@@ -1,0 +1,342 @@
+<div class="souvenirs-page" [attr.dir]="i18n.isRTL() ? 'rtl' : 'ltr'">
+  <!-- Hero Header -->
+  <section class="hero-header">
+    <div class="hero-background">
+      <img src="/assets/images/souvenirs-hero-bg.jpg" alt="Egyptian Souvenirs" class="hero-image" />
+      <div class="hero-overlay"></div>
+      <div class="header-decoration"></div>
+    </div>
+    
+    <div class="hero-content">
+      <div class="container">
+        <div class="breadcrumb">
+          <a routerLink="/home">{{ i18n.translate('home') || 'Home' }}</a>
+          <span class="material-icons">chevron_right</span>
+          <span>{{ i18n.translate('souvenirs') || 'Souvenirs & Shopping' }}</span>
+        </div>
+        
+        <h1 class="hero-title">
+          Egyptian Souvenirs & Handicrafts
+        </h1>
+        <p class="hero-subtitle">
+          {{ i18n.translate('souvenirsSubtitle') || 'Discover authentic Egyptian treasures and handcrafted souvenirs in Minya' }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories-section">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="material-icons">category</span>
+        {{ i18n.translate('shopByCategory') || 'Shop by Category' }}
+      </h2>
+      
+      <div class="categories-grid">
+        <div class="category-card" *ngFor="let category of categories"
+             (click)="selectedCategory = category.key; filterShops()">
+          <div class="category-icon">
+            <span class="material-icons">{{ category.icon }}</span>
+          </div>
+          <h3>{{ i18n.pick({ en: category.name, ar: category.nameAr }) }}</h3>
+          <p>{{ i18n.pick({ en: category.description, ar: category.descriptionAr }) }}</p>
+          <div class="category-count">
+            {{ getShopsByCategory(category.key).length }} {{ i18n.translate('shops') || 'shops' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters Section -->
+  <section class="filters-section">
+    <div class="container">
+      <div class="filters-header">
+        <h2>
+          <span class="material-icons">filter_list</span>
+          {{ i18n.translate('filterShops') || 'Filter Shops' }}
+        </h2>
+        <button class="btn-clear" (click)="clearFilters()" *ngIf="selectedCategory || selectedPriceRange || onlyFeatured || acceptsCards || hasDelivery">
+          <span class="material-icons">clear</span>
+          {{ i18n.translate('clearFilters') || 'Clear Filters' }}
+        </button>
+      </div>
+
+      <div class="filters-grid">
+        <!-- Category Filter -->
+        <div class="filter-group">
+          <label>
+            <span class="material-icons">category</span>
+            {{ i18n.translate('category') || 'Category' }}
+          </label>
+          <select [(ngModel)]="selectedCategory" (change)="filterShops()" class="filter-select">
+            <option value="">{{ i18n.translate('allCategories') || 'All Categories' }}</option>
+            <option *ngFor="let cat of categories" [value]="cat.key">
+              {{ i18n.pick({ en: cat.name, ar: cat.nameAr }) }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Price Range Filter -->
+        <div class="filter-group">
+          <label>
+            <span class="material-icons">payments</span>
+            {{ i18n.translate('priceRange') || 'Price Range' }}
+          </label>
+          <select [(ngModel)]="selectedPriceRange" (change)="filterShops()" class="filter-select">
+            <option value="">{{ i18n.translate('allPrices') || 'All Prices' }}</option>
+            <option *ngFor="let range of priceRanges" [value]="range.key">
+              {{ range.key }} - {{ i18n.pick({ en: range.name, ar: range.nameAr }) }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Checkboxes -->
+        <div class="filter-checkboxes">
+          <label class="checkbox-label">
+            <input type="checkbox" [(ngModel)]="onlyFeatured" (change)="filterShops()" />
+            <span class="material-icons">star</span>
+            {{ i18n.translate('featuredOnly') || 'Featured Only' }}
+          </label>
+          
+          <label class="checkbox-label">
+            <input type="checkbox" [(ngModel)]="acceptsCards" (change)="filterShops()" />
+            <span class="material-icons">credit_card</span>
+            {{ i18n.translate('acceptsCards') || 'Accepts Cards' }}
+          </label>
+          
+          <label class="checkbox-label">
+            <input type="checkbox" [(ngModel)]="hasDelivery" (change)="filterShops()" />
+            <span class="material-icons">local_shipping</span>
+            {{ i18n.translate('hasDelivery') || 'Has Delivery' }}
+          </label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Shops -->
+  <section class="featured-section" *ngIf="featuredShops.length > 0 && !selectedCategory">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="material-icons">star</span>
+        {{ i18n.translate('featuredShops') || 'Featured Shops' }}
+      </h2>
+
+      <div class="shops-grid featured-grid">
+        <div class="shop-card featured" *ngFor="let shop of featuredShops">
+          <div class="shop-image">
+            <img [src]="shop.image" [alt]="i18n.pick({ en: shop.name, ar: shop.nameAr })" loading="lazy" />
+            <div class="shop-badge featured-badge">
+              <span class="material-icons">star</span>
+              {{ i18n.translate('featured') || 'Featured' }}
+            </div>
+            <div class="shop-category-badge">
+              {{ getCategoryName(shop.category) }}
+            </div>
+          </div>
+
+          <div class="shop-content">
+            <h3>{{ i18n.pick({ en: shop.name, ar: shop.nameAr }) }}</h3>
+            <p class="shop-description">
+              {{ i18n.pick({ en: shop.description, ar: shop.descriptionAr }) }}
+            </p>
+
+            <div class="shop-meta">
+              <div class="rating" *ngIf="shop.rating">
+                <span class="material-icons">star</span>
+                <span class="rating-value">{{ shop.rating.toFixed(1) }}</span>
+                <span class="review-count">({{ shop.reviewCount }})</span>
+              </div>
+              <div class="price-range">
+                {{ shop.priceRange }}
+              </div>
+              <div class="distance" *ngIf="shop.distanceKm">
+                <span class="material-icons">place</span>
+                {{ formatDistance(shop.distanceKm) }}
+              </div>
+            </div>
+
+            <div class="shop-specialties">
+              <span class="specialty-tag" *ngFor="let specialty of shop.specialties.slice(0, 3)">
+                {{ i18n.isRTL() ? shop.specialtiesAr[shop.specialties.indexOf(specialty)] : specialty }}
+              </span>
+            </div>
+
+            <div class="shop-features">
+              <span class="feature-icon" *ngIf="shop.acceptsCreditCard" [title]="i18n.translate('acceptsCards') || 'Accepts Cards'">
+                <span class="material-icons">credit_card</span>
+              </span>
+              <span class="feature-icon" *ngIf="shop.hasDelivery" [title]="i18n.translate('hasDelivery') || 'Has Delivery'">
+                <span class="material-icons">local_shipping</span>
+              </span>
+              <span class="feature-icon" *ngIf="shop.hasOnlineStore" [title]="i18n.translate('onlineStore') || 'Online Store'">
+                <span class="material-icons">shopping_cart</span>
+              </span>
+            </div>
+
+            <div class="shop-actions">
+              <a [href]="telHref(shop.phone)" class="btn btn-primary">
+                <span class="material-icons">call</span>
+                {{ i18n.translate('call') || 'Call' }}
+              </a>
+              <a [href]="mapsHref(shop)" target="_blank" rel="noopener" class="btn btn-secondary">
+                <span class="material-icons">directions</span>
+                {{ i18n.translate('directions') || 'Directions' }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- All Shops -->
+  <section class="shops-section">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="material-icons">store</span>
+        {{ selectedCategory ? getCategoryName(selectedCategory) : (i18n.translate('allShops') || 'All Shops') }}
+        <span class="results-count">({{ filteredShops.length }})</span>
+      </h2>
+
+      <div class="shops-grid" *ngIf="filteredShops.length > 0">
+        <div class="shop-card" *ngFor="let shop of filteredShops">
+          <div class="shop-image">
+            <img [src]="shop.image" [alt]="i18n.pick({ en: shop.name, ar: shop.nameAr })" loading="lazy" />
+            <div class="shop-badge" *ngIf="shop.isFeatured">
+              <span class="material-icons">star</span>
+            </div>
+            <div class="shop-category-badge">
+              {{ getCategoryName(shop.category) }}
+            </div>
+          </div>
+
+          <div class="shop-content">
+            <h3>{{ i18n.pick({ en: shop.name, ar: shop.nameAr }) }}</h3>
+            <p class="shop-description">
+              {{ i18n.pick({ en: shop.description, ar: shop.descriptionAr }) }}
+            </p>
+
+            <div class="shop-info">
+              <div class="info-item">
+                <span class="material-icons">place</span>
+                <span>{{ i18n.pick({ en: shop.address, ar: shop.addressAr }) }}</span>
+              </div>
+              <div class="info-item">
+                <span class="material-icons">schedule</span>
+                <span>{{ i18n.pick({ en: shop.openingHours, ar: shop.openingHoursAr }) }}</span>
+              </div>
+            </div>
+
+            <div class="shop-meta">
+              <div class="rating" *ngIf="shop.rating">
+                <span class="material-icons">star</span>
+                <span class="rating-value">{{ shop.rating.toFixed(1) }}</span>
+                <span class="review-count">({{ shop.reviewCount }})</span>
+              </div>
+              <div class="price-range">
+                {{ shop.priceRange }}
+              </div>
+              <div class="distance" *ngIf="shop.distanceKm">
+                <span class="material-icons">place</span>
+                {{ formatDistance(shop.distanceKm) }}
+              </div>
+            </div>
+
+            <div class="shop-specialties">
+              <span class="specialty-tag" *ngFor="let specialty of shop.specialties.slice(0, 3)">
+                {{ i18n.isRTL() ? shop.specialtiesAr[shop.specialties.indexOf(specialty)] : specialty }}
+              </span>
+            </div>
+
+            <div class="shop-features">
+              <span class="feature-icon" *ngIf="shop.acceptsCreditCard" [title]="i18n.translate('acceptsCards') || 'Accepts Cards'">
+                <span class="material-icons">credit_card</span>
+              </span>
+              <span class="feature-icon" *ngIf="shop.hasDelivery" [title]="i18n.translate('hasDelivery') || 'Has Delivery'">
+                <span class="material-icons">local_shipping</span>
+              </span>
+              <span class="feature-icon" *ngIf="shop.hasOnlineStore" [title]="i18n.translate('onlineStore') || 'Online Store'">
+                <span class="material-icons">shopping_cart</span>
+              </span>
+            </div>
+
+            <div class="shop-actions">
+              <a [href]="telHref(shop.phone)" class="btn btn-primary">
+                <span class="material-icons">call</span>
+                {{ i18n.translate('call') || 'Call' }}
+              </a>
+              <a [href]="mapsHref(shop)" target="_blank" rel="noopener" class="btn btn-secondary">
+                <span class="material-icons">directions</span>
+                {{ i18n.translate('directions') || 'Directions' }}
+              </a>
+              <a [href]="emailHref(shop.email!)" class="btn btn-accent" *ngIf="shop.email">
+                <span class="material-icons">email</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- No Results -->
+      <div class="no-results" *ngIf="filteredShops.length === 0">
+        <div class="no-results-icon">
+          <span class="material-icons">store</span>
+        </div>
+        <h3>{{ i18n.translate('noShopsFound') || 'No shops found' }}</h3>
+        <p>{{ i18n.translate('tryDifferentFilters') || 'Try different filters or check back later' }}</p>
+        <button class="btn btn-primary" (click)="clearFilters()">
+          <span class="material-icons">refresh</span>
+          {{ i18n.translate('clearFilters') || 'Clear Filters' }}
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shopping Tips -->
+  <section class="tips-section">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="material-icons">lightbulb</span>
+        {{ i18n.translate('shoppingTips') || 'Shopping Tips' }}
+      </h2>
+
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon">
+            <span class="material-icons">verified</span>
+          </div>
+          <h3>{{ i18n.translate('tipAuthenticity') || 'Check Authenticity' }}</h3>
+          <p>{{ i18n.translate('tipAuthenticityDesc') || 'Look for certificates of authenticity, especially for papyrus, alabaster, and jewelry.' }}</p>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-icon">
+            <span class="material-icons">local_offer</span>
+          </div>
+          <h3>{{ i18n.translate('tipBargain') || 'Bargaining is Expected' }}</h3>
+          <p>{{ i18n.translate('tipBargainDesc') || 'In traditional markets, bargaining is part of the culture. Start at 50-60% of the asking price.' }}</p>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-icon">
+            <span class="material-icons">card_travel</span>
+          </div>
+          <h3>{{ i18n.translate('tipPackaging') || 'Ask for Packaging' }}</h3>
+          <p>{{ i18n.translate('tipPackagingDesc') || 'Request proper packaging for fragile items like pottery and glass to ensure safe travel.' }}</p>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-icon">
+            <span class="material-icons">schedule</span>
+          </div>
+          <h3>{{ i18n.translate('tipTiming') || 'Best Shopping Times' }}</h3>
+          <p>{{ i18n.translate('tipTimingDesc') || 'Visit shops in the morning or late afternoon to avoid crowds and heat.' }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+

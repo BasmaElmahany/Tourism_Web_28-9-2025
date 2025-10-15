@@ -1,225 +1,681 @@
+// ========================================
+// TOUR GUIDE COMPONENT - ENHANCED STYLES
+// ========================================
+
 .tourguide-container {
-	padding: 2rem 0;
+	padding: 0;
+	min-height: 100vh;
 }
 
-/* Page header hero (same visual style as hotels) */
+// ========================================
+// MAXIMIZED PAGE HEADER SECTION
+// ========================================
+
 .page-header {
 	position: relative;
-	height: 240px;
-	margin-bottom: 1.25rem;
+	height: 420px;
+	margin-bottom: 3rem;
+	overflow: hidden;
+	
+	.header-background {
+		position: absolute;
+		inset: 0;
+		overflow: hidden;
+		
+		&::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(circle at center, transparent 0%, rgba(6,24,55,0.2) 100%);
+			pointer-events: none;
+		}
+	}
+	
+	.header-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		transform: scale(1.05);
+		transition: transform 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+		
+		.page-header:hover & {
+			transform: scale(1.1);
+		}
+	}
+	
+	.header-overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			180deg,
+			rgba(6, 24, 55, 0.35) 0%,
+			rgba(6, 24, 55, 0.65) 100%
+		);
+		z-index: 1;
+	}
+	
+	.header-content {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+		text-align: center;
+		padding: 2rem 1rem;
+	}
+	
+	.page-title {
+		color: #fff;
+		font-size: 3.5rem;
+		font-weight: 700;
+		margin: 0;
+		letter-spacing: -0.02em;
+		text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+		             0 2px 8px rgba(0, 0, 0, 0.3);
+		line-height: 1.2;
+	}
+	
+	.page-subtitle {
+		color: rgba(255, 255, 255, 0.95);
+		margin-top: 1rem;
+		font-size: 1.35rem;
+		font-weight: 400;
+		max-width: 700px;
+		line-height: 1.6;
+		text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+	}
+	
+	.header-decoration {
+		position: absolute;
+		bottom: -2px;
+		left: 0;
+		right: 0;
+		height: 60px;
+		background: linear-gradient(to top, var(--background-color, #f9fafb), transparent);
+		z-index: 2;
+		pointer-events: none;
+	}
 }
-.page-header .header-background { position: absolute; inset: 0; overflow: hidden }
-.page-header .header-image { width: 100%; height: 100%; object-fit: cover; display:block }
-.page-header .header-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,24,55,0.25), rgba(6,24,55,0.45)); }
-.page-header .header-content { position: relative; z-index: 2; display:flex; align-items:center; height:100% }
-.page-header .page-title { color: #fff; font-size: 2rem; margin: 0 }
-.page-header .page-subtitle { color: rgba(255,255,255,0.92); margin-top: 0.5rem }
-.fade-in { animation: fadeInUp .6s ease both }
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: translateY(0) } }
+
+// Fade in animation
+.fade-in {
+	animation: fadeInUp 0.8s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+	
+	&:nth-child(2) {
+		animation-delay: 0.15s;
+	}
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+// ========================================
+// CONTAINER & SECTION HEADER
+// ========================================
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 1.5rem 3rem;
+}
+
+.section-header {
+	text-align: center;
+	margin-bottom: 2.5rem;
+	
+	.section-title {
+		font-size: 2.25rem;
+		font-weight: 700;
+		color: var(--primary-color, #061837);
+		margin: 0;
+		position: relative;
+		display: inline-block;
+		
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: -8px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 60px;
+			height: 4px;
+			background: linear-gradient(90deg, var(--accent-color, #D4AF37), rgba(212, 175, 55, 0.3));
+			border-radius: 2px;
+		}
+	}
+}
+
+// ========================================
+// GUIDES GRID - VERTICAL CARD LAYOUT
+// ========================================
 
 .guides-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-	gap: 1.25rem;
+	gap: 2rem;
 }
+
+// ========================================
+// GUIDE CARD - VERTICAL CENTERED LAYOUT
+// ========================================
 
 .guide-card {
 	display: flex;
-	gap: 1rem;
-	background: var(--white);
-	border-radius: 14px;
-	padding: 1rem;
-	box-shadow: 0 10px 30px rgba(6, 24, 55, 0.06);
-	transition: transform 0.18s ease, box-shadow 0.18s ease;
+	flex-direction: column;
 	align-items: center;
+	text-align: center;
+	background: var(--white, #ffffff);
+	border-radius: 18px;
+	padding: 2rem 1.5rem;
+	box-shadow: 0 10px 30px rgba(6, 24, 55, 0.08);
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	border: 1px solid rgba(6, 24, 55, 0.05);
+	opacity: 0;
+	transform: translateY(20px);
+	animation: cardIn 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+	
+	// Staggered animation
+	@for $i from 1 through 12 {
+		&:nth-child(#{$i}) {
+			animation-delay: #{$i * 0.08}s;
+		}
+	}
+	
+	&:hover {
+		transform: translateY(-8px);
+		box-shadow: 0 20px 45px rgba(6, 24, 55, 0.15);
+		border-color: rgba(212, 175, 55, 0.25);
+	}
 }
 
-.guide-card:hover {
-	transform: translateY(-6px);
-	box-shadow: 0 18px 40px rgba(6, 24, 55, 0.12);
+@keyframes cardIn {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
+
+// ========================================
+// GUIDE IMAGE - TOP CENTER
+// ========================================
 
 .guide-image {
-	flex: 0 0 84px;
-	height: 84px;
+	width: 100px;
+	height: 100px;
 	border-radius: 50%;
 	overflow: hidden;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	box-shadow: 0 6px 18px rgba(6, 24, 55, 0.06);
+	box-shadow: 0 8px 20px rgba(6, 24, 55, 0.12);
+	position: relative;
+	margin-bottom: 1.25rem;
+	
+	&::before {
+		content: '';
+		position: absolute;
+		inset: -3px;
+		border-radius: 50%;
+		background: linear-gradient(135deg, var(--accent-color, #D4AF37), rgba(212, 175, 55, 0.4));
+		z-index: -1;
+		opacity: 0.7;
+		animation: pulse 3s ease-in-out infinite;
+	}
+	
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 50%;
+		border: 3px solid var(--white, #ffffff);
+	}
 }
 
-.guide-image img {
-	width: 84px;
-	height: 84px;
-	object-fit: cover;
-	border-radius: 50%;
+@keyframes pulse {
+	0%, 100% {
+		opacity: 0.5;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 0.8;
+		transform: scale(1.05);
+	}
 }
 
-/* Card entrance animation */
-.guide-card {
-	opacity: 0;
-	transform: translateY(10px);
-	animation: cardIn 420ms cubic-bezier(.2,.9,.3,1) forwards;
+// ========================================
+// GUIDE NAME
+// ========================================
+
+.guide-name {
+	margin: 0 0 0.75rem 0;
+	font-size: 1.35rem;
+	font-weight: 700;
+	color: var(--primary-color, #061837);
+	line-height: 1.3;
 }
 
-@keyframes cardIn {
-	to { opacity: 1; transform: translateY(0); }
+// ========================================
+// GUIDE BIO/DESCRIPTION
+// ========================================
+
+.guide-bio {
+	color: var(--text-secondary, #6b7280);
+	margin: 0 0 1.25rem 0;
+	font-size: 0.95rem;
+	line-height: 1.6;
+	min-height: 2.5rem;
 }
 
-/* Social icon styles */
+// ========================================
+// LANGUAGES SECTION
+// ========================================
+
+.guide-languages {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+	margin-bottom: 1rem;
+	width: 100%;
+	
+	strong {
+		color: var(--primary-color, #061837);
+		font-size: 0.9rem;
+		font-weight: 600;
+	}
+}
+
+.language-badges {
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.badge {
+	background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(212, 175, 55, 0.18));
+	color: var(--text-primary, #1a1a1a);
+	padding: 0.35rem 0.75rem;
+	border-radius: 999px;
+	font-size: 0.85rem;
+	font-weight: 500;
+	border: 1px solid rgba(212, 175, 55, 0.25);
+	transition: all 0.2s ease;
+	
+	&:hover {
+		background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.3));
+		transform: translateY(-1px);
+	}
+}
+
+// ========================================
+// RATING BADGE
+// ========================================
+
+.rating-badge {
+	background: linear-gradient(135deg, #ffdd57, #ffb86b);
+	padding: 0.4rem 0.8rem;
+	border-radius: 999px;
+	color: var(--primary-color, #061837);
+	font-weight: 700;
+	font-size: 0.95rem;
+	box-shadow: 0 4px 12px rgba(255, 184, 107, 0.35);
+	border: none;
+	transition: all 0.2s ease;
+	margin-bottom: 1rem;
+	
+	&:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 6px 16px rgba(255, 184, 107, 0.45);
+	}
+}
+
+// ========================================
+// CONTACT BUTTONS
+// ========================================
+
+.contact-buttons {
+	display: flex;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 100%;
+	margin-bottom: 0.75rem;
+}
+
+.btn {
+	padding: 0.7rem 1.5rem;
+	font-size: 0.95rem;
+	font-weight: 600;
+	border-radius: 10px;
+	text-decoration: none;
+	transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.4rem;
+	cursor: pointer;
+	border: none;
+	flex: 1;
+	min-width: 120px;
+	
+	&.btn-primary {
+		background: linear-gradient(135deg, var(--primary-color, #061837), #0a2a5a);
+		color: var(--white, #ffffff);
+		box-shadow: 0 4px 12px rgba(6, 24, 55, 0.25);
+		
+		&:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 6px 18px rgba(6, 24, 55, 0.35);
+		}
+		
+		&:active {
+			transform: translateY(0);
+		}
+	}
+	
+	&.btn-secondary {
+		background: linear-gradient(135deg, var(--accent-color, #D4AF37), #c49b2e);
+		color: var(--white, #ffffff);
+		box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
+		
+		&:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);
+		}
+		
+		&:active {
+			transform: translateY(0);
+		}
+	}
+}
+
+// ========================================
+// CONTACT INFO DISPLAY
+// ========================================
+
+.contact-info {
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-bottom: 0.75rem;
+	width: 100%;
+}
+
+.info-badge {
+	background: rgba(6, 24, 55, 0.08);
+	padding: 0.4rem 0.8rem;
+	border-radius: 999px;
+	font-weight: 600;
+	font-size: 0.9rem;
+	animation: fadeIn 0.3s ease;
+	border: 1px solid rgba(6, 24, 55, 0.12);
+	
+	&.phone-badge {
+		background: rgba(6, 24, 55, 0.08);
+		color: var(--primary-color, #061837);
+	}
+	
+	&.email-badge {
+		background: rgba(212, 175, 55, 0.15);
+		color: var(--primary-color, #061837);
+		border-color: rgba(212, 175, 55, 0.25);
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-6px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+// ========================================
+// SOCIAL LINKS - BOTTOM CENTER
+// ========================================
+
 .social-links {
 	display: flex;
-	gap: 0.45rem;
+	gap: 0.6rem;
+	justify-content: center;
 	align-items: center;
-	margin-left: auto;
+	margin-top: 0.5rem;
 }
 
 .social {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 36px;
-	height: 36px;
+	width: 40px;
+	height: 40px;
 	border-radius: 50%;
-	background: rgba(0,0,0,0.06);
 	color: #fff;
 	text-decoration: none;
-	font-size: 0.95rem;
-	transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
-	box-shadow: 0 6px 14px rgba(6,24,55,0.06);
+	transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+	box-shadow: 0 4px 12px rgba(6, 24, 55, 0.15);
+	position: relative;
+	
+	&:hover {
+		transform: translateY(-4px) scale(1.08);
+		box-shadow: 0 8px 20px rgba(6, 24, 55, 0.25);
+	}
+	
+	&:active {
+		transform: translateY(-2px) scale(1.05);
+	}
+	
+	&[aria-label="Facebook"] {
+		background: linear-gradient(135deg, #1877F2, #0d5dbf);
+	}
+	
+	&[aria-label="Instagram"] {
+		background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+	}
+	
+	&[aria-label="Twitter"] {
+		background: linear-gradient(135deg, #1DA1F2, #0d8bd9);
+	}
+	
+	&[aria-label="YouTube"] {
+		background: linear-gradient(135deg, #FF0000, #cc0000);
+	}
+	
+	svg {
+		width: 20px;
+		height: 20px;
+		display: block;
+		
+		path {
+			opacity: 0.95;
+		}
+	}
+	
+	// Tooltip
+	&[title] {
+		&:hover::after {
+			content: attr(title);
+			position: absolute;
+			top: -42px;
+			left: 50%;
+			transform: translateX(-50%);
+			background: rgba(0, 0, 0, 0.9);
+			color: #fff;
+			padding: 6px 12px;
+			border-radius: 8px;
+			font-size: 0.85rem;
+			white-space: nowrap;
+			pointer-events: none;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+			z-index: 10;
+		}
+		
+		&:hover::before {
+			content: '';
+			position: absolute;
+			top: -8px;
+			left: 50%;
+			transform: translateX(-50%);
+			border: 6px solid transparent;
+			border-top-color: rgba(0, 0, 0, 0.9);
+			pointer-events: none;
+			z-index: 10;
+		}
+	}
 }
 
-.social:hover {
-	transform: translateY(-4px) scale(1.06);
-	box-shadow: 0 14px 30px rgba(6,24,55,0.12);
+// ========================================
+// LOADING STATE
+// ========================================
+
+.loading {
+	text-align: center;
+	padding: 4rem 0;
+	
+	.spinner {
+		width: 50px;
+		height: 50px;
+		margin: 0 auto 1rem;
+		border: 4px solid rgba(6, 24, 55, 0.1);
+		border-top-color: var(--accent-color, #D4AF37);
+		border-radius: 50%;
+		animation: spin 0.8s linear infinite;
+	}
+	
+	p {
+		color: var(--text-secondary, #6b7280);
+		font-size: 1rem;
+	}
 }
 
-.social[aria-label="Facebook"] { background: #1877F2 }
-.social[aria-label="Instagram"] { background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af) }
-.social[aria-label="Twitter"] { background: #1DA1F2 }
-.social[aria-label="YouTube"] { background: #FF0000 }
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
 
-/* Ensure inline SVGs get proper sizing and contrast */
-.social svg { width: 18px; height: 18px; display: block }
-.social path { opacity: 0.95 }
+// ========================================
+// RESPONSIVE DESIGN
+// ========================================
 
-/* Badges (language chips) */
-.badge { background: rgba(0,0,0,0.05); color: var(--text-primary); padding: 0.25rem 0.5rem; border-radius: 999px; font-size: 0.78rem }
-
-/* Rating badge */
-.rating-badge { background: linear-gradient(90deg,#ffdd57,#ffb86b); padding: 0.18rem 0.5rem; border-radius: 8px; color: #1a1a1a; font-weight: 700 }
-
-/* Slightly bigger image on desktop */
+// Desktop enhancements
 @media (min-width: 960px) {
-	.guide-image { flex: 0 0 100px; height: 100px }
-	.guide-image img { width: 100px; height: 100px }
+	.guide-image {
+		width: 110px;
+		height: 110px;
+		
+		img {
+			width: 110px;
+			height: 110px;
+		}
+	}
+	
+	.page-header {
+		height: 480px;
+	}
+	
+	.page-title {
+		font-size: 4rem;
+	}
+	
+	.page-subtitle {
+		font-size: 1.5rem;
+	}
+	
+	.guides-grid {
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	}
 }
 
-/* Small tooltip effect using title attribute (optional) */
-.social[title] { position: relative }
-.social[title]:hover::after {
-	content: attr(title);
-	position: absolute;
-	top: -34px;
-	left: 50%;
-	transform: translateX(-50%);
-	background: rgba(0,0,0,0.75);
-	color: #fff;
-	padding: 4px 8px;
-	border-radius: 6px;
-	font-size: 0.8rem;
-	white-space: nowrap;
-	pointer-events: none;
+// Tablet
+@media (max-width: 768px) {
+	.page-header {
+		height: 360px;
+	}
+	
+	.page-title {
+		font-size: 2.75rem;
+	}
+	
+	.page-subtitle {
+		font-size: 1.2rem;
+	}
+	
+	.guides-grid {
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 1.5rem;
+	}
+	
+	.guide-card {
+		padding: 1.75rem 1.25rem;
+	}
 }
 
-/* Tidy actions area */
-.contact-buttons { display: flex; gap: .5rem; flex-wrap: wrap }
-.actions { display: flex; align-items: center; gap: .75rem }
-
+// Mobile
 @media (max-width: 520px) {
-	.social-links { margin: .5rem 0 0 0 }
+	.page-header {
+		height: 300px;
+	}
+	
+	.page-title {
+		font-size: 2rem;
+	}
+	
+	.page-subtitle {
+		font-size: 1rem;
+	}
+	
+	.container {
+		padding: 0 1rem 2rem;
+	}
+	
+	.guides-grid {
+		grid-template-columns: 1fr;
+	}
+	
+	.guide-card {
+		padding: 1.5rem 1rem;
+	}
+	
+	.contact-buttons {
+		flex-direction: column;
+		
+		.btn {
+			width: 100%;
+		}
+	}
 }
 
-.guide-content {
-	flex: 1 1 auto;
+// Extra small devices
+@media (max-width: 360px) {
+	.page-title {
+		font-size: 1.75rem;
+	}
+	
+	.page-subtitle {
+		font-size: 0.95rem;
+	}
+	
+	.guide-name {
+		font-size: 1.2rem;
+	}
+	
+	.guide-bio {
+		font-size: 0.9rem;
+	}
 }
 
-.guide-content h3 {
-	margin: 0;
-	font-size: 1.05rem;
-	font-weight: 600;
-}
-
-.guide-content .bio {
-	color: var(--text-secondary);
-	margin: 0.3rem 0 0.6rem 0;
-	font-size: 0.95rem;
-}
-
-.badges {
-	display: flex;
-	gap: 0.5rem;
-	flex-wrap: wrap;
-	margin-bottom: 0.6rem;
-}
-
-.badge {
-	background: var(--background-color);
-	color: var(--text-primary);
-	padding: 0.25rem 0.6rem;
-	border-radius: 999px;
-	font-size: 0.8rem;
-	border: 1px solid rgba(0,0,0,0.04);
-}
-
-.meta {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	gap: 1rem;
-}
-
-.rating { color: var(--accent-color); font-weight: 600 }
-
-.actions {
-	display: flex;
-	gap: 0.5rem;
-	margin-top: 0.6rem;
-}
-
-.actions .btn {
-	padding: 0.5rem 0.75rem;
-	font-size: 0.9rem;
-	border-radius: 8px;
-	text-decoration: none;
-}
-
-@media (max-width: 520px) {
-	.guide-card { flex-direction: column; align-items: stretch }
-	.guide-image { margin: 0 auto }
-	.meta { flex-direction: column; align-items: flex-start; gap: .25rem }
-}
-
-.phone-display {
-	margin-top: 0.5rem;
-	background: rgba(0,0,0,0.06);
-	padding: 0.35rem 0.6rem;
-	border-radius: 8px;
-	font-weight: 600;
-}
-
-.email-display {
-	margin-top: 0.5rem;
-	background: rgba(0,0,0,0.04);
-	padding: 0.32rem 0.6rem;
-	border-radius: 8px;
-	font-weight: 600;
-	color: var(--text-primary);
-}
-
-.contact-badges { display:flex; gap:0.4rem; align-items:center; margin-left:0.6rem }
-.contact-badges .badge { background: rgba(0,0,0,0.06); padding: .28rem .5rem; border-radius: 999px; font-weight:600; font-size:0.9rem; animation: fadeIn .18s ease }
-
-@keyframes fadeIn { from { opacity: 0; transform: translateY(-4px) } to { opacity:1; transform: translateY(0) } }

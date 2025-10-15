@@ -179,15 +179,91 @@ export interface TranslationKeys {
   allCuisines: string;
   cuisine: string;
   searchRestaurants: string,
-  Islamic_Religious_Site : string,
-  Christian_religious_site : string ,
-  Museum : string;
+  Islamic_Religious_Site: string,
+  Christian_religious_site: string,
+  Museum: string;
   tourguide: string;
   tourguideSubtitle: string;
   photographer: string;
-  photographers : string;
+  photographers: string;
   photographerSubtitle: string;
   services: string;
+  Book_A_Ticket: string;
+  souvenirs: string;
+  souvenirsSubtitle: string;
+  shopByCategory: string;
+  shops: string;
+  filterShops: string;
+  category: string;
+  allPrices: string;
+  souvenirsTitle: string;
+  featuredOnly: string;
+  acceptsCards: string;
+  hasDelivery: string;
+  featuredShops: string;
+  featured: string;
+  allShops: string;
+
+  // Shop Details
+
+  directions: string;
+  onlineStore: string;
+
+  // No Results
+  noShopsFound: string;
+
+  // Shopping Tips
+  shoppingTips: string;
+  tipAuthenticity: string;
+  tipAuthenticityDesc: string;
+  tipBargain: string;
+  tipBargainDesc: string;
+  tipPackaging: string;
+  tipPackagingDesc: string;
+  tipTiming: string;
+  tipTimingDesc: string;
+
+  // Product Categories
+  categoryHandicrafts: string;
+  categoryJewelry: string;
+  categoryTextiles: string;
+  categoryPottery: string;
+  categoryPapyrus: string;
+  categoryMarket: string;
+  categoryGallery: string;
+
+  // Price Ranges
+  priceModerate: string;
+  pricePremium: string;
+
+  // Additional
+  resultsCount: string;
+  myFavorites: string;
+  favorites: string;
+  addToFavorites: string;
+  removeFromFavorites: string;
+  noFavorites: string;
+  noFavoritesDesc: string;
+  clearAll: string;
+  confirmClearFavorites: string;
+  all: string;
+  close: string;
+
+  // Messages
+  addedToFavorites: string;
+  removedFromFavorites: string;
+  favoriteAdded: string;
+  favoriteRemoved: string;
+  visitorGuide : string;
+  ctaDescription: string;
+  minRead: string;
+  by: string;
+  viewAllPosts: string;
+  culturalExperiences: string;
+  tasteLocalCuisine: string;
+  findAccommodation: string;
+  discoverAncientSites: string;
+
 }
 
 @Injectable({
@@ -297,16 +373,16 @@ export class I18nService {
       totalReviews: 'Total Reviews',
       annualVisitors: 'Annual Visitors',
       youMightAlsoLike: 'You Might Also Like',
-  // Tourguide
-  languages: 'Languages',
-  call: 'Call',
-  email: 'Email',
-  // Hotel Details
-  aboutHotel: 'About This Hotel',
-  roomTypes: 'Room Types',
-  contact: 'Contact',
-  bookingInformation: 'Booking Information',
-  starRating: 'Star Rating',
+      // Tourguide
+      languages: 'Languages',
+      call: 'Call',
+      email: 'Email',
+      // Hotel Details
+      aboutHotel: 'About This Hotel',
+      roomTypes: 'Room Types',
+      contact: 'Contact',
+      bookingInformation: 'Booking Information',
+      starRating: 'Star Rating',
 
       // Statistics
       historicSites: 'Historic Sites',
@@ -378,20 +454,102 @@ export class I18nService {
       allCuisines: 'All Cuisines',
       cuisine: 'Cuisine',
       searchRestaurants: 'Search Restaurants',
-      Museum:'Museum',
-      Christian_religious_site : 'Christian Religious Site' ,
-      Islamic_Religious_Site  : ' Islamic Religious Site' ,
-  tourguide: 'Tourguide',
-  tourguideSubtitle: 'Find licensed local guides, interpreters, and experts to lead your Minya experience.',
-  photographer: 'Photographer',
+      Museum: 'Museum',
+      Christian_religious_site: 'Christian Religious Site',
+      Islamic_Religious_Site: ' Islamic Religious Site',
+      tourguide: 'Tourguide',
+      tourguideSubtitle: 'Find licensed local guides, interpreters, and experts to lead your Minya experience.',
+      photographer: 'Photographer',
       photographers: 'Photographers',
-      photographerSubtitle: 'Local and professional photographers available for events, tours, and photo sessions.'
-      ,
-      chatPlaceholder: 'Ask me about Minya...',
-      chatSend: 'Send',
-      chatSending: 'Sending...',
-      openChat: 'Open chat',
-      closeChat: 'Close chat'
+      photographerSubtitle: 'Local and professional photographers available for events, tours, and photo sessions.',
+      Book_A_Ticket: 'Book A Ticket',
+      souvenirs: 'Souvenirs & Shopping',
+
+      // Hero Section
+      souvenirsSubtitle: 'Discover authentic Egyptian treasures and handcrafted souvenirs in Minya',
+
+      // Categories
+      shopByCategory: 'Shop by Category',
+      shops: 'shops',
+
+      // Filters
+      filterShops: 'Filter Shops',
+      category: 'Category',
+      allPrices: 'All Prices',
+      featuredOnly: 'Featured Only',
+      acceptsCards: 'Accepts Cards',
+      hasDelivery: 'Has Delivery',
+
+      // Shop Sections
+      featuredShops: 'Featured Shops',
+      featured: 'Featured',
+      allShops: 'All Shops',
+
+      // Shop Details
+      directions: 'Directions',
+      onlineStore: 'Online Store',
+
+      // No Results
+      noShopsFound: 'No shops found',
+
+
+      // Shopping Tips
+      shoppingTips: 'Shopping Tips',
+      tipAuthenticity: 'Check Authenticity',
+      tipAuthenticityDesc: 'Look for certificates of authenticity, especially for papyrus, alabaster, and jewelry.',
+      tipBargain: 'Bargaining is Expected',
+      tipBargainDesc: 'In traditional markets, bargaining is part of the culture. Start at 50-60% of the asking price.',
+      tipPackaging: 'Ask for Packaging',
+      tipPackagingDesc: 'Request proper packaging for fragile items like pottery and glass to ensure safe travel.',
+      tipTiming: 'Best Shopping Times',
+      tipTimingDesc: 'Visit shops in the morning or late afternoon to avoid crowds and heat.',
+
+      // Product Categories
+      categoryHandicrafts: 'Handicrafts',
+      categoryJewelry: 'Jewelry & Accessories',
+      categoryTextiles: 'Textiles & Fabrics',
+      categoryPottery: 'Pottery & Ceramics',
+      categoryPapyrus: 'Papyrus & Art',
+      categoryMarket: 'Traditional Markets',
+      categoryGallery: 'Art Galleries',
+
+      // Price Ranges
+      priceModerate: 'Moderate',
+      pricePremium: 'Premium',
+
+      // Additional
+      resultsCount: 'results',
+      souvenirsTitle: 'Souvenirs Title',
+      // Favorites Drawer
+      myFavorites: 'My Favorites',
+      favorites: 'Favorites',
+      addToFavorites: 'Add to Favorites',
+      removeFromFavorites: 'Remove from Favorites',
+      noFavorites: 'No favorites yet',
+      noFavoritesDesc: 'Start adding your favorite places, hotels, and restaurants!',
+      clearAll: 'Clear All',
+      confirmClearFavorites: 'Are you sure you want to clear all favorites?',
+
+      // Filter Labels
+      all: 'All',
+
+      // Actions
+      close: 'Close',
+
+      // Messages
+      addedToFavorites: 'Added to favorites',
+      removedFromFavorites: 'Removed from favorites',
+      favoriteAdded: 'Favorite added successfully',
+      favoriteRemoved: 'Favorite removed successfully',
+      visitorGuide: 'Visitor Guide',
+      ctaDescription: 'Cta Description',
+      minRead: 'minRead',
+      by: 'By',
+      viewAllPosts: 'View All Posts',
+      culturalExperiences: 'Cultural Experiences',
+      tasteLocalCuisine: 'Taste LocalCuisine',
+      findAccommodation: 'Find Accommodation',
+      discoverAncientSites: 'Discover AncientSites'
     },
     ar: {
       // Navigation
@@ -404,16 +562,12 @@ export class I18nService {
       visitorInfo: 'معلومات الزوار',
       blog: 'المدونة',
       map: 'الخريطة',
-    tourguide: 'المرشد السياحي',
-    tourguideSubtitle: 'اعثر على مرشدين محليين مرخصين ومترجمين وخبراء ليقودوا تجربتك في المنيا.',
-    photographer: 'المصور',
-    photographerSubtitle: 'مصورون محليون ومحترفون متاحون لتغطية الفعاليات والجولات وجلسات التصوير.',
-    chatPlaceholder: 'اكتب سؤالك عن المنيا...',
-    chatSend: 'أرسل',
-    chatSending: 'جاري الإرسال...',
-    openChat: 'افتح الشات',
-    closeChat: 'اغلق الشات',
+      tourguide: 'المرشد السياحي',
+      tourguideSubtitle: 'اعثر على مرشدين محليين مرخصين ومترجمين وخبراء ليقودوا تجربتك في المنيا.',
+      photographer: 'المصور',
+      photographerSubtitle: 'مصورون محليون ومحترفون متاحون لتغطية الفعاليات والجولات وجلسات التصوير.',
       services: 'الخدمات',
+      Book_A_Ticket: 'احجز تذكرة',
       // Common
       search: 'بحث',
       filter: 'تصفية',
@@ -445,9 +599,9 @@ export class I18nService {
       archaeologicalSites: 'المواقع الأثرية',
       ancientCities: 'المدن القديمة',
       scenicAreas: 'المناطق الطبيعية',
-      Museum:'متحف',
-      Christian_religious_site : 'موقع ديني مسيحي' ,
-      Islamic_Religious_Site  : 'موقع ديني اسلامي' ,
+      Museum: 'متحف',
+      Christian_religious_site: 'موقع ديني مسيحي',
+      Islamic_Religious_Site: 'موقع ديني اسلامي',
 
       // Hotels
       hotelsTitle: 'فنادق المنيا',
@@ -458,12 +612,12 @@ export class I18nService {
       budget: 'اقتصادي (أقل من 500 جنيه)',
       midRange: 'متوسط (500-1000 جنيه)',
       luxury: 'فاخر (1000+ جنيه)',
-  // Hotel Details
-  aboutHotel: 'عن هذا الفندق',
-  roomTypes: 'أنواع الغرف',
-  contact: 'معلومات الاتصال',
-  bookingInformation: 'معلومات الحجز',
-  starRating: 'تصنيف النجوم',
+      // Hotel Details
+      aboutHotel: 'عن هذا الفندق',
+      roomTypes: 'أنواع الغرف',
+      contact: 'معلومات الاتصال',
+      bookingInformation: 'معلومات الحجز',
+      starRating: 'تصنيف النجوم',
       exploreHotels: "اكتشف الفنادق",
       more: "المزيد",
       reviews: "الأراء",
@@ -503,10 +657,10 @@ export class I18nService {
       totalReviews: 'إجمالي المراجعات',
       annualVisitors: 'الزوار السنويون',
       youMightAlsoLike: 'قد يعجبك أيضاً',
-  // Tourguide
-  languages: 'اللغات',
-  call: 'اتصل',
-  email: 'البريد الإلكتروني',
+      // Tourguide
+      languages: 'اللغات',
+      call: 'اتصل',
+      email: 'البريد الإلكتروني',
 
       // Statistics
       historicSites: 'المواقع التاريخية',
@@ -532,16 +686,16 @@ export class I18nService {
       culturalHeritageDesc: 'انغمس في الثقافة والتقاليد المصرية الأصيلة التي تستمر حتى اليوم.',
       blogTitle: 'مدونة السياحة',
       blogSubtitle: 'ابقَ مُلهمًا مع أحدث القصص والأدلة ونصائح السفر من المنيا.',
-  categories: 'الفئات',
-  minutesRead: 'دقائق قراءة',
-  // Blog details / generic
-  about: 'حول هذا المقال',
-  tags: 'الوسوم',
-  postInfo: 'معلومات المقال',
-  publishDate: 'تاريخ النشر',
-  readTime: 'مدة القراءة',
-  minutes: 'دقائق',
-  author: 'المؤلف',
+      categories: 'الفئات',
+      minutesRead: 'دقائق قراءة',
+      // Blog details / generic
+      about: 'حول هذا المقال',
+      tags: 'الوسوم',
+      postInfo: 'معلومات المقال',
+      publishDate: 'تاريخ النشر',
+      readTime: 'مدة القراءة',
+      minutes: 'دقائق',
+      author: 'المؤلف',
       loadMorePosts: 'تحميل المزيد من المقالات',
       stayUpdated: 'ابقَ على اطلاع',
       stayUpdatedDesc: 'اشترك للحصول على أحدث المقالات ونصائح السفر والأخبار مباشرة في بريدك.',
@@ -567,7 +721,94 @@ export class I18nService {
       cuisine: "المطبخ",
       searchRestaurants: "البحث عن المطاعم",
       stars: 'النجوم',
-      allRatings: 'جميع التقييمات '
+      allRatings: 'جميع التقييمات ',
+      // Navigation
+      souvenirs: 'الهدايا التذكارية والتسوق',
+
+      // Hero Section
+      souvenirsTitle: 'الهدايا التذكارية والحرف اليدوية المصرية',
+      souvenirsSubtitle: 'اكتشف الكنوز المصرية الأصيلة والهدايا التذكارية المصنوعة يدوياً في المنيا',
+
+      // Categories
+      shopByCategory: 'تسوق حسب الفئة',
+      shops: 'محلات',
+
+      // Filters
+      filterShops: 'تصفية المحلات',
+      category: 'الفئة',
+      allPrices: 'جميع الأسعار',
+      featuredOnly: 'المميزة فقط',
+      acceptsCards: 'يقبل البطاقات',
+      hasDelivery: 'يوجد توصيل',
+
+      // Shop Sections
+      featuredShops: 'المحلات المميزة',
+      featured: 'مميز',
+      allShops: 'جميع المحلات',
+
+      // Shop Details
+      directions: 'الاتجاهات',
+      onlineStore: 'متجر إلكتروني',
+
+      // No Results
+      noShopsFound: 'لم يتم العثور على محلات',
+
+      // Shopping Tips
+      shoppingTips: 'نصائح التسوق',
+      tipAuthenticity: 'تحقق من الأصالة',
+      tipAuthenticityDesc: 'ابحث عن شهادات الأصالة، خاصة للبردي والمرمر والمجوهرات.',
+      tipBargain: 'المساومة متوقعة',
+      tipBargainDesc: 'في الأسواق التقليدية، المساومة جزء من الثقافة. ابدأ بـ 50-60٪ من السعر المطلوب.',
+      tipPackaging: 'اطلب التغليف',
+      tipPackagingDesc: 'اطلب تغليفاً مناسباً للعناصر الهشة مثل الفخار والزجاج لضمان السفر الآمن.',
+      tipTiming: 'أفضل أوقات التسوق',
+      tipTimingDesc: 'قم بزيارة المحلات في الصباح أو بعد الظهر لتجنب الازدحام والحرارة.',
+
+      // Product Categories
+      categoryHandicrafts: 'الحرف اليدوية',
+      categoryJewelry: 'المجوهرات والإكسسوارات',
+      categoryTextiles: 'المنسوجات والأقمشة',
+      categoryPottery: 'الفخار والخزف',
+      categoryPapyrus: 'البردي والفنون',
+      categoryMarket: 'الأسواق التقليدية',
+      categoryGallery: 'المعارض الفنية',
+
+      // Price Ranges
+
+      priceModerate: 'متوسط',
+      pricePremium: 'فاخر',
+
+      // Additional
+      resultsCount: 'نتيجة',
+         myFavorites: 'المفضلة',
+    favorites: 'المفضلة',
+    addToFavorites: 'إضافة للمفضلة',
+    removeFromFavorites: 'إزالة من المفضلة',
+    noFavorites: 'لا توجد مفضلات بعد',
+    noFavoritesDesc: 'ابدأ بإضافة أماكنك وفنادقك ومطاعمك المفضلة!',
+    clearAll: 'مسح الكل',
+    confirmClearFavorites: 'هل أنت متأكد من مسح جميع المفضلات؟',
+    
+    // Filter Labels
+    all: 'الكل',
+   
+    close: 'إغلاق',
+   
+    // Messages
+    addedToFavorites: 'تمت الإضافة للمفضلة',
+    removedFromFavorites: 'تمت الإزالة من المفضلة',
+    favoriteAdded: 'تمت إضافة المفضلة بنجاح',
+    favoriteRemoved: 'تمت إزالة المفضلة بنجاح',
+    visitorGuide: 'دليل الزوار',
+      ctaDescription: 'وصف دعوة العمل',
+      minRead: ' مدة القراءة',
+      by: ' بواسطة',
+      viewAllPosts: 'عرض جميع المنشورات',
+      culturalExperiences: 'تجارب ثقافية',
+      tasteLocalCuisine: 'تذوق المأكولات المحلية',
+      findAccommodation: 'البحث عن سكن',
+      discoverAncientSites: 'اكتشاف المواقع الأثرية'
+
     }
   };
 
