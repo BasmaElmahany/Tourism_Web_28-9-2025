@@ -1,18 +1,69 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { I18nService } from '../../services/i18n.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-chatbot',
   standalone: true,
   imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './chatbot.component.html',
-  styleUrls: ['./chatbot.component.scss']
+  styleUrls: ['./chatbot.component.scss'],
+  animations: [
+    // Slide in animation for chat container
+    trigger('slideIn', [
+      transition(':enter', [
+        style({ 
+          opacity: 0, 
+          transform: 'translateY(20px) scale(0.95)' 
+        }),
+        animate('400ms cubic-bezier(0.68, -0.55, 0.265, 1.55)', 
+          style({ 
+            opacity: 1, 
+            transform: 'translateY(0) scale(1)' 
+          })
+        )
+      ]),
+      transition(':leave', [
+        animate('300ms cubic-bezier(0.4, 0, 0.2, 1)', 
+          style({ 
+            opacity: 0, 
+            transform: 'translateY(20px) scale(0.95)' 
+          })
+        )
+      ])
+    ]),
+    
+    // Message in animation
+    trigger('messageIn', [
+      transition(':enter', [
+        style({ 
+          opacity: 0, 
+          transform: 'translateY(10px) scale(0.95)' 
+        }),
+        animate('300ms cubic-bezier(0.68, -0.55, 0.265, 1.55)', 
+          style({ 
+            opacity: 1, 
+            transform: 'translateY(0) scale(1)' 
+          })
+        )
+      ])
+    ]),
+    
+    // Send icon animation
+    trigger('sendIcon', [
+      transition('* => *', [
+        animate('200ms cubic-bezier(0.4, 0, 0.2, 1)')
+      ])
+    ])
+  ]
 })
-export class ChatbotComponent implements OnInit {
+export class ChatbotComponent implements OnInit, AfterViewChecked {
+  @ViewChild('chatWindow') private chatWindow!: ElementRef;
+  
   messages: { sender: string; from: string; text: string }[] = [];
   input: string = '';
   loading: boolean = false;
@@ -22,6 +73,7 @@ export class ChatbotComponent implements OnInit {
 
   // optional lock to prevent double toggle (safety)
   private _toggleLocked = false;
+  private shouldScrollToBottom = false;
 
   constructor(
     private http: HttpClient,
@@ -30,7 +82,18 @@ export class ChatbotComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    try { this.hasSeenHelper = !!localStorage.getItem('chat_helper_seen'); } catch (e) { this.hasSeenHelper = false; }
+    try { 
+      this.hasSeenHelper = !!localStorage.getItem('chat_helper_seen'); 
+    } catch (e) { 
+      this.hasSeenHelper = false; 
+    }
+  }
+
+  ngAfterViewChecked(): void {
+    if (this.shouldScrollToBottom) {
+      this.scrollToBottom();
+      this.shouldScrollToBottom = false;
+    }
   }
 
   toggleChat() {
@@ -41,12 +104,18 @@ export class ChatbotComponent implements OnInit {
 
     this.showChat = !this.showChat;
     try { localStorage.setItem('chat_helper_seen', '1'); } catch (e) {}
+    
+    if (this.showChat) {
+      this.shouldScrollToBottom = true;
+    }
+    
     try { this.cdr.detectChanges(); } catch (e) {}
   }
 
   openChatFromHelper() {
     this.showChat = true;
     this.hasSeenHelper = true;
+    this.shouldScrollToBottom = true;
     try { localStorage.setItem('chat_helper_seen', '1'); } catch (e) {}
   }
 
@@ -75,7 +144,9 @@ export class ChatbotComponent implements OnInit {
     if (url) this.avatarDataUrl = url;
   }
 
-  send() { this.sendMessage(); }
+  send() { 
+    this.sendMessage(); 
+  }
 
   resize(el: HTMLTextAreaElement) {
     if (!el) return;
@@ -83,11 +154,37 @@ export class ChatbotComponent implements OnInit {
     el.style.height = el.scrollHeight + 'px';
   }
 
+onEnterKey(event: any) {
+  const keyboardEvent = event as KeyboardEvent;
+  if (keyboardEvent.key === 'Enter' && !keyboardEvent.shiftKey) {
+    keyboardEvent.preventDefault();
+    this.send();
+  }
+}
+
+
+  getCurrentTime(): string {
+    const now = new Date();
+    return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+
+  private scrollToBottom(): void {
+    try {
+      if (this.chatWindow && this.chatWindow.nativeElement) {
+        const element = this.chatWindow.nativeElement;
+        element.scrollTop = element.scrollHeight;
+      }
+    } catch (err) {
+      console.error('Scroll error:', err);
+    }
+  }
+
   sendMessage() {
     if (!this.input.trim()) return;
     const userMsg = this.input;
     this.messages.push({ sender: 'user', from: 'user', text: userMsg });
     this.loading = true;
+    this.shouldScrollToBottom = true;
 
     const inputIsArabic = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(userMsg);
 
@@ -115,14 +212,31 @@ export class ChatbotComponent implements OnInit {
           || 'عذراً، لم أفهم. / Sorry, I did not understand.';
         this.messages.push({ sender: 'bot', from: 'bot', text: botReply });
         this.loading = false;
+        this.shouldScrollToBottom = true;
       },
       error: (err) => {
         console.error('Chat error', err);
-        this.messages.push({ sender: 'bot', from: 'bot', text: inputIsArabic ? 'حدث خطأ في الاتصال بخدمة الدردشة.' : 'Sorry, there was a problem connecting to the chat service.' });
+        this.messages.push({ 
+          sender: 'bot', 
+          from: 'bot', 
+          text: inputIsArabic 
+            ? 'حدث خطأ في الاتصال بخدمة الدردشة.' 
+            : 'Sorry, there was a problem connecting to the chat service.' 
+        });
         this.loading = false;
+        this.shouldScrollToBottom = true;
       }
     });
 
     this.input = '';
+    
+    // Reset textarea height
+    setTimeout(() => {
+      const textarea = document.querySelector('.chat-input textarea') as HTMLTextAreaElement;
+      if (textarea) {
+        textarea.style.height = 'auto';
+      }
+    }, 0);
   }
 }
+

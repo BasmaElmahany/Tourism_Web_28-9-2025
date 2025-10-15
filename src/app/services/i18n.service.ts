@@ -254,7 +254,7 @@ export interface TranslationKeys {
   removedFromFavorites: string;
   favoriteAdded: string;
   favoriteRemoved: string;
-  visitorGuide : string;
+  visitorGuide: string;
   ctaDescription: string;
   minRead: string;
   by: string;
@@ -263,6 +263,35 @@ export interface TranslationKeys {
   tasteLocalCuisine: string;
   findAccommodation: string;
   discoverAncientSites: string;
+  minyaTourismAssistant: string;
+  onlineNow: string;
+
+  // Welcome
+  chatWelcome: string;
+  chatWelcomeDesc: string;
+
+  // Quick Actions
+  showAttractions: string;
+  findHotels: string;
+  localRestaurants: string;
+  planTrip: string;
+
+  // Responses
+  chatAttractionResponse: string;
+  chatHotelResponse: string;
+  chatRestaurantResponse: string;
+  chatTripResponse: string;
+  chatDefaultResponse: string;
+  chatError: string;
+  // Footer
+  poweredByAI: string;
+
+  // Actions
+  clearChat: string;
+  newConversation: string;
+
+  chatTitle: string;
+  online: string;
 
 }
 
@@ -550,11 +579,44 @@ export class I18nService {
       tasteLocalCuisine: 'Taste LocalCuisine',
       findAccommodation: 'Find Accommodation',
       discoverAncientSites: 'Discover AncientSites',
-      chatPlaceholder: 'Chat Place holder',
-      chatSend: 'Chat Send',
-      chatSending: 'Chat Sending',
-      openChat: 'Open Chat',
-      closeChat: 'Close Chat'
+
+      // Chat UI
+      openChat: 'Open chat',
+      closeChat: 'Close chat',
+      chatPlaceholder: 'Type your message...',
+      chatSend: 'Send message',
+      chatSending: 'Sending...',
+
+      // Header
+      minyaTourismAssistant: 'Minya Tourism Assistant',
+      onlineNow: 'Online now',
+
+      // Welcome
+      chatWelcome: 'Welcome to Minya Tourism! 👋',
+      chatWelcomeDesc: 'How can I help you explore the ancient treasures of Minya today?',
+
+      // Quick Actions
+      showAttractions: 'Show me attractions',
+      findHotels: 'Find hotels',
+      localRestaurants: 'Local restaurants',
+      planTrip: 'Plan my trip',
+
+      // Responses
+      chatAttractionResponse: 'Minya has amazing attractions! Visit Beni Hassan tombs, Tuna el-Gebel, and the Akhenaten Museum. Would you like more details about any of these?',
+      chatHotelResponse: 'We have several great hotels in Minya. I can show you options ranging from budget to luxury. What\'s your preference?',
+      chatRestaurantResponse: 'Minya offers delicious Egyptian cuisine! Try local favorites like koshari, ful medames, and fresh Nile fish. Would you like restaurant recommendations?',
+      chatTripResponse: 'I\'d be happy to help plan your trip! How many days will you be staying in Minya? This will help me create the perfect itinerary for you.',
+      chatDefaultResponse: 'Thank you for your question! I\'m here to help you explore Minya. You can ask me about attractions, hotels, restaurants, or trip planning. What would you like to know?',
+      chatError: 'Sorry, I encountered an error. Please try again.',
+
+      // Footer
+      poweredByAI: 'Powered by AI',
+
+      // Actions
+      clearChat: 'Clear chat history',
+      newConversation: 'New conversation',
+      chatTitle : 'Chat Title' , 
+      online : 'Online'
     },
     ar: {
       // Navigation
@@ -812,11 +874,44 @@ export class I18nService {
       tasteLocalCuisine: 'تذوق المأكولات المحلية',
       findAccommodation: 'البحث عن سكن',
       discoverAncientSites: 'اكتشاف المواقع الأثرية',
-      chatPlaceholder: 'مكان الدردشة',
+
+      openChat: 'فتح المحادثة',
+      closeChat: 'إغلاق المحادثة',
+      chatPlaceholder: 'اكتب رسالتك...',
       chatSend: 'إرسال',
-      chatSending: 'جاري الارسال',
-      openChat: 'فتح الدردشة',
-      closeChat: 'غلق الدردشة'
+      chatSending: 'جاري الإرسال...',
+
+      // Header
+      minyaTourismAssistant: 'مساعد سياحة المنيا',
+      onlineNow: 'متصل الآن',
+
+      // Welcome
+      chatWelcome: 'مرحباً بك في سياحة المنيا! 👋',
+      chatWelcomeDesc: 'كيف يمكنني مساعدتك في استكشاف كنوز المنيا القديمة اليوم؟',
+
+      // Quick Actions
+      showAttractions: 'أظهر المعالم السياحية',
+      findHotels: 'ابحث عن فنادق',
+      localRestaurants: 'المطاعم المحلية',
+      planTrip: 'خطط لرحلتي',
+
+      // Responses
+      chatAttractionResponse: 'المنيا بها معالم سياحية رائعة! قم بزيارة مقابر بني حسن وتونا الجبل ومتحف أخناتون. هل تريد المزيد من التفاصيل عن أي منها؟',
+      chatHotelResponse: 'لدينا العديد من الفنادق الرائعة في المنيا. يمكنني أن أريك خيارات تتراوح من الاقتصادية إلى الفاخرة. ما هو تفضيلك؟',
+      chatRestaurantResponse: 'المنيا تقدم مأكولات مصرية لذيذة! جرب الأطباق المحلية المفضلة مثل الكشري والفول المدمس وسمك النيل الطازج. هل تريد توصيات للمطاعم؟',
+      chatTripResponse: 'يسعدني مساعدتك في التخطيط لرحلتك! كم يوماً ستقضي في المنيا؟ سيساعدني هذا في إنشاء برنامج مثالي لك.',
+      chatDefaultResponse: 'شكراً لسؤالك! أنا هنا لمساعدتك في استكشاف المنيا. يمكنك أن تسألني عن المعالم السياحية أو الفنادق أو المطاعم أو التخطيط للرحلات. ماذا تريد أن تعرف؟',
+      chatError: 'عذراً، حدث خطأ. يرجى المحاولة مرة أخرى.',
+
+      // Footer
+      poweredByAI: 'مدعوم بالذكاء الاصطناعي',
+
+      // Actions
+      clearChat: 'مسح سجل المحادثة',
+      newConversation: 'محادثة جديدة',
+        chatTitle : 'عنوان الدردشة' , 
+      online : 'متصل الآن'
+
     }
   };
 
