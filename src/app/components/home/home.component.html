@@ -164,6 +164,41 @@
     </div>
   </section>
 
+
+
+<!-- Featured Bloggers & Videos -->
+  <section class="bloggers-section" *ngIf="(bloggers?.length ?? 0) > 0">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">{{ i18n.translate('featuredBloggers') || 'Featured Bloggers & Videos' }}</h2>
+        <a href="https://www.youtube.com" class="view-all-link" target="_blank" rel="noopener">
+          <!-- {{ i18n.translate('viewChannel') || 'View Channel' }} -->
+          <!-- <span class="material-icons">arrow_forward</span> -->
+        </a>
+      </div>
+
+      <div class="bloggers-grid">
+        <div class="blogger-card" *ngFor="let b of bloggers; let i = index" [hidden]="i >= 3">
+          <div class="video-wrapper">
+            <video controls muted playsinline preload="metadata">
+              <source [src]="getSafeEmbedUrl(b.videoPath)" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="blogger-info">
+            <h4>{{ b.name }}</h4>
+            <a [href]="b.channelUrl" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+              <!-- {{ i18n.translate('viewChannel') || 'View Channel' }} -->
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
   <!-- Latest Blog Posts -->
   <section class="blog-section" *ngIf="latestBlogPosts.length > 0">
     <div class="container">
@@ -216,6 +251,8 @@
       </div>
     </div>
   </section>
+  
+  
 <!-- Weather widget -->
     <div style="position:fixed; top:120px; right:28px; z-index:1200;">
       <app-weather city="Minya"></app-weather>

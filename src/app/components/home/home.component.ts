@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { TourismService } from '../../services/tourism.service';
 import { FavoritesService, FavoriteItem } from '../../services/favorites.service';
 import { Attraction, BlogPost } from '../../models/tourism.models';
@@ -34,6 +35,7 @@ showChat = false;
     private tourismService: TourismService,
     public favoritesService: FavoritesService,
     public i18n: I18nService
+    , private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {
@@ -121,6 +123,19 @@ showChat = false;
   }
 
   toggleChat() { this.showChat = !this.showChat }
+
+  // --- Bloggers / Video helpers ---
+  // Use local videos stored under assets/videos/
+  bloggers = [
+    { name: 'MinyaVlogger', channelUrl: '#', videoPath: '/assets/images/video1.mp4' },
+    { name: 'DiscoverMinya', channelUrl: '#', videoPath: '/assets/images/video2.mp4' },
+    { name: 'EgyptTravel', channelUrl: '#', videoPath: '/assets/images/video3.mp4' }
+  ];
+
+  getSafeEmbedUrl(videoPath: string): SafeResourceUrl {
+    // For local video files under /assets, bypassing is safe for embedding in src
+    return this.sanitizer.bypassSecurityTrustResourceUrl(videoPath);
+  }
 }
 
 
