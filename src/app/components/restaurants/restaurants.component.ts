@@ -67,7 +67,9 @@ export class RestaurantsComponent implements OnInit {
       cuisineType: toLocalized(r?.cuisineType ?? r?.cuisine, r?.cuisineAr),
       priceRange: toLocalized(r?.priceRange, r?.priceRangeAr),
       openingHours: toLocalized(r?.openingHours, r?.openingHoursAr),
-      specialties: (r?.specialties ?? []).map((s: any) => (typeof s === 'string' ? { en: s, ar: '' } : s)),
+  specialties: (r?.specialties ?? []).map((s: any) => (typeof s === 'string' ? { en: s, ar: '' } : s)),
+  // menuUrl may be provided as a string (URL) or localized object
+  menuUrl: (r?.menuUrl ?? r?.menu) || undefined,
       contactInfo: { phone: toLocalized(r?.contactInfo?.phone ?? r?.phone) } as any,
       features: (r?.features ?? []).map((f: any) => (typeof f === 'string' ? { en: f, ar: '' } : f)),
     } as unknown as Restaurant;
@@ -97,8 +99,56 @@ export class RestaurantsComponent implements OnInit {
     this.filteredRestaurants = this.restaurants;
   }
 
-  viewMenu(restaurant: Restaurant) {
-    console.log('Viewing menu for:', this.i18nService.pick(restaurant.name));
+  async viewMenu(restaurant: Restaurant) {
+    const name = this.i18nService.pick(restaurant.name) || '';
+
+    // Prefer explicit menuUrl if provided
+    const rawMenu = restaurant.menuUrl as any;
+    let menuUrl: string | null = null;
+
+    if (rawMenu) {
+      if (typeof rawMenu === 'string') {
+        menuUrl = rawMenu;
+      } else if (typeof rawMenu === 'object') {
+        // localized object
+        menuUrl = rawMenu[this.i18nService.getCurrentLanguage()] || rawMenu['en'] || null;
+      }
+    }
+
+    const openUrl = (url: string) => {
+      try {
+        window.open(url, '_blank');
+      } catch (err) {
+        window.location.href = url;
+      }
+    };
+
+    if (menuUrl) {
+      openUrl(menuUrl);
+      return;
+    }
+
+    const candidates = [
+      `/assets/menus/${restaurant.id}.pdf`,
+      `/assets/menus/${restaurant.id}-menu.pdf`,
+      `/assets/menus/${restaurant.id}.PDF`,
+    ];
+
+    // Sequentially HEAD each candidate and open the first that exists.
+    for (const c of candidates) {
+      try {
+        const res = await fetch(c, { method: 'HEAD' });
+        if (res.ok) {
+          openUrl(c);
+          return;
+        }
+      } catch (e) {
+        // network error or CORS; continue to next candidate
+      }
+    }
+
+    // No menu found — show a localized alert
+    alert(this.i18nService.translate('menuUnavailable') || 'Menu not available');
   }
 
   makeReservation(restaurant: Restaurant) {
@@ -106,7 +156,28 @@ export class RestaurantsComponent implements OnInit {
   }
 
   getDirections(restaurant: Restaurant) {
-    console.log('Getting directions to:', this.i18nService.pick(restaurant.name));
+    const name = this.i18nService.pick(restaurant.name) || '';
+    const lat = restaurant.latitude;
+    const lng = restaurant.longitude;
+
+    let url = '#';
+    if (lat && lng && !isNaN(Number(lat)) && !isNaN(Number(lng))) {
+      // Use Google Maps Directions with destination coordinates and optional name
+      const label = encodeURIComponent(String(name));
+      url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&destination_name=${label}`;
+    } else if (name) {
+      // Fallback: search by name
+      const q = encodeURIComponent(String(name));
+      url = `https://www.google.com/maps/search/?api=1&query=${q}`;
+    }
+
+    // Open in new tab
+    try {
+      window.open(url, '_blank');
+    } catch (err) {
+      // Fallback to navigating in the same tab if window.open is blocked
+      window.location.href = url;
+    }
   }
 
 
