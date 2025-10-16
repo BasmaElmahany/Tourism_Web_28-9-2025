@@ -5,7 +5,11 @@
           (click)="toggleChat()"
           [class.active]="showChat"
           [attr.aria-label]="i18n.translate('openChat')">
-    <span class="material-icons icon-chat" [class.hidden]="showChat">chat</span>
+    <!-- Custom Egyptian-themed chatbot icon -->
+    <img src="../../../assets/images/chatbot_icon.png" 
+         alt="Chat" 
+         class="icon-chat-custom" 
+         [class.hidden]="showChat">
     <span class="material-icons icon-close" [class.visible]="showChat">close</span>
   </button>
   
@@ -19,7 +23,7 @@
   <div class="chat-header">
     <div class="header-content">
       <div class="bot-avatar">
-        <span class="material-icons">smart_toy</span>
+        <img src="../../../assets/images/chatbot_icon.png" alt="Bot Avatar" class="bot-avatar-img">
       </div>
       <div class="header-text">
         <h3>{{ i18n.translate('chatTitle') || 'Chat Assistant' }}</h3>
@@ -45,7 +49,7 @@
          [@messageIn]>
       <div class="message-wrapper">
         <div class="avatar" *ngIf="m.from === 'bot'">
-          <span class="material-icons">smart_toy</span>
+          <img src="../../../assets/images/chatbot_icon.png" alt="Bot" class="avatar-img">
         </div>
         <div class="bubble">
           <p>{{ m.text }}</p>
@@ -61,7 +65,7 @@
     <div *ngIf="loading" class="message bot" [@messageIn]>
       <div class="message-wrapper">
         <div class="avatar">
-          <span class="material-icons">smart_toy</span>
+          <img src="../../../assets/images/chatbot_icon.png" alt="Bot" class="avatar-img">
         </div>
         <div class="bubble typing-bubble">
           <div class="typing-indicator">

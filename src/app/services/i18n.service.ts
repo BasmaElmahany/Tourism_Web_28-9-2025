@@ -266,36 +266,40 @@ export interface TranslationKeys {
   tasteLocalCuisine: string;
   findAccommodation: string;
   discoverAncientSites: string;
-  minyaTourismAssistant: string;
-  onlineNow: string;
+ 
 
-  // Welcome
-  chatWelcome: string;
-  chatWelcomeDesc: string;
+      // Header
+      minyaTourismAssistant: string;
+      onlineNow: string;
 
-  // Quick Actions
-  showAttractions: string;
-  findHotels: string;
-  localRestaurants: string;
-  planTrip: string;
+      // Welcome
+      chatWelcome: string;
+      chatWelcomeDesc: string;
 
-  // Responses
-  chatAttractionResponse: string;
-  chatHotelResponse: string;
-  chatRestaurantResponse: string;
-  chatTripResponse: string;
-  chatDefaultResponse: string;
-  chatError: string;
-  // Footer
-  poweredByAI: string;
+      // Quick Actions
+      showAttractions: string;
+      findHotels: string;
+      localRestaurants: string;
+      planTrip:string;
 
-  // Actions
-  clearChat: string;
-  newConversation: string;
+      // Responses
+      chatAttractionResponse: string;
+      chatHotelResponse:string;
+      chatRestaurantResponse:string;
+      chatTripResponse:string;
+      chatDefaultResponse: string;
+      chatError:string;
 
-  chatTitle: string;
-  online: string;
+      // Footer
+      poweredByAI: string;
 
+      // Actions
+      clearChat: string;
+      newConversation:string;
+      chatTitle:string;
+      online: string;
+      souviners :string;
+  
 }
 
 @Injectable({
@@ -591,14 +595,11 @@ export class I18nService {
       closeChat: 'Close Chat'
       ,
       // Small labels
-      free: 'Free'
+      free: 'Free',
 
       // Chat UI
-      openChat: 'Open chat',
-      closeChat: 'Close chat',
-      chatPlaceholder: 'Type your message...',
-      chatSend: 'Send message',
-      chatSending: 'Sending...',
+  
+     
 
       // Header
       minyaTourismAssistant: 'Minya Tourism Assistant',
@@ -628,8 +629,9 @@ export class I18nService {
       // Actions
       clearChat: 'Clear chat history',
       newConversation: 'New conversation',
-      chatTitle : 'Chat Title' , 
-      online : 'Online'
+      chatTitle: 'Nefertiti',
+      online: 'Online',
+      souviners : 'Souviners'
     },
     ar: {
       // Navigation
@@ -895,12 +897,11 @@ export class I18nService {
       chatPlaceholder: 'اكتب رسالتك...',
       chatSend: 'إرسال',
       chatSending: 'جاري الارسال',
-      openChat: 'فتح الدردشة',
-      closeChat: 'غلق الدردشة'
-      ,
+     
+      
       // Small labels
-      free: 'مجانا'
-      chatSending: 'جاري الإرسال...',
+      free: 'مجانا',
+     
 
       // Header
       minyaTourismAssistant: 'مساعد سياحة المنيا',
@@ -930,8 +931,9 @@ export class I18nService {
       // Actions
       clearChat: 'مسح سجل المحادثة',
       newConversation: 'محادثة جديدة',
-        chatTitle : 'عنوان الدردشة' , 
-      online : 'متصل الآن'
+      chatTitle: 'نفرتيتي',
+      online: 'متصل الآن',
+      souviners:' هدايا تذكارية'
 
     }
   };

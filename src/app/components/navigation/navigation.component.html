@@ -44,6 +44,11 @@
           <span class="material-icons">camera</span>
           {{ i18nService.translate('photographers') }}
         </a>
+        <a routerLink="/souviners" routerLinkActive="active" class="nav-link">
+          <span class="material-icons">card_giftcard</span>
+          {{ i18nService.translate('souviners') }}
+        </a>
+
         <a routerLink="/services" routerLinkActive="active" class="nav-link">
           <span class="material-icons">support</span>
           {{ i18nService.translate('services') }}
@@ -99,6 +104,10 @@
         <a routerLink="/tourguides" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
           <span class="material-icons">tourguide</span>
           {{ i18nService.translate('tourguide') }}
+        </a>
+        <a routerLink="/souviners" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
+          <span class="material-icons">card_giftcard</span>
+          {{ i18nService.translate('souviners') }}
         </a>
         <a routerLink="/visitor-info" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
           <span class="material-icons">info</span>
