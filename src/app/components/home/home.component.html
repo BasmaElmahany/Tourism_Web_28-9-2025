@@ -85,13 +85,7 @@
             <div class="carousel-slide" *ngFor="let attraction of featuredAttractions">
               <div class="attraction-card">
                 <!-- Favorite Button on Card -->
-                <button 
-                  class="btn-favorite-card" 
-                  [class.active]="isFavorite(attraction.id)"
-                  (click)="toggleFavorite(attraction, $event)"
-                  [attr.aria-label]="isFavorite(attraction.id) ? (i18n.translate('removeFromFavorites') || 'Remove from favorites') : (i18n.translate('addToFavorites') || 'Add to favorites')">
-                  <span class="material-icons">{{ isFavorite(attraction.id) ? 'favorite' : 'favorite_border' }}</span>
-                </button>
+              
 
                 <div class="card-image">
                   <img [src]="attraction.imageUrl" [alt]="i18n.pick(attraction.name)" loading="lazy">
@@ -99,7 +93,9 @@
                     <div class="rating">
                       <span class="material-icons">star</span>
                       <span>{{ attraction.rating }}</span>
+                      
                     </div>
+                    
                   </div>
                 </div>
                 <div class="card-content">
@@ -112,6 +108,13 @@
                   <a [routerLink]="['/attractions', attraction.id]" class="btn btn-accent">
                     {{ i18n.translate('learnMore') || 'Learn More' }}
                   </a>
+                    <button 
+                  class="btn-favorite-card" 
+                  [class.active]="isFavorite(attraction.id)"
+                  (click)="toggleFavorite(attraction, $event)"
+                  [attr.aria-label]="isFavorite(attraction.id) ? (i18n.translate('removeFromFavorites') || 'Remove from favorites') : (i18n.translate('addToFavorites') || 'Add to favorites')">
+                  <span class="material-icons">{{ isFavorite(attraction.id) ? 'favorite' : 'favorite_border' }}</span>
+                </button>
                 </div>
               </div>
             </div>

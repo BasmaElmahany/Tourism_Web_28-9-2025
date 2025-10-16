@@ -3,34 +3,101 @@
   <button type="button"
           class="chatbot-icon-btn"
           (click)="toggleChat()"
+          [class.active]="showChat"
           [attr.aria-label]="i18n.translate('openChat')">
-    <span class="material-icons">chat</span>
+    <span class="material-icons icon-chat" [class.hidden]="showChat">chat</span>
+    <span class="material-icons icon-close" [class.visible]="showChat">close</span>
   </button>
+  
+  <!-- Pulse animation ring -->
+  <div class="pulse-ring" *ngIf="!showChat"></div>
 </div>
 
 <!-- Chat panel (render only when opened) -->
-<div class="chatbot-container" *ngIf="showChat">
-  <div class="chat-window">
-    <div *ngFor="let m of messages" class="message" [ngClass]="m.from">
-      <div class="bubble">{{ m.text }}</div>
+<div class="chatbot-container" *ngIf="showChat" [@slideIn]>
+  <!-- Chat header -->
+  <div class="chat-header">
+    <div class="header-content">
+      <div class="bot-avatar">
+        <span class="material-icons">smart_toy</span>
+      </div>
+      <div class="header-text">
+        <h3>{{ i18n.translate('chatTitle') || 'Chat Assistant' }}</h3>
+        <span class="status-indicator">
+          <span class="status-dot"></span>
+          {{ i18n.translate('online') || 'Online' }}
+        </span>
+      </div>
     </div>
-    <div *ngIf="loading" class="message bot"><div class="bubble">...</div></div>
+    <button type="button" 
+            class="close-btn" 
+            (click)="toggleChat()"
+            [attr.aria-label]="i18n.translate('closeChat')">
+      <span class="material-icons">close</span>
+    </button>
   </div>
 
-  <form (submit)="send(); $event.preventDefault();" class="chat-input" novalidate>
-    <textarea #ta
-              [(ngModel)]="input"
-              name="q"
-              [placeholder]="i18n.translate('chatPlaceholder')"
-              rows="1"
-              (input)="resize(ta)"></textarea>
+  <!-- Chat window -->
+  <div class="chat-window" #chatWindow>
+    <div *ngFor="let m of messages; let i = index" 
+         class="message" 
+         [ngClass]="m.from"
+         [@messageIn]>
+      <div class="message-wrapper">
+        <div class="avatar" *ngIf="m.from === 'bot'">
+          <span class="material-icons">smart_toy</span>
+        </div>
+        <div class="bubble">
+          <p>{{ m.text }}</p>
+          <span class="timestamp">{{ getCurrentTime() }}</span>
+        </div>
+        <div class="avatar" *ngIf="m.from === 'user'">
+          <span class="material-icons">person</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Typing indicator -->
+    <div *ngIf="loading" class="message bot" [@messageIn]>
+      <div class="message-wrapper">
+        <div class="avatar">
+          <span class="material-icons">smart_toy</span>
+        </div>
+        <div class="bubble typing-bubble">
+          <div class="typing-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <button type="submit"
-            class="send-btn"
-            [disabled]="loading || !input.trim()"
-            [attr.aria-label]="i18n.translate('chatSend')">
-      <span *ngIf="!loading" class="material-icons">send</span>
-      <span *ngIf="loading">{{ i18n.translate('chatSending') }}</span>
-    </button>
+  <!-- Chat input -->
+  <form (submit)="send(); $event.preventDefault();" class="chat-input" novalidate>
+    <div class="input-wrapper">
+      <textarea #ta
+                [(ngModel)]="input"
+                name="q"
+                [placeholder]="i18n.translate('chatPlaceholder') || 'Type your message...'"
+                rows="1"
+                (input)="resize(ta)"
+                (keydown.enter)="onEnterKey($event)"
+                maxlength="500"></textarea>
+      
+      <button type="submit"
+              class="send-btn"
+              [disabled]="loading || !input.trim()"
+              [attr.aria-label]="i18n.translate('chatSend')">
+        <span class="material-icons" [@sendIcon]>send</span>
+      </button>
+    </div>
+    
+    <!-- Character counter -->
+    <div class="char-counter" *ngIf="input.length > 400">
+      {{ input.length }}/500
+    </div>
   </form>
 </div>
+
