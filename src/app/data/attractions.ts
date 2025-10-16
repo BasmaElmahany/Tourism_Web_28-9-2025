@@ -128,7 +128,8 @@ The site also includes remains of houses, wells, and chapels related to ancient 
   significance: {
     en: 'A vast Greco-Roman necropolis that preserves a complete funerary landscape blending Egyptian and Hellenistic art, with temples, tombs, and sacred animal catacombs linked to the god Thoth.',
     ar: 'جبانة واسعة من العصرين اليوناني والروماني، تُحافظ على مشهد جنائزي متكامل يجمع بين الفن المصري القديم والهلنستي، وتضم معابد ومقابر وسراديب الحيوانات المقدسة المرتبطة بالإله تحوت.'
-  }
+  },
+  bookingUrl: 'https://egymonuments.com/details/Tunael-Gebel'
 }
 ,
   {
@@ -193,7 +194,7 @@ The site also includes remains of houses, wells, and chapels related to ancient 
       ar: 'منطقة ترفيهية حديثة تُبرز جمال نهر النيل'
     }
     ,
-    bookingUrl: 'https://egymonuments.com/details/Amarna'
+    bookingUrl: 'null'
   }
   ,
   {
@@ -305,7 +306,7 @@ The museum displays artifacts from various eras, notably a statue of one of King
       en: 'A key cultural institution preserving Upper Egypt’s heritage, showcasing artifacts from Minya’s archaeological sites such as Deir el-Bersha and Tuna el-Gebel, and reflecting the evolution of Egyptian civilization from Pharaonic to Islamic eras.',
       ar: 'مؤسسة ثقافية رئيسية تحفظ تراث صعيد مصر، وتعرض آثارًا من مواقع محافظة المنيا مثل دير البرشا وتونا الجبل، وتُبرز تطور الحضارة المصرية من العصر الفرعوني حتى الإسلامي.'
     },
-     bookingUrl: 'https://egymonuments.com/details/FraserTombs'
+     bookingUrl: 'null'
   },
  
   {
