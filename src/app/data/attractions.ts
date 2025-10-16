@@ -1,6 +1,6 @@
-import { Attraction } from '../models/tourism.models';
+import { Attraction, LocalizedText } from '../models/tourism.models';
 
-export const ATTRACTIONS /*: Attraction[]*/ = [
+const RAW_ATTRACTIONS: Attraction[] = [
   {
     id: '1',
     name: { en: 'Beni Hassan Tombs', ar: 'مقابر بني حسن' },
@@ -64,6 +64,8 @@ On the west wall, you'll notice a fascinating scene depicting three monkeys help
 على الجدار الغربي، ستلاحظ منظرًا رائعًا يصور ثلاثة قرود تساعد العمال في جمع التين من الشجرة!
 `
     }
+    ,
+    bookingUrl: 'https://egymonuments.com/details/BeniHassanTomb'
   },
  {
   id: '2',
@@ -126,7 +128,8 @@ The site also includes remains of houses, wells, and chapels related to ancient 
   significance: {
     en: 'A vast Greco-Roman necropolis that preserves a complete funerary landscape blending Egyptian and Hellenistic art, with temples, tombs, and sacred animal catacombs linked to the god Thoth.',
     ar: 'جبانة واسعة من العصرين اليوناني والروماني، تُحافظ على مشهد جنائزي متكامل يجمع بين الفن المصري القديم والهلنستي، وتضم معابد ومقابر وسراديب الحيوانات المقدسة المرتبطة بالإله تحوت.'
-  }
+  },
+  bookingUrl: 'https://egymonuments.com/details/Tunael-Gebel'
 }
 ,
   {
@@ -158,7 +161,8 @@ The site also includes remains of houses, wells, and chapels related to ancient 
     significance: {
       en: 'Capital city of Pharaoh Akhenaten and center of a monotheistic revolution',
       ar: 'عاصمة الفرعون إخناتون ومركز التحول إلى التوحيد'
-    }
+    },
+     bookingUrl: 'https://egymonuments.com/details/Amarna'
   },
   {
     id: '4',
@@ -189,6 +193,8 @@ The site also includes remains of houses, wells, and chapels related to ancient 
       en: 'Modern recreational area showcasing the beauty of the Nile River',
       ar: 'منطقة ترفيهية حديثة تُبرز جمال نهر النيل'
     }
+    ,
+    bookingUrl: 'null'
   }
   ,
   {
@@ -225,6 +231,8 @@ The site also includes remains of houses, wells, and chapels related to ancient 
       en: 'An Old Kingdom necropolis of rock-cut mastaba-style tombs notable for their architecture, statues and inscriptions — important for study of provincial elite burials and local cults (e.g., Hathor).',
       ar: 'مقبرة من عصر الدولة القديمة تضم مصاطب ومقابر محفورة في الصخر، وتشتهر بهيكلها المعماري والتماثيل والنقوش — ذات أهمية لدراسة دفن نبلاء المقاطعات والعبادات المحلية (مثل حتحور).'
     }
+    ,
+    bookingUrl: 'https://egymonuments.com/details/FraserTombs'
   }
   ,
   {
@@ -257,7 +265,8 @@ The site also includes remains of houses, wells, and chapels related to ancient 
     significance: {
       en: 'An important cultural-religious cemetery combining Islamic funerary architecture, local religious traditions, and historic mausoleums of political and women figures (e.g., Huda Shaarawi), serving as both a burial site and a pilgrimage space.',
       ar: 'مقبرة/زاوية تجمع بين العمارة الجنائزية الإسلامية، التقاليد الدينية المحلية، والمقابر التاريخية لرموز سياسية وشخصيات نسائية مثل هدى شعراوي، وتُعد من أماكن الدفن والزيارة والتبرك.'
-    }
+    },
+     bookingUrl: 'https://egymonuments.com/details/ZawyetSultan'
   }
   ,
   {
@@ -296,7 +305,8 @@ The museum displays artifacts from various eras, notably a statue of one of King
     significance: {
       en: 'A key cultural institution preserving Upper Egypt’s heritage, showcasing artifacts from Minya’s archaeological sites such as Deir el-Bersha and Tuna el-Gebel, and reflecting the evolution of Egyptian civilization from Pharaonic to Islamic eras.',
       ar: 'مؤسسة ثقافية رئيسية تحفظ تراث صعيد مصر، وتعرض آثارًا من مواقع محافظة المنيا مثل دير البرشا وتونا الجبل، وتُبرز تطور الحضارة المصرية من العصر الفرعوني حتى الإسلامي.'
-    }
+    },
+     bookingUrl: 'null'
   },
  
   {
@@ -335,7 +345,8 @@ The museum displays artifacts from various eras, notably a statue of one of King
   significance: {
     en: `El Ashmunein is a cultural-religious site marking the importance of Thoth worship, the evolution of Egyptian urban and religious life, and the blending of multiple eras (Pharaonic, Greco-Roman, Christian). The surviving features — such as the baboon statues, temple fragments, and basilica remains — make it a key site for understanding regional religious, architectural, and urban continuity.`,
     ar: `الأشمونيْن موقع ذو أهمية ثقافية ودينية يُعبّر عن عبادة تحوت، وتطوّر الحياة الحضرية والدينية المصرية، ودمج عصور متعددة (فرعونية، يونانية-رومانية، قبطية). العناصر الباقية مثل تماثيل البابون، بقايا المعبد، وبقايا البازيليكا تجعل منها موقعًا رئيسيًا لفهم الاستمرارية المعمارية والدينية في المنطقة.`
-  }
+  },
+   bookingUrl: 'null'
 },
 
 
@@ -386,7 +397,8 @@ Today, Deir el-Bersha stands as one of Minya’s most significant open-air museu
   significance: {
     en: 'One of the richest Middle Kingdom necropolises in Egypt, combining ancient Egyptian art and Christian monastic heritage.',
     ar: 'من أغنى جبانات الدولة الوسطى في مصر، تجمع بين فنون مصر القديمة والتراث المسيحي في الصعيد.'
-  }
+  },
+   bookingUrl: 'null'
 },
 {
   id: '10',
@@ -427,7 +439,8 @@ The site preserves remains of the ancient Roman city, including the main colonna
   significance: {
     en: 'A major archaeological site representing the Roman city of Antinopolis, showcasing a unique blend of Roman urban planning, Coptic heritage, and Islamic spirituality.',
     ar: 'موقع أثري بارز يمثل مدينة أنطينوبوليس الرومانية ويُظهر مزيجًا فريدًا من التخطيط الحضري الروماني والتراث القبطي والروحانية الإسلامية.'
-  }
+  },
+  bookingUrl: 'null'
 },
 {
   id: '11',
@@ -472,7 +485,8 @@ Today, Deir Abu Hinnis is an important stop on the Holy Family Route in Egypt, a
   significance: {
     en: 'A significant Coptic site featuring early Christian rock-cut architecture and one of the stations of the Holy Family in Egypt.',
     ar: 'موقع قبطي هام يضم عمارة مسيحية منحوتة في الصخر ويُعد إحدى محطات العائلة المقدسة في مصر.'
-  }
+  },
+  bookingUrl: 'null'
 },
 {
   id: '12',
@@ -518,7 +532,8 @@ Today, Al-Asqalani Mosque remains a symbol of Minya’s rich Islamic heritage, s
   significance: {
     en: 'A distinguished Ottoman-era mosque reflecting Islamic art, local craftsmanship, and the enduring spiritual heritage of Minya.',
     ar: 'مسجد أثري مميز من العصر العثماني يعكس روعة الفن الإسلامي والحرفية المحلية والتراث الروحي لمحافظة المنيا.'
-  }
+  },
+  bookingUrl: 'null'
 },
 {
   id: '13',
@@ -567,7 +582,8 @@ Today, Al-Yousifi Mosque continues to serve as both a place of prayer and a hist
   significance: {
     en: 'A remarkable Fatimid-era mosque symbolizing the early Islamic architectural identity and cultural richness of Minya.',
     ar: 'مسجد أثري مميز من العصر الفاطمي يجسد الهوية المعمارية الإسلامية المبكرة وغنى التراث الثقافي لمحافظة المنيا.'
-  }
+  },
+  bookingUrl: 'null'
 },
 {
   id: '14',
@@ -617,7 +633,8 @@ Today, Istabl Antar is a key tourist attraction in Minya, drawing visitors, rese
   significance: {
     en: 'An archaeological treasure housing the tombs of ancient governors and offering vivid depictions of life in Pharaonic Egypt.',
     ar: 'كنز أثري يضم مقابر حكام قدماء ومشاهد ملونة تجسد تفاصيل الحياة في مصر الفرعونية.'
-  }
+  },
+  bookingUrl: 'null'
 },
 {
   id: '15',
@@ -668,7 +685,8 @@ Today, Tihna El-Gebel stands as a living museum of layered civilizations — Pha
   significance: {
     en: 'A multi-period archaeological site illustrating Egypt’s religious and cultural continuity from Pharaonic through Coptic times.',
     ar: 'موقع أثري متعدد العصور يعكس استمرارية الدين والثقافة في مصر من العصر الفرعوني حتى القبطي.'
-  }
+  },
+  bookingUrl: 'null'
 },
 {
   id: '16',
@@ -718,7 +736,8 @@ Today, the mosque stands as a symbol of Minya’s religious heritage, reflecting
   significance: {
     en: 'A spiritual and historical landmark in Minya representing Ottoman religious architecture and Sufi tradition.',
     ar: 'مَعْلَم ديني وتاريخي يعكس العمارة العثمانية الدينية والتقاليد الصوفية في المنيا.'
-  }
+  },
+  bookingUrl: 'null'
 },
 {
   id: '17',
@@ -769,7 +788,8 @@ Today, Al-Lamty Mosque stands as a testimony to the Islamic architectural legacy
   significance: {
     en: 'A historical Ottoman mosque representing faith, art, and spirituality in Minya.',
     ar: 'مسجد عثماني تاريخي يعكس الإيمان والفن والروحانية في مدينة المنيا.'
-  }
+  },
+  bookingUrl: 'null'
 },
 {
   id: '18',
@@ -820,7 +840,8 @@ Today, Al-Foli Mosque continues to stand as a beacon of faith and history, repre
   significance: {
     en: 'A major religious and cultural landmark in Minya, representing the legacy of Sheikh Ahmed Al-Foli and the city’s Sufi traditions.',
     ar: 'مَعْلَم ديني وثقافي بارز في المنيا يعكس إرث الشيخ أحمد الفولي والتقاليد الصوفية في المدينة.'
-  }
+  },
+  bookingUrl: 'null'
 },
 {
   id: '19',
@@ -870,7 +891,8 @@ Today, the mosque stands as a testament to Minya’s rich religious and architec
   significance: {
     en: 'A central mosque symbolizing Minya’s modern Islamic identity and its historical continuity of faith and culture.',
     ar: 'مسجد مركزي يرمز لهوية المنيا الإسلامية الحديثة واستمرارية تراثها الديني والثقافي.'
-  }
+  },
+  bookingUrl: 'null'
 },
 {
   id: '20',
@@ -919,7 +941,8 @@ Today, the church remains one of Minya’s key religious landmarks, symbolizing 
   significance: {
     en: 'A central Coptic Orthodox church symbolizing the enduring faith and cultural richness of Minya’s Christian community.',
     ar: 'كنيسة قبطية أرثوذكسية مركزية تُجسد عمق الإيمان وغنى التراث المسيحي في محافظة المنيا.'
-  }
+  },
+  bookingUrl: 'null'
 },
 {
   id: '21',
@@ -1039,6 +1062,7 @@ Al-Bahnasa thus stands as a symbol of Egypt’s layered history — Pharaonic, H
     en: 'A city that witnessed the convergence of civilizations — from the Hellenistic and Roman ages to the early Islamic conquests — and became a sacred burial site for thousands of martyrs, symbolizing Egypt’s deep historical and spiritual legacy.',
     ar: 'مدينة تجمعت فيها حضارات متعددة من اليونانية والرومانية إلى صدر الإسلام، واحتضنت رفات آلاف الشهداء، لتكون رمزًا لعظمة التاريخ والقداسة في مصر.'
   },
+  bookingUrl: 'null'
 },
 {
   id: '23',
@@ -1101,12 +1125,28 @@ Once fully completed and open to the public, the Aten Museum is expected to beco
     en: 'A modern cultural landmark celebrating the legacy of Akhenaten and the Amarna revolution — a symbol of Egypt’s enduring spirit of innovation and spirituality.',
     ar: 'صرح ثقافي حديث يخلد إرث إخناتون وثورته العمارنية، ويعكس روح الإبداع والروحانية التي تميزت بها الحضارة المصرية.'
   },
+  bookingUrl: 'null'
+},
+
+
+
+
+
+
+
+];
+
+function slugifyName(name: LocalizedText): string {
+  const s = typeof name === 'string' ? name : (name && (name as any).en) || '';
+  return String(s)
+    .toLowerCase()
+    .replace(/[\s_]+/g, '-')
+    .replace(/[^a-z0-9-]+/g, '')
+    .replace(/--+/g, '-')
+    .replace(/^-|-$/g, '');
 }
 
-
-
-
-
-
-
-] satisfies Attraction[];
+export const ATTRACTIONS: Attraction[] = RAW_ATTRACTIONS.map(a => ({
+  ...a,
+  bookingUrl: a.bookingUrl || `https://egymonuments.com/details/${slugifyName(a.name)}`
+}));

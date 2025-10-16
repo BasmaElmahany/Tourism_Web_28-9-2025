@@ -30,6 +30,7 @@ export interface TranslationKeys {
   showMore: string;
   loading: string;
   noResults: string;
+  free: string;
   clearFilters: string;
 
   // Home Page
@@ -579,6 +580,14 @@ export class I18nService {
       tasteLocalCuisine: 'Taste LocalCuisine',
       findAccommodation: 'Find Accommodation',
       discoverAncientSites: 'Discover AncientSites',
+      chatPlaceholder: 'Chat Place holder',
+      chatSend: 'Chat Send',
+      chatSending: 'Chat Sending',
+      openChat: 'Open Chat',
+      closeChat: 'Close Chat'
+      ,
+      // Small labels
+      free: 'Free'
 
       // Chat UI
       openChat: 'Open chat',
@@ -879,6 +888,12 @@ export class I18nService {
       closeChat: 'إغلاق المحادثة',
       chatPlaceholder: 'اكتب رسالتك...',
       chatSend: 'إرسال',
+      chatSending: 'جاري الارسال',
+      openChat: 'فتح الدردشة',
+      closeChat: 'غلق الدردشة'
+      ,
+      // Small labels
+      free: 'مجانا'
       chatSending: 'جاري الإرسال...',
 
       // Header

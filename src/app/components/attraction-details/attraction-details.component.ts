@@ -18,6 +18,7 @@ export class AttractionDetailsComponent implements OnInit {
   currentImageIndex = 0;
   currentImage = '';
   error = false;
+  showFreeLabel = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,6 +31,17 @@ export class AttractionDetailsComponent implements OnInit {
       const id = params['id'];
       this.loadAttraction(id);
     });
+  }
+
+  handleBookClick(e?: Event) {
+    // If bookingUrl is literally the string 'null' we treat it as a free booking.
+    if (this.attraction && this.attraction.bookingUrl === 'null') {
+      this.showFreeLabel = true;
+      // optionally prevent navigation if called from an anchor
+      if (e) e.preventDefault();
+  // hide label after 5s
+  setTimeout(() => this.showFreeLabel = false, 5000);
+    }
   }
 
   private loadAttraction(id: string) {
