@@ -43,6 +43,7 @@
 
   <!-- Chat window -->
   <div class="chat-window" #chatWindow>
+    
     <div *ngFor="let m of messages; let i = index" 
          class="message" 
          [ngClass]="m.from"

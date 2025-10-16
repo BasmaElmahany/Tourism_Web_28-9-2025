@@ -266,40 +266,40 @@ export interface TranslationKeys {
   tasteLocalCuisine: string;
   findAccommodation: string;
   discoverAncientSites: string;
- 
 
-      // Header
-      minyaTourismAssistant: string;
-      onlineNow: string;
 
-      // Welcome
-      chatWelcome: string;
-      chatWelcomeDesc: string;
+  // Header
+  minyaTourismAssistant: string;
+  onlineNow: string;
 
-      // Quick Actions
-      showAttractions: string;
-      findHotels: string;
-      localRestaurants: string;
-      planTrip:string;
+  // Welcome
+  chatWelcome: string;
+  chatWelcomeDesc: string;
 
-      // Responses
-      chatAttractionResponse: string;
-      chatHotelResponse:string;
-      chatRestaurantResponse:string;
-      chatTripResponse:string;
-      chatDefaultResponse: string;
-      chatError:string;
+  // Quick Actions
+  showAttractions: string;
+  findHotels: string;
+  localRestaurants: string;
+  planTrip: string;
 
-      // Footer
-      poweredByAI: string;
+  // Responses
+  chatAttractionResponse: string;
+  chatHotelResponse: string;
+  chatRestaurantResponse: string;
+  chatTripResponse: string;
+  chatDefaultResponse: string;
+  chatError: string;
 
-      // Actions
-      clearChat: string;
-      newConversation:string;
-      chatTitle:string;
-      online: string;
-      souviners :string;
-  
+  // Footer
+  poweredByAI: string;
+
+  // Actions
+  clearChat: string;
+  newConversation: string;
+  chatTitle: string;
+  online: string;
+  souviners: string;
+  chatbotNotice: string;
 }
 
 @Injectable({
@@ -358,8 +358,8 @@ export class I18nService {
       planYourTrip: 'Plan Your Trip',
       featuredAttractions: 'Featured Attractions',
       latestStories: 'Latest Stories',
-  featuredBloggers: 'Featured Bloggers & Videos',
-  viewChannel: 'View Channel',
+      featuredBloggers: 'Featured Bloggers & Videos',
+      viewChannel: 'View Channel',
       readyToExplore: 'Ready to Explore Minya?',
       readyToExploreDesc: 'Start planning your journey through ancient Egypt today. Discover the treasures that await you in Minya.',
 
@@ -598,9 +598,9 @@ export class I18nService {
       free: 'Free',
 
       // Chat UI
-  
-     
 
+
+      chatbotNotice: 'Chatbot Notice',
       // Header
       minyaTourismAssistant: 'Minya Tourism Assistant',
       onlineNow: 'Online now',
@@ -631,7 +631,7 @@ export class I18nService {
       newConversation: 'New conversation',
       chatTitle: 'Nefertiti',
       online: 'Online',
-      souviners : 'Souviners'
+      souviners: 'Souviners'
     },
     ar: {
       // Navigation
@@ -669,8 +669,8 @@ export class I18nService {
       planYourTrip: 'خطط لرحلتك',
       featuredAttractions: 'المعالم المميزة',
       latestStories: 'أحدث القصص',
-  featuredBloggers: 'المدونون المميزون والفيديوهات',
-  viewChannel: 'عرض القناة',
+      featuredBloggers: 'المدونون المميزون والفيديوهات',
+      viewChannel: 'عرض القناة',
       readyToExplore: 'مستعد لاستكشاف المنيا؟',
       readyToExploreDesc: 'ابدأ في التخطيط لرحلتك عبر مصر القديمة اليوم. اكتشف الكنوز التي تنتظرك في المنيا.',
 
@@ -897,11 +897,11 @@ export class I18nService {
       chatPlaceholder: 'اكتب رسالتك...',
       chatSend: 'إرسال',
       chatSending: 'جاري الارسال',
-     
-      
+
+
       // Small labels
       free: 'مجانا',
-     
+
 
       // Header
       minyaTourismAssistant: 'مساعد سياحة المنيا',
@@ -933,8 +933,8 @@ export class I18nService {
       newConversation: 'محادثة جديدة',
       chatTitle: 'نفرتيتي',
       online: 'متصل الآن',
-      souviners:' هدايا تذكارية'
-
+      souviners: ' هدايا تذكارية',
+      chatbotNotice : 'إشعار' 
     }
   };
 
