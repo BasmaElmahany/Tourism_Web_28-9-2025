@@ -148,10 +148,20 @@
                 <span class="material-icons">favorite_border</span>
                 {{ i18n.translate('saveToFavorites') }}
               </button>
-              <button class="btn btn-accent full-width">
-                <span class="material-icons"></span>
-                {{ i18n.translate('Book_A_Ticket') }}
-              </button>
+              <!-- If bookingUrl is the literal string 'null' we treat it as free and show a button that reveals "free" -->
+              <ng-container *ngIf="attraction?.bookingUrl === 'null'; else hasLink">
+                <button class="btn btn-accent full-width" (click)="handleBookClick($event)" type="button" [attr.aria-label]="i18n.translate('Book_A_Ticket')">
+                  <span class="material-icons">book_online</span>
+                  <span *ngIf="!showFreeLabel">{{ i18n.translate('Book_A_Ticket') }}</span>
+                  <span *ngIf="showFreeLabel">{{ i18n.translate('free') }}</span>
+                </button>
+              </ng-container>
+              <ng-template #hasLink>
+                <a class="btn btn-accent full-width" [href]="attraction?.bookingUrl || '#'" target="_blank" rel="noopener" [attr.aria-label]="i18n.translate('Book_A_Ticket')">
+                  <span class="material-icons">book_online</span>
+                  {{ i18n.translate('Book_A_Ticket') }}
+                </a>
+              </ng-template>
             </div>
 
           </div>

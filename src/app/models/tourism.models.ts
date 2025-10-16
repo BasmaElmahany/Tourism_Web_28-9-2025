@@ -14,6 +14,8 @@ export interface Attraction {
   longitude: number;
   openingHours: LocalizedText;
   ticketPrice: LocalizedText;
+  /** Optional booking link (absolute URL) for this attraction. Use placeholder until real link provided. */
+  bookingUrl?: string;
   rating: number;
   reviewCount: number;
   category: LocalizedText;

@@ -30,6 +30,7 @@ export interface TranslationKeys {
   showMore: string;
   loading: string;
   noResults: string;
+  free: string;
   clearFilters: string;
 
   // Home Page
@@ -555,6 +556,9 @@ export class I18nService {
       chatSending: 'Chat Sending',
       openChat: 'Open Chat',
       closeChat: 'Close Chat'
+      ,
+      // Small labels
+      free: 'Free'
     },
     ar: {
       // Navigation
@@ -817,6 +821,9 @@ export class I18nService {
       chatSending: 'جاري الارسال',
       openChat: 'فتح الدردشة',
       closeChat: 'غلق الدردشة'
+      ,
+      // Small labels
+      free: 'مجانا'
     }
   };
 

@@ -12,7 +12,13 @@ import { WeatherComponent } from '../weather/weather.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, FavoritesDrawerComponent, ChatbotComponent, WeatherComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FavoritesDrawerComponent,
+    ChatbotComponent,
+    WeatherComponent
+  ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
