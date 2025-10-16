@@ -128,6 +128,8 @@ export interface TranslationKeys {
   culturalHeritageDesc: string;
   blogTitle: string;
   blogSubtitle: string;
+  featuredBloggers: string;
+  viewChannel: string;
   categories: string;
   minutesRead: string;
   // Tourguide
@@ -351,6 +353,8 @@ export class I18nService {
       planYourTrip: 'Plan Your Trip',
       featuredAttractions: 'Featured Attractions',
       latestStories: 'Latest Stories',
+  featuredBloggers: 'Featured Bloggers & Videos',
+  viewChannel: 'View Channel',
       readyToExplore: 'Ready to Explore Minya?',
       readyToExploreDesc: 'Start planning your journey through ancient Egypt today. Discover the treasures that await you in Minya.',
 
@@ -654,6 +658,8 @@ export class I18nService {
       planYourTrip: 'خطط لرحلتك',
       featuredAttractions: 'المعالم المميزة',
       latestStories: 'أحدث القصص',
+  featuredBloggers: 'المدونون المميزون والفيديوهات',
+  viewChannel: 'عرض القناة',
       readyToExplore: 'مستعد لاستكشاف المنيا؟',
       readyToExploreDesc: 'ابدأ في التخطيط لرحلتك عبر مصر القديمة اليوم. اكتشف الكنوز التي تنتظرك في المنيا.',
 
