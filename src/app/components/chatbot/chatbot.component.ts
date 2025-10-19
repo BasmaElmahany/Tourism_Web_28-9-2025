@@ -70,6 +70,8 @@ export class ChatbotComponent implements OnInit, AfterViewChecked {
   showChat: boolean = false;
   avatarDataUrl: string | null = null;
   hasSeenHelper = false;
+  // showHelper controls whether the helper bubble is visible when chat is closed
+  showHelper = true;
 
   // optional lock to prevent double toggle (safety)
   private _toggleLocked = false;
@@ -82,11 +84,8 @@ export class ChatbotComponent implements OnInit, AfterViewChecked {
   ) {}
 
   ngOnInit(): void {
-    try { 
-      this.hasSeenHelper = !!localStorage.getItem('chat_helper_seen'); 
-    } catch (e) { 
-      this.hasSeenHelper = false; 
-    }
+    // Initially helper is visible (when chat is closed). We intentionally do not persist
+    // this state so the helper will reappear each time the chat is closed.
   }
 
   ngAfterViewChecked(): void {
@@ -103,8 +102,8 @@ export class ChatbotComponent implements OnInit, AfterViewChecked {
     setTimeout(() => this._toggleLocked = false, 250);
 
     this.showChat = !this.showChat;
-    try { localStorage.setItem('chat_helper_seen', '1'); } catch (e) {}
-    
+    // hide helper when chat opens, show when chat closes
+    this.showHelper = !this.showChat;
     if (this.showChat) {
       this.shouldScrollToBottom = true;
     }
@@ -114,15 +113,15 @@ export class ChatbotComponent implements OnInit, AfterViewChecked {
 
   openChatFromHelper() {
     this.showChat = true;
-    this.hasSeenHelper = true;
     this.shouldScrollToBottom = true;
-    try { localStorage.setItem('chat_helper_seen', '1'); } catch (e) {}
+    // hide helper while chat is open
+    this.showHelper = false;
   }
 
   dismissHelper(e: Event) {
     e.stopPropagation();
-    this.hasSeenHelper = true;
-    try { localStorage.setItem('chat_helper_seen', '1'); } catch (err) {}
+    // hide helper for this session; we do not persist so it reappears when chat is closed
+    this.showHelper = false;
   }
 
   onAvatarFile(event: Event) {

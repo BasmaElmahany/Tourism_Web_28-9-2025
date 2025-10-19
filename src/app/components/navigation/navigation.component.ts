@@ -37,4 +37,23 @@ export class NavigationComponent implements OnInit {
   closeMobileMenu() {
     this.isMobileMenuOpen = false;
   }
+
+  // Scroll to the Weather section on the Home page. If we're not on Home, navigate there first.
+  async scrollToWeather() {
+    const targetId = 'weather';
+    // If current route is not home, navigate to it then wait a tick for DOM to render
+    if (!this.router.url || !this.router.url.includes('/home')) {
+      await this.router.navigate(['/home']);
+      // small delay to allow Home component to render
+      await new Promise((r) => setTimeout(r, 120));
+    }
+
+    const el = document.getElementById(targetId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      // fallback: navigate to home without scrolling
+      console.warn('Weather section not found to scroll to.');
+    }
+  }
 }

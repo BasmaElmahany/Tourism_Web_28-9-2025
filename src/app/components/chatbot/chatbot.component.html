@@ -15,6 +15,14 @@
   
   <!-- Pulse animation ring -->
   <div class="pulse-ring" *ngIf="!showChat"></div>
+  
+  <!-- Helper bubble (shows only once until dismissed). Also supports a short transient show on first page load -->
+  <div class="chat-helper" *ngIf="showHelper && !showChat" (click)="openChatFromHelper()" role="button" aria-label="Chat helper">
+    <div class="helper-chip">
+      <span class="material-icons">chat_bubble</span>
+      <span class="helper-label">{{ i18n.translate('helperTitle') || 'Ask me' }}</span>
+    </div>
+  </div>
 </div>
 
 <!-- Chat panel (render only when opened) -->
