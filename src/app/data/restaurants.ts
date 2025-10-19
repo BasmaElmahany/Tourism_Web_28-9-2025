@@ -1,6 +1,7 @@
 import { Restaurant } from "../models/tourism.models";
 
-export const restaurants: Restaurant[] = [
+// Raw restaurant data (kept compatible with previous shape)
+export const RAW_RESTAURANTS: any[] = [
   {
     id: "minya_1",
     name: {
@@ -11,7 +12,9 @@ export const restaurants: Restaurant[] = [
       en: "Traditional Egyptian cuisine by the Nile with scenic views",
       ar: "مأكولات مصرية تقليدية مطلة على النيل"
     },
-    imageUrl: "assets/images/Orked Restaurant.webp",
+  imageUrl: "assets/images/Orked Restaurant.webp",
+  // explicit menu URL (added inline so the property appears in the source)
+  menuUrl: '/assets/menus/minya_1.pdf',
     latitude: 28.1099,
     longitude: 30.7503,
     rating: 4.3,
@@ -1176,6 +1179,22 @@ openingHours: {
 
   // === نهاية قائمة مطاعم مركز المنيا (نسخة مبدئية) ===
 ];
+
+// Ensure each RAW entry has an explicit `menuUrl` field (useful when inspecting the raw array directly)
+for (const r of RAW_RESTAURANTS) {
+  if (!r.menuUrl && !r.menu) {
+    r.menuUrl = `/assets/menus/${r.id}.pdf`;
+  } else if (!r.menuUrl && r.menu) {
+    r.menuUrl = r.menu; // canonicalize menu -> menuUrl
+  }
+}
+
+// Ensure exported `restaurants` conforms to Restaurant model and includes a `menuUrl` for each entry.
+export const restaurants: Restaurant[] = RAW_RESTAURANTS.map((r: any) => ({
+  ...r,
+  // menuUrl is guaranteed by the loop above; keep compatibility for cases where explicit values exist
+  menuUrl: r?.menuUrl ?? r?.menu ?? `/assets/menus/${r?.id}.pdf`,
+} as Restaurant));
 
 
 

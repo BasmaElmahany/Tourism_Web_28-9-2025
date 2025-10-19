@@ -173,6 +173,7 @@ export interface TranslationKeys {
   makeReservation: string;
   viewMenu: string;
   specialties: string;
+  menuUnavailable: string;
   restaurantsSubtitle: string;
   restaurantsTitle: string;
   stars: string;
@@ -482,6 +483,7 @@ export class I18nService {
       noRestaurantsFound: 'No Restaurants Found',
       makeReservation: 'Make Reservation',
       viewMenu: 'View Menu',
+  menuUnavailable: 'Menu not available',
       specialties: 'Specialties',
       restaurantsSubtitle: 'Restaurants Subtitle',
       restaurantsTitle: 'Restaurants Title',
@@ -796,6 +798,7 @@ export class I18nService {
       noRestaurantsFound: "لم يتم العثور على مطاعم",
       makeReservation: "إجراء حجز",
       viewMenu: "عرض القائمة",
+  menuUnavailable: 'القائمة غير متوفرة',
       specialties: "التخصصات",
       restaurantsSubtitle: "عنوان فرعي للمطاعم",
       restaurantsTitle: "عنوان المطعم",

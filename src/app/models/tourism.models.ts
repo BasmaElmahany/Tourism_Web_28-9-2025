@@ -59,6 +59,8 @@ export interface Restaurant {
   priceRange: LocalizedText;
   openingHours: LocalizedText;
   specialties: LocalizedArray;
+  /** Optional menu URL (can be a localized object or a plain URL string) */
+  menuUrl?: LocalizedText;
   contactInfo: {
     phone: LocalizedText;
     email?: string;
