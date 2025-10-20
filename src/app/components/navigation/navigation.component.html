@@ -44,6 +44,11 @@
           <span class="material-icons">camera</span>
           {{ i18nService.translate('photographers') }}
         </a>
+        <!-- Weather quick link - scrolls to Weather section on Home -->
+        <a class="nav-link weather-link" (click)="scrollToWeather()" title="{{ i18nService.translate('tourism_title') || 'Weather' }}">
+          <span class="material-icons">wb_sunny</span>
+          {{ i18nService.translate('tourism_title_short') || (i18nService.translate('tourism_title') || 'Weather') }}
+        </a>
         <a routerLink="/souviners" routerLinkActive="active" class="nav-link">
           <span class="material-icons">card_giftcard</span>
           {{ i18nService.translate('souviners') }}
@@ -116,6 +121,10 @@
         <a routerLink="/map" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
           <span class="material-icons">explore</span>
           {{ i18nService.translate('map') }}
+        </a>
+        <a class="mobile-nav-link" (click)="scrollToWeather(); closeMobileMenu()">
+          <span class="material-icons">wb_sunny</span>
+          {{ i18nService.translate('tourism_title_short') || (i18nService.translate('tourism_title') || 'Weather') }}
         </a>
       </div>
     </div>

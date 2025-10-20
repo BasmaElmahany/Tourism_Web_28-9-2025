@@ -1,133 +1,176 @@
-
+/* Keep existing rules then appended styles for tourism info */
+/* Weather card (creative + matches home) */
 .weather-widget.tourism-theme {
-  /* compact floating badge style */
-  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
-  border-radius: 999px;
-  box-shadow: 0 6px 18px rgba(2,6,23,0.12), 0 1px 4px rgba(0,0,0,0.06);
-  width: auto;
-  padding: 6px 10px;
-  overflow: visible;
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  border: 1px solid rgba(6,30,63,0.04);
+  box-shadow: 0 8px 24px rgba(2,6,23,0.06);
 }
 
-.weather-bg {
-  width: 64px;
-  height: 48px;
-  flex: 0 0 auto;
-  border-radius: 10px;
-  overflow: visible;
+/* Section-level decorations to match Home page style */
+.weather-section .section-header {
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  margin-bottom:12px;
+}
+.weather-section .section-title { font-size:1.4rem; margin:0; color:#042c3b; }
+.weather-section .section-subtitle { margin:0; color:#475569; font-size:0.95rem; }
+
+/* Curved accent corner on the card */
+.weather-widget.tourism-theme::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, rgba(251,191,36,0.14), rgba(6,182,212,0.08));
+  border-radius: 50% 20% 20% 50%/50% 20% 20% 50%;
+  transform: rotate(18deg);
+  pointer-events: none;
+}
+
+/* Make the card border stand out a bit more on light backgrounds */
+.weather-widget.tourism-theme { border-left: 4px solid rgba(251,191,36,0.14); }
+
+/* compact columns inside weather card */
+.weather-main { display: flex; flex-direction: row; gap: 18px; align-items: center; }
+.weather-left { min-width: 140px; display:flex; gap:10px; align-items:center; }
+.weather-right { flex:1; display:flex; flex-direction:column; gap:6px; }
+
+/* existing classes are preserved... (don't repeat them here) */
+
+/* Tourism info card (hidden by default, slides out) */
+.tourism-info {
+  /* default: positioned below the widget off-screen and hidden */
+  position: absolute;
+  left: 0;
+  top: calc(100% + 8px);
+  width: 320px;
+  max-width: calc(100vw - 40px);
+  transform-origin: top left;
+  background: linear-gradient(180deg,#ffffffef,#f8fafc);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.12);
+  padding: 12px;
+  border: 1px solid #e6eef7;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px) scale(0.98);
+  transition: transform .26s cubic-bezier(.2,.9,.25,1), opacity .22s ease, top .22s ease;
+  z-index: 1200; /* ensure above common page elements */
+}
+
+/* When open: slide into view below the widget */
+.tourism-info.open {
+  top: calc(100% + 8px);
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+/* Inline (in-flow) layout: render the tourism info inside the same section block */
+.tourism-info.inline {
+  position: static;
+  left: auto;
+  top: auto;
+  transform: none;
+  opacity: 1;
+  pointer-events: auto;
+  width: 100%;
+  max-width: 100%;
+  box-shadow: none;
+  margin-top: 12px;
+  border-radius: 8px;
+  background: linear-gradient(180deg,#ffffff,#fbfdff);
+}
+
+/* mobile: place below */
+@media (max-width: 520px) {
+  .tourism-info {
+    position: static;
+    width: 100%;
+    transform: translateY(6px) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+    margin-top: 6px;
+  }
+}
+
+.tourism-header {
   display:flex;
   align-items:center;
-  justify-content:center;
+  gap:12px;
+  margin-bottom:10px;
 }
-.weather-svg-bg {
-  width: 64px;
-  height: 48px;
-  display: block;
-}
-.sun {
-  filter: drop-shadow(0 0 12px #ffe066cc);
-  animation: sunPulse 3.2s infinite alternate;
-}
-@keyframes sunPulse {
-  0% { opacity: 1; r: 18; }
-  100% { opacity: 0.88; r: 21; }
-}
-.cloud1 { animation: cloudFloat 6s ease-in-out infinite alternate; }
-.cloud2 { animation: cloudFloat 7.5s ease-in-out infinite alternate-reverse; }
-@keyframes cloudFloat {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-5px); }
-}
+.tourism-header h3 { margin:0; font-size:1.05rem; color:#07304a; font-weight:600; }
+.tourism-body { font-size:0.95rem; color:#334155; line-height:1.45; }
+.tourism-block { margin-bottom:12px; }
+.tourism-block h4 { margin:0 0 8px 0; font-size:0.96rem; color:#0b5d88; font-weight:600; }
+.tourism-block p { margin:0; }
 
-.weather-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+/* two-column grid for tourism content on larger screens */
+.tourism-body {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 20px;
 }
-.weather-header strong {
-  font-size: 0.95rem;
-  color: #0f172a;
-  font-weight: 600;
-}
-.refresh {
-  background: none;
+.tourism-block ul { margin:6px 0 0 16px; }
+
+/* tiny buttons */
+.btn-small {
+  background: linear-gradient(180deg,#fbbf24,#f59e0b);
   border: none;
+  color: #042c3b;
+  padding:8px 12px;
+  border-radius:10px;
+  font-size:0.9rem;
+  cursor:pointer;
+  box-shadow: 0 8px 20px rgba(251,191,36,0.14);
+}
+.btn-small.ghost {
+  background: transparent;
+  border: 1px solid #e6eef7;
+  color: #0f172a;
+  box-shadow: none;
+}
+
+/* header icons */
+.info-toggle {
+  background: transparent;
+  border: none;
+  margin-left: 6px;
   cursor: pointer;
-  font-size: 1.2rem;
-  color: #38bdf8;
-  transition: color 0.2s;
-}
-.refresh:hover { color: #fbbf24; }
-
-.weather-loading, .weather-error {
-  text-align: center;
-  color: #b91c1c;
-  font-size: 0.82rem;
-  margin: 0;
-}
-
-.weather-body {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 8px;
 }
-.weather-icon, .weather-icon-img {
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-  filter: drop-shadow(0 2px 6px #bae6fd88);
-}
-.weather-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0;
-}
-.temp {
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: #0369a1;
-  line-height: 1.05;
-}
-.desc {
-  font-size: 0.85rem;
-  color: #475569;
-  text-transform: capitalize;
-  font-weight: 500;
+.info-toggle:hover { background: rgba(56,189,248,0.06); }
+
+/* accessibility focus outline */
+.info-toggle:focus, .refresh:focus, .btn-small:focus {
+  outline: 3px solid rgba(56,189,248,0.18);
+  outline-offset: 2px;
 }
 
-/* Pyramids shadow effect */
-.weather-svg-bg polygon {
-  filter: drop-shadow(0 2px 2px #fbbf2455);
-}
-
-/* Nile river shimmer */
-.weather-svg-bg path {
-  stroke-dasharray: 8 6;
-  animation: nileWave 3.5s linear infinite;
-}
-@keyframes nileWave {
-  0% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: 32; }
-}
-
-/* RTL support */
-:host-context([dir='rtl']) .weather-widget { direction: rtl; }
-.weather-widget[dir='rtl'] .weather-header, :host-context([dir='rtl']) .weather-header {
-  flex-direction: row-reverse;
-}
-.weather-widget[dir='rtl'] .weather-body, :host-context([dir='rtl']) .weather-body {
-  flex-direction: row-reverse;
-}
-.weather-info { align-items: flex-start; }
-
+/* small responsiveness */
 @media (max-width: 480px) {
-  .weather-widget { transform: scale(0.95); }
-  .weather-svg-bg { width: 56px; height: 42px }
-  .weather-icon, .weather-icon-img { width: 36px; height: 36px; }
-  .temp { font-size: 1rem }
+  .weather-widget { padding: 6px; gap: 8px; }
+  .tourism-info { padding: 10px; }
+  .btn-small { padding: 6px 8px; font-size: 0.8rem; }
+}
+
+/* Responsive: make tourism body single column on small screens */
+@media (max-width: 780px) {
+  .tourism-body { grid-template-columns: 1fr; }
+  .weather-main { flex-direction: column; align-items: flex-start; }
+  .weather-left { min-width: auto; }
 }

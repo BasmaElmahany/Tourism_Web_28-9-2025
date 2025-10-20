@@ -393,3 +393,13 @@ export interface SouvenirCategory {
   description: string;
   descriptionAr: string;
 }
+
+export interface TourismInfo {
+  id: string;
+  title: LocalizedText;
+  climate: LocalizedText;
+  bestTimeToVisit: LocalizedText;
+  whatToWear: LocalizedText;
+  notes?: LocalizedText;
+  lastUpdated?: string; // ISO date string
+}

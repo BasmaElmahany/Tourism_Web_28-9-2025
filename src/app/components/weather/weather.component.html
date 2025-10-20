@@ -15,9 +15,12 @@
   </div>
   <div class="weather-header">
     <strong>{{ city }}</strong>
-    <button class="refresh" (click)="fetch()" aria-label="Refresh">⟳</button>
+    <!-- <div style="display:flex; align-items:center; gap:6px">
+      <button class="info-toggle" (click)="toggleTourismInfo()" [attr.aria-expanded]="showTourismInfo" aria-label="More about Minya">ℹ️</button>
+      <button class="refresh" (click)="fetch()" aria-label="Refresh">⟳</button>
+    </div> -->
   </div>
-  <div *ngIf="loading" class="weather-loading">Loading...</div>
+  <!-- <div *ngIf="loading" class="weather-loading">Loading...</div> -->
   <div *ngIf="!loading && !weather" class="weather-error">Weather not available (set OPENWEATHER API key in window.__OPENWEATHER_API_KEY)</div>
   <div *ngIf="weather" class="weather-body">
     <ng-container [ngSwitch]="weather.description?.toLowerCase()">
@@ -41,3 +44,37 @@
     </div>
   </div>
 </div>
+
+  <!-- Tourism info panel -->
+  <div class="tourism-info" [class.open]="showTourismInfo" [class.inline]="openInfo || showTourismInfo" role="region" aria-label="About Minya weather">
+    <div class="tourism-header">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3" fill="#f59e0b"></circle><path d="M3 20c3-3 6-4 9-4s6 1 9 4" stroke="#06b6d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h3>{{ i18n.translate('tourism_title') || 'Al-Minya Weather' }}</h3>
+    </div>
+    <div class="tourism-body">
+      <div class="tourism-block">
+        <h4>{{ i18n.translate('tourism_weather_heading') || 'Al-Minya Weather' }}</h4>
+        <p [innerHTML]="i18n.translate('tourism_weather_paragraph') || ''"></p>
+      </div>
+
+      <div class="tourism-block">
+        <h4>{{ i18n.translate('tourism_best_time_heading') || 'Best Time to Visit Al-Minya' }}</h4>
+        <p [innerHTML]="i18n.translate('tourism_best_time_paragraph') || ''"></p>
+      </div>
+
+      <div class="tourism-block">
+        <h4>{{ i18n.translate('tourism_what_to_wear_heading') || 'What to Wear in Al-Minya' }}</h4>
+        <p [innerHTML]="i18n.translate('tourism_what_to_wear_paragraph') || ''"></p>
+      </div>
+
+      <div class="tourism-block">
+        <h4>{{ i18n.translate('tourism_quick_note_title') || 'Quick tip' }}</h4>
+        <p>{{ i18n.translate('tourism_quick_note') || 'Quick tip: Al-Minya has a desert climate; summers are very hot and winters are mild. Choose clothing according to the season and enjoy your trip!' }}</p>
+      </div>
+
+      <!-- <div style="display:flex; gap:8px; margin-top:10px; justify-content:flex-end">
+        <button class="btn-small" (click)="toggleTourismInfo()">{{ i18n.translate('tourism_close') || 'Close' }}</button>
+        <button class="btn-small ghost" (click)="fetch()">{{ i18n.translate('tourism_refresh') || 'Refresh' }}</button>
+      </div> -->
+    </div>
+  </div>

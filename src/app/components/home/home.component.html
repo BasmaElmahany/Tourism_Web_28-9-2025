@@ -232,6 +232,17 @@
     </div>
   </section>
 
+  <!-- Weather widget (moved into Home page) -->
+  <section id="weather" class="weather-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">{{ i18n.translate('tourism_title') || 'Al-Minya Weather' }}</h2>
+        <p class="section-subtitle">{{ i18n.translate('tourism_section_subtitle') || 'Current conditions and local travel tips for Minya' }}</p>
+      </div>
+  <app-weather city="Minya" [openInfo]="true"></app-weather>
+    </div>
+  </section>
+
   <!-- Call to Action -->
   <section class="cta-section">
     <div class="container">
@@ -253,10 +264,7 @@
   </section>
   
   
-<!-- Weather widget -->
-    <div style="position:fixed; top:120px; right:28px; z-index:1200;">
-      <app-weather city="Minya"></app-weather>
-    </div>
+ 
    <app-chatbot></app-chatbot>
 </div>
 
