@@ -23,6 +23,15 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+   animation: slowZoom 12s ease-in-out infinite alternate;
+}
+@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
 }
 
 .header-overlay {
@@ -142,13 +151,77 @@
   gap: 2rem;
 }
 
+/* 1) Put keyframes at top-level with a unique name */
+@keyframes favHeartBeat {
+  0%, 100% { transform: scale(1); }
+  25%      { transform: scale(1.3); }
+  50%      { transform: scale(1.1); }
+  75%      { transform: scale(1.25); }
+}
+
 .hotel-card {
   background: var(--white);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+
+  /* 2) If your button is placed directly under .hotel-card, keep this. 
+        If you placed it inside .hotel-image, you can omit this line. */
+
+  /* keep this to anchor the absolute button if it's inside .hotel-card */
+  position: relative;
+
+  .btn-favorite {
+    position: absolute;
+    bottom: 1rem;   /* ⬅️ moved from top to bottom */
+    right: 1rem;    /* stays right in LTR */
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10; /* above overlays */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    .material-icons {
+      font-size: 1.5rem;
+      color: #6b7280;
+      transition: all 0.3s ease;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      border-color: #FFD700;
+      .material-icons { color: #FFD700; }
+    }
+
+    &.active {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      border-color: #FFD700;
+      animation: favHeartBeat 0.5s ease;
+      .material-icons { color: white; }
+      &:hover { background: linear-gradient(135deg, #FFA500, #FFD700); }
+    }
+
+    /* RTL: keep bottom, swap horizontal side */
+    :host-context([dir="rtl"]) & {
+      right: auto;
+      left: 1rem;
+    }
+  }
 }
+/* If your button lives inside .hotel-image instead of .hotel-card, 
+   make sure .hotel-image has position: relative (it already does in your CSS): 
+   .hotel-image { position: relative; } 
+*/
+
 
 .hotel-card:hover {
   transform: translateY(-8px);
@@ -359,6 +432,7 @@
     flex-direction: column;
     align-items: stretch;
   }
+  
 
   .search-input-wrapper {
     min-width: auto;
@@ -402,4 +476,7 @@
   .tip-card {
     padding: 1.5rem;
   }
+   .hotel-card .btn-favorite { bottom: 0.75rem; right: 0.75rem; }
+  :host-context([dir="rtl"]) .hotel-card .btn-favorite { left: 0.75rem; }
 }
+

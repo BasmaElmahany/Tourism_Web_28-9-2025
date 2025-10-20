@@ -1,84 +1,187 @@
 <ng-container *ngIf="post$ | async as post; else loading">
-	<div class="attraction-details-container blog-details" *ngIf="post">
-		<!-- Hero Section -->
-		<section class="hero-section">
+	<div class="blog-details" *ngIf="post" [attr.dir]="i18nService.isRTL() ? 'rtl' : 'ltr'">
+
+		<!-- Reading Progress -->
+		<div class="reading-progress" aria-hidden="true">
+			<div class="reading-progress__bar" [style.width.%]="readProgress"></div>
+		</div>
+
+		<!-- Hero -->
+		<section class="hero-section hero--mag">
 			<div class="hero-background">
-				<img [src]="getLocalizedText(post.imageUrl) || post.imageUrl" [alt]="getLocalizedText(post.title)" class="hero-image" />
+				<img [src]="getLocalizedText(post.imageUrl) || post.imageUrl" [alt]="getLocalizedText(post.title)"
+					class="hero-image" loading="eager" />
 				<div class="hero-overlay"></div>
 			</div>
 
 			<div class="hero-content">
 				<div class="container">
-					<div class="breadcrumb">
+					<!-- Breadcrumbs -->
+					<nav class="breadcrumb" aria-label="breadcrumb">
 						<a routerLink="/home">{{ i18nService.translate('home') }}</a>
-						<span class="material-icons">chevron_right</span>
+						<span class="material-icons" aria-hidden="true">chevron_right</span>
 						<a routerLink="/blog">{{ i18nService.translate('blogTitle') }}</a>
-						<span class="material-icons">chevron_right</span>
-						<span>{{ getLocalizedText(post.title) }}</span>
+						<span class="material-icons" aria-hidden="true">chevron_right</span>
+						<span class="current">{{ getLocalizedText(post.title) }}</span>
+					</nav>
+
+					<!-- Category chip & meta -->
+					<div class="hero-topline">
+						<span class="chip chip--category">{{ getLocalizedText(post.category) }}</span>
+						<span class="chip chip--time">
+							<span class="material-icons" aria-hidden="true">schedule</span>
+							{{ post.readTime }} {{ i18nService.translate('minutesRead') || 'min read' }}
+						</span>
 					</div>
 
-					<div class="hero-info">
-						<h1 class="attraction-title">{{ getLocalizedText(post.title) }}</h1>
-						<div class="attraction-meta">
-							<div class="rating-info">
-								<div class="rating">
-									<span class="material-icons">person</span>
-									<span class="rating-value">{{ getLocalizedText(post.author) }}</span>
-								</div>
-								<span class="review-count">{{ post.publishDate | date:'longDate' }}</span>
+					<!-- Title + dek (optional excerpt fallback to nothing if not present) -->
+					<header class="hero-head">
+						<h1 class="headline">{{ getLocalizedText(post.title) }}</h1>
+						<p class="dek" *ngIf="getLocalizedText(post.excerpt)">
+							{{ getLocalizedText(post.excerpt) }}
+						</p>
+					</header>
+
+					<!-- Byline -->
+					<div class="byline">
+						<div class="byline__author">
+							<div class="avatar" aria-hidden="true">
+								<span>{{ (getLocalizedText(post.author) || 'A') | slice:0:1 }}</span>
 							</div>
-							<div class="category-badge">{{ getLocalizedText(post.category) }}</div>
+							<div class="byline__text">
+								<div class="name">{{ getLocalizedText(post.author) }}</div>
+								<div class="date">
+									<span class="material-icons" aria-hidden="true">event</span>
+									{{ post.publishDate | date:'longDate' }}
+								</div>
+							</div>
 						</div>
+						<div class="share-bar">
+							<span class="share-label">{{ i18nService.translate('share') || 'Share' }}:</span>
+
+							<button class="btn-ghost icon-only" aria-label="Facebook"
+								(click)="openShare('facebook', post)">
+								<span class="material-icons">facebook</span>
+							</button>
+							<button class="btn-ghost icon-only" aria-label="X" (click)="openShare('x', post)">
+								<span class="material-icons">alternate_email</span>
+							</button>
+							<button class="btn-ghost icon-only" aria-label="WhatsApp"
+								(click)="openShare('whatsapp', post)">
+								<span class="material-icons">chat</span>
+							</button>
+							<button class="btn-ghost icon-only" aria-label="Telegram"
+								(click)="openShare('telegram', post)">
+								<span class="material-icons">send</span>
+							</button>
+							<button class="btn-ghost icon-only" aria-label="LinkedIn"
+								(click)="openShare('linkedin', post)">
+								<span class="material-icons">work</span>
+							</button>
+							<button class="btn-ghost icon-only" aria-label="Email" (click)="openShare('email', post)">
+								<span class="material-icons">mail</span>
+							</button>
+
+							<button class="btn-ghost icon-only" aria-label="Copy link" (click)="copyLink()">
+								<span class="material-icons">link</span>
+							</button>
+						</div>
+
+
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- Main Content -->
+		<!-- Main -->
 		<section class="main-content">
 			<div class="container">
 				<div class="content-grid">
-					<div class="details-column">
-						<div class="content-section">
-							<h2>{{ i18nService.translate('about') }}</h2>
-							<div class="description article-content">
-								<!-- show as text; if HTML needed we can sanitize and use innerHTML -->
-								<p>{{ getLocalizedText(post.content) }}</p>
-							</div>
+
+					<!-- Article -->
+					<article class="details-column article">
+						<!-- Top kicker line (optional) -->
+						<div class="kicker" *ngIf="getLocalizedText(post.category)">
+							{{ getLocalizedText(post.category) }}
 						</div>
 
-						<div class="content-section">
-							<h2>{{ i18nService.translate('tags') }}</h2>
-							<div class="features-grid">
-								<div class="feature-item" *ngFor="let tag of post.tags[0]">
-									<span class="material-icons">label</span>
-									<span>{{ getLocalizedText(tag) }}</span>
-								</div>
-							</div>
-						</div>
-					</div>
+						<!-- The story -->
+						<div class="article-content typeset">
+							<!-- If you store HTML content, swap to [innerHTML]="safeHtml" -->
+							<p class="lead">
+								{{ getLocalizedText(post.content) }}
+							</p>
 
-					<div class="info-column">
-						<div class="info-card">
+							<!-- Example pull-quote (optional; remove if you don’t want default) -->
+							<blockquote class="pull-quote" *ngIf="getLocalizedText(post.excerpt)">
+								<span class="quote-mark">“</span>
+								<p>{{ getLocalizedText(post.excerpt) }}</p>
+							</blockquote>
+
+							<!-- Example figure (optional, keep markup pattern for future media) -->
+							<!--
+              <figure class="figure">
+                <img src="/assets/images/sample.jpg" alt="..." />
+                <figcaption>{{ i18nService.translate('imageCaption') || 'Image caption' }}</figcaption>
+              </figure>
+              -->
+						</div>
+
+						<!-- Tags -->
+						<section class="tags" *ngIf="post.tags?.length">
+							<h2 class="h-sm">{{ i18nService.translate('tags') }}</h2>
+							<div class="tag-list">
+								<a class="tag" *ngFor="let tag of post.tags[0]">#{{ getLocalizedText(tag) }}</a>
+							</div>
+						</section>
+
+					
+					</article>
+
+					<!-- Sidebar -->
+					<aside class="info-column">
+						<div class="info-card sticky">
 							<h3>{{ i18nService.translate('postInfo') }}</h3>
+
 							<div class="info-item">
-								<div class="info-label"><span class="material-icons">schedule</span>{{ i18nService.translate('publishDate') }}</div>
+								<div class="info-label">
+									<span class="material-icons" aria-hidden="true">schedule</span>
+									{{ i18nService.translate('publishDate') }}
+								</div>
 								<div class="info-value">{{ post.publishDate | date:'longDate' }}</div>
 							</div>
+
 							<div class="info-item">
-								<div class="info-label"><span class="material-icons">access_time</span>{{ i18nService.translate('readTime') }}</div>
+								<div class="info-label">
+									<span class="material-icons" aria-hidden="true">access_time</span>
+									{{ i18nService.translate('readTime') }}
+								</div>
 								<div class="info-value">{{ post.readTime }} {{ i18nService.translate('minutes') }}</div>
 							</div>
+
 							<div class="info-item">
-								<div class="info-label"><span class="material-icons">person</span>{{ i18nService.translate('author') }}</div>
+								<div class="info-label">
+									<span class="material-icons" aria-hidden="true">person</span>
+									{{ i18nService.translate('author') }}
+								</div>
 								<div class="info-value">{{ getLocalizedText(post.author) }}</div>
 							</div>
+
+							<div class="divider"></div>
+
+							<div class="mini-actions">
+							
+								<button class="btn-ghost btn-block">
+									<span class="material-icons">rss_feed</span>
+									{{ i18nService.translate('follow') || 'Follow' }}
+								</button>
+							</div>
 						</div>
-					</div>
+					</aside>
+
 				</div>
 			</div>
 		</section>
-
 	</div>
 </ng-container>
 

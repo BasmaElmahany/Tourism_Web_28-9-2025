@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { TourismService } from '../../services/tourism.service';
 import { Hotel } from '../../models/tourism.models';
 import { I18nService } from '../../services/i18n.service'; // <-- added i18n service
+import { FavoritesService, FavoriteItem } from '../../services/favorites.service'; // NEW
 
 @Component({
   selector: 'app-hotels',
@@ -14,7 +15,7 @@ import { I18nService } from '../../services/i18n.service'; // <-- added i18n ser
   styleUrls: ['./hotels.component.scss']
 })
 export class HotelsComponent implements OnInit {
-   hotels: Hotel[] = [];
+  hotels: Hotel[] = [];
   filteredHotels: Hotel[] = [];
   totalHotels = 0;                   // ← add
   loading = false;
@@ -25,11 +26,11 @@ export class HotelsComponent implements OnInit {
   constructor(
     private tourismService: TourismService,
     public i18nService: I18nService,
-    private router: Router
-  ) {}
+    private router: Router, public favoritesService: FavoritesService
+  ) { }
 
 
-    ngOnInit() {
+  ngOnInit() {
     this.loadHotels();
   }
 
@@ -51,7 +52,7 @@ export class HotelsComponent implements OnInit {
     this.applyFilters();
   }
 
-    // ... your existing methods ...
+  // ... your existing methods ...
 
   private applyFilters() {
     if (!this.searchQuery.trim() && !this.selectedStarRating && !this.selectedPriceRange) {
@@ -88,9 +89,9 @@ export class HotelsComponent implements OnInit {
 
         switch (this.selectedPriceRange) {
           case 'budget': return price > 0 && price < 500;
-          case 'mid':    return price >= 500 && price < 1000;
+          case 'mid': return price >= 500 && price < 1000;
           case 'luxury': return price >= 1000;
-          default:       return true;
+          default: return true;
         }
       });
     }
@@ -99,7 +100,7 @@ export class HotelsComponent implements OnInit {
     this.totalHotels = this.hotels.length; // always show total base count
   }
 
-    // TrackBy for performance (used in template)
+  // TrackBy for performance (used in template)
   trackByHotelId = (_: number, h: Hotel) => h.id;
 
   getStarArray(rating: number): number[] {
@@ -136,11 +137,63 @@ export class HotelsComponent implements OnInit {
   }
 
   getHotelDescription(hotel: Hotel): string {
-      const lang = this.lang() as 'en' | 'ar';
+    const lang = this.lang() as 'en' | 'ar';
     return typeof hotel.description === 'string' ? hotel.description : hotel.description[lang] || '';
   }
 
   getAmenity(amenity: any): string {
     return typeof amenity === 'string' ? amenity : amenity[this.lang()] || '';
   }
+
+
+  toggleFavorite(hotel: Hotel, event?: MouseEvent): void {
+    if (event) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
+
+    const nameEn =
+      typeof hotel.name === 'string'
+        ? (hotel.name as string)
+        : ((hotel.name as Record<'en' | 'ar', string>).en ?? '');
+
+    const nameAr =
+      typeof hotel.name === 'string'
+        ? (hotel.name as string) // or '' if you want Arabic empty when original is a plain string
+        : ((hotel.name as Record<'en' | 'ar', string>).ar ?? '');
+
+    // hotels may not have a category; default sensibly
+    const catIsString = typeof (hotel as any).category === 'string';
+    const catEn = catIsString
+      ? (hotel as any).category
+      : ((hotel as any).category?.en ?? this.i18nService.translate('hotel') ?? 'Hotel');
+    const catAr = catIsString
+      ? (hotel as any).category
+      : ((hotel as any).category?.ar ?? this.i18nService.translate('hotel') ?? 'فندق');
+
+    const favoriteItem: FavoriteItem = {
+      id: hotel.id,
+      type: 'hotel',
+      name: nameEn,
+      nameAr: nameAr,
+      image: hotel.imageUrl || '/assets/images/placeholder.jpg',
+      category: catEn,
+      categoryAr: catAr,
+      rating: (hotel as any).rating,
+      addedAt: new Date()
+    };
+
+    const isNowFavorite = this.favoritesService.toggleFavorite(favoriteItem);
+
+    // Optional toast (same pattern you used in Attractions)
+    // const message = isNowFavorite
+    //   ? this.i18nService.translate('addedToFavorites')
+    //   : this.i18nService.translate('removedFromFavorites');
+    // this.showToast(message);
+  }
+
+  isFavorite(hotelId: string): boolean {
+    return this.favoritesService.isFavorite(hotelId);
+  }
+
 }
