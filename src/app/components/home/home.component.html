@@ -119,18 +119,6 @@
                   <a [routerLink]="['/attractions', attraction.id]" class="btn btn-accent">
                     {{ i18n.translate('learnMore') || 'Learn More' }}
                   </a>
-                  <button class="btn-favorite-card" [class.active]="isFavorite(attraction.id)"
-                    (click)="toggleFavorite(attraction, $event)" [attr.aria-label]=" isFavorite(attraction.id)
-                  ? (i18n.translate('removeFromFavorites') || 'Remove from favorites')
-                  : (i18n.translate('addToFavorites') || 'Add to favorites')  ">
-                    <span class="fav-icon" aria-hidden="true">
-                      <span class="material-icons outline">favorite_border</span>
-                      <span class="material-icons filled">favorite</span>
-                    </span>
-                  </button>
-
-
-
                 </div>
               </div>
             </div>
@@ -154,24 +142,15 @@
   </section>
 
   <!-- Statistics Section -->
+  <!-- Statistics Section (dynamic from data/stats) -->
   <section class="stats-section bg-primary">
     <div class="container">
       <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-number">12+</div>
-          <div class="stat-label">{{ i18n.translate('historicSites') || 'Historic Sites' }}</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">8+</div>
-          <div class="stat-label">{{ i18n.translate('hotels') || 'Hotels' }}</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">15+</div>
-          <div class="stat-label">{{ i18n.translate('restaurants') || 'Restaurants' }}</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">125K+</div>
-          <div class="stat-label">{{ i18n.translate('annualVisitors') || 'Annual Visitors' }}</div>
+        <div class="stat-item" *ngFor="let s of stats; let i = index">
+          <div class="stat-number">
+            <span class="count-value">{{ (animatedDisplay[i] || s.value) }}</span>
+          </div>
+          <div class="stat-label">{{ i18n.translate($any(s.labelKey)) || s.defaultLabel }}</div>
         </div>
       </div>
     </div>
@@ -216,7 +195,7 @@
   <section class="blog-section" *ngIf="latestBlogPosts.length > 0">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">{{ i18n.translate('latestStories') || 'Latest Stories' }}</h2>
+  <h2 class="section-title">{{ i18n.translate('latestStories') || 'Articles' }}</h2>
         <a routerLink="/blog" class="view-all-link">
           {{ i18n.translate('viewAllPosts') || 'View All Posts' }}
           <span class="material-icons">arrow_forward</span>

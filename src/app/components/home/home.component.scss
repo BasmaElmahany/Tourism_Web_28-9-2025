@@ -222,9 +222,61 @@
 }
 
 .card-overlay {
+  /* make overlay span the full image so we can position controls reliably */
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  pointer-events: none; /* allow clicks through except on positioned children */
+  z-index: 3;
+}
+
+/* place rating at top-left */
+.card-overlay .rating {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  pointer-events: auto;
+  z-index: 4;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+/* Favorite overlay button styling: fixed to top-right, always visible */
+.card-overlay .btn-favorite-card.overlay {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.95);
+  color: var(--primary-color);
+  border: none;
+  box-shadow: 0 8px 30px rgba(6,24,55,0.18);
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  pointer-events: auto; /* ensure it's clickable */
+  z-index: 5;
+}
+
+.card-overlay .btn-favorite-card.overlay .material-icons { font-size: 20px; }
+
+.card-overlay .btn-favorite-card.overlay:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 14px 40px rgba(6,24,55,0.22);
+}
+
+.card-overlay .btn-favorite-card.overlay.active {
+  background: var(--primary-color);
+  color: white;
 }
 
 .rating {
@@ -348,15 +400,28 @@
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
+  gap: 1.25rem;
   text-align: center;
+  align-items: center;
+  /* Creative equal-width layout: show up to 8 items in a row on wide screens */
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  justify-content: center;
 }
 
 .stat-item {
-  padding: 1rem;
+  padding: 1.2rem 1rem;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  box-shadow: 0 10px 30px rgba(6,24,55,0.06);
 }
-
 .stat-number {
   font-size: 3rem;
   font-weight: 700;
@@ -367,6 +432,22 @@
 .stat-label {
   font-size: 1.1rem;
   opacity: 0.9;
+}
+
+/* Responsive: collapse into multiple columns on narrower screens */
+@media (max-width: 1399px) {
+  .stats-grid { grid-template-columns: repeat(4, 1fr); grid-auto-flow: initial; }
+}
+
+@media (max-width: 991px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-number { font-size: 2.4rem; }
+}
+
+@media (max-width: 767px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-number { font-size: 2rem; }
+  .stat-item { padding: 1rem; }
 }
 
 /* Blog Section */
@@ -407,6 +488,10 @@
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  /* enforce a consistent card height so all cards look equal; made slightly taller per request */
+  min-height: 480px;
 }
 
 .blog-card:hover {
@@ -416,8 +501,9 @@
 
 .blog-image {
   position: relative;
-  height: 200px;
+  height: 260px; /* increased so the cards look taller and balanced */
   overflow: hidden;
+  flex: 0 0 auto;
 }
 
 .blog-image img {
@@ -440,6 +526,10 @@
 
 .blog-content {
   padding: 1.5rem;
+  /* allow the content area to grow and push the footer/read-more to bottom */
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .blog-content h3 {
@@ -472,6 +562,8 @@
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
+  /* keep CTA aligned at bottom for equal card layout */
+  margin-top: auto;
 }
 
 .read-more:hover {
@@ -633,6 +725,17 @@
     flex-direction: column;
     align-items: center;
   }
+}
+
+/* Responsive adjustments for blog card height */
+@media (max-width: 991px) {
+  .blog-card { min-height: 380px; }
+  .blog-image { height: 200px; }
+}
+
+@media (max-width: 767px) {
+  .blog-card { min-height: auto; }
+  .blog-image { height: 180px; }
 }
 
 @media (max-width: 480px) {
