@@ -131,6 +131,8 @@ export interface TranslationKeys {
   blogSubtitle: string;
   featuredBloggers: string;
   viewChannel: string;
+  videoFallbackSummary: string;
+  readMoreOnChannel: string;
   categories: string;
   minutesRead: string;
   // Tourguide
@@ -374,9 +376,12 @@ export class I18nService {
       exploreAttractions: 'Explore Attractions',
       planYourTrip: 'Plan Your Trip',
       featuredAttractions: 'Featured Attractions',
-      latestStories: 'Latest Stories',
+  latestStories: 'Articles',
       featuredBloggers: 'Featured Bloggers & Videos',
       viewChannel: 'View Channel',
+  // Blogger / Video fallbacks
+  videoFallbackSummary: 'Short clip highlighting local attractions and tips.',
+  readMoreOnChannel: ' Read more on the channel.',
       readyToExplore: 'Ready to Explore Minya?',
     readyToExploreDesc: 'Start planning your journey through ancient Egypt today. Discover the treasures that await you in Minya.',
 
@@ -537,10 +542,11 @@ export class I18nService {
       photographers: 'Photographers',
       photographerSubtitle: 'Local and professional photographers available for events, tours, and photo sessions.',
       Book_A_Ticket: 'Book A Ticket',
-      souvenirs: 'Souvenirs & Shopping',
+  souvenirs: 'Souvenirs',
 
-      // Hero Section
-      souvenirsSubtitle: 'Discover authentic Egyptian treasures and handcrafted souvenirs in Minya',
+  // Hero Section
+  souvenirsSubtitle: 'Discover authentic Egyptian treasures and handcrafted souvenirs in Minya',
+  souvenirsTitle: 'Souvenirs',
 
       // Categories
       shopByCategory: 'Shop by Category',
@@ -593,7 +599,7 @@ export class I18nService {
 
       // Additional
       resultsCount: 'results',
-      souvenirsTitle: 'Souvenirs Title',
+  // souvenirsTitle already defined above
       // Favorites Drawer
       myFavorites: 'My Favorites',
       favorites: 'Favorites',
@@ -704,9 +710,12 @@ export class I18nService {
       exploreAttractions: 'استكشف المعالم',
       planYourTrip: 'خطط لرحلتك',
       featuredAttractions: 'المعالم المميزة',
-      latestStories: 'أحدث القصص',
+  latestStories: 'مقالات',
       featuredBloggers: 'المدونون المميزون والفيديوهات',
       viewChannel: 'عرض القناة',
+  // Blogger / Video fallbacks - Arabic
+  videoFallbackSummary: 'مقطع قصير يبرز المعالم والنصائح المحلية.',
+  readMoreOnChannel: ' اقرأ المزيد على القناة.',
       readyToExplore: 'مستعد لاستكشاف المنيا؟',
       readyToExploreDesc: 'ابدأ في التخطيط لرحلتك عبر مصر القديمة اليوم. اكتشف الكنوز التي تنتظرك في المنيا.',
   helperTitle: 'اسألني',

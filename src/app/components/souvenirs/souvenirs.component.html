@@ -15,12 +15,16 @@
           <span>{{ i18n.translate('souvenirs') || 'Souvenirs & Shopping' }}</span>
         </div>
         
-        <h1 class="hero-title">
-          Egyptian Souvenirs & Handicrafts
-        </h1>
-        <p class="hero-subtitle">
+        <h1 class="hero-title">{{ i18n.translate('souvenirsTitle') || 'Souvenirs' }}</h1>
+        <p class="hero-subtitle small">
           {{ i18n.translate('souvenirsSubtitle') || 'Discover authentic Egyptian treasures and handcrafted souvenirs in Minya' }}
         </p>
+        <div class="hero-cta">
+          <a routerLink="/souvenirs#categories" class="btn btn-primary">
+            <span class="material-icons">store</span>
+            {{ i18n.translate('shopByCategory') || 'Shop by Category' }}
+          </a>
+        </div>
       </div>
     </div>
   </section>
