@@ -12,7 +12,7 @@ export const RAW_RESTAURANTS: any[] = [
       en: "Traditional Egyptian cuisine by the Nile with scenic views",
       ar: "مأكولات مصرية تقليدية مطلة على النيل"
     },
-  imageUrl: "assets/images/Orked Restaurant.webp",
+  imageUrl: "assets/images/orked.jpg",
   // explicit menu URL (added inline so the property appears in the source)
   menuUrl: '/assets/menus/minya_1.pdf',
     latitude: 28.1099,
