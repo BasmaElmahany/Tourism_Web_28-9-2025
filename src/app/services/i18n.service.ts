@@ -325,6 +325,8 @@ export interface TranslationKeys {
   shareDefaultText : string ;
   linkCopied  : string ;
   copyLinkPrompt : string ;
+  goToSlide: string;
+  play: string;
 }
 
 @Injectable({
@@ -353,6 +355,7 @@ export class I18nService {
 
   private readonly translations: Record<string, TranslationKeys> = {
     en: {
+      goToSlide: 'Go To Slide',
        linkCopied :'Link Copied',
        copyLinkPrompt : 'Copy Link' ,
       shareDefaultText : 'Share Default Text',
@@ -685,9 +688,12 @@ export class I18nService {
       chatTitle: 'Nefertiti',
       online: 'Online',
       souviners: 'Souviners',
-      Restaurant : 'Restaurant'
+      Restaurant : 'Restaurant',
+      play :'Play'
     },
     ar: {
+      play :'تشغيل',
+      goToSlide: 'الذهاب الي الصفحة',
       linkCopied :'تم نسخ الرابط',
        copyLinkPrompt : 'نسخ الرابط' ,
        shareDefaultText : 'مشاركة النص الافتراضي',

@@ -205,13 +205,13 @@
         <article class="blog-card" *ngFor="let post of latestBlogPosts">
           <div class="blog-image">
             <img [src]="post.imageUrl" [alt]="post.title" loading="lazy">
-            <div class="blog-category">{{ post.category }}</div>
+            <div class="blog-category">{{ i18n.pick(post.category) }} </div>
           </div>
           <div class="blog-content">
-            <h3>{{ post.title }}</h3>
-            <p>{{ post.excerpt }}</p>
+            <h3>{{ i18n.pick(post.title) }}</h3>
+            <p>{{ i18n.pick(post.excerpt) }}</p>
             <div class="blog-meta">
-              <span class="author">{{ i18n.translate('by') || 'By' }} {{ post.author }}</span>
+              <span class="author">{{ i18n.translate('by') || 'By' }} {{ i18n.pick(post.author) }}</span>
               <span class="read-time">{{ post.readTime }} {{ i18n.translate('minRead') || 'min read' }}</span>
             </div>
             <a [routerLink]="['/blog', post.id]" class="read-more">
@@ -229,8 +229,7 @@
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">{{ i18n.translate('tourism_title') || 'Al-Minya Weather' }}</h2>
-        <p class="section-subtitle">{{ i18n.translate('tourism_section_subtitle') || 'Current conditions and local
-          travel tips for Minya' }}</p>
+        <p class="section-subtitle">{{ i18n.translate('tourism_section_subtitle') || 'Current conditions and local travel tips for Minya' }}</p>
       </div>
       <app-weather city="Minya" [openInfo]="true"></app-weather>
     </div>
@@ -241,8 +240,7 @@
     <div class="container">
       <div class="cta-content">
         <h2>{{ i18n.translate('readyToExplore') || 'Ready to Explore Minya?' }}</h2>
-        <p>{{ i18n.translate('ctaDescription') || 'Start planning your journey through ancient Egypt today. Discover the
-          treasures that await you in Minya.' }}</p>
+        <p>{{ i18n.translate('ctaDescription') || 'Start planning your journey through ancient Egypt today. Discover the treasures that await you in Minya.' }}</p>
         <div class="cta-actions">
           <a routerLink="/itineraries" class="btn btn-primary">
             <span class="material-icons">flight_takeoff</span>

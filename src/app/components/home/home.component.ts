@@ -49,7 +49,7 @@ interface Blogger {
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(FavoritesDrawerComponent) favoritesDrawer!: FavoritesDrawerComponent;
-  
+  currentBlogSlide = 0;
   featuredAttractions: Attraction[] = [];
   latestBlogPosts: BlogPost[] = [];
   stats: StatItem[] = [];
@@ -218,6 +218,18 @@ showChat = false;
   goToSlide(index: number) {
     this.currentSlide = index;
   }
+  previousBlogSlide() {
+  if (this.currentBlogSlide > 0) this.currentBlogSlide--;
+}
+
+nextBlogSlide() {
+  if (this.currentBlogSlide < this.latestBlogPosts.length - 1)
+    this.currentBlogSlide++;
+}
+
+goToBlogSlide(index: number) {
+  this.currentBlogSlide = index;
+}
 
   /**
    * Toggle favorite for attraction
