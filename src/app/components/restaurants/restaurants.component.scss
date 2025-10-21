@@ -1,6 +1,7 @@
 .restaurants-page {
   min-height: 100vh;
-  padding-top: 0; /* hero will sit under navbar */
+  padding-top: 0;
+  /* hero will sit under navbar */
 }
 
 
@@ -11,24 +12,100 @@
   height: 360px;
   margin-bottom: 0.8rem;
 }
-.page-header .header-background { position: absolute; inset: 0; overflow: hidden }
+
+.page-header .header-background {
+  position: absolute;
+   top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .page-header .header-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   /* focus toward the top so the image occupies space under the navbar */
   object-position: center top;
-  display:block;
+  display: block;
   transform: scale(1.03);
-  transition: transform 700ms cubic-bezier(.2,.9,.3,1);
+  transition: transform 700ms cubic-bezier(.2, .9, .3, 1);
+   animation: slowZoom 12s ease-in-out infinite alternate;
 }
-.page-header:hover .header-image { transform: scale(1.06) }
-.page-header .header-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,24,55,0.25), rgba(6,24,55,0.45)); }
-.page-header .header-content { position: relative; z-index: 2; display:flex; align-items:center; height:100% }
-.page-header .page-title { color: #fff; font-size: 2.1rem; margin: 0 }
-.page-header .page-subtitle { color: rgba(255,255,255,0.94); margin-top: 0.5rem; font-size: 1.05rem }
-.fade-in { animation: fadeInUp .6s ease both }
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: translateY(0) } }
+@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+.page-header:hover .header-image {
+  transform: scale(1.06)
+}
+
+.page-header .header-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 24, 55, 0.25), rgba(6, 24, 55, 0.45));
+}
+
+.page-header .header-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  height: 100%
+}
+
+.page-header .page-title {
+  color: #fff;
+  font-size: 2.1rem;
+  margin: 0
+}
+
+.page-header .page-subtitle {
+  color: rgba(255, 255, 255, 0.94);
+  margin-top: 0.5rem;
+  font-size: 1.05rem
+}
+
+.fade-in {
+  animation: fadeInUp .6s ease both
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+/* Top-level keyframes */
+@keyframes favHeartBeat {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.3);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  75% {
+    transform: scale(1.25);
+  }
+}
 
 .hero-title {
   font-size: 3rem;
@@ -139,6 +216,10 @@
   overflow: hidden;
   box-shadow: var(--shadow-md);
   transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
 }
 
 .restaurant-card:hover {
@@ -158,6 +239,62 @@
   object-fit: cover;
   transition: transform var(--transition-normal);
 }
+
+.btn-favorite {
+  position: absolute;
+  bottom: 1rem;
+  /* ⬅️ was top */
+  right: 1rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 2px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  .material-icons {
+    font-size: 1.5rem;
+    color: #6b7280;
+    transition: all 0.3s ease;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    border-color: #FFD700;
+
+    .material-icons {
+      color: #FFD700;
+    }
+  }
+
+  &.active {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    border-color: #FFD700;
+    animation: favHeartBeat 0.5s ease;
+
+    .material-icons {
+      color: white;
+    }
+
+    &:hover {
+      background: linear-gradient(135deg, #FFA500, #FFD700);
+    }
+  }
+
+  /* RTL flip: bottom stays, horizontal side switches */
+  :host-context([dir="rtl"]) & {
+    right: auto;
+    left: 1rem;
+  }
+}
+
 
 .restaurant-card:hover .restaurant-image img {
   transform: scale(1.05);
@@ -201,6 +338,10 @@
 
 .restaurant-content {
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 1px;
 }
 
 .restaurant-header {
@@ -302,6 +443,9 @@
   gap: 0.75rem;
   margin-bottom: 1rem;
   flex-wrap: wrap;
+  margin-top: auto;  
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color);
 }
 
 .restaurant-card.rtl .restaurant-actions {
@@ -313,6 +457,12 @@
   min-width: 120px;
   font-size: 0.875rem;
   padding: 0.5rem 1rem;
+}
+.restaurant-actions .btn.btn-primary {
+  flex: 1 1 auto;
+}
+.restaurant-actions .btn.btn-accent {
+  flex: 0 0 auto;
 }
 
 .restaurant-reviews {
@@ -403,12 +553,16 @@
   line-height: 1.6;
 }
 
+.btn-favorite-inline.active .material-icons {
+  color: #ff1744;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2.5rem;
   }
-
+  .restaurants-grid > .restaurant-card { height: 100%; }
   .filters {
     flex-direction: column;
     align-items: stretch;

@@ -23,14 +23,9 @@
       <div class="search-bar">
         <div class="search-input-wrapper">
           <span class="material-icons search-icon">search</span>
-          <input 
-            type="text" 
-            [placeholder]="i18nService.translate('searchRestaurants')"
-            class="search-input"
-            [(ngModel)]="searchQuery"
-            (input)="filterRestaurants()"
-            [style.text-align]="i18nService.isRTL() ? 'right' : 'left'"
-          >
+          <input type="text" [placeholder]="i18nService.translate('searchRestaurants')" class="search-input"
+            [(ngModel)]="searchQuery" (input)="filterRestaurants()"
+            [style.text-align]="i18nService.isRTL() ? 'right' : 'left'">
         </div>
       </div>
 
@@ -75,11 +70,7 @@
   <section class="restaurants-content">
     <div class="container">
       <div class="restaurants-grid">
-        <div 
-          *ngFor="let restaurant of filteredRestaurants" 
-          class="restaurant-card"
-          [class.rtl]="i18nService.isRTL()"
-        >
+        <div *ngFor="let restaurant of filteredRestaurants" class="restaurant-card" [class.rtl]="i18nService.isRTL()">
           <div class="restaurant-image">
             <img [src]="restaurant.imageUrl" [alt]="i18nService.pick(restaurant.name)">
             <div class="restaurant-rating">
@@ -89,7 +80,17 @@
             <div class="restaurant-price-badge">
               {{ i18nService.pick(restaurant.priceRange) }}
             </div>
+
+            <!-- NEW: favorite floating button -->
+            <button class="btn-favorite" [class.active]="isFavorite(restaurant.id)"
+              (click)="toggleFavorite(restaurant, $event)" [attr.aria-label]="
+      isFavorite(restaurant.id)
+        ? (i18nService.translate('removeFromFavorites') || 'Remove from favorites')
+        : (i18nService.translate('addToFavorites') || 'Add to favorites')">
+              <span class="material-icons">{{ isFavorite(restaurant.id) ? 'favorite' : 'favorite_border' }}</span>
+            </button>
           </div>
+
 
           <div class="restaurant-content">
             <div class="restaurant-header">
@@ -117,10 +118,7 @@
             </div>
 
             <div class="restaurant-features">
-              <span 
-                *ngFor="let feature of i18nService.pickArray(restaurant.features)" 
-                class="feature-tag"
-              >
+              <span *ngFor="let feature of i18nService.pickArray(restaurant.features)" class="feature-tag">
                 {{ feature }}
               </span>
             </div>
@@ -128,10 +126,7 @@
             <div class="restaurant-specialties">
               <h4>{{ i18nService.translate('specialties') }}</h4>
               <div class="specialties-list">
-                <span 
-                  *ngFor="let specialty of i18nService.pickArray(restaurant.specialties)" 
-                  class="specialty-item"
-                >
+                <span *ngFor="let specialty of i18nService.pickArray(restaurant.specialties)" class="specialty-item">
                   {{ specialty }}
                 </span>
               </div>
@@ -141,9 +136,7 @@
               <button class="btn btn-primary" (click)="viewMenu(restaurant)">
                 {{ i18nService.translate('viewMenu') }}
               </button>
-              <!-- <button class="btn btn-secondary" (click)="makeReservation(restaurant)">
-                {{ i18nService.translate('makeReservation') }}
-              </button> -->
+           
               <button class="btn btn-accent" (click)="getDirections(restaurant)">
                 {{ i18nService.translate('getDirections') }}
               </button>

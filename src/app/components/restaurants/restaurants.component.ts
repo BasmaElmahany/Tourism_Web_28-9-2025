@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { I18nService } from '../../services/i18n.service';
 import { restaurants } from '../../data/restaurants';
 import { Restaurant } from '../../models/tourism.models';
-
+import { FavoritesService, FavoriteItem } from '../../services/favorites.service';
 @Component({
   selector: 'app-restaurants',
   standalone: true,
@@ -33,7 +33,7 @@ export class RestaurantsComponent implements OnInit {
     { key: 'high', en: 'High', ar: 'مرتفع' }
   ];
   constructor(
-    public i18nService: I18nService
+    public i18nService: I18nService, public favoritesService: FavoritesService 
   ) {}
 
   ngOnInit() {
@@ -180,5 +180,46 @@ export class RestaurantsComponent implements OnInit {
     }
   }
 
+  private pickLang(v: any, key: 'en' | 'ar'): string {
+    return typeof v === 'string' ? v : (v?.[key] ?? '');
+  }
 
+  // ---- FAVORITES: add these two methods ----
+  toggleFavorite(restaurant: Restaurant, event?: MouseEvent): void {
+    if (event) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
+
+    const nameEn = this.pickLang(restaurant.name as any, 'en');
+    const nameAr = this.pickLang(restaurant.name as any, 'ar');
+
+    // Use cuisineType as the category label (en/ar)
+    const catEn = this.pickLang(restaurant.cuisineType as any, 'en') || (this.i18nService.translate('Restaurant') ?? 'Restaurant');
+    const catAr = this.pickLang(restaurant.cuisineType as any, 'ar') || (this.i18nService.translate('Restaurant') ?? 'مطعم');
+
+    const favoriteItem: FavoriteItem = {
+      id: restaurant.id,
+      type: 'restaurant',
+      name: nameEn,
+      nameAr: nameAr,
+      image: restaurant.imageUrl || '/assets/images/placeholder.jpg',
+      category: catEn,
+      categoryAr: catAr,
+      rating: restaurant.rating,
+      addedAt: new Date()
+    };
+
+    const isNowFavorite = this.favoritesService.toggleFavorite(favoriteItem);
+
+    // Optional toast (same pattern you used elsewhere)
+    // const msg = isNowFavorite
+    //   ? this.i18nService.translate('addedToFavorites')
+    //   : this.i18nService.translate('removedFromFavorites');
+    // this.showToast(msg);
+  }
+
+  isFavorite(restaurantId: string): boolean {
+    return this.favoritesService.isFavorite(restaurantId);
+  }
 }

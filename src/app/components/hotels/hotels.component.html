@@ -23,13 +23,8 @@
       <div class="search-filters">
         <div class="search-input-wrapper">
           <span class="material-icons search-icon">search</span>
-          <input
-            type="text"
-            class="search-input"
-            [placeholder]="i18nService.translate('searchHotels')"
-            [(ngModel)]="searchQuery"
-            (input)="onSearch()"
-          />
+          <input type="text" class="search-input" [placeholder]="i18nService.translate('searchHotels')"
+            [(ngModel)]="searchQuery" (input)="onSearch()" />
         </div>
 
         <div class="filter-controls">
@@ -83,8 +78,19 @@
               <div class="rating-badge">
                 <span class="material-icons">star</span>
                 <span>{{ i18nService.formatNumber(hotel.rating) }}</span>
+
               </div>
+
+
             </div>
+            <button class="btn-favorite" [class.active]="isFavorite(hotel.id)" (click)="toggleFavorite(hotel, $event)"
+              [attr.aria-label]="
+      isFavorite(hotel.id)
+        ? (i18nService.translate('removeFromFavorites') || 'Remove from favorites')
+        : (i18nService.translate('addToFavorites') || 'Add to favorites')
+    ">
+              <span class="material-icons">{{ isFavorite(hotel.id) ? 'favorite' : 'favorite_border' }}</span>
+            </button>
           </div>
 
           <div class="hotel-content">
@@ -96,7 +102,7 @@
             <div class="hotel-details">
               <div class="price-range">
                 <span class="material-icons">local_offer</span>
-             <span>{{ i18nService.pick(hotel.priceRange) }}</span>
+                <span>{{ i18nService.pick(hotel.priceRange) }}</span>
 
               </div>
               <div class="review-count">

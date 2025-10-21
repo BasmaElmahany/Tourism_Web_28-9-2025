@@ -186,7 +186,7 @@
                 <span class="material-icons">visibility</span>
                 {{ i18n.translate('viewDetails') }}
               </a>
-              <button class="btn-favorite" [class.active]="isFavorite(attraction.id)"
+             <button class="btn-favorite" [class.active]="isFavorite(attraction.id)"
                 (click)="toggleFavorite(attraction, $event)"
                 [attr.aria-label]="isFavorite(attraction.id) ? (i18n.translate('removeFromFavorites') || 'Remove from favorites') : (i18n.translate('addToFavorites') || 'Add to favorites')">
                 <span class="material-icons">{{ isFavorite(attraction.id) ? 'favorite' : 'favorite_border' }}</span>

@@ -319,6 +319,12 @@ export interface TranslationKeys {
   tourism_refresh: string;
   tourism_quick_note_title: string;
   tourism_section_subtitle: string;
+  hotel: string;
+  Restaurant: string;
+  follow : string;
+  shareDefaultText : string ;
+  linkCopied  : string ;
+  copyLinkPrompt : string ;
 }
 
 @Injectable({
@@ -347,7 +353,12 @@ export class I18nService {
 
   private readonly translations: Record<string, TranslationKeys> = {
     en: {
+       linkCopied :'Link Copied',
+       copyLinkPrompt : 'Copy Link' ,
+      shareDefaultText : 'Share Default Text',
+      follow :'Follow',
       // Navigation
+      hotel: 'Hotel',
       home: 'Home',
       attractions: 'Attractions',
       hotels: 'Hotels',
@@ -383,25 +394,25 @@ export class I18nService {
   videoFallbackSummary: 'Short clip highlighting local attractions and tips.',
   readMoreOnChannel: ' Read more on the channel.',
       readyToExplore: 'Ready to Explore Minya?',
-    readyToExploreDesc: 'Start planning your journey through ancient Egypt today. Discover the treasures that await you in Minya.',
+      readyToExploreDesc: 'Start planning your journey through ancient Egypt today. Discover the treasures that await you in Minya.',
 
-  // Tourism info (weather)
-  tourism_title: 'Al-Minya Weather',
-  tourism_title_short: 'Weather',
-    tourism_weather_heading: 'Al-Minya Weather',
-    tourism_weather_paragraph: 'Al-Minya has a desert climate with almost no rainfall all year long. Summers are arid and sweltering, with an average temperature fluctuating between 37°C (99°F) and 43°C (109.4°F). However, winters are cool and dry, with an average temperature fluctuating between 20°C (69.8°F) and 26°C (78.8°F). June is the hottest month in the Al-Minya Governorate, while January is the coldest.',
-    tourism_best_time_heading: 'Best Time to Visit Al-Minya',
-    tourism_best_time_paragraph: 'The best time to visit Al-Minya is from early March to late April or early October. During this time, you will experience good weather with pleasant temperatures. Additionally, you will enjoy outdoor tourist activities. You can also travel to Al-Minya from early May to mid-September for hot-weather activities. Al-Minya is also fantastic in winter, from late November to early February.',
-    tourism_what_to_wear_heading: 'What to Wear in Al-Minya',
-    tourism_what_to_wear_paragraph: 'If you travel to Al-Minya in winter, pack pullovers, heavy pants or skirts, a jacket, sunglasses and sports footwear. However, take cotton t-shirts, jeans, skirts, light footwear, sandals, sunglasses, sunscreen lotion, beachwear and a beach towel if you travel in summer.',
-    tourism_quick_note: 'Quick tip: Al-Minya has a desert climate; summers are very hot and winters are mild. Choose clothing according to the season and enjoy your trip!',
-    tourism_close: 'Close',
-    tourism_refresh: 'Refresh',
-  tourism_quick_note_title: 'Quick tip',
-  tourism_section_subtitle: 'Current conditions and local travel tips for Minya',
+      // Tourism info (weather)
+      tourism_title: 'Al-Minya Weather',
+      tourism_title_short: 'Weather',
+      tourism_weather_heading: 'Al-Minya Weather',
+      tourism_weather_paragraph: 'Al-Minya has a desert climate with almost no rainfall all year long. Summers are arid and sweltering, with an average temperature fluctuating between 37°C (99°F) and 43°C (109.4°F). However, winters are cool and dry, with an average temperature fluctuating between 20°C (69.8°F) and 26°C (78.8°F). June is the hottest month in the Al-Minya Governorate, while January is the coldest.',
+      tourism_best_time_heading: 'Best Time to Visit Al-Minya',
+      tourism_best_time_paragraph: 'The best time to visit Al-Minya is from early March to late April or early October. During this time, you will experience good weather with pleasant temperatures. Additionally, you will enjoy outdoor tourist activities. You can also travel to Al-Minya from early May to mid-September for hot-weather activities. Al-Minya is also fantastic in winter, from late November to early February.',
+      tourism_what_to_wear_heading: 'What to Wear in Al-Minya',
+      tourism_what_to_wear_paragraph: 'If you travel to Al-Minya in winter, pack pullovers, heavy pants or skirts, a jacket, sunglasses and sports footwear. However, take cotton t-shirts, jeans, skirts, light footwear, sandals, sunglasses, sunscreen lotion, beachwear and a beach towel if you travel in summer.',
+      tourism_quick_note: 'Quick tip: Al-Minya has a desert climate; summers are very hot and winters are mild. Choose clothing according to the season and enjoy your trip!',
+      tourism_close: 'Close',
+      tourism_refresh: 'Refresh',
+      tourism_quick_note_title: 'Quick tip',
+      tourism_section_subtitle: 'Current conditions and local travel tips for Minya',
 
-  helperTitle: 'Ask me',
-  helperSub: 'I can help plan your visit',
+      helperTitle: 'Ask me',
+      helperSub: 'I can help plan your visit',
 
       // Attractions
       attractionsTitle: 'Discover Minya\'s Attractions',
@@ -522,7 +533,7 @@ export class I18nService {
       noRestaurantsFound: 'No Restaurants Found',
       makeReservation: 'Make Reservation',
       viewMenu: 'View Menu',
-  menuUnavailable: 'Menu not available',
+      menuUnavailable: 'Menu not available',
       specialties: 'Specialties',
       restaurantsSubtitle: 'Restaurants Subtitle',
       restaurantsTitle: 'Restaurants Title',
@@ -673,10 +684,17 @@ export class I18nService {
       newConversation: 'New conversation',
       chatTitle: 'Nefertiti',
       online: 'Online',
-      souviners: 'Souviners'
+      souviners: 'Souviners',
+      Restaurant : 'Restaurant'
     },
     ar: {
+      linkCopied :'تم نسخ الرابط',
+       copyLinkPrompt : 'نسخ الرابط' ,
+       shareDefaultText : 'مشاركة النص الافتراضي',
       // Navigation
+      follow :'متابعة',
+       Restaurant : 'مطعم',
+      hotel: 'فندق',
       home: 'الرئيسية',
       attractions: 'المعالم السياحية',
       hotels: 'الفنادق',
@@ -718,23 +736,23 @@ export class I18nService {
   readMoreOnChannel: ' اقرأ المزيد على القناة.',
       readyToExplore: 'مستعد لاستكشاف المنيا؟',
       readyToExploreDesc: 'ابدأ في التخطيط لرحلتك عبر مصر القديمة اليوم. اكتشف الكنوز التي تنتظرك في المنيا.',
-  helperTitle: 'اسألني',
-  helperSub: 'أنا هنا لمساعدتك في التخطيط لزيارتك',
+      helperTitle: 'اسألني',
+      helperSub: 'أنا هنا لمساعدتك في التخطيط لزيارتك',
 
-    // Tourism info (weather) translations - Arabic
-    tourism_title: 'طقس المنيا',
-    tourism_weather_heading: 'طقس المنيا',
-    tourism_weather_paragraph: 'المنيا تتميز بمناخ صحراوي مع قلة شديدة في الأمطار طوال العام. الصيف جاف وحار للغاية، وتتذبذب درجات الحرارة في المتوسط بين 37°C (99°F) و43°C (109.4°F). أما الشتاء فمعتدل وجاف مع متوسط درجات حرارة يتراوح بين 20°C (69.8°F) و26°C (78.8°F). يونيو هو أحر شهور المحافظة، بينما يناير هو الأبرد.',
-    tourism_best_time_heading: 'أفضل وقت لزيارة المنيا',
-    tourism_best_time_paragraph: 'أفضل وقت لزيارة المنيا هو من أوائل مارس إلى أواخر أبريل أو أوائل أكتوبر. خلال هذا الوقت ستجد طقساً لطيفاً ومناسباً للأنشطة الخارجية. يمكنك أيضاً السفر بين أوائل مايو ومنتصف سبتمبر للأنشطة ذات الطقس الحار. المنيا جميلة أيضاً في الشتاء من أواخر نوفمبر إلى أوائل فبراير.',
-    tourism_what_to_wear_heading: 'ماذا أرتدي في المنيا',
-    tourism_what_to_wear_paragraph: 'إذا سافرت إلى المنيا في الشتاء، احضري بُلُوفرات، بنطلونات أو تنانير ثقيلة، سترة، نظارات شمسية وحذاء رياضي. أما في الصيف فاحملي قُمصان قطنية، جينز، تنانير، أحذية خفيفة، صندل، واقي شمس، ملابس شاطئ ومنشفة.',
-    tourism_quick_note: 'معلومة سريعة: المنيا تتميز بمناخ صحراوي؛ الصيف شديد الحرارة والشتاء لطيف. اختاري الملابس بحسب الموسم واستمتعي بالرحلة!',
-    tourism_close: 'إغلاق',
-    tourism_refresh: 'تحديث',
-    tourism_title_short: 'الطقس',
-  tourism_quick_note_title: 'معلومة سريعة',
-  tourism_section_subtitle: 'أحوال الطقس الحالية ونصائح السفر المحلية في المنيا',
+      // Tourism info (weather) translations - Arabic
+      tourism_title: 'طقس المنيا',
+      tourism_weather_heading: 'طقس المنيا',
+      tourism_weather_paragraph: 'المنيا تتميز بمناخ صحراوي مع قلة شديدة في الأمطار طوال العام. الصيف جاف وحار للغاية، وتتذبذب درجات الحرارة في المتوسط بين 37°C (99°F) و43°C (109.4°F). أما الشتاء فمعتدل وجاف مع متوسط درجات حرارة يتراوح بين 20°C (69.8°F) و26°C (78.8°F). يونيو هو أحر شهور المحافظة، بينما يناير هو الأبرد.',
+      tourism_best_time_heading: 'أفضل وقت لزيارة المنيا',
+      tourism_best_time_paragraph: 'أفضل وقت لزيارة المنيا هو من أوائل مارس إلى أواخر أبريل أو أوائل أكتوبر. خلال هذا الوقت ستجد طقساً لطيفاً ومناسباً للأنشطة الخارجية. يمكنك أيضاً السفر بين أوائل مايو ومنتصف سبتمبر للأنشطة ذات الطقس الحار. المنيا جميلة أيضاً في الشتاء من أواخر نوفمبر إلى أوائل فبراير.',
+      tourism_what_to_wear_heading: 'ماذا أرتدي في المنيا',
+      tourism_what_to_wear_paragraph: 'إذا سافرت إلى المنيا في الشتاء، احضري بُلُوفرات، بنطلونات أو تنانير ثقيلة، سترة، نظارات شمسية وحذاء رياضي. أما في الصيف فاحملي قُمصان قطنية، جينز، تنانير، أحذية خفيفة، صندل، واقي شمس، ملابس شاطئ ومنشفة.',
+      tourism_quick_note: 'معلومة سريعة: المنيا تتميز بمناخ صحراوي؛ الصيف شديد الحرارة والشتاء لطيف. اختاري الملابس بحسب الموسم واستمتعي بالرحلة!',
+      tourism_close: 'إغلاق',
+      tourism_refresh: 'تحديث',
+      tourism_title_short: 'الطقس',
+      tourism_quick_note_title: 'معلومة سريعة',
+      tourism_section_subtitle: 'أحوال الطقس الحالية ونصائح السفر المحلية في المنيا',
 
       // Attractions
       attractionsTitle: 'اكتشف معالم المنيا السياحية',
@@ -858,7 +876,7 @@ export class I18nService {
       noRestaurantsFound: "لم يتم العثور على مطاعم",
       makeReservation: "إجراء حجز",
       viewMenu: "عرض القائمة",
-  menuUnavailable: 'القائمة غير متوفرة',
+      menuUnavailable: 'القائمة غير متوفرة',
       specialties: "التخصصات",
       restaurantsSubtitle: "عنوان فرعي للمطاعم",
       restaurantsTitle: "عنوان المطعم",
@@ -997,7 +1015,7 @@ export class I18nService {
       chatTitle: 'نفرتيتي',
       online: 'متصل الآن',
       souviners: ' هدايا تذكارية',
-      chatbotNotice : 'إشعار' 
+      chatbotNotice: 'إشعار'
     }
   };
 

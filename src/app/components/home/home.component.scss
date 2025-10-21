@@ -807,3 +807,262 @@
   cursor: pointer;
 }
 
+/* ===== Fancy Favorites Button ===== */
+.fancy-fav {
+  --fav-bg: rgba(255, 255, 255, 0.08);
+  --fav-bg-hover: rgba(255, 255, 255, 0.14);
+  --fav-border: rgba(255, 255, 255, 0.22);
+  --fav-shadow: 0 10px 30px rgba(6, 24, 55, 0.12);
+  --fav-text: #fff;
+  --fav-accent: #ff3b6b;          /* heart accent */
+  --fav-accent-2: #ffa94d;        /* gradient helper */
+  --fav-glow: 0 0 0 0 rgba(255,59,107,0.0);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .75rem 1.1rem;
+  border-radius: 999px;
+  color: var(--fav-text);
+  background: linear-gradient(180deg, var(--fav-bg), rgba(255,255,255,0.02));
+  border: 1px solid var(--fav-border);
+  box-shadow: var(--fav-shadow);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform .2s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
+  isolation: isolate; /* for inner glow */
+}
+
+.fancy-fav::before {
+  /* soft outer ring on hover/active */
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0));
+  z-index: -1;
+  opacity: .6;
+  transition: opacity .25s ease;
+}
+
+.fancy-fav:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(180deg, var(--fav-bg-hover), rgba(255,255,255,0.05));
+  border-color: rgba(255,255,255,0.32);
+  box-shadow: 0 14px 40px rgba(6,24,55,0.18);
+}
+
+.fancy-fav:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 16px rgba(6,24,55,0.18);
+}
+
+/* -------- Heart icon combo (outline + filled stacked) -------- */
+.fancy-fav .fav-icon {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+}
+
+.fancy-fav .fav-icon .material-icons {
+  font-size: 22px;
+  line-height: 1;
+  transition: opacity .25s ease, transform .25s ease, color .25s ease;
+  grid-area: 1/1;
+}
+
+.fancy-fav .fav-icon .outline {
+  opacity: 1;
+  color: #ffffffd1;
+}
+
+.fancy-fav .fav-icon .filled {
+  opacity: 0;
+  color: var(--fav-accent);
+  transform: scale(.6);
+  filter: drop-shadow(0 3px 8px rgba(255,59,107,.35));
+}
+
+/* active state -> show filled heart */
+.fancy-fav.has-count .fav-icon .outline { opacity: 0; transform: scale(.8); }
+.fancy-fav.has-count .fav-icon .filled  { opacity: 1; transform: scale(1); }
+
+/* micro pop on hover */
+.fancy-fav:hover .fav-icon .filled { transform: scale(1.06); }
+
+/* -------- Text -------- */
+.fancy-fav .btn-text {
+  font-weight: 600;
+  letter-spacing: .2px;
+  text-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+
+/* -------- Badge -------- */
+.fancy-fav .favorites-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: radial-gradient(100% 100% at 50% 0%, var(--fav-accent) 0%, #d81b60 80%);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(216,27,96,.35);
+  transform: translate3d(0,0,0);
+  animation: favBadgeEnter .35s ease both;
+}
+@keyframes favBadgeEnter {
+  0% { transform: scale(.6); opacity: 0 }
+  70% { transform: scale(1.15); opacity: 1 }
+  100% { transform: scale(1) }
+}
+
+/* ring pulse when count is present */
+.fancy-fav.has-count::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: var(--fav-glow);
+  animation: favGlow 1.2s ease-out .2s 1 forwards;
+}
+@keyframes favGlow {
+  0%   { box-shadow: 0 0 0 0 rgba(255,59,107,0.0) }
+  70%  { box-shadow: 0 0 0 10px rgba(255,59,107,0.14) }
+  100% { box-shadow: 0 0 0 0 rgba(255,59,107,0.0) }
+}
+
+/* -------- Theming (optional: looks nice on light hero too) -------- */
+:root[data-theme="light"] .fancy-fav {
+  --fav-bg: rgba(255,255,255,0.75);
+  --fav-bg-hover: rgba(255,255,255,0.92);
+  --fav-border: rgba(0,0,0,0.06);
+  --fav-text: #1f2937;
+  --fav-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+:root[data-theme="light"] .fancy-fav .fav-icon .outline { color: #374151; }
+
+/* -------- Accessibility: reduced motion -------- */
+@media (prefers-reduced-motion: reduce) {
+  .fancy-fav,
+  .fancy-fav .fav-icon .material-icons,
+  .fancy-fav .favorites-badge { transition: none !important; animation: none !important; }
+}
+
+/* -------- RTL: keep layout tidy -------- */
+[dir="rtl"] .fancy-fav .favorites-badge {
+  right: auto;
+  left: -6px;
+}
+/* Keyframes reused by all hearts */
+@keyframes favHeartBeat {
+  0%, 100% { transform: scale(1); }
+  25%      { transform: scale(1.3); }
+  50%      { transform: scale(1.1); }
+  75%      { transform: scale(1.25); }
+}
+
+/* ===== Card Heart (floating) ===== */
+.btn-favorite-card {
+  --heart-accent: #ff3b6b;
+  --heart-bg: rgba(255,255,255,0.92);
+  --heart-bg-hover: rgba(255,255,255,0.98);
+  --heart-border: rgba(0,0,0,0.08);
+
+  position: absolute;
+  bottom: 1rem;  /* pin to bottom-right of the image */
+  right: 1rem;
+  top: auto;     /* neutralize any earlier top rules */
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--heart-border);
+  background: var(--heart-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 11; /* above overlays */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  transition: transform .18s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
+
+  /* focus-visible ring for accessibility */
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 3px rgba(255,255,255,0.9),
+      0 0 0 6px rgba(255,59,107,0.35),
+      0 10px 22px rgba(0,0,0,0.18);
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+    background: var(--heart-bg-hover);
+    border-color: rgba(0,0,0,0.12);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+  }
+
+  &:active { transform: translateY(0); }
+
+  .fav-icon {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    display: grid;
+    place-items: center;
+  }
+
+  .material-icons {
+    font-size: 22px;
+    line-height: 1;
+    transition: opacity .25s ease, transform .25s ease, color .25s ease;
+    grid-area: 1/1;
+  }
+
+  .outline {
+    opacity: 1;
+    color: #6b7280;
+  }
+  .filled {
+    opacity: 0;
+    transform: scale(.6);
+    color: var(--heart-accent);
+    filter: drop-shadow(0 3px 8px rgba(255,59,107,.35));
+  }
+
+  /* Active (in favorites): show filled heart + gentle pop */
+  &.active {
+    animation: favHeartBeat .45s ease;
+    .outline { opacity: 0; transform: scale(.8); }
+    .filled  { opacity: 1; transform: scale(1); }
+  }
+
+  /* RTL: keep bottom, swap horizontal side */
+  :host-context([dir="rtl"]) & {
+    right: auto;
+    left: 1rem;
+  }
+}
+
+/* Optional: tighter padding on very small screens */
+@media (max-width: 480px) {
+  .btn-favorite-card { bottom: .75rem; right: .75rem; }
+  :host-context([dir="rtl"]) .btn-favorite-card { left: .75rem; }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .btn-favorite-card,
+  .btn-favorite-card .material-icons { transition: none !important; animation: none !important; }
+}
