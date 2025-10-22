@@ -31,6 +31,10 @@ export class BlogComponent implements OnInit {
   ];
   selectedCategory = 'all';
   hasMorePosts = true;
+  // share popup state
+  activeShareIndex: number | null = null;
+  sharePopupOpen = false;
+  origin = window.location.origin;
 
   constructor(
     public i18nService: I18nService,
@@ -80,6 +84,32 @@ filterByCategory(category: string) {
     console.log('Reading post:', post.id);
     // navigate to blog details route by id
     this.router.navigate(['/blog', post.id]);
+  }
+
+  toggleSharePopup(index: number, event?: MouseEvent) {
+    if (event) event.stopPropagation();
+    if (this.activeShareIndex === index && this.sharePopupOpen) {
+      this.sharePopupOpen = false;
+      this.activeShareIndex = null;
+      return;
+    }
+    this.activeShareIndex = index;
+    this.sharePopupOpen = true;
+  }
+
+  closeSharePopup() {
+    this.sharePopupOpen = false;
+    this.activeShareIndex = null;
+  }
+
+  copyLinkToClipboard(post: BlogPost) {
+    const url = window.location.origin + '/blog/' + post.id;
+    try {
+      navigator.clipboard.writeText(url);
+      alert(this.i18nService.translate('linkCopied') || 'Link copied');
+    } catch (e) {
+      console.warn('Clipboard write failed', e);
+    }
   }
 
   loadMorePosts() {

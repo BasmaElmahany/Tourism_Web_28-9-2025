@@ -1,132 +1,59 @@
-<nav class="navbar" [class.scrolled]="isScrolled" [attr.dir]="i18nService.isRTL() ? 'rtl' : 'ltr'"
+<nav class="navbar"
+  [class.scrolled]="isScrolled"
+  [attr.dir]="i18nService.isRTL() ? 'rtl' : 'ltr'"
   [class.rtl]="i18nService.isRTL()">
+
   <div class="container">
     <div class="nav-content">
+      
+      <!-- Logo -->
       <div class="nav-logo" routerLink="/home">
         <img src="/assets/images/app_icon.png" alt="Minya Tourism" class="logo-icon">
         <span class="logo-text">{{ i18nService.translate('Discover_Minya') }}</span>
       </div>
 
+      <!-- Desktop Navigation Links -->
       <div class="nav-links desktop-nav">
-        <a routerLink="/home" routerLinkActive="active" class="nav-link">
-          <span class="material-icons">home</span>
-          {{ i18nService.translate('home') }}
-        </a>
-        <a routerLink="/attractions" routerLinkActive="active" class="nav-link">
-          <span class="material-icons">place</span>
-          {{ i18nService.translate('attractions') }}
-        </a>
-        <a routerLink="/hotels" routerLinkActive="active" class="nav-link">
-          <span class="material-icons">hotel</span>
-          {{ i18nService.translate('hotels') }}
-        </a>
-        <a routerLink="/restaurants" routerLinkActive="active" class="nav-link">
-          <span class="material-icons">restaurant</span>
-          {{ i18nService.translate('restaurants') }}
-        </a>
-        <!-- <a routerLink="/events" routerLinkActive="active" class="nav-link">
-          <span class="material-icons">event</span>
-          {{ i18nService.translate('events') }} 
-        </a> -->
-        <!-- <a routerLink="/itineraries" routerLinkActive="active" class="nav-link">
-          <span class="material-icons">map</span>
-          {{ i18nService.translate('itineraries') }}
-        </a>-->
-        <a routerLink="/blog" routerLinkActive="active" class="nav-link">
-          <span class="material-icons">article</span>
-          {{ i18nService.translate('blog') }}
-        </a>
-        <a routerLink="/tourguides" routerLinkActive="active" class="nav-link">
-          <span class="material-icons">person</span>
-          {{ i18nService.translate('tourguide') }}
-        </a>
-        <a routerLink="/photographers" routerLinkActive="active" class="nav-link">
-          <span class="material-icons">camera</span>
-          {{ i18nService.translate('photographers') }}
-        </a>
-        <!-- Weather quick link - scrolls to Weather section on Home -->
-        <a class="nav-link weather-link" (click)="scrollToWeather()" title="{{ i18nService.translate('tourism_title') || 'Weather' }}">
-          <span class="material-icons">wb_sunny</span>
-          {{ i18nService.translate('tourism_title_short') || (i18nService.translate('tourism_title') || 'Weather') }}
-        </a>
-        <a routerLink="/souviners" routerLinkActive="active" class="nav-link">
-          <span class="material-icons">card_giftcard</span>
-          {{ i18nService.translate('souviners') }}
-        </a>
+        <ng-container *ngIf="!i18nService.isRTL(); else rtlNav">
+          <!-- LTR ORDER -->
+          <a routerLink="/home" routerLinkActive="active" class="nav-link"><span class="material-icons">home</span>{{ i18nService.translate('home') }}</a>
+          <a routerLink="/attractions" routerLinkActive="active" class="nav-link"><span class="material-icons">place</span>{{ i18nService.translate('attractions') }}</a>
+          <a routerLink="/hotels" routerLinkActive="active" class="nav-link"><span class="material-icons">hotel</span>{{ i18nService.translate('hotels') }}</a>
+          <a routerLink="/restaurants" routerLinkActive="active" class="nav-link"><span class="material-icons">restaurant</span>{{ i18nService.translate('restaurants') }}</a>
+          <a routerLink="/blog" routerLinkActive="active" class="nav-link"><span class="material-icons">article</span>{{ i18nService.translate('blog') }}</a>
+          <a routerLink="/tourguides" routerLinkActive="active" class="nav-link"><span class="material-icons">person</span>{{ i18nService.translate('tourguide') }}</a>
+          <a routerLink="/photographers" routerLinkActive="active" class="nav-link"><span class="material-icons">camera</span>{{ i18nService.translate('photographers') }}</a>
+          <a class="nav-link weather-link" (click)="scrollToWeather()"><span class="material-icons">wb_sunny</span>{{ i18nService.translate('tourism_title_short') || 'الطقس' }}</a>
+          <a routerLink="/souviners" routerLinkActive="active" class="nav-link"><span class="material-icons">card_giftcard</span>{{ i18nService.translate('souviners') }}</a>
+          <a routerLink="/services" routerLinkActive="active" class="nav-link"><span class="material-icons">support</span>{{ i18nService.translate('services') }}</a>
+        </ng-container>
 
-        <a routerLink="/services" routerLinkActive="active" class="nav-link">
-          <span class="material-icons">support</span>
-          {{ i18nService.translate('services') }}
-        </a>
-
+        <!-- RTL ORDER -->
+        <ng-template #rtlNav>
+          <a routerLink="/home" routerLinkActive="active" class="nav-link"><span class="material-icons">home</span>{{ i18nService.translate('home') }}</a>
+          <a routerLink="/attractions" routerLinkActive="active" class="nav-link"><span class="material-icons">place</span>{{ i18nService.translate('attractions') }}</a>
+          <a routerLink="/hotels" routerLinkActive="active" class="nav-link"><span class="material-icons">hotel</span>{{ i18nService.translate('hotels') }}</a>
+          <a routerLink="/restaurants" routerLinkActive="active" class="nav-link"><span class="material-icons">restaurant</span>{{ i18nService.translate('restaurants') }}</a>
+          <a routerLink="/blog" routerLinkActive="active" class="nav-link"><span class="material-icons">article</span>{{ i18nService.translate('blog') }}</a>
+          <a routerLink="/tourguides" routerLinkActive="active" class="nav-link"><span class="material-icons">person</span>{{ i18nService.translate('tourguide') }}</a>
+          <a routerLink="/photographers" routerLinkActive="active" class="nav-link"><span class="material-icons">camera</span>{{ i18nService.translate('photographers') }}</a>
+          <a class="nav-link weather-link" (click)="scrollToWeather()"><span class="material-icons">wb_sunny</span>{{ i18nService.translate('tourism_title_short') || 'الطقس' }}</a>
+          <a routerLink="/souviners" routerLinkActive="active" class="nav-link"><span class="material-icons">card_giftcard</span>{{ i18nService.translate('souviners') }}</a>
+          <a routerLink="/services" routerLinkActive="active" class="nav-link"><span class="material-icons">support</span>{{ i18nService.translate('services') }}</a>
+        </ng-template>
       </div>
 
+      <!-- Language Switcher -->
       <div class="nav-actions">
         <app-language-switcher></app-language-switcher>
       </div>
 
+      <!-- Mobile Menu -->
       <button class="mobile-menu-btn" (click)="toggleMobileMenu()" [class.active]="isMobileMenuOpen">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
       </button>
-    </div>
-
-    <div class="mobile-nav" [class.open]="isMobileMenuOpen">
-      <div class="mobile-nav-content">
-        <div class="mobile-language-switcher">
-          <app-language-switcher></app-language-switcher>
-        </div>
-
-        <a routerLink="/home" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
-          <span class="material-icons">home</span>
-          {{ i18nService.translate('home') }}
-        </a>
-        <a routerLink="/attractions" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
-          <span class="material-icons">place</span>
-          {{ i18nService.translate('attractions') }}
-        </a>
-        <a routerLink="/hotels" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
-          <span class="material-icons">hotel</span>
-          {{ i18nService.translate('hotels') }}
-        </a>
-        <a routerLink="/restaurants" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
-          <span class="material-icons">restaurant</span>
-          {{ i18nService.translate('restaurants') }}
-        </a>
-        <a routerLink="/events" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
-          <span class="material-icons">event</span>
-          {{ i18nService.translate('events') }}
-        </a>
-        <a routerLink="/itineraries" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
-          <span class="material-icons">map</span>
-          {{ i18nService.translate('itineraries') }}
-        </a>
-        <a routerLink="/blog" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
-          <span class="material-icons">article</span>
-          {{ i18nService.translate('blog') }}
-        </a>
-        <a routerLink="/tourguides" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
-          <span class="material-icons">tourguide</span>
-          {{ i18nService.translate('tourguide') }}
-        </a>
-        <a routerLink="/souviners" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
-          <span class="material-icons">card_giftcard</span>
-          {{ i18nService.translate('souviners') }}
-        </a>
-        <a routerLink="/visitor-info" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
-          <span class="material-icons">info</span>
-          {{ i18nService.translate('visitorInfo') }}
-        </a>
-        <a routerLink="/map" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
-          <span class="material-icons">explore</span>
-          {{ i18nService.translate('map') }}
-        </a>
-        <a class="mobile-nav-link" (click)="scrollToWeather(); closeMobileMenu()">
-          <span class="material-icons">wb_sunny</span>
-          {{ i18nService.translate('tourism_title_short') || (i18nService.translate('tourism_title') || 'Weather') }}
-        </a>
-      </div>
     </div>
   </div>
 </nav>
