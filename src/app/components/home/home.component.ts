@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   currentSlide = 0;
   favoritesCount = 0;
   playingIndex: number | null = null;
-showChat = false;
+  showChat = false;
   // slider state for bloggers videos
   videoSlideIndex = 0;
   private sliderIntervalId: any = null;
