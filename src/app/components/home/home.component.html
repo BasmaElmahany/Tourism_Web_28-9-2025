@@ -13,9 +13,7 @@
         <div class="hero-text fade-in">
           <h1 class="hero-title">{{ i18n.translate('heroTitle') || 'Discover Ancient Egypt in Minya' }}</h1>
           <p class="hero-subtitle">
-            {{ i18n.translate('heroSubtitle') || 'Explore the hidden treasures of Minya, where ancient history meets the
-            timeless beauty of the Nile River. Journey through millennia of Egyptian heritage and create unforgettable
-            memories.' }}
+            {{ i18n.translate('heroSubtitle') || 'Explore the hidden treasures of Minya, where ancient history meets the timeless beauty of the Nile River. Journey through millennia of Egyptian heritage and create unforgettable memories.' }}
           </p>
           <div class="hero-actions">
             <a routerLink="/attractions" class="btn btn-primary">
@@ -230,7 +228,14 @@
       </div>
     </div>
   </section>
+  <section id="tourguide">
 
+<app-tourguide></app-tourguide>
+  </section>
+
+  <section id="photographer">
+<app-photographer></app-photographer>
+</section>
   <!-- Weather widget (moved into Home page) -->
   <section id="weather" class="weather-section">
     <div class="container">

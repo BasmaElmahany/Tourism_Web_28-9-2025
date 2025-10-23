@@ -18,6 +18,8 @@ import { tourGuides } from '../../data/tourguide';
 import { FavoritesDrawerComponent } from '../favorites-drawer/favorites-drawer.component';
 import { ChatbotComponent } from '../chatbot/chatbot.component';
 import { WeatherComponent } from '../weather/weather.component';
+import { TourguideComponent } from '../tourguide/tourguide.component';
+import { PhotographerComponent } from '../photographer/photographer.component';
 
 export interface StatItem {
   labelKey: string;
@@ -42,13 +44,16 @@ interface Blogger {
     HttpClientModule,
     FavoritesDrawerComponent,
     ChatbotComponent,
-    WeatherComponent
+    WeatherComponent,TourguideComponent
+    ,PhotographerComponent
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(FavoritesDrawerComponent) favoritesDrawer!: FavoritesDrawerComponent;
+
+
   currentBlogSlide = 0;
   featuredAttractions: Attraction[] = [];
   latestBlogPosts: BlogPost[] = [];

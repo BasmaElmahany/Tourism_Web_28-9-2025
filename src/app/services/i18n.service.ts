@@ -336,6 +336,7 @@ export interface TranslationKeys {
   copyLinkPrompt : string ;
   goToSlide: string;
   play: string;
+  view : string;
 }
 
 @Injectable({
@@ -364,6 +365,7 @@ export class I18nService {
 
   private readonly translations: Record<string, TranslationKeys> = {
     en: {
+      view: 'View',
       goToSlide: 'Go To Slide',
        linkCopied :'Link Copied',
        copyLinkPrompt : 'Copy Link' ,
@@ -712,6 +714,7 @@ export class I18nService {
       sitemap: 'Sitemap'
     },
     ar: {
+      view :'عرض',
       play :'تشغيل',
       goToSlide: 'الذهاب الي الصفحة',
       linkCopied :'تم نسخ الرابط',

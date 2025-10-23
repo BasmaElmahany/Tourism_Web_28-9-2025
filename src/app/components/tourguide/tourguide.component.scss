@@ -38,10 +38,19 @@
 		display: block;
 		transform: scale(1.05);
 		transition: transform 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-		
+		animation: slowZoom 12s ease-in-out infinite alternate;
 		.page-header:hover & {
 			transform: scale(1.1);
 		}
+		@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
 	}
 	
 	.header-overlay {
