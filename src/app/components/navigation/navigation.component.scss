@@ -4,19 +4,20 @@
 .navbar {
   position: fixed;
   inset-block-start: 0;
-  inset-inline: 0; // يضمن الامتداد من الحافة للحافة (L/R or Start/End)
+  inset-inline: 0; 
   z-index: 1000;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   border-block-end: 1px solid rgba(0, 0, 0, 0.08);
   transition: background 0.3s ease, box-shadow 0.3s ease;
-.container {
-        // يمكنك إزالة الهوامش/الحشوات الافتراضية هنا إذا كانت موجودة
-        padding-inline: 0; 
-        margin-inline: auto; // للتأكد من توسيطه
-        width: 100%; // تأكد من أنه يأخذ العرض بالكامل
-        max-width: 100%; // تأكد من أنه لا يتقيد بعرض ثابت
-    }
+  
+  .container {
+    padding-inline: 0; 
+    margin-inline: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  
   &.scrolled {
     background: rgba(255, 255, 255, 0.98);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.12);
@@ -26,7 +27,9 @@
     display: flex;
     align-items: center;
     padding-block: 0.75rem;
-    justify-content: flex-start; // يبدأ من اليسار في LTR
+    /* ⬅️ LTR/Default: فصل العناصر (الشعار يمين، الإجراءات يسار) */
+    justify-content: space-between; 
+    flex-direction: row; 
     padding-inline: 1.5rem; 
     width: 100%;
   }
@@ -52,12 +55,15 @@
     }
   }
 
-  /* Desktop Navigation */
+  /* Desktop Navigation - LTR Default */
   .desktop-nav {
     display: flex;
     align-items: center;
     gap: 1.75rem;
-    margin-inline-start: 2rem; // يدفع الروابط بعيداً عن الشعار في LTR
+    /* ⬅️ LTR/Default: توسيط الروابط بين الشعار والإجراءات */
+    margin-inline: auto; 
+    flex-grow: 1; 
+    justify-content: center; 
 
     .nav-link {
       display: inline-flex;
@@ -80,7 +86,7 @@
         background: rgba(26, 54, 93, 0.08);
       }
     }
-
+    
     .weather-link {
       display: inline-flex;
       align-items: center;
@@ -102,17 +108,17 @@
     }
   }
 
-  /* Language & Actions */
+  /* Language & Actions - LTR Default */
   .nav-actions {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-inline-start: auto; // يدفع الإجراءات لأقصى اليمين في LTR
+    /* ❌ تمت إزالة margin-inline-start: auto; هنا، الاعتماد على space-between */
   }
 
   /* Mobile Menu Button */
   .mobile-menu-btn {
-    display: none; // مخفي في وضع سطح المكتب
+    display: none; 
     flex-direction: column;
     justify-content: center;
     width: 30px;
@@ -150,7 +156,7 @@
     inset-inline: 0;
     background: var(--white);
     border-block-start: 1px solid rgba(0, 0, 0, 0.1);
-    transform: translateY(-100%); // إخفاء أعلى الـ Nav
+    transform: translateY(-100%); 
     opacity: 0;
     visibility: hidden;
     transition: transform 0.3s ease, opacity 0.3s ease;
@@ -165,7 +171,7 @@
     .mobile-nav-content {
       padding-block: 0.5rem;
     }
-
+    
     .mobile-language-switcher {
       padding: 1rem;
       border-block-end: 1px solid rgba(0, 0, 0, 0.1);
@@ -196,50 +202,55 @@
   }
 
   /* =================================================================
-    RTL Overrides (Start from Right)
+    RTL Overrides (Start from Right) - الحل النهائي والمنطقي
     ================================================================= */
   &:dir(rtl) {
- 
+    /* 💥 هذا التداخل يحل خطأ البناء */
+
+    // 1. **القاعدة الأهم**: عكس ترتيب عناصر الشريط الرئيسي بقوة
+    .nav-content {
+      flex-direction: row-reverse !important; 
+      justify-content: space-between !important; 
+    }
+    
+    // 2. الروابط تبقى في المنتصف بشكل طبيعي 
     .desktop-nav {
-      margin-inline-end: auto;
-      margin-inline-start: 0; // إلغاء مسافة الـ 2rem لـ LTR
+      margin-inline: auto !important; 
     }
 
+    // 3. الإجراءات والـ Actions تذهب إلى أقصى اليسار تلقائياً
     .nav-actions {
-        margin-inline-end: auto;
-      margin-inline-start: 0; // إلغاء مسافة الـ 2rem لـ LTR
+      /* لا حاجة لتعديل هنا */
     }
-
+    
+    // 4. عكس ترتيب الأيقونة والنص داخل الروابط
     .nav-link,
     .mobile-nav-link {
-      justify-content: flex-end;
-      text-align: end;
+      justify-content: flex-start;
+      text-align: start;
 
       .material-icons {
-        margin-inline-start: 0.25rem;
+        margin-inline-start: 0.5rem; 
         margin-inline-end: 0;
-        order: 1; // يضع الأيقونة على اليسار
+        order: 1; // يضع الأيقونة على اليسار (نهاية الرابط)
       }
     }
-
+    
+    // 5. قائمة الموبايل تظل كـ Dropdown
     .mobile-nav {
-      inset-inline: auto 0;
-      transform: translateX(100%); // إخفاء القائمة على اليمين
-
+      inset-inline: 0; 
+      transform: translateY(-100%); 
+      
       &.open {
-        transform: translateX(0); // إظهار القائمة من اليمين
-        opacity: 1;
-        visibility: visible;
+        transform: translateY(0);
       }
     }
   }
-}
 
-/* =================================================================
-  Responsive
-  ================================================================= */
-@media (max-width: 1024px) {
-  .navbar {
+  /* =================================================================
+    Responsive
+    ================================================================= */
+  @media (max-width: 1024px) {
     .desktop-nav {
       gap: 1.25rem;
     }
@@ -249,26 +260,23 @@
       padding: 0.5rem 0.75rem;
     }
   }
-}
 
-@media (max-width: 768px) {
-  .navbar {
+  @media (max-width: 768px) {
     /* Hide desktop menu elements */
     .desktop-nav,
     .nav-actions {
       display: none;
-      margin-inline-start: auto;
+      /* ❌ إزالة margin-inline-start: auto; الذي كان يظهر هنا */
     }
     .nav-content {
-                // قد تحتاج لتقليل الحشوة على الأجهزة المحمولة
-                padding-inline: 1rem; 
-            }
+      padding-inline: 1rem; 
+    }
 
     /* Show mobile menu button */
     .mobile-menu-btn {
       display: flex;
     }
-
+    
     /* Adjust logo size for mobile */
     .nav-logo {
       .logo-text {
@@ -281,4 +289,141 @@
       }
     }
   }
+}
+/* جزء من navigation.component.scss للتأكيد */
+.navbar {
+  /* ... باقي الكود ... */
+
+  .nav-logo {
+    order: 1; /* LTR/Default: 1 */
+    /* ... */
+  }
+
+  .desktop-nav {
+    order: 2; /* LTR/Default: 2 */
+    /* ... */
+  }
+
+  .nav-actions {
+    order: 3; /* LTR/Default: 3 */
+    /* ... */
+  }
+
+  /* =================================================================
+    RTL Overrides - الحل الأقوى باستخدام order
+    ================================================================= */
+  &:dir(rtl) {
+    
+    /* 1. عكس ترتيب العناصر الرئيسية باستخدام order */
+    .nav-logo {
+      order: 3; /* ⬅️ RTL: الشعار يذهب لليمين (النهاية) */
+    }
+    
+    .nav-actions {
+      order: 1; /* ⬅️ RTL: الإجراءات تذهب لليسار (البداية) */
+    }
+
+    .desktop-nav {
+      order: 2; /* الروابط تبقى في الوسط */
+    }
+    
+    // ... (باقي كود RTL لـ nav-link)
+  }
+}
+/* =================================================================
+  Navbar Styling (LTR Default)
+  ================================================================= */
+.navbar {
+  /* ... باقي التنسيقات العامة ... */
+
+  .nav-content {
+    display: flex;
+    /* ... */
+    justify-content: space-between; 
+    flex-direction: row; 
+    /* ... */
+  }
+
+  .nav-logo {
+    order: 1; /* ⬅️ LTR/Default: الشعار أولاً */
+    /* ... */
+  }
+
+  .desktop-nav {
+    order: 2; /* ⬅️ LTR/Default: الروابط في الوسط */
+    /* ... */
+  }
+
+  .nav-actions {
+    order: 3; /* ⬅️ LTR/Default: الإجراءات أخيراً */
+    /* ... */
+  }
+
+  /* ... Mobile Nav Styling ... */
+
+  /* =================================================================
+    RTL Overrides - يجب أن يكون هذا الجزء دقيقاً جداً
+    ================================================================= */
+  &:dir(rtl) {
+    
+    // **1. عكس ترتيب العناصر الرئيسية باستخدام order:**
+    // الإجراءات (درجة الحرارة، الخدمات) تذهب للبداية (اليسار)
+    .nav-actions {
+      order: 1; 
+      // في حالة الموبايل، زر القائمة يجب أن يذهب لليسار (أقصى اليسار في RTL Flow)
+      .mobile-menu-btn {
+        margin-inline-start: 0;
+      }
+    }
+    
+    // الشعار (اكتشف المنيا) يذهب للنهاية (اليمين)
+    .nav-logo {
+      order: 3;
+    }
+    
+    // الروابط تبقى في الوسط
+    .desktop-nav {
+      order: 2;
+    }
+    
+    // **2. عكس ترتيب الأيقونة والنص داخل الروابط**
+    .nav-link,
+    .mobile-nav-link {
+      /* ... (باقي كود انعكاس الأيقونة) ... */
+      .material-icons {
+        order: 1; // يضع الأيقونة على اليسار (نهاية الرابط)
+      }
+    }
+    
+    /* 3. قائمة الموبايل تظل كـ Dropdown */
+    .mobile-nav {
+      inset-inline: 0;
+    }
+  }
+
+  /* ... باقي استعلامات @media ... */
+}
+.navbar {
+  /* ... */
+
+  /* =================================================================
+    RTL Overrides - يجب أن يكون هذا الجزء دقيقاً جداً
+    ================================================================= */
+  &:dir(rtl) {
+    
+    // ... (تعديلات أخرى) ...
+
+    // الشعار (اكتشف المنيا) يذهب للنهاية (اليمين)
+    .nav-logo {
+      order: 3;
+      /* أضف السطر التالي هنا */
+      display: flex; /* تأكد من أنها flex */
+      flex-direction: row; /* هذا يجبر الترتيب على أن يكون LTR داخل الشعار */
+      /* لا حاجة لـ row-reverse */
+    }
+    
+    // ... (باقي الكود) ...
+  }
+
+  /* ... */
 }

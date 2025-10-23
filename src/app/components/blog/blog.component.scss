@@ -88,22 +88,7 @@
 }
 
 /* Share popup styles */
-.share-wrapper { position: relative; display: inline-block; }
-.share-popup {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  background: var(--white);
-  border: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  border-radius: 8px;
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-width: 160px;
-  z-index: 50;
-}
+
 .share-item { display:flex; align-items:center; gap:8px; padding:8px; text-decoration:none; color:var(--text-primary); border-radius:6px; background: transparent; border:none; cursor:pointer; }
 .share-item:hover { background: rgba(26,54,93,0.04); }
 
@@ -438,3 +423,329 @@
     font-size: 0.875rem;
   }
 }
+
+/* wrapper يضمن أن البوب-اب مرتبط بالزر */
+.share-wrapper { position: relative; display: inline-block; }
+
+/* popup يظهر فوق الزر */
+.share-popup {
+  position: absolute;
+  bottom: calc(100% + 8px); /* يظهر فوق الزر */
+  right: 0;
+  background: var(--white);
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 12px 32px rgba(6,24,55,0.16);
+  border-radius: 10px;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;   /* عناصر أفقية (التالي) */
+  gap: 8px;
+  align-items: center;
+  white-space: nowrap;
+  min-width: 180px;
+  max-width: min(92vw, 560px);
+  z-index: 9999;
+  transform-origin: bottom right;
+  animation: popUp .14s cubic-bezier(.2,.9,.3,1) both;
+  overflow: auto; /* يسمح بالتمرير أفقيًا لو زاد العدد */
+}
+
+/* سهم يشير للزر */
+.share-popup::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  bottom: -7px;
+  width: 14px;
+  height: 14px;
+  background: var(--white);
+  transform: rotate(45deg);
+  border-left: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  box-shadow: -2px 2px 6px rgba(6,24,55,0.04);
+  z-index: -1;
+}
+
+/* flip للـ RTL */
+[dir="rtl"] .share-popup {
+  right: auto;
+  left: 0;
+  transform-origin: bottom left;
+}
+[dir="rtl"] .share-popup::after {
+  right: auto;
+  left: 18px;
+}
+
+/* كل عنصر شير يصبح عمودي داخليًا (أيقونة فوق اللابل) لكن العناصر نفسها في صف */
+.share-item {
+  display: inline-flex;
+  flex-direction: column; /* أيقونة فوق، label تحت داخل كل بطاقة */
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px;
+  min-width: 72px;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-primary);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform .12s ease, background .12s ease;
+}
+.share-item .icon { display: inline-flex; align-items: center; justify-content: center; }
+.share-item .icon svg,
+.share-item .material-icons { font-size: 18px; width: 18px; height: 18px; }
+
+/* hover effect */
+.share-item:hover, .share-item:focus {
+  background: rgba(26,54,93,0.04);
+  transform: translateY(-3px);
+}
+
+/* small screens: اجعل البوب-أب يلتف */
+@media (max-width: 520px) {
+  .share-popup {
+    bottom: auto;
+    top: calc(100% + 8px); /* لو المساحة فوق صغيرة نعرضه تحت */
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+    flex-wrap: wrap;
+    gap: 6px;
+    max-width: 92vw;
+  }
+  .share-popup::after { top: -7px; bottom: auto; left: 50%; transform: translateX(-50%) rotate(45deg); }
+}
+/* =========================
+   BLOG PAGE - SHARE FIXES
+   ========================= */
+
+/* global helpers to reduce clipping by ancestor elements
+   (use !important carefully — here it's intentional to override restrictive libs) */
+.blog-card,
+.blog-content,
+.container,
+.blog-grid,
+.page-header,
+.header-background,
+.header-content {
+  overflow: visible !important;
+  z-index: 0;
+}
+
+/* wrapper anchors popup to the trigger */
+.share-wrapper {
+  position: relative;
+  display: inline-block;
+  z-index: 1100; /* above card but below potential global overlays */
+}
+
+/* popup: prefer absolute positioned above the trigger.
+   display row of items, horizontal scroll if too many */
+.share-popup {
+  position: absolute;
+  bottom: calc(100% + 10px); /* above trigger */
+  right: 0;
+  background: var(--white);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  white-space: nowrap;
+  min-width: 220px;
+  max-width: min(92vw, 760px);
+  z-index: 15000; /* very high to beat stacking contexts inside cards */
+  box-shadow: 0 18px 48px rgba(6,24,55,0.18);
+  transform-origin: bottom right;
+  animation: popUp .14s cubic-bezier(.2,.9,.3,1) both;
+  overflow-x: auto;                 /* horizontal scroll if needed */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+/* arrow pointing to the trigger */
+.share-popup::after {
+  content: "";
+  position: absolute;
+  right: 22px;
+  bottom: -8px;
+  width: 14px;
+  height: 14px;
+  background: var(--white);
+  transform: rotate(45deg);
+  border-left: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  box-shadow: -2px 2px 6px rgba(6,24,55,0.04);
+  z-index: -1;
+}
+
+/* RTL flip */
+[dir="rtl"] .share-popup {
+  right: auto;
+  left: 0;
+  transform-origin: bottom left;
+}
+[dir="rtl"] .share-popup::after {
+  right: auto;
+  left: 22px;
+}
+
+/* items: vertical layout inside each card, but cards sit in a row */
+.share-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  min-width: 72px;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-primary);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform .12s ease, background .12s ease;
+  flex: 0 0 auto; /* don't stretch; keep intrinsic width */
+}
+.share-item .icon,
+.share-item .material-icons { font-size: 18px; width: 18px; height: 18px; display:inline-flex; align-items:center; justify-content:center; }
+.share-item .label { font-size: .82rem; font-weight:700; }
+
+/* hover & focus */
+.share-item:hover, .share-item:focus {
+  background: rgba(6,24,55,0.04);
+  transform: translateY(-4px);
+  outline: none;
+}
+
+/* responsive: on small screens wrap and show under the button */
+@media (max-width: 520px) {
+  .share-popup {
+    bottom: auto;
+    top: calc(100% + 8px); /* fallback below trigger */
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 92vw;
+  }
+  .share-popup::after {
+    top: -8px;
+    bottom: auto;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+  }
+}
+
+/* animation */
+@keyframes popUp {
+  from { opacity: 0; transform: translateY(6px) scale(.99); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Fixed fallback: if ancestor clipping still occurs, TS can add this class to render fixed */
+.share-popup--fixed {
+  position: fixed !important;
+  left: auto !important;
+  right: 12px !important;
+  top: 12vh !important;
+  bottom: auto !important;
+  transform: none !important;
+  max-width: 92vw !important;
+  z-index: 20000 !important;
+  box-shadow: 0 28px 80px rgba(6,24,55,0.22) !important;
+}
+
+/* Accessibility: focus ring for keyboard users */
+.share-item:focus { outline: 3px solid rgba(59,130,246,0.18); outline-offset: 2px; }
+
+/* visual nicety: hide scrollbar visuals but keep scrolling (WebKit) */
+.share-popup::-webkit-scrollbar { height: 8px; }
+.share-popup::-webkit-scrollbar-thumb { background: rgba(6,24,55,0.08); border-radius: 999px; }
+
+/* ensure share toggle sits above overlay arrow */
+.share-wrapper .share-toggle { position: relative; z-index: 16000; }
+
+/* share wrapper + popup (fixed positioning is applied via ngStyle) */
+.share-wrapper {
+  position: relative;
+  display: inline-block;
+  z-index: 1100;
+}
+
+/* base visuals — position may be overridden by inline styles (fixed coords) */
+.share-popup {
+  position: absolute; /* kept as fallback; ngStyle will usually set position: fixed */
+  right: 0;
+  background: var(--white);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-width: 220px;
+  max-width: min(92vw, 760px);
+  z-index: 20000;
+  box-shadow: 0 18px 48px rgba(6,24,55,0.18);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* arrow kept for absolute mode only (when using fixed we don't show arrow) */
+.share-popup::after {
+  content: "";
+  position: absolute;
+  right: 22px;
+  bottom: -8px;
+  width: 14px;
+  height: 14px;
+  background: var(--white);
+  transform: rotate(45deg);
+  border-left: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  box-shadow: -2px 2px 6px rgba(6,24,55,0.04);
+  z-index: -1;
+}
+
+/* hide arrow when using fixed (we add inline transform: none) */
+.share-popup[style*="position: fixed"]::after {
+  display: none;
+}
+
+.share-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  min-width: 72px;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-primary);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform .12s ease, background .12s ease;
+  flex: 0 0 auto;
+}
+.share-item .material-icons,
+.share-item .icon svg { font-size: 18px; width: 18px; height: 18px; display:inline-flex; align-items:center; justify-content:center; }
+.share-item .label { font-size: .82rem; font-weight:700; }
+
+.share-item:hover { background: rgba(6,24,55,0.04); transform: translateY(-4px); }
+
+/* small screens: wrap below button */
+@media (max-width: 520px) {
+  .share-popup { left: 50% !important; transform: translateX(-50%) !important; top: auto !important; bottom: auto !important; max-width: 92vw; }
+  .share-popup::after { display: none; }
+}
+
+/* small visual tweaks */
+.share-wrapper .share-toggle { position: relative; z-index: 21000; }
