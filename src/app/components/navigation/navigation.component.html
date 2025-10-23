@@ -30,17 +30,17 @@
 
         <!-- RTL ORDER -->
         <ng-template #rtlNav>
-          <a routerLink="/home" routerLinkActive="active" class="nav-link"><span class="material-icons">home</span>{{ i18nService.translate('home') }}</a>
-          <a routerLink="/attractions" routerLinkActive="active" class="nav-link"><span class="material-icons">place</span>{{ i18nService.translate('attractions') }}</a>
-          <a routerLink="/hotels" routerLinkActive="active" class="nav-link"><span class="material-icons">hotel</span>{{ i18nService.translate('hotels') }}</a>
-          <a routerLink="/restaurants" routerLinkActive="active" class="nav-link"><span class="material-icons">restaurant</span>{{ i18nService.translate('restaurants') }}</a>
-          <a routerLink="/blog" routerLinkActive="active" class="nav-link"><span class="material-icons">article</span>{{ i18nService.translate('blog') }}</a>
-          <a routerLink="/tourguides" routerLinkActive="active" class="nav-link"><span class="material-icons">person</span>{{ i18nService.translate('tourguide') }}</a>
-          <a routerLink="/photographers" routerLinkActive="active" class="nav-link"><span class="material-icons">camera</span>{{ i18nService.translate('photographers') }}</a>
-          <a class="nav-link weather-link" (click)="scrollToWeather()"><span class="material-icons">wb_sunny</span>{{ i18nService.translate('tourism_title_short') || 'الطقس' }}</a>
-          <a routerLink="/souviners" routerLinkActive="active" class="nav-link"><span class="material-icons">card_giftcard</span>{{ i18nService.translate('souviners') }}</a>
-          <a routerLink="/services" routerLinkActive="active" class="nav-link"><span class="material-icons">support</span>{{ i18nService.translate('services') }}</a>
-        </ng-template>
+  <a routerLink="/services" routerLinkActive="active" class="nav-link"><span class="material-icons">support</span>{{ i18nService.translate('services') }}</a>
+  <a routerLink="/souviners" routerLinkActive="active" class="nav-link"><span class="material-icons">card_giftcard</span>{{ i18nService.translate('souviners') }}</a>
+  <a class="nav-link weather-link" (click)="scrollToWeather()"><span class="material-icons">wb_sunny</span>{{ i18nService.translate('tourism_title_short') || 'الطقس' }}</a>
+  <a routerLink="/photographers" routerLinkActive="active" class="nav-link"><span class="material-icons">camera</span>{{ i18nService.translate('photographers') }}</a>
+  <a routerLink="/tourguides" routerLinkActive="active" class="nav-link"><span class="material-icons">person</span>{{ i18nService.translate('tourguide') }}</a>
+  <a routerLink="/blog" routerLinkActive="active" class="nav-link"><span class="material-icons">article</span>{{ i18nService.translate('blog') }}</a>
+  <a routerLink="/restaurants" routerLinkActive="active" class="nav-link"><span class="material-icons">restaurant</span>{{ i18nService.translate('restaurants') }}</a>
+  <a routerLink="/hotels" routerLinkActive="active" class="nav-link"><span class="material-icons">hotel</span>{{ i18nService.translate('hotels') }}</a>
+  <a routerLink="/attractions" routerLinkActive="active" class="nav-link"><span class="material-icons">place</span>{{ i18nService.translate('attractions') }}</a>
+  <a routerLink="/home" routerLinkActive="active" class="nav-link"><span class="material-icons">home</span>{{ i18nService.translate('home') }}</a>
+</ng-template>
       </div>
 
       <!-- Language Switcher -->
