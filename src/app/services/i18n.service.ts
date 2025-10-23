@@ -77,6 +77,15 @@ export interface TranslationKeys {
   newsletter: string;
   newsletterDesc: string;
   subscribe: string;
+  footerDescription: string;
+  footerExploreTitle: string;
+  footerInformationTitle: string;
+  footerContactTitle: string;
+  footerDownloadTitle: string;
+  footerDownloadFor: string;
+  footerDownloadPlatform: string;
+  footerCopyright: string;
+  sitemap: string;
 
   // Attraction Details
   aboutAttraction: string;
@@ -690,6 +699,17 @@ export class I18nService {
       souviners: 'Souviners',
       Restaurant : 'Restaurant',
       play :'Play'
+      ,
+      // Footer strings
+      footerDescription: 'Discover the hidden treasures of Minya, Egypt. Explore ancient attractions, rich culture, and unforgettable experiences along the Nile River.',
+      footerExploreTitle: 'Explore',
+      footerInformationTitle: 'Information',
+      footerContactTitle: 'Contact Info',
+      footerDownloadTitle: 'Download Our App',
+      footerDownloadFor: 'Download for',
+      footerDownloadPlatform: 'Android & iOS',
+      footerCopyright: '© 2024 Minya Tourism. All rights reserved.',
+      sitemap: 'Sitemap'
     },
     ar: {
       play :'تشغيل',
@@ -1022,6 +1042,17 @@ export class I18nService {
       online: 'متصل الآن',
       souviners: ' هدايا تذكارية',
       chatbotNotice: 'إشعار'
+    ,
+    // Footer strings - Arabic
+    footerDescription: 'اكتشف الكنوز الخفية في المنيا، مصر. استكشف معالم أثرية، ثقافة غنية، وتجارب لا تُنسى على طول نهر النيل.',
+    footerExploreTitle: 'استكشف',
+    footerInformationTitle: 'معلومات',
+    footerContactTitle: 'معلومات الاتصال',
+    footerDownloadTitle: 'حمّل تطبيقنا',
+    footerDownloadFor: 'تحميل لـ',
+    footerDownloadPlatform: 'أندرويد و iOS',
+    footerCopyright: '© 2024 سياحة المنيا. كل الحقوق محفوظة.',
+    sitemap: 'خريطة الموقع'
     }
   };
 

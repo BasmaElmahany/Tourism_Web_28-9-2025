@@ -7,11 +7,10 @@
         <div class="footer-section">
           <div class="footer-logo">
             <img src="/assets/images/app_icon.png" alt="Minya Tourism" class="footer-logo-icon">
-            <h3>Minya Tourism</h3>
+            <h3>{{ i18n.translate('Discover_Minya') || 'Minya Tourism' }}</h3>
           </div>
           <p class="footer-description">
-            Discover the hidden treasures of Minya, Egypt. Explore ancient attractions, 
-            rich culture, and unforgettable experiences along the Nile River.
+            {{ i18n.translate('footerDescription') || 'Discover the hidden treasures of Minya, Egypt.' }}
           </p>
           <div class="social-links">
             <a href="#" class="social-link" aria-label="Facebook">
@@ -30,29 +29,29 @@
         </div>
 
         <div class="footer-section">
-          <h4>Explore</h4>
+          <h4>{{ i18n.translate('footerExploreTitle') || 'Explore' }}</h4>
           <ul class="footer-links">
-            <li><a routerLink="/attractions">Attractions</a></li>
-            <li><a routerLink="/hotels">Hotels</a></li>
-            <li><a routerLink="/restaurants">Restaurants</a></li>
-            <li><a routerLink="/events">Events</a></li>
-            <li><a routerLink="/itineraries">Itineraries</a></li>
+            <li><a routerLink="/attractions">{{ i18n.translate('attractions') }}</a></li>
+            <li><a routerLink="/hotels">{{ i18n.translate('hotels') }}</a></li>
+            <li><a routerLink="/restaurants">{{ i18n.translate('restaurants') }}</a></li>
+            <li><a routerLink="/events">{{ i18n.translate('events') }}</a></li>
+            <li><a routerLink="/itineraries">{{ i18n.translate('itineraries') }}</a></li>
           </ul>
         </div>
 
         <div class="footer-section">
-          <h4>Information</h4>
+          <h4>{{ i18n.translate('footerInformationTitle') || 'Information' }}</h4>
           <ul class="footer-links">
-            <li><a routerLink="/visitor-info">Visitor Guide</a></li>
-            <li><a routerLink="/blog">Travel Blog</a></li>
-            <li><a routerLink="/map">Interactive Map</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-            <li><a href="#about">About Minya</a></li>
+            <li><a routerLink="/visitor-info">{{ i18n.translate('visitorInfo') }}</a></li>
+            <li><a routerLink="/blog">{{ i18n.translate('blog') }}</a></li>
+            <li><a routerLink="/map">{{ i18n.translate('map') }}</a></li>
+            <li><a href="#contact">{{ i18n.translate('contactUs') }}</a></li>
+            <li><a href="#about">{{ i18n.translate('aboutUs') }}</a></li>
           </ul>
         </div>
 
         <div class="footer-section">
-          <h4>Contact Info</h4>
+          <h4>{{ i18n.translate('footerContactTitle') || 'Contact Info' }}</h4>
           <div class="contact-info">
             <div class="contact-item">
               <span class="material-icons">location_on</span>
@@ -69,13 +68,13 @@
           </div>
           <!-- Mobile App Download -->
           <div class="app-download">
-            <h5>Download Our App</h5>
+            <h5>{{ i18n.translate('footerDownloadTitle') || 'Download Our App' }}</h5>
             <div class="download-buttons">
               <a href="#" class="download-btn">
                 <span class="material-icons">smartphone</span>
                 <div>
-                  <small>Download for</small>
-                  <strong>Android & iOS</strong>
+                  <small>{{ i18n.translate('footerDownloadFor') || 'Download for' }}</small>
+                  <strong>{{ i18n.translate('footerDownloadPlatform') || 'Android & iOS' }}</strong>
                 </div>
               </a>
             </div>
@@ -107,11 +106,11 @@
     <!-- Footer Bottom -->
     <div class="footer-bottom">
       <div class="footer-bottom-content">
-        <p>&copy; 2024 Minya Tourism. All rights reserved.</p>
+        <p>{{ i18n.translate('footerCopyright') || '© 2024 Minya Tourism. All rights reserved.' }}</p>
         <div class="footer-bottom-links">
-          <a href="#privacy">Privacy Policy</a>
-          <a href="#terms">Terms of Service</a>
-          <a href="#sitemap">Sitemap</a>
+          <a href="#privacy">{{ i18n.translate('privacyPolicy') }}</a>
+          <a href="#terms">{{ i18n.translate('termsOfService') }}</a>
+          <a href="#sitemap">{{ i18n.translate('sitemap') || 'Sitemap' }}</a>
         </div>
       </div>
     </div>

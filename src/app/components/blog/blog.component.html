@@ -29,7 +29,7 @@
 
       <!-- Blog Posts Grid -->
       <div class="blog-grid">
-        <article *ngFor="let post of filteredPosts" class="blog-card" [class.rtl]="i18nService.isRTL()">
+  <article *ngFor="let post of filteredPosts; let i = index" class="blog-card" [class.rtl]="i18nService.isRTL()">
           <div class="blog-image">
             <img [src]="post.imageUrl" [alt]="getLocalizedText(post.title)" loading="lazy" />
             <div class="image-overlay">
@@ -80,9 +80,26 @@
               </button>
 
               <div class="quick-actions">
-                <button class="btn-ghost" (click)="$event.stopPropagation()">
-                  <span class="material-icons">share</span> {{ i18nService.translate('share') || 'Share' }}
-                </button>
+                <div class="share-wrapper" (click)="$event.stopPropagation()">
+                  <button class="btn-ghost" (click)="toggleSharePopup(i, $event)">
+                    <span class="material-icons">share</span> {{ i18nService.translate('share') || 'Share' }}
+                  </button>
+
+                  <div class="share-popup" *ngIf="sharePopupOpen && activeShareIndex === i">
+                    <button class="share-item" (click)="copyLinkToClipboard(post)">
+                      <span class="material-icons">link</span>
+                      {{ i18nService.translate('copyLinkPrompt') || 'Copy Link' }}
+                    </button>
+                    <a class="share-item" href="https://www.facebook.com/sharer/sharer.php?u={{ origin + '/blog/' + post.id }}" target="_blank" rel="noopener">
+                      <span class="material-icons">facebook</span>
+                      Facebook
+                    </a>
+                    <a class="share-item" href="https://twitter.com/intent/tweet?url={{ origin + '/blog/' + post.id }}" target="_blank" rel="noopener">
+                      <span class="material-icons">alternate_email</span>
+                      X
+                    </a>
+                  </div>
+                </div>
               </div>
             </footer>
           </div>
