@@ -6,16 +6,22 @@ import { I18nService } from '../../services/i18n.service';
 import { restaurants } from '../../data/restaurants';
 import { Restaurant } from '../../models/tourism.models';
 import { FavoritesService, FavoriteItem } from '../../services/favorites.service';
+import { ImageModalComponent } from '../image-modal/image-modal.component';
 @Component({
   selector: 'app-restaurants',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, ImageModalComponent],
   templateUrl: './restaurants.component.html',
   styleUrls: ['./restaurants.component.scss']
 })
 export class RestaurantsComponent implements OnInit {
   restaurants: Restaurant[] = [];
   filteredRestaurants: Restaurant[] = [];
+  // Modal state
+  showModal = false;
+  currentImages: string[] = [];
+  currentImageAlt = '';
+
   searchQuery = '';
   selectedCuisine = '';
   selectedPriceRange = '';
@@ -60,6 +66,8 @@ export class RestaurantsComponent implements OnInit {
       name: toLocalized(r?.name, r?.nameAr),
       description: toLocalized(r?.description, r?.descriptionAr),
       imageUrl: r?.imageUrl ?? r?.image ?? '',
+      // preserve any provided imageGallery, default to empty array
+      imageGallery: r?.imageGallery ?? [],
       latitude: r?.latitude ?? r?.location?.lat ?? 0,
       longitude: r?.longitude ?? r?.location?.lng ?? 0,
       rating: r?.rating ?? 0,
@@ -100,52 +108,30 @@ export class RestaurantsComponent implements OnInit {
   }
 
   async viewMenu(restaurant: Restaurant) {
-    const name = this.i18nService.pick(restaurant.name) || '';
-
-    // Prefer explicit menuUrl if provided
-    const rawMenu = restaurant.menuUrl as any;
-    let menuUrl: string | null = null;
-
-    if (rawMenu) {
-      if (typeof rawMenu === 'string') {
-        menuUrl = rawMenu;
-      } else if (typeof rawMenu === 'object') {
-        // localized object
-        menuUrl = rawMenu[this.i18nService.getCurrentLanguage()] || rawMenu['en'] || null;
-      }
-    }
-
-    const openUrl = (url: string) => {
-      try {
-        window.open(url, '_blank');
-      } catch (err) {
-        window.location.href = url;
-      }
-    };
-
-    if (menuUrl) {
-      openUrl(menuUrl);
+    // If restaurant has imageGallery with menu images, show the first one
+    if (restaurant.imageGallery && restaurant.imageGallery.length > 0) {
+      // open carousel with all images
+      this.currentImages = restaurant.imageGallery.slice();
+      this.currentImageAlt = this.i18nService.pick(restaurant.name) + ' - Menu';
+      this.showModal = true;
       return;
     }
 
-    const candidates = [
-      `/assets/menus/${restaurant.id}.pdf`,
-      `/assets/menus/${restaurant.id}-menu.pdf`,
-      `/assets/menus/${restaurant.id}.PDF`,
-    ];
-
-    // Sequentially HEAD each candidate and open the first that exists.
-    for (const c of candidates) {
-      try {
-        const res = await fetch(c, { method: 'HEAD' });
-        if (res.ok) {
-          openUrl(c);
-          return;
-        }
-      } catch (e) {
-        // network error or CORS; continue to next candidate
+    // Fallback: check for menu URL
+    const rawMenu = restaurant.menuUrl as any;
+    if (rawMenu) {
+      const menuUrl = typeof rawMenu === 'string' ? rawMenu : 
+        (rawMenu[this.i18nService.getCurrentLanguage()] || rawMenu['en']);
+      if (menuUrl) {
+        window.open(menuUrl, '_blank');
+        return;
       }
     }
+    
+    // No menu image or URL available
+    alert(this.i18nService.getCurrentLanguage() === 'ar' 
+      ? 'عذراً، قائمة الطعام غير متوفرة حالياً'
+      : 'Sorry, menu is not available at the moment');
 
     // No menu found — show a localized alert
     alert(this.i18nService.translate('menuUnavailable') || 'Menu not available');
@@ -221,5 +207,11 @@ export class RestaurantsComponent implements OnInit {
 
   isFavorite(restaurantId: string): boolean {
     return this.favoritesService.isFavorite(restaurantId);
+  }
+
+  closeModal(): void {
+    this.showModal = false;
+    this.currentImages = [];
+    this.currentImageAlt = '';
   }
 }

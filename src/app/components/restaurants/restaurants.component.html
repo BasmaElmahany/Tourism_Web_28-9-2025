@@ -195,4 +195,12 @@
       </div>
     </div>
   </section>
+
+  <!-- Image Modal -->
+  <app-image-modal
+    [isOpen]="showModal"
+    [images]="currentImages"
+    [altText]="currentImageAlt"
+    (close)="closeModal()">
+  </app-image-modal>
 </div>

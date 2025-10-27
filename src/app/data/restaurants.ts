@@ -12,8 +12,11 @@ export const RAW_RESTAURANTS: any[] = [
       en: "Traditional Egyptian cuisine by the Nile with scenic views",
       ar: "مأكولات مصرية تقليدية مطلة على النيل"
     },
-  imageUrl: "assets/images/orked.jpg",
-  // explicit menu URL (added inline so the property appears in the source)
+  imageUrl: "assets/images/unnamed (3).webp",
+  imageGallery: ["assets/images/490768648_1076963261132257_5356947501708733683_n.jpg"
+   
+  ],
+  // Menu URL as fallback
   menuUrl: '/assets/menus/minya_1.pdf',
     latitude: 28.1099,
     longitude: 30.7503,
@@ -58,6 +61,7 @@ export const RAW_RESTAURANTS: any[] = [
       ar: "أطباق سمك وأكلات مصرية كلاسيكية"
     },
     imageUrl: "assets/images/Minya-seafood-.jpg",
+    imageGallery: ["assets/images/menus/bayada_menu.jpg"],
     latitude: 28.099254419637028,
     longitude: 30.756527154526424,
     rating: 3.9,
@@ -845,7 +849,13 @@ export const RAW_RESTAURANTS: any[] = [
   openingHours: { en: "Mon–Sun 10:00 AM – 04:00 AM", ar: "الاثنين–الأحد ١٠:٠٠ ص – ٤:٠٠ ص" },
   specialties: [ { en: "Shawarma", ar: "شاورما" }, { en: "Broasted Chicken", ar: "بروستد" } ],
   contactInfo: { phone: { en: "01030022700, 01555511777, 01128848054", ar: "٠١٠٣٠٠٢٢٧٠٠، ٠١٥٥٥٥١١٧٧٧، ٠١١٢٨٨٤٨٠٥٤" }, email: "" },
-  features: [ { en: "Restroom", ar: "دورة مياه" } ]
+  features: [ { en: "Restroom", ar: "دورة مياه" } ],
+  imageGallery: [
+      "/assets/images/freekeh-restaurant_menu_1.jpg",
+       "/assets/images/freekeh-restaurant_menu_2.jpg",
+        "/assets/images/freekeh-restaurant_menu_3.jpg",
+         "/assets/images/freekeh-restaurant_menu_4.jpg"
+  ]
 }
 // مصادر: Menuegypt / Elmenus / Evendo. :contentReference[oaicite:0]{index=0}
 
@@ -864,7 +874,10 @@ export const RAW_RESTAURANTS: any[] = [
   openingHours: { en: "11:00 AM – 03:00 AM (approx.)", ar: "١١:٠٠ ص – ٠٣:٠٠ ص (تقريبى)" },
   specialties: [ { en: "Mixed Grill", ar: "مشويات مشكلة" }, { en: "Koshary (some branches)", ar: "كشري (بعض الفروع)" } ],
   contactInfo: { phone: { en: "+20 86 2334141 / 01030800072 / 01030800073", ar: "+٢٠ ٨٦ ٢٣٣٤١٤١ / ٠١٠٣٠٨٠٠٠٧٢ / ٠١٠٣٠٨٠٠٠٧٣" }, email: "" },
-  features: [ { en: "Restroom", ar: "دورة مياه" }, { en: "Delivery", ar: "توصيل" } ]
+  features: [ { en: "Restroom", ar: "دورة مياه" }, { en: "Delivery", ar: "توصيل" } ],
+  imageGallery: [
+      "/assets/images/470498594_933892548838992_4009911687513985324_n (1).jpg"
+  ]
 }
 // مصادر: الموقع الرسمي / صفحة فيسبوك / دلائل محلية. :contentReference[oaicite:1]{index=1}
 
@@ -884,7 +897,10 @@ export const RAW_RESTAURANTS: any[] = [
   openingHours: { en: "12:00 PM – 01:00 AM", ar: "١٢:٠٠ م – ٠١:٠٠ ص" },
   specialties: [ { en: "Mixed Grill", ar: "مشويات مشكلة" }, { en: "Seafood platters", ar: "أطباق سي فود" } ],
   contactInfo: { phone: { en: "+20 102 000 4495, 01027020307", ar: "+٢٠ ١٠٢ ٠٠٠ ٤٤٩٥، ٠١٠٢٧٠٢٠٣٠٧" }, email: "" },
-  features: [ { en: "Restroom", ar: "دورة مياه" }, { en: "Delivery", ar: "توصيل" } ]
+  features: [ { en: "Restroom", ar: "دورة مياه" }, { en: "Delivery", ar: "توصيل" } ],
+  imageGallery: [
+      "/assets/images/470498594_933892548838992_4009911687513985324_n (1).jpg"
+  ]
 }
 // مصدر: TripAdvisor، دلائل محلية. :contentReference[oaicite:2]{index=2}
 
@@ -926,7 +942,10 @@ export const RAW_RESTAURANTS: any[] = [
 
   specialties: [ { en: "Grilled Fish", ar: "سمك مشوي" } ],
   contactInfo: { phone: { en: "", ar: "" }, email: "" },
-  features: [ { en: "Nile View", ar: "إطلالة على النيل" }, { en: "Restroom", ar: "دورة مياه" } ]
+  features: [ { en: "Nile View", ar: "إطلالة على النيل" }, { en: "Restroom", ar: "دورة مياه" } ],
+  imageGallery: [
+      "/assets/images/470498594_933892548838992_4009911687513985324_n (1).jpg"
+  ]
 }
 // مصادر: Evendo / CEOSS listing / صفحات محلية. :contentReference[oaicite:4]{index=4}
 
@@ -950,7 +969,10 @@ export const RAW_RESTAURANTS: any[] = [
 
   specialties: [ { en: "Pizza", ar: "بيتزا" }, { en: "Pasta", ar: "باستا" } ],
   contactInfo: { phone: { en: "01003397905, 01018101015", ar: "٠١٠٠٣٣٩٧٩٠٥، ٠١٠١٨١٠١٠١٥" }, email: "" },
-  features: [ { en: "Restroom", ar: "دورة مياه" } ]
+  features: [ { en: "Restroom", ar: "دورة مياه" } ],
+  imageGallery: [
+      "/assets/images/470498594_933892548838992_4009911687513985324_n (1).jpg"
+  ]
 }
 // مصدر: دلائل محلية (Menuegypt, elmenus). :contentReference[oaicite:5]{index=5}
 
@@ -959,14 +981,23 @@ export const RAW_RESTAURANTS: any[] = [
   id: "el_baron_minya",
   name: { en: "El Baron", ar: "البارون" },
   description: { en: "Upper-floor dining near Teachers Union Tower; mixed menu and evening hours.", ar: "مطعم بالدور العلوي قرب برج نقابة المعلمين؛ قائمة متنوّعة وساعات مسائية." },
-  imageUrl: "assets/images/el_baron_minya.jpg",
+  imageUrl: "assets/images/unnamed.webp",
   latitude:28.095285283199047,
   longitude:  30.7558151846579,
-  rating: 4.0,
-  reviewCount:294,
+  rating: 4.1,
+  reviewCount:295,
   cuisineType: { en: "Mixed", ar: "متنوع" },
   priceRange: { en: "Mid-range", ar: "متوسط" },
-  openingHours: { en: "10:00 AM – 02:00 AM", ar: "١٠:٠٠ ص – ٢:٠٠ ص" },
+  openingHours: {
+  en: "Sun Open 24 hours\nMon Open 24 hours\nTue Open 24 hours\nWed Open 24 hours\nThu Open 24 hours\nFri Open 24 hours\nSat Open 24 hours",
+  ar: "الأحد نعمل على مدار 24 ساعة\nالاثنين نعمل على مدار 24 ساعة\nالثلاثاء نعمل على مدار 24 ساعة\nالأربعاء نعمل على مدار 24 ساعة\nالخميس نعمل على مدار 24 ساعة\nالجمعة نعمل على مدار 24 ساعة\nالسبت نعمل على مدار 24 ساعة"
+},
+   imageGallery: [
+      "/assets/images/470498594_933892548838992_4009911687513985324_n (1).jpg",
+     
+
+    ],
+
  specialties: [
     { en: "Grilled Fish", ar: "سمك مشوي" },
     { en: "Seafood Platter", ar: "طبق سي فود" },
@@ -975,8 +1006,50 @@ export const RAW_RESTAURANTS: any[] = [
   ],
   contactInfo: { phone: { en: "0862334667, 01022998668, 01125654501", ar: "٠٨٦٢٣٣٤٦٦٧، ٠١٠٢٢٩٩٨٦٦٨، ٠١١٢٥٦٥٤٥٠١" }, email: "" },
   features: [ { en: "Restroom", ar: "دورة مياه" } ]
+},
+// ومصدر: دلائل محلية وTripAdvisor. :contentReference[oaicite:6]{index=6}
+
+
+
+
+{
+  id: "eltabei_minya",
+  name: { en: "El Tabai", ar: "التابعي" },
+  description: {
+    en: "Serving traditional Egyptian street food and sandwiches around the clock.",
+    ar: "نقدّم أشهى المأكولات الشعبية وجميع أنواع السندوتشات على مدار الساعة."
+  },
+  imageUrl: "assets/images/unnamed (2).webp",
+  latitude: 28.086694,
+  longitude: 30.763122,
+  rating: 3.9,
+  reviewCount: 149,
+  cuisineType: { en: "Egyptian Street Food", ar: "مأكولات شعبية" },
+  priceRange: { en: "1–100 E£ per person", ar: "١–١٠٠ جنيه للفرد" },
+  openingHours: {
+    en: "Sun Open 24 hours\nMon Open 24 hours\nTue Open 24 hours\nWed Open 24 hours\nThu Open 24 hours\nFri Open 24 hours\nSat Open 24 hours",
+    ar: "الأحد نعمل على مدار 24 ساعة\nالاثنين نعمل على مدار 24 ساعة\nالثلاثاء نعمل على مدار 24 ساعة\nالأربعاء نعمل على مدار 24 ساعة\nالخميس نعمل على مدار 24 ساعة\nالجمعة نعمل على مدار 24 ساعة\nالسبت نعمل على مدار 24 ساعة"
+  },
+  imageGallery: [
+    "assets/images/images (1).jpg",
+    
+  ],
+  specialties: [
+    { en: "Egyptian Sandwiches", ar: "سندوتشات مصرية" },
+    { en: "Falafel & Beans", ar: "فلافل وفول" },
+    { en: "Traditional Dishes", ar: "وجبات شعبية تقليدية" }
+  ],
+  contactInfo: {
+    phone: { en: "01555724861", ar: "٠١٥٥٥٧٢٤٨٦١" },
+    email: ""
+  },
+  features: [
+    { en: "Cash only", ar: "الدفع نقدي فقط" },
+    { en: "No reservations", ar: "لا يقبل الحجوزات" },
+    { en: "Vegan options", ar: "خيارات خالية من المنتجات الحيوانية" },
+    { en: "Open 24 hours", ar: "يعمل على مدار الساعة" }
+  ]
 }
-// مصدر: دلائل محلية وTripAdvisor. :contentReference[oaicite:6]{index=6}
 
 ,
 {
@@ -1192,6 +1265,8 @@ for (const r of RAW_RESTAURANTS) {
 // Ensure exported `restaurants` conforms to Restaurant model and includes a `menuUrl` for each entry.
 export const restaurants: Restaurant[] = RAW_RESTAURANTS.map((r: any) => ({
   ...r,
+  // Ensure every exported restaurant has an imageGallery (use the provided fallback image when missing)
+  imageGallery: r?.imageGallery ?? ["/assets/images/470498594_933892548838992_4009911687513985324_n (1).jpg"],
   // menuUrl is guaranteed by the loop above; keep compatibility for cases where explicit values exist
   menuUrl: r?.menuUrl ?? r?.menu ?? `/assets/menus/${r?.id}.pdf`,
 } as Restaurant));
