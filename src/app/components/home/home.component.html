@@ -84,6 +84,8 @@
     </div>
   </section>
 
+
+
   <!-- Featured Attractions -->
   <section class="featured-section">
     <div class="container">
@@ -244,6 +246,116 @@
         <p class="section-subtitle">{{ i18n.translate('tourism_section_subtitle') || 'Current conditions and local travel tips for Minya' }}</p>
       </div>
       <app-weather city="Minya" [openInfo]="true"></app-weather>
+    </div>
+  </section>
+  
+  <!-- Creative Transportation Section (moved here as requested) -->
+  <section class="transportation-section" [attr.dir]="i18n.isRTL() ? 'rtl' : 'ltr'">
+    <div class="container">
+      <h2 class="section-title">{{ i18n.getCurrentLanguage() === 'ar' ? 'المواصلات — كيف تتجول في المنيا' : 'Transportation — How to get around Minya' }}</h2>
+      <p class="section-subtitle">{{ i18n.getCurrentLanguage() === 'ar' ? 'اختاري الطريقة التي تناسب رحلتك — تقليدية، سريعة أو عبر التطبيق.' : 'Choose the way that fits your trip — traditional, quick or app-based.' }}</p>
+
+      <div class="transport-full-bleed">
+        <div class="transport-grid creative">
+        <a class="transport-card" href="#" title="{{ i18n.getCurrentLanguage() === 'ar' ? 'حنطور' : 'Hantour' }}">
+          <div class="transport-icon hantour">
+            <div class="icon-inner">
+              <svg viewBox="0 0 128 128" width="128" height="128" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="false">
+                <title>{{ i18n.getCurrentLanguage() === 'ar' ? 'حنطور - عربة تقليدية' : 'Hantour - traditional carriage' }}</title>
+                <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <!-- Horse Body -->
+                  <path d="M10 85c0 0 5-25 15-30s20-5 25 0c2 2 3 5 3 8" stroke-width="4"/>
+                  <path d="M15 55c3-2 6-2 9-1" />
+                  <!-- Horse Head -->
+                  <path d="M8 65c-2-8 0-15 4-18s8-3 11 0c2 2 3 4 3 7" stroke-width="4"/>
+                  <circle cx="12" cy="52" r="1.5" fill="currentColor"/> <!-- Eye -->
+                  <!-- Main Carriage Body - More Traditional -->
+                  <path d="M45 85h50c3 0 6-2 6-5V60c0-3-2-5-5-5H45v30z" stroke-width="4" fill="currentColor"/>
+                  <!-- Ornate Roof -->
+                  <path d="M40 55c0-12 10-18 30-18s30 6 30 18" fill="rgba(255,255,255,0.15)" stroke-width="4"/>
+                  <!-- Decorative Patterns -->
+                  <path d="M50 65h40M50 75h40" stroke-opacity="0.6"/>
+                  <path d="M55 55c0-8 5-12 15-12s15 4 15 12" stroke-opacity="0.6"/>
+                  <!-- Large Wooden Wheels -->
+                  <circle cx="50" cy="90" r="15" fill="none" stroke-width="4"/>
+                  <circle cx="90" cy="90" r="15" fill="none" stroke-width="4"/>
+                  <!-- Wheel Spokes - More Visible -->
+                  <path d="M50 90l15-15M50 90l-15 15M50 90l15 15M50 90l-15-15" stroke-width="3"/>
+                  <path d="M90 90l15-15M90 90l-15 15M90 90l15 15M90 90l-15-15" stroke-width="3"/>
+                  <!-- Seat and Details -->
+                  <path d="M60 70h20" stroke-width="4"/>
+                  <!-- Reins -->
+                  <path d="M25 60c10 0 20 5 20 15" stroke-opacity="0.8" stroke-dasharray="2 2"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <h3>{{ i18n.getCurrentLanguage() === 'ar' ? 'حنطور' : 'Hantour' }}</h3>
+          <p class="muted">{{ i18n.getCurrentLanguage() === 'ar' ? 'رحلة تقليدية لمشاهدة المناظر المحلية.' : 'A traditional carriage-like experience for scenic short trips.' }}</p>
+          <div class="transport-cta">{{ i18n.getCurrentLanguage() === 'ar' ? 'احجز رحلة' : 'Book a Ride' }}</div>
+        </a>
+
+        <a class="transport-card" href="#" title="{{ i18n.getCurrentLanguage() === 'ar' ? 'تاكسي' : 'Taxi' }}">
+          <div class="transport-icon taxi">
+            <div class="icon-inner">
+              <svg viewBox="0 0 128 128" width="128" height="128" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="false">
+                <title>{{ i18n.getCurrentLanguage() === 'ar' ? 'تاكسي' : 'Taxi' }}</title>
+                <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <!-- Modern Car Body (InDrive style) -->
+                  <path d="M15 80c0 0 15-45 45-45s50 45 50 45" />
+                  <path d="M15 80h95c6 0 10-4 10-10V60c0-6-4-10-10-10H15v30z" />
+                  <!-- Sleek Hood -->
+                  <path d="M30 50l30-15h20l30 15" />
+                  <!-- Windows -->
+                  <path d="M40 45l15-10h30l15 10" fill="rgba(255,255,255,0.15)" />
+                  <!-- Modern Wheels -->
+                  <circle cx="35" cy="80" r="12" fill="currentColor" />
+                  <circle cx="95" cy="80" r="12" fill="currentColor" />
+                  <!-- LED Lights -->
+                  <path d="M20 60l10-5M100 55l10 5" />
+                  <!-- App Icon (kept as subtle dot) -->
+                  <circle cx="65" cy="40" r="8" fill="rgba(255,255,255,0.2)" />
+                  <path d="M65 36v8M61 40h8" stroke-width="2" />
+                </g>
+              </svg>
+            </div>
+          </div>
+          <h3>{{ i18n.getCurrentLanguage() === 'ar' ? 'تاكسي' : 'Taxi' }}</h3>
+          <p class="muted">{{ i18n.getCurrentLanguage() === 'ar' ? 'سريع ومباشر للوصول إلى وجهتك.' : 'Quick door-to-door rides for convenience.' }}</p>
+          <div class="transport-cta">{{ i18n.getCurrentLanguage() === 'ar' ? 'اتصال' : 'Call' }}</div>
+        </a>
+
+        <a class="transport-card" href="#" title="{{ i18n.getCurrentLanguage() === 'ar' ? 'اندرايف' : 'InDrive' }}">
+          <div class="transport-icon indrive">
+            <div class="icon-inner">
+              <svg viewBox="0 0 128 128" width="128" height="128" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="false">
+                <title>{{ i18n.getCurrentLanguage() === 'ar' ? 'اندرايف' : 'InDrive' }}</title>
+                <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <!-- Modern Car Body -->
+                  <path d="M15 80c0 0 15-45 45-45s50 45 50 45" />
+                  <path d="M15 80h95c6 0 10-4 10-10V60c0-6-4-10-10-10H15v30z" />
+                  <!-- Sleek Hood -->
+                  <path d="M30 50l30-15h20l30 15" />
+                  <!-- Windows -->
+                  <path d="M40 45l15-10h30l15 10" fill="rgba(255,255,255,0.15)" />
+                  <!-- Modern Wheels -->
+                  <circle cx="35" cy="80" r="12" fill="currentColor" />
+                  <circle cx="95" cy="80" r="12" fill="currentColor" />
+                  <!-- LED Lights -->
+                  <path d="M20 60l10-5M100 55l10 5" />
+                  <!-- App Icon -->
+                  <circle cx="65" cy="40" r="8" fill="rgba(255,255,255,0.2)" />
+                  <path d="M65 36v8M61 40h8" stroke-width="2" />
+                </g>
+              </svg>
+            </div>
+          </div>
+          <h3>{{ i18n.getCurrentLanguage() === 'ar' ? 'اندرايف' : 'InDrive' }}</h3>
+          <p class="muted">{{ i18n.getCurrentLanguage() === 'ar' ? 'خيار حديث للحجز عبر التطبيق مع تفاوض على السعر.' : 'App-based ride-hailing with negotiable fares.' }}</p>
+          <div class="transport-cta">{{ i18n.getCurrentLanguage() === 'ar' ? 'افتح التطبيق' : 'Open App' }}</div>
+        </a>
+        </div>
+      </div>
     </div>
   </section>
   <br>

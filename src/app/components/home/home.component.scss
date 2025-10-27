@@ -1066,3 +1066,130 @@
   .btn-favorite-card,
   .btn-favorite-card .material-icons { transition: none !important; animation: none !important; }
 }
+
+/* ------------------ Transportation creative styles ------------------ */
+.transportation-section {
+  padding: 3.5rem 0;
+  background: linear-gradient(180deg, rgba(250,246,241,0.6), rgba(255,255,255,1));
+}
+
+.transportation-section .section-subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.transport-grid.creative {
+  display: grid;
+  /* stack cards vertically and make each card full-width */
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+  margin-top: 1.25rem;
+}
+
+/* Full-bleed wrapper to let each card span the full viewport width */
+.transport-full-bleed {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 0; /* let inner card control padding */
+  background: transparent;
+}
+
+.transport-grid.creative { max-width: 100%; margin: 0; }
+
+.transport-card {
+  background: linear-gradient(180deg, #fff, #fff);
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: left;
+  box-shadow: 0 8px 24px rgba(6,24,55,0.08);
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: flex-start;
+  position: relative;
+  height: auto; /* natural height */
+  transition: none; /* disable all transitions */
+}
+
+
+.transport-icon {
+  width: 96px;
+  height: 96px;
+  margin: 0;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: visible;
+  flex: 0 0 auto;
+}
+
+.transport-icon .icon-inner { color: #fff; font-size: 56px; display:flex; align-items:center; justify-content:center }
+
+.transport-icon.hantour { background: linear-gradient(135deg,#ff9966,#ff5e62); }
+.transport-icon.taxi { background: linear-gradient(135deg,#ffd200,#f7971e); }
+.transport-icon.indrive { background: linear-gradient(135deg,#7b4397,#dc2430); }
+
+/* Keyframes */
+@keyframes hantour-trot {
+  0%   { transform: translateY(0) rotate(0deg); }
+  20%  { transform: translateY(-8px) rotate(-1.2deg); }
+  40%  { transform: translateY(0) rotate(0deg); }
+  60%  { transform: translateY(-6px) rotate(1deg); }
+  80%  { transform: translateY(0) rotate(0deg); }
+ 100%  { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes taxi-pulse {
+  0% { transform: scale(1) rotate(0deg); box-shadow: 0 12px 30px rgba(0,0,0,0.06); }
+  45% { transform: scale(1.08) rotate(-1deg); box-shadow: 0 22px 46px rgba(0,0,0,0.12); }
+  70% { transform: scale(1.03) rotate(1deg); }
+ 100% { transform: scale(1) rotate(0deg); box-shadow: 0 12px 30px rgba(0,0,0,0.06); }
+}
+
+@keyframes indrive-float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(-2deg); }
+ 100% { transform: translateY(0) rotate(0deg); }
+}
+
+.transport-icon.hantour { animation: hantour-trot 3.2s ease-in-out infinite; }
+.transport-icon.taxi { animation: taxi-pulse 4s ease-in-out infinite; }
+.transport-icon.indrive { animation: indrive-float 3.6s ease-in-out infinite; }
+
+/* SVG icon sizing and small part animations */
+.transport-icon svg { width: 64px; height: 64px; display: block; }
+.transport-icon .icon-inner { display:flex; align-items:center; justify-content:center }
+
+/* Taxi wheels spin subtly to give motion */
+.transport-icon.taxi svg circle { transform-origin: center; animation: wheel-spin 1.6s linear infinite; }
+
+@keyframes wheel-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.transport-card h3 { margin: 0; font-size: 1.1rem; font-weight:700 }
+.transport-card .muted { color: var(--text-secondary); margin:0 }
+.transport-cta { margin-left: auto; background: linear-gradient(90deg, rgba(0,123,255,0.08), rgba(0,123,255,0.06)); padding: 0.45rem 1rem; border-radius: 999px; color: var(--primary-color); font-weight:600; border: 1px solid rgba(0,123,255,0.12) }
+
+@media (max-width: 760px) {
+  .transport-icon { width:72px; height:72px }
+  .transport-icon .icon-inner { font-size:32px }
+  .transport-card { 
+    flex-direction: column; 
+    text-align: center;
+    padding: 1.25rem;
+    height: auto;
+  }
+  .transport-cta { margin-left: 0; margin-top: 1rem }
+}
