@@ -1843,15 +1843,3 @@ export const restaurants: Restaurant[] = RAW_RESTAURANTS.map((r: any) => ({
   // menuUrl is guaranteed by the loop above; keep compatibility for cases where explicit values exist
   menuUrl: r?.menuUrl ?? r?.menu ?? `/assets/menus/${r?.id}.pdf`,
 } as Restaurant));
-
-
-
-
-
-
-
-
-
-
-
-

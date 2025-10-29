@@ -1,4 +1,7 @@
-<div class="home-container">
+<div class="home-page">
+  <!-- Favorites Drawer Component -->
+  <app-favorites-drawer></app-favorites-drawer>
+
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="hero-background">
@@ -8,19 +11,36 @@
     <div class="hero-content">
       <div class="container">
         <div class="hero-text fade-in">
-          <h1 class="hero-title">{{ i18n.translate('heroTitle') }}</h1>
+          <h1 class="hero-title">{{ i18n.translate('heroTitle') || 'Discover Ancient Egypt in Minya' }}</h1>
           <p class="hero-subtitle">
-            {{ i18n.translate('heroSubtitle') }}
+            {{ i18n.translate('heroSubtitle') || 'Explore the hidden treasures of Minya, where ancient history meets the timeless beauty of the Nile River. Journey through millennia of Egyptian heritage and create unforgettable memories.' }}
+
+
           </p>
           <div class="hero-actions">
             <a routerLink="/attractions" class="btn btn-primary">
               <span class="material-icons">explore</span>
-              {{ i18n.translate('exploreAttractions') }}
+              {{ i18n.translate('exploreAttractions') || 'Explore Attractions' }}
             </a>
             <a routerLink="/itineraries" class="btn btn-secondary">
               <span class="material-icons">map</span>
-              {{ i18n.translate('planYourTrip') }}
+              {{ i18n.translate('planYourTrip') || 'Plan Your Trip' }}
             </a>
+            <!-- Favorites Button -->
+            <!-- Favorites Button -->
+            <button class="btn btn-favorites fancy-fav" (click)="openFavoritesDrawer()"
+              [attr.aria-label]="i18n.translate('favorites') || 'Favorites'" [class.has-count]="favoritesCount > 0">
+              <span class="fav-icon" aria-hidden="true">
+                <!-- keep Material Icons, but we style + animate them -->
+                <span class="material-icons outline">favorite_border</span>
+                <span class="material-icons filled">favorite</span>
+              </span>
+
+              <span class="btn-text">{{ i18n.translate('favorites') || 'Favorites' }}</span>
+
+              <span class="favorites-badge" *ngIf="favoritesCount > 0">{{ favoritesCount }}</span>
+            </button>
+
           </div>
         </div>
       </div>
@@ -38,37 +58,34 @@
           <div class="quick-action-icon">
             <span class="material-icons">place</span>
           </div>
-          <h3>{{ i18n.translate('showAttractions') }}</h3>
-          <p>{{ i18n.translate('discoverAncientSites') }}</p>
+          <h3>{{ i18n.translate('attractions') || 'Attractions' }}</h3>
+          <p>{{ i18n.translate('discoverAncientSites') || 'Discover ancient sites' }}</p>
         </a>
         <a routerLink="/hotels" class="quick-action-card">
           <div class="quick-action-icon">
             <span class="material-icons">hotel</span>
           </div>
-          <h3>{{ i18n.translate('findHotels') }}</h3>
-          <p>{{ i18n.translate('findAccommodation') }}</p>
+          <h3>{{ i18n.translate('hotels') || 'Hotels' }}</h3>
+          <p>{{ i18n.translate('findAccommodation') || 'Find accommodation' }}</p>
         </a>
         <a routerLink="/restaurants" class="quick-action-card">
           <div class="quick-action-icon">
             <span class="material-icons">restaurant</span>
           </div>
-          <h3>{{ i18n.translate('localRestaurants') }}</h3>
-          <p>{{ i18n.translate('tasteLocalCuisine') }}</p>
+          <h3>{{ i18n.translate('restaurants') || 'Restaurants' }}</h3>
+          <p>{{ i18n.translate('tasteLocalCuisine') || 'Taste local cuisine' }}</p>
         </a>
         <a routerLink="/events" class="quick-action-card">
           <div class="quick-action-icon">
             <span class="material-icons">event</span>
           </div>
-          <h3>{{ i18n.translate('events') }}</h3>
-          <p>{{ i18n.translate('culturalExperiences') }}</p>
+          <h3>{{ i18n.translate('events') || 'Events' }}</h3>
+          <p>{{ i18n.translate('culturalExperiences') || 'Cultural experiences' }}</p>
         </a>
       </div>
     </div>
   </section>
-
-
-
-  <!-- Featured Attractions -->
+ <!-- Featured Attractions -->
   <section class="transportation-section" [attr.dir]="i18n.isRTL() ? 'rtl' : 'ltr'">
     <div class="container">
       <h2 class="section-title">{{ i18n.getCurrentLanguage() === 'ar' ? 'المواصلات — كيف تتجول في المنيا' : 'Transportation — How to get around Minya' }}</h2>
@@ -104,34 +121,46 @@
       </div>
     </div>
   </section>
-
+  <!-- Featured Attractions -->
   <section class="featured-section">
     <div class="container">
-  <h2 class="section-title">{{ i18n.translate('featuredAttractions') }}</h2>
+      <h2 class="section-title">{{ i18n.translate('featuredAttractions') || 'Featured Attractions' }}</h2>
       <div class="featured-carousel" *ngIf="featuredAttractions.length > 0">
         <div class="carousel-container">
           <div class="carousel-track" [style.transform]="'translateX(' + (-currentSlide * 100) + '%)'">
             <div class="carousel-slide" *ngFor="let attraction of featuredAttractions">
               <div class="attraction-card">
+                <!-- Favorite Button on Card -->
+
+
                 <div class="card-image">
-                  <img [src]="attraction.imageUrl" [alt]="attraction.name" loading="lazy">
+                  <img [src]="attraction.imageUrl" [alt]="i18n.pick(attraction.name)" loading="lazy">
                   <div class="card-overlay">
                     <div class="rating">
                       <span class="material-icons">star</span>
                       <span>{{ attraction.rating }}</span>
+
                     </div>
+
                   </div>
                 </div>
                 <div class="card-content">
-                  <h3>{{ i18n.pick(attraction.name ) }}</h3>
-                <p> {{ i18n.pick(attraction.description ) | slice:0:120 }}...</p> 
+                  <h3>{{ i18n.pick(attraction.name) }}</h3>
+                  <p>{{ i18n.pick(attraction.description) | slice:0:120 }}...</p>
                   <div class="card-meta">
-                    <span class="category">{{ i18n.pick((attraction).category) }}</span>
-                    <span class="price">{{ i18n.pick((attraction ).ticketPrice) }}</span>
+                    <span class="category">{{ i18n.pick(attraction.category) }}</span>
+                    <span class="price">{{ i18n.pick(attraction.ticketPrice) }}</span>
                   </div>
                   <a [routerLink]="['/attractions', attraction.id]" class="btn btn-accent">
-                    {{ i18n.translate('learnMore') }}
+                    {{ i18n.translate('learnMore') || 'Learn More' }}
                   </a>
+                    <button class="btn-favorite-card" [class.active]="isFavorite(attraction.id)"
+                    (click)="toggleFavorite(attraction, $event)" [attr.aria-label]=" isFavorite(attraction.id) ? (i18n.translate('removeFromFavorites') || 'Remove from favorites'): (i18n.translate('addToFavorites') || 'Add to favorites')  ">
+                    <span class="fav-icon" aria-hidden="true">
+                      <span class="material-icons outline">favorite_border</span>
+                      <span class="material-icons filled">favorite</span>
+                    </span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -141,53 +170,76 @@
           <button class="carousel-btn prev" (click)="previousSlide()" [disabled]="currentSlide === 0">
             <span class="material-icons">chevron_left</span>
           </button>
-          <button class="carousel-btn next" (click)="nextSlide()" [disabled]="currentSlide >= featuredAttractions.length - 1">
+          <button class="carousel-btn next" (click)="nextSlide()"
+            [disabled]="currentSlide >= featuredAttractions.length - 1">
             <span class="material-icons">chevron_right</span>
           </button>
         </div>
         <div class="carousel-indicators">
-          <button 
-            *ngFor="let attraction of featuredAttractions; let i = index"
-            class="indicator"
-            [class.active]="i === currentSlide"
-            (click)="goToSlide(i)"
-          ></button>
+          <button *ngFor="let attraction of featuredAttractions; let i = index" class="indicator"
+            [class.active]="i === currentSlide" (click)="goToSlide(i)"></button>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Statistics Section -->
+  <!-- Statistics Section (dynamic from data/stats) -->
   <section class="stats-section bg-primary">
     <div class="container">
       <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-number">12+</div>
-          <div class="stat-label">{{ i18n.translate('historicSites') }}</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">8+</div>
-          <div class="stat-label">{{ i18n.translate('hotels') }}</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">15+</div>
-          <div class="stat-label">{{ i18n.translate('restaurants') }}</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">125K+</div>
-          <div class="stat-label">{{ i18n.translate('annualVisitorsCount') }}</div>
+        <div class="stat-item" *ngFor="let s of stats; let i = index">
+          <div class="stat-number">
+            <span class="count-value">{{ (animatedDisplay[i] || s.value) }}</span>
+          </div>
+          <div class="stat-label">{{ i18n.translate($any(s.labelKey)) || s.defaultLabel }}</div>
         </div>
       </div>
     </div>
   </section>
 
+
+
+  <!-- Featured Bloggers & Videos -->
+  <section class="bloggers-section" *ngIf="(bloggers?.length ?? 0) > 0">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">{{ i18n.translate('featuredBloggers') || 'Featured Bloggers & Videos' }}</h2>
+        <a href="https://www.youtube.com" class="view-all-link" target="_blank" rel="noopener">
+          <!-- {{ i18n.translate('viewChannel') || 'View Channel' }} -->
+          <!-- <span class="material-icons">arrow_forward</span> -->
+        </a>
+      </div>
+
+      <div class="bloggers-grid">
+        <div class="blogger-card" *ngFor="let b of bloggers; let i = index" [hidden]="i >= 3">
+          <div class="video-wrapper">
+            <video controls muted playsinline preload="metadata">
+              <source [src]="getSafeEmbedUrl(b.videoPath)" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="blogger-info">
+            <h4>{{ b.name }}</h4>
+            <a [href]="b.channelUrl" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+              <!-- {{ i18n.translate('viewChannel') || 'View Channel' }} -->
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
   <!-- Latest Blog Posts -->
   <section class="blog-section" *ngIf="latestBlogPosts.length > 0">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">{{ i18n.translate('latestStories') }}</h2>
+  <h2 class="section-title">{{ i18n.translate('latestStories') || 'Articles' }}</h2>
         <a routerLink="/blog" class="view-all-link">
-          {{ i18n.translate('viewAllPosts') }}
+          {{ i18n.translate('viewAllPosts') || 'View All Posts' }}
           <span class="material-icons">arrow_forward</span>
         </a>
       </div>
@@ -195,17 +247,17 @@
         <article class="blog-card" *ngFor="let post of latestBlogPosts">
           <div class="blog-image">
             <img [src]="post.imageUrl" [alt]="post.title" loading="lazy">
-            <div class="blog-category">{{ post.category }}</div>
+            <div class="blog-category">{{ i18n.pick(post.category) }} </div>
           </div>
           <div class="blog-content">
-            <h3>{{ post.title }}</h3>
-            <p>{{ post.excerpt }}</p>
+            <h3>{{ i18n.pick(post.title) }}</h3>
+            <p>{{ i18n.pick(post.excerpt) }}</p>
             <div class="blog-meta">
-              <span class="author">{{ i18n.translate('by') }} {{ post.author }}</span>
-              <span class="read-time">{{ post.readTime }} {{ i18n.translate('minutesRead') }}</span>
+              <span class="author">{{ i18n.translate('by') || 'By' }} {{ i18n.pick(post.author) }}</span>
+              <span class="read-time">{{ post.readTime }} {{ i18n.translate('minRead') || 'min read' }}</span>
             </div>
             <a [routerLink]="['/blog', post.id]" class="read-more">
-              Read More
+              {{ i18n.translate('readMore') || 'Read More' }}
               <span class="material-icons">arrow_forward</span>
             </a>
           </div>
@@ -213,36 +265,45 @@
       </div>
     </div>
   </section>
+  <section id="tourguide">
 
+<app-tourguide></app-tourguide>
+  </section>
+
+  <section id="photographer">
+<app-photographer></app-photographer>
+</section>
+  <!-- Weather widget (moved into Home page) -->
+  <section id="weather" class="weather-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">{{ i18n.translate('tourism_title') || 'Al-Minya Weather' }}</h2>
+        <p class="section-subtitle">{{ i18n.translate('tourism_section_subtitle') || 'Current conditions and local travel tips for Minya' }}</p>
+      </div>
+      <app-weather city="Minya" [openInfo]="true"></app-weather>
+    </div>
+  </section>
+  <br>
   <!-- Call to Action -->
   <section class="cta-section">
     <div class="container">
       <div class="cta-content">
-  <h2>{{ i18n.translate('readyToExplore') }}</h2>
-  <p>{{ i18n.translate('readyToExploreDesc') }}</p>
+        <h2>{{ i18n.translate('readyToExplore') || 'Ready to Explore Minya?' }}</h2>
+        <p>{{ i18n.translate('ctaDescription') || 'Start planning your journey through ancient Egypt today. Discover the treasures that await you in Minya.' }}</p>
         <div class="cta-actions">
           <a routerLink="/itineraries" class="btn btn-primary">
             <span class="material-icons">flight_takeoff</span>
-            {{ i18n.translate('planYourTrip') }}
+            {{ i18n.translate('planYourTrip') || 'Plan Your Trip' }}
           </a>
-          <a routerLink="/visitor-info" class="btn btn-secondary">
+          <a routerLink="/tourguides" class="btn btn-secondary">
             <span class="material-icons">info</span>
-            {{ i18n.translate('visitorInfo') }}
+            {{ i18n.translate('visitorGuide') || 'Visitor Guide' }}
           </a>
         </div>
       </div>
     </div>
   </section>
-    <!-- Chatbot floating button -->
-    <div *ngIf="!showChat" class="chatbot-fab" (click)="toggleChat()" [title]="i18n.translate('openChat')">
-      <span class="material-icons">chat</span>
-    </div>
 
-    <!-- Chatbot overlay -->
-    <div class="chatbot-overlay" *ngIf="showChat">
-      <div class="chatbot-panel">
-        <button class="close-chat" (click)="toggleChat()" [attr.aria-label]="i18n.translate('closeChat')" [title]="i18n.translate('closeChat')">×</button>
-        <app-chatbot></app-chatbot>
-      </div>
-    </div>
-</div>
+
+
+  <app-chatbot></app-chatbot>

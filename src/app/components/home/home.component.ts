@@ -323,6 +323,3 @@ goToBlogSlide(index: number) {
     });
   }
 }
-
-
-

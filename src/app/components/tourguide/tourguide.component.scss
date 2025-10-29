@@ -16,12 +16,12 @@
 	height: 420px;
 	margin-bottom: 3rem;
 	overflow: hidden;
-	
+
 	.header-background {
 		position: absolute;
 		inset: 0;
 		overflow: hidden;
-		
+
 		&::after {
 			content: '';
 			position: absolute;
@@ -30,7 +30,7 @@
 			pointer-events: none;
 		}
 	}
-	
+
 	.header-image {
 		width: 100%;
 		height: 100%;
@@ -52,7 +52,7 @@
 }
 
 	}
-	
+
 	.header-overlay {
 		position: absolute;
 		inset: 0;
@@ -63,7 +63,7 @@
 		);
 		z-index: 1;
 	}
-	
+
 	.header-content {
 		position: relative;
 		z-index: 2;
@@ -74,7 +74,7 @@
 		text-align: center;
 		padding: 2rem 1rem;
 	}
-	
+
 	.page-title {
 		color: #fff;
 		font-size: 3.5rem;
@@ -85,7 +85,7 @@
 		             0 2px 8px rgba(0, 0, 0, 0.3);
 		line-height: 1.2;
 	}
-	
+
 	.page-subtitle {
 		color: rgba(255, 255, 255, 0.95);
 		margin-top: 1rem;
@@ -95,7 +95,7 @@
 		line-height: 1.6;
 		text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 	}
-	
+
 	.header-decoration {
 		position: absolute;
 		bottom: -2px;
@@ -111,7 +111,7 @@
 // Fade in animation
 .fade-in {
 	animation: fadeInUp 0.8s cubic-bezier(0.2, 0.9, 0.3, 1) both;
-	
+
 	&:nth-child(2) {
 		animation-delay: 0.15s;
 	}
@@ -141,7 +141,7 @@
 .section-header {
 	text-align: center;
 	margin-bottom: 2.5rem;
-	
+
 	.section-title {
 		font-size: 2.25rem;
 		font-weight: 700;
@@ -149,7 +149,7 @@
 		margin: 0;
 		position: relative;
 		display: inline-block;
-		
+
 		&::after {
 			content: '';
 			position: absolute;
@@ -192,14 +192,14 @@
 	opacity: 0;
 	transform: translateY(20px);
 	animation: cardIn 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
-	
+
 	// Staggered animation
 	@for $i from 1 through 12 {
 		&:nth-child(#{$i}) {
 			animation-delay: #{$i * 0.08}s;
 		}
 	}
-	
+
 	&:hover {
 		transform: translateY(-8px);
 		box-shadow: 0 20px 45px rgba(6, 24, 55, 0.15);
@@ -229,7 +229,7 @@
 	box-shadow: 0 8px 20px rgba(6, 24, 55, 0.12);
 	position: relative;
 	margin-bottom: 1.25rem;
-	
+
 	&::before {
 		content: '';
 		position: absolute;
@@ -240,7 +240,7 @@
 		opacity: 0.7;
 		animation: pulse 3s ease-in-out infinite;
 	}
-	
+
 	img {
 		width: 100%;
 		height: 100%;
@@ -296,7 +296,7 @@
 	gap: 0.5rem;
 	margin-bottom: 1rem;
 	width: 100%;
-	
+
 	strong {
 		color: var(--primary-color, #061837);
 		font-size: 0.9rem;
@@ -320,7 +320,7 @@
 	font-weight: 500;
 	border: 1px solid rgba(212, 175, 55, 0.25);
 	transition: all 0.2s ease;
-	
+
 	&:hover {
 		background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.3));
 		transform: translateY(-1px);
@@ -342,7 +342,7 @@
 	border: none;
 	transition: all 0.2s ease;
 	margin-bottom: 1rem;
-	
+
 	&:hover {
 		transform: translateY(-2px);
 		box-shadow: 0 6px 16px rgba(255, 184, 107, 0.45);
@@ -377,32 +377,32 @@
 	border: none;
 	flex: 1;
 	min-width: 120px;
-	
+
 	&.btn-primary {
 		background: linear-gradient(135deg, var(--primary-color, #061837), #0a2a5a);
 		color: var(--white, #ffffff);
 		box-shadow: 0 4px 12px rgba(6, 24, 55, 0.25);
-		
+
 		&:hover {
 			transform: translateY(-2px);
 			box-shadow: 0 6px 18px rgba(6, 24, 55, 0.35);
 		}
-		
+
 		&:active {
 			transform: translateY(0);
 		}
 	}
-	
+
 	&.btn-secondary {
 		background: linear-gradient(135deg, var(--accent-color, #D4AF37), #c49b2e);
 		color: var(--white, #ffffff);
 		box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
-		
+
 		&:hover {
 			transform: translateY(-2px);
 			box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);
 		}
-		
+
 		&:active {
 			transform: translateY(0);
 		}
@@ -430,12 +430,12 @@
 	font-size: 0.9rem;
 	animation: fadeIn 0.3s ease;
 	border: 1px solid rgba(6, 24, 55, 0.12);
-	
+
 	&.phone-badge {
 		background: rgba(6, 24, 55, 0.08);
 		color: var(--primary-color, #061837);
 	}
-	
+
 	&.email-badge {
 		background: rgba(212, 175, 55, 0.15);
 		color: var(--primary-color, #061837);
@@ -478,42 +478,42 @@
 	transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 	box-shadow: 0 4px 12px rgba(6, 24, 55, 0.15);
 	position: relative;
-	
+
 	&:hover {
 		transform: translateY(-4px) scale(1.08);
 		box-shadow: 0 8px 20px rgba(6, 24, 55, 0.25);
 	}
-	
+
 	&:active {
 		transform: translateY(-2px) scale(1.05);
 	}
-	
+
 	&[aria-label="Facebook"] {
 		background: linear-gradient(135deg, #1877F2, #0d5dbf);
 	}
-	
+
 	&[aria-label="Instagram"] {
 		background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
 	}
-	
+
 	&[aria-label="Twitter"] {
 		background: linear-gradient(135deg, #1DA1F2, #0d8bd9);
 	}
-	
+
 	&[aria-label="YouTube"] {
 		background: linear-gradient(135deg, #FF0000, #cc0000);
 	}
-	
+
 	svg {
 		width: 20px;
 		height: 20px;
 		display: block;
-		
+
 		path {
 			opacity: 0.95;
 		}
 	}
-	
+
 	// Tooltip
 	&[title] {
 		&:hover::after {
@@ -532,7 +532,7 @@
 			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 			z-index: 10;
 		}
-		
+
 		&:hover::before {
 			content: '';
 			position: absolute;
@@ -554,7 +554,7 @@
 .loading {
 	text-align: center;
 	padding: 4rem 0;
-	
+
 	.spinner {
 		width: 50px;
 		height: 50px;
@@ -564,7 +564,7 @@
 		border-radius: 50%;
 		animation: spin 0.8s linear infinite;
 	}
-	
+
 	p {
 		color: var(--text-secondary, #6b7280);
 		font-size: 1rem;
@@ -586,25 +586,25 @@
 	.guide-image {
 		width: 110px;
 		height: 110px;
-		
+
 		img {
 			width: 110px;
 			height: 110px;
 		}
 	}
-	
+
 	.page-header {
 		height: 480px;
 	}
-	
+
 	.page-title {
 		font-size: 4rem;
 	}
-	
+
 	.page-subtitle {
 		font-size: 1.5rem;
 	}
-	
+
 	.guides-grid {
 		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	}
@@ -615,20 +615,20 @@
 	.page-header {
 		height: 360px;
 	}
-	
+
 	.page-title {
 		font-size: 2.75rem;
 	}
-	
+
 	.page-subtitle {
 		font-size: 1.2rem;
 	}
-	
+
 	.guides-grid {
 		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 		gap: 1.5rem;
 	}
-	
+
 	.guide-card {
 		padding: 1.75rem 1.25rem;
 	}
@@ -639,30 +639,30 @@
 	.page-header {
 		height: 300px;
 	}
-	
+
 	.page-title {
 		font-size: 2rem;
 	}
-	
+
 	.page-subtitle {
 		font-size: 1rem;
 	}
-	
+
 	.container {
 		padding: 0 1rem 2rem;
 	}
-	
+
 	.guides-grid {
 		grid-template-columns: 1fr;
 	}
-	
+
 	.guide-card {
 		padding: 1.5rem 1rem;
 	}
-	
+
 	.contact-buttons {
 		flex-direction: column;
-		
+
 		.btn {
 			width: 100%;
 		}
@@ -674,17 +674,16 @@
 	.page-title {
 		font-size: 1.75rem;
 	}
-	
+
 	.page-subtitle {
 		font-size: 0.95rem;
 	}
-	
+
 	.guide-name {
 		font-size: 1.2rem;
 	}
-	
+
 	.guide-bio {
 		font-size: 0.9rem;
 	}
 }
-
