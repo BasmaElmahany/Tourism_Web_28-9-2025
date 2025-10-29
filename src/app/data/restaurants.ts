@@ -12,8 +12,11 @@ export const RAW_RESTAURANTS: any[] = [
       en: "Traditional Egyptian cuisine by the Nile with scenic views",
       ar: "مأكولات مصرية تقليدية مطلة على النيل"
     },
-  imageUrl: "assets/images/orked.jpg",
-  // explicit menu URL (added inline so the property appears in the source)
+  imageUrl: "assets/images/unnamed (3).webp",
+  imageGallery: ["assets/images/490768648_1076963261132257_5356947501708733683_n.jpg"
+   
+  ],
+  // Menu URL as fallback
   menuUrl: '/assets/menus/minya_1.pdf',
     latitude: 28.1099,
     longitude: 30.7503,
@@ -58,6 +61,7 @@ export const RAW_RESTAURANTS: any[] = [
       ar: "أطباق سمك وأكلات مصرية كلاسيكية"
     },
     imageUrl: "assets/images/Minya-seafood-.jpg",
+    imageGallery: ["assets/images/menus/bayada_menu.jpg"],
     latitude: 28.099254419637028,
     longitude: 30.756527154526424,
     rating: 3.9,
@@ -845,8 +849,243 @@ export const RAW_RESTAURANTS: any[] = [
   openingHours: { en: "Mon–Sun 10:00 AM – 04:00 AM", ar: "الاثنين–الأحد ١٠:٠٠ ص – ٤:٠٠ ص" },
   specialties: [ { en: "Shawarma", ar: "شاورما" }, { en: "Broasted Chicken", ar: "بروستد" } ],
   contactInfo: { phone: { en: "01030022700, 01555511777, 01128848054", ar: "٠١٠٣٠٠٢٢٧٠٠، ٠١٥٥٥٥١١٧٧٧، ٠١١٢٨٨٤٨٠٥٤" }, email: "" },
-  features: [ { en: "Restroom", ar: "دورة مياه" } ]
+  features: [ { en: "Restroom", ar: "دورة مياه" } ],
+  imageGallery: [
+      "/assets/images/freekeh-restaurant_menu_1.jpg",
+       "/assets/images/freekeh-restaurant_menu_2.jpg",
+        "/assets/images/freekeh-restaurant_menu_3.jpg",
+         "/assets/images/freekeh-restaurant_menu_4.jpg"
+  ]
 }
+,
+{
+  id: "set_elsham",
+  name: { en: "Set El Sham", ar: "ست الشام" },
+  description: {
+    en: "Popular local restaurant offering Levantine & Egyptian specialties — grills, shawarma and family-style dishes. Busy evenings and late-night service.",
+    ar: "مطعم شعبي يقدم أطباق شامية ومصرية مميزة — مشاوي، شاورما وأطباق عائلية. مزدحم مساءً ويقدم خدمة ليلية متأخرة."
+  },
+  imageUrl: "assets/images/set elsham.webp",
+  latitude: 28.1070,
+  longitude: 30.7500,
+  rating: 4.1,
+  reviewCount: 1779,
+  cuisineType: { en: "Levantine / Egyptian", ar: "شامي / مصري" },
+  priceRange: { en: "Low to Mid", ar: "منخفض إلى متوسط" },
+  openingHours: {
+    en:
+      "Mon 11:00 AM – 02:00 AM\nTue 11:00 AM – 02:00 AM\nWed 11:00 AM – 02:00 AM\nThu 11:00 AM – 03:00 AM\nFri 01:00 PM – 03:00 AM\nSat 11:00 AM – 02:00 AM\nSun 11:00 AM – 02:00 AM",
+    ar:
+      "الاثنين ١١:٠٠ص–٢:٠٠ص\nالثلاثاء ١١:٠٠ص–٢:٠٠ص\nالأربعاء ١١:٠٠ص–٢:٠٠ص\nالخميس ١١:٠٠ص–٣:٠٠ص\nالجمعة ١:٠٠م–٣:٠٠ص\nالسبت ١١:٠٠ص–٢:٠٠ص\nالأحد ١١:٠٠ص–٢:٠٠ص"
+  },
+  specialties: [
+    { en: "Grills", ar: "مشاوي" },
+    { en: "Shawarma", ar: "شاورما" },
+    { en: "Family dishes", ar: "أطباق عائلية" }
+  ],
+  contactInfo: {
+    phone: { en: "01060601600", ar: "٠١٠٦٠٦٠١٦٠٠" },
+    email: ""
+  },
+  features: [
+    { en: "Delivery", ar: "توصيل" },
+    { en: "Indoor seating", ar: "جلسات داخلية" },
+    { en: "Late-night service", ar: "خدمة ليلية" }
+  ],
+  imageGallery: [
+    "assets/images/ست الشام المنيا.webp",
+    "assets/images/images (2).jpg",
+    
+  ]
+}
+
+,
+
+
+{
+  id: "fresh_food_grills_minya",
+  name: { en: "Fresh Food Grills", ar: "مطعم مشويات فريش فوود" },
+  description: {
+    en: "Grill restaurant offering mixed grills, kebabs and family platters. Popular for evening dining and group meals in New Minya.",
+    ar: "مطعم مشويات يقدم مشاوي متنوعة، كفتة وأسياخ وأطباق عائلية. شائع للعزومات والسهرات في مدينة المنيا الجديدة."
+  },
+  imageUrl: "assets/images/2021-08-28.webp",
+  // إحداثيات تقريبية لمدينة المنيا الجديدة — أرسلي إحداثيات دقيقة لو حابة
+  latitude: 28.1060,
+  longitude: 30.7510,
+  rating: 4.7,
+  reviewCount: 448,
+  cuisineType: { en: "Grill / Egyptian", ar: "مشاوي / مصري" },
+  priceRange: { en: "Low to Mid", ar: "منخفض إلى متوسط" },
+  openingHours: {
+    en:
+      "Mon 11:30 AM – 03:00 AM\nTue 11:30 AM – 03:00 AM\nWed 11:30 AM – 03:00 AM\nThu 11:30 AM – 03:00 AM\nFri 01:00 PM – 03:00 AM\nSat 11:30 AM – 03:00 AM\nSun 11:30 AM – 03:00 AM",
+    ar:
+      "الاثنين ١١:٣٠ص–٣:٠٠ص\nالثلاثاء ١١:٣٠ص–٣:٠٠ص\nالأربعاء ١١:٣٠ص–٣:٠٠ص\nالخميس ١١:٣٠ص–٣:٠٠ص\nالجمعة ١:٠٠م–٣:٠٠ص\nالسبت ١١:٣٠ص–٣:٠٠ص\nالأحد ١١:٣٠ص–٣:٠٠ص"
+  },
+  specialties: [
+    { en: "Mixed Grills", ar: "مشاوي مشكلة" },
+    { en: "Kebab & Skewers", ar: "كباب وأسياخ" },
+    { en: "Family Platters", ar: "أطباق عائلية" }
+  ],
+  center: { en: "New Minya", ar: "المنيا الجديدة" },
+  menu: [], // املئي لاحقاً بـ MenuItem[]
+  menuUrl: undefined,
+  contactInfo: {
+    phone: { en: "01020004495", ar: "٠١٠ ٢٠٠٠٤٤٩٥" },
+    email: ""
+  },
+  features: [
+    { en: "Delivery", ar: "توصيل" },
+    { en: "Outdoor seating", ar: "جلسات خارجية" },
+    { en: "Late-night service", ar: "خدمة ليلية" }
+  ],
+   imageGallery: [
+    "assets/images/2025-05-21.webp",
+    // "assets/images/set-elsham_2.jpg",
+    // "assets/images/set-elsham_3.jpg"
+  ]
+  // address: {
+  //   en: "Dina, New Minya, Minya Governorate 2460370",
+  //   ar: "دينة، المنيا الجديدة، محافظة المنيا 2460370"
+  // }
+}
+,
+// {
+//   id: "al_mohamady_minya",
+//   name: { en: "Al Mohamady Restaurant", ar: "مطعم المحمدى" },
+//   description: {
+//     en: "Traditional local restaurant in Hasib, serving Egyptian home-style dishes and grills. Known for steady local crowd and long opening hours.",
+//     ar: "مطعم محلي في حسيب يقدم أطباق مصرية منزلية ومشاوي. معروف بإقبال محلي وساعات عمل طويلة."
+//   },
+//   imageUrl: "assets/images/al-mohamady.jpg",
+//   latitude: 28.0950,     // تقريبية — أرسلي إحداثيات دقيقة لو حابة
+//   longitude: 30.7620,    // تقريبية
+//   rating: 3.9,
+//   reviewCount: 1983,
+//   cuisineType: { en: "Egyptian / Grill", ar: "مصري / مشاوي" },
+//   priceRange: { en: "Low", ar: "منخفض" },
+//   openingHours: {
+//     en:
+//       "Mon 08:00 AM – 04:00 AM\nTue 08:00 AM – 04:00 AM\nWed 08:00 AM – 04:00 AM\nThu 08:00 AM – 04:00 AM\nFri 08:00 AM – 04:00 AM\nSat 08:00 AM – 04:00 AM\nSun 08:00 AM – 04:00 AM",
+//     ar:
+//       "الاثنين ٨:٠٠ص–٤:٠٠ص\nالثلاثاء ٨:٠٠ص–٤:٠٠ص\nالأربعاء ٨:٠٠ص–٤:٠٠ص\nالخميس ٨:٠٠ص–٤:٠٠ص\nالجمعة ٨:٠٠ص–٤:٠٠ص\nالسبت ٨:٠٠ص–٤:٠٠ص\nالأحد ٨:٠٠ص–٤:٠٠ص"
+//   },
+//   specialties: [
+//     { en: "Grills", ar: "مشاوي" },
+//     { en: "Home-style stews", ar: "طواجن وأكلات منزلية" },
+//     { en: "Breakfast (early)", ar: "فطار مبكر" }
+//   ],
+//   center: { en: "Hasib / Minya Center", ar: "حسيب / مركز المنيا" },
+//   menu: [], // املئي بـ MenuItem[] لاحقاً إذا حابة
+//   menuUrl: undefined,
+//   contactInfo: {
+//     phone: { en: "0862359696", ar: "٠٨٦ ٢٣٥٩٦٩٦" },
+//     email: ""
+//   },
+//   features: [
+//     { en: "Takeaway", ar: "طلبات خارجية" },
+//     { en: "Outdoor seating", ar: "جلسات خارجية" },
+//     { en: "Late-night service", ar: "خدمة ليلية" }
+//   ],
+//   address: {
+//     en: "Hasib, Minya District, Minya Governorate 2451113",
+//     ar: "حسيب، قسم المنيا، مركز المنيا، محافظة المنيا 2451113"
+//   }
+// },
+{
+  id: "al_mohamady_minya",
+  name: { en: "Al Mohamady Restaurant", ar: "مطعم المحمدى" },
+  description: {
+    en: "Traditional local restaurant in Hasib, serving Egyptian home-style dishes and grills. Known for steady local crowd and long opening hours.",
+    ar: "مطعم محلي في حسيب يقدم أطباق مصرية منزلية ومشاوي. معروف بإقبال محلي وساعات عمل طويلة."
+  },
+  imageUrl: "assets/images/unnamed (1).webp",
+  latitude: 28.0950,     // تقريبية — أرسلي إحداثيات دقيقة لو حابة
+  longitude: 30.7620,    // تقريبية
+  rating: 3.9,
+  reviewCount: 1983,
+  cuisineType: { en: "Egyptian / Grill", ar: "مصري / مشاوي" },
+  priceRange: { en: "Low", ar: "منخفض" },
+  openingHours: {
+    en:
+      "Mon 08:00 AM – 04:00 AM\nTue 08:00 AM – 04:00 AM\nWed 08:00 AM – 04:00 AM\nThu 08:00 AM – 04:00 AM\nFri 08:00 AM – 04:00 AM\nSat 08:00 AM – 04:00 AM\nSun 08:00 AM – 04:00 AM",
+    ar:
+      "الاثنين ٨:٠٠ص–٤:٠٠ص\nالثلاثاء ٨:٠٠ص–٤:٠٠ص\nالأربعاء ٨:٠٠ص–٤:٠٠ص\nالخميس ٨:٠٠ص–٤:٠٠ص\nالجمعة ٨:٠٠ص–٤:٠٠ص\nالسبت ٨:٠٠ص–٤:٠٠ص\nالأحد ٨:٠٠ص–٤:٠٠ص"
+  },
+  specialties: [
+    { en: "Grills", ar: "مشاوي" },
+    { en: "Home-style stews", ar: "طواجن وأكلات منزلية" },
+    { en: "Breakfast (early)", ar: "فطار مبكر" }
+  ],
+  center: { en: "Hasib / Minya Center", ar: "حسيب / مركز المنيا" },
+  menu: [], // املئي بـ MenuItem[] لاحقاً إذا حابة
+  menuUrl: undefined,
+  contactInfo: {
+    phone: { en: "0862359696", ar: "٠٨٦ ٢٣٥٩٦٩٦" },
+    email: ""
+  },
+  features: [
+    { en: "Takeaway", ar: "طلبات خارجية" },
+    { en: "Outdoor seating", ar: "جلسات خارجية" },
+    { en: "Late-night service", ar: "خدمة ليلية" }
+  ],
+  imageGallery: [
+    "assets/images/unnamed (4).webp"
+  ],
+  address: {
+    en: "Hasib, Minya District, Minya Governorate 2451113",
+    ar: "حسيب، قسم المنيا، مركز المنيا، محافظة المنيا 2451113"
+  }
+}
+,
+{
+  id: "city_crepe_minya",
+  name: { en: "City Crepe", ar: "سيتي كريب" },
+  description: {
+    en: "Small creperie offering sweet & savory crepes, coffee and light snacks. Located in Old Minya — see address below.",
+    ar: "كريب صغير يقدم كريب حلو ومالح، قهوة وسناكات خفيفة. يقع في أول المنيا — العنوان أسفل."
+  },
+  imageUrl: "assets/images/City crepe.webp",
+  // تقريبياً مركز المدينة (استخدمّي إحداثيات دقيقة إذا عندك)
+  latitude: 28.0970,
+  longitude: 30.7610,
+  rating: 3.5,
+  reviewCount: 122,
+  cuisineType: { en: "Crepes / Cafe", ar: "كريب / مقهى" },
+  priceRange: { en: "Low", ar: "منخفض" },
+  openingHours: {
+    en: "", // لم تُزود ساعات العمل — اتركيه فارغاً أو ضعي ساعات مقترحة
+    ar: ""
+  },
+  specialties: [
+    { en: "Sweet Crepes", ar: "كريب حلو" },
+    { en: "Savory Crepes", ar: "كريب مالح" },
+    { en: "Coffee & Drinks", ar: "قهوة ومشروبات" }
+  ],
+  center: { en: "Old Minya", ar: "أول المنيا" },
+  menu: [], // اضافة عناصر المينيو لاحقاً كـ MenuItem[]
+  menuUrl: undefined,
+  contactInfo: {
+    phone: { en: "01099258903", ar: "٠١٠٩٩٢٥٨٩٠٣" },
+    email: ""
+  },
+  features: [
+    { en: "Takeaway", ar: "طلبات خارجية" },
+    { en: "Indoor seating", ar: "جلسات داخلية" }
+  ],
+   imageGallery: [
+    "assets/images/city-crepe_menu_1.jpg",
+    "assets/images/city-crepe_menu_2.jpg",
+    "assets/images/city-crepe_menu_3.jpg"
+  ],
+  // إضافة الحقل الوصفي للعنوان الكامل (اختياري — ليس جزءًا من الواجهة الأساسية)
+  address: {
+    en: "4Q52+337, No. 14, Minya District, Old Minya, Minya Governorate 2451136",
+    ar: "4Q52+337، رقم 14، قسم المنيا، أول المنيا، محافظة المنيا 2451136"
+  }
+}
+
 // مصادر: Menuegypt / Elmenus / Evendo. :contentReference[oaicite:0]{index=0}
 
 ,
@@ -864,7 +1103,10 @@ export const RAW_RESTAURANTS: any[] = [
   openingHours: { en: "11:00 AM – 03:00 AM (approx.)", ar: "١١:٠٠ ص – ٠٣:٠٠ ص (تقريبى)" },
   specialties: [ { en: "Mixed Grill", ar: "مشويات مشكلة" }, { en: "Koshary (some branches)", ar: "كشري (بعض الفروع)" } ],
   contactInfo: { phone: { en: "+20 86 2334141 / 01030800072 / 01030800073", ar: "+٢٠ ٨٦ ٢٣٣٤١٤١ / ٠١٠٣٠٨٠٠٠٧٢ / ٠١٠٣٠٨٠٠٠٧٣" }, email: "" },
-  features: [ { en: "Restroom", ar: "دورة مياه" }, { en: "Delivery", ar: "توصيل" } ]
+  features: [ { en: "Restroom", ar: "دورة مياه" }, { en: "Delivery", ar: "توصيل" } ],
+  imageGallery: [
+      "/assets/images/470498594_933892548838992_4009911687513985324_n (1).jpg"
+  ]
 }
 // مصادر: الموقع الرسمي / صفحة فيسبوك / دلائل محلية. :contentReference[oaicite:1]{index=1}
 
@@ -884,7 +1126,10 @@ export const RAW_RESTAURANTS: any[] = [
   openingHours: { en: "12:00 PM – 01:00 AM", ar: "١٢:٠٠ م – ٠١:٠٠ ص" },
   specialties: [ { en: "Mixed Grill", ar: "مشويات مشكلة" }, { en: "Seafood platters", ar: "أطباق سي فود" } ],
   contactInfo: { phone: { en: "+20 102 000 4495, 01027020307", ar: "+٢٠ ١٠٢ ٠٠٠ ٤٤٩٥، ٠١٠٢٧٠٢٠٣٠٧" }, email: "" },
-  features: [ { en: "Restroom", ar: "دورة مياه" }, { en: "Delivery", ar: "توصيل" } ]
+  features: [ { en: "Restroom", ar: "دورة مياه" }, { en: "Delivery", ar: "توصيل" } ],
+  imageGallery: [
+      "/assets/images/470498594_933892548838992_4009911687513985324_n (1).jpg"
+  ]
 }
 // مصدر: TripAdvisor، دلائل محلية. :contentReference[oaicite:2]{index=2}
 
@@ -926,9 +1171,84 @@ export const RAW_RESTAURANTS: any[] = [
 
   specialties: [ { en: "Grilled Fish", ar: "سمك مشوي" } ],
   contactInfo: { phone: { en: "", ar: "" }, email: "" },
-  features: [ { en: "Nile View", ar: "إطلالة على النيل" }, { en: "Restroom", ar: "دورة مياه" } ]
+  features: [ { en: "Nile View", ar: "إطلالة على النيل" }, { en: "Restroom", ar: "دورة مياه" } ],
+  imageGallery: [
+      "/assets/images/menu 11.webp",
+      "/assets/images/menu 14.webp",
+      "/assets/images/menu 13 (2).webp",
+       "/assets/images/menu 6.webp",
+        "/assets/images/menu 18.webp",
+         "/assets/images/menu 7.webp",
+          "/assets/images/menu 17.webp",
+           "/assets/images/menu 3.webp",
+            "/assets/images/menu 10.webp",
+             "/assets/images/menu 8.webp",
+              "/assets/images/menu 4.webp",
+              "/assets/images/menu 12.webp",
+              "/assets/images/menu 9.webp",
+               "/assets/images/menu 5.webp",
+               "/assets/images/menu 2 (1).webp",
+                "/assets/images/menu 15.webp",
+                     "/assets/images/menu 16.webp",
+
+
+
+
+  ]
+},
+// مصاد
+// ر: Evendo / CEOSS listing / صفحات محلية. :contentReference[oaicite:4]{index=4}
+{
+  id: "casa_bella_minya",
+  name: { en: "Casa Bella Restaurant", ar: "كازا بيلا" },
+  description: {
+    en: "Casual restaurant offering Italian-inspired dishes, pizzas and a selection of desserts — popular for family dinners and weekend outings in Old Minya.",
+    ar: "مطعم كاجوال يقدم أطباق إيطالية، بيتزا ومجموعة حلويات — مشهور للعزومات العائلية ونهايات الأسبوع في أول المنيا."
+  },
+  imageUrl: "assets/images/unnamed (5).webp",
+  // إحداثيات تقريبية لحي طه حسين / أول المنيا — أرسلي إحداثيات دقيقة إن أحببتِ
+  latitude: 28.0975,
+  longitude: 30.7605,
+  rating: 4.4,
+  reviewCount: 414,
+  cuisineType: { en: "Italian / Pizza / Mediterranean", ar: "إيطالي / بيتزا / متوسطي" },
+  priceRange: { en: "Mid", ar: "متوسط" },
+  openingHours: {
+    en:
+      "Mon 10:00 AM – 02:00 AM\nTue 10:00 AM – 02:00 AM\nWed 10:00 AM – 02:00 AM\nThu 10:00 AM – 02:00 AM\nFri 10:00 AM – 02:00 AM\nSat 10:00 AM – 02:00 AM\nSun 10:00 AM – 02:00 AM",
+    ar:
+      "الاثنين ١٠:٠٠ص–٢:٠٠ص\nالثلاثاء ١٠:٠٠ص–٢:٠٠ص\nالأربعاء ١٠:٠٠ص–٢:٠٠ص\nالخميس ١٠:٠٠ص–٢:٠٠ص\nالجمعة ١٠:٠٠ص–٢:٠٠ص\nالسبت ١٠:٠٠ص–٢:٠٠ص\nالأحد ١٠:٠٠ص–٢:٠٠ص"
+  },
+  specialties: [
+    { en: "Pizza", ar: "بيتزا" },
+    { en: "Pasta", ar: "باستا" },
+    { en: "Desserts", ar: "حلويات" }
+  ],
+  center: { en: "Taha Hussein / Old Minya", ar: "طه حسين / أول المنيا" },
+  menu: [], // ضيفي MenuItem[] لاحقاً لو حابة
+  menuUrl: undefined,
+  contactInfo: {
+    phone: { en: "01003397905", ar: "٠١٠ ٠٣٣٩٧٩٠٥" },
+    email: ""
+  },
+  features: [
+    { en: "Indoor seating", ar: "جلسات داخلية" },
+    { en: "Family friendly", ar: "مناسب للعائلات" },
+    { en: "Takeaway", ar: "طلبات خارجية" }
+  ],
+   imageGallery: [
+      "/assets/images/131098693_2747922352140036_7804884136602912632_o.webp",
+     
+
+
+
+
+  ]
+  // address: {
+  //   en: "Taha Hussein, Minya District, Old Minya, Minya Governorate 2451140",
+  //   ar: "طه حسين، قسم المنيا، أول المنيا، محافظة المنيا 2451140"
+  // }
 }
-// مصادر: Evendo / CEOSS listing / صفحات محلية. :contentReference[oaicite:4]{index=4}
 
 ,
 {
@@ -950,7 +1270,10 @@ export const RAW_RESTAURANTS: any[] = [
 
   specialties: [ { en: "Pizza", ar: "بيتزا" }, { en: "Pasta", ar: "باستا" } ],
   contactInfo: { phone: { en: "01003397905, 01018101015", ar: "٠١٠٠٣٣٩٧٩٠٥، ٠١٠١٨١٠١٠١٥" }, email: "" },
-  features: [ { en: "Restroom", ar: "دورة مياه" } ]
+  features: [ { en: "Restroom", ar: "دورة مياه" } ],
+  imageGallery: [
+      "/assets/images/470498594_933892548838992_4009911687513985324_n (1).jpg"
+  ]
 }
 // مصدر: دلائل محلية (Menuegypt, elmenus). :contentReference[oaicite:5]{index=5}
 
@@ -959,14 +1282,23 @@ export const RAW_RESTAURANTS: any[] = [
   id: "el_baron_minya",
   name: { en: "El Baron", ar: "البارون" },
   description: { en: "Upper-floor dining near Teachers Union Tower; mixed menu and evening hours.", ar: "مطعم بالدور العلوي قرب برج نقابة المعلمين؛ قائمة متنوّعة وساعات مسائية." },
-  imageUrl: "assets/images/el_baron_minya.jpg",
+  imageUrl: "assets/images/unnamed.webp",
   latitude:28.095285283199047,
   longitude:  30.7558151846579,
-  rating: 4.0,
-  reviewCount:294,
+  rating: 4.1,
+  reviewCount:295,
   cuisineType: { en: "Mixed", ar: "متنوع" },
   priceRange: { en: "Mid-range", ar: "متوسط" },
-  openingHours: { en: "10:00 AM – 02:00 AM", ar: "١٠:٠٠ ص – ٢:٠٠ ص" },
+  openingHours: {
+  en: "Sun Open 24 hours\nMon Open 24 hours\nTue Open 24 hours\nWed Open 24 hours\nThu Open 24 hours\nFri Open 24 hours\nSat Open 24 hours",
+  ar: "الأحد نعمل على مدار 24 ساعة\nالاثنين نعمل على مدار 24 ساعة\nالثلاثاء نعمل على مدار 24 ساعة\nالأربعاء نعمل على مدار 24 ساعة\nالخميس نعمل على مدار 24 ساعة\nالجمعة نعمل على مدار 24 ساعة\nالسبت نعمل على مدار 24 ساعة"
+},
+   imageGallery: [
+      "/assets/images/470498594_933892548838992_4009911687513985324_n (1).jpg",
+     
+
+    ],
+
  specialties: [
     { en: "Grilled Fish", ar: "سمك مشوي" },
     { en: "Seafood Platter", ar: "طبق سي فود" },
@@ -975,8 +1307,50 @@ export const RAW_RESTAURANTS: any[] = [
   ],
   contactInfo: { phone: { en: "0862334667, 01022998668, 01125654501", ar: "٠٨٦٢٣٣٤٦٦٧، ٠١٠٢٢٩٩٨٦٦٨، ٠١١٢٥٦٥٤٥٠١" }, email: "" },
   features: [ { en: "Restroom", ar: "دورة مياه" } ]
+},
+// ومصدر: دلائل محلية وTripAdvisor. :contentReference[oaicite:6]{index=6}
+
+
+
+
+{
+  id: "eltabei_minya",
+  name: { en: "El Tabai", ar: "التابعي" },
+  description: {
+    en: "Serving traditional Egyptian street food and sandwiches around the clock.",
+    ar: "نقدّم أشهى المأكولات الشعبية وجميع أنواع السندوتشات على مدار الساعة."
+  },
+  imageUrl: "assets/images/unnamed (2).webp",
+  latitude: 28.086694,
+  longitude: 30.763122,
+  rating: 3.9,
+  reviewCount: 149,
+  cuisineType: { en: "Egyptian Street Food", ar: "مأكولات شعبية" },
+  priceRange: { en: "1–100 E£ per person", ar: "١–١٠٠ جنيه للفرد" },
+  openingHours: {
+    en: "Sun Open 24 hours\nMon Open 24 hours\nTue Open 24 hours\nWed Open 24 hours\nThu Open 24 hours\nFri Open 24 hours\nSat Open 24 hours",
+    ar: "الأحد نعمل على مدار 24 ساعة\nالاثنين نعمل على مدار 24 ساعة\nالثلاثاء نعمل على مدار 24 ساعة\nالأربعاء نعمل على مدار 24 ساعة\nالخميس نعمل على مدار 24 ساعة\nالجمعة نعمل على مدار 24 ساعة\nالسبت نعمل على مدار 24 ساعة"
+  },
+  imageGallery: [
+    "assets/images/images (1).jpg",
+    
+  ],
+  specialties: [
+    { en: "Egyptian Sandwiches", ar: "سندوتشات مصرية" },
+    { en: "Falafel & Beans", ar: "فلافل وفول" },
+    { en: "Traditional Dishes", ar: "وجبات شعبية تقليدية" }
+  ],
+  contactInfo: {
+    phone: { en: "01555724861", ar: "٠١٥٥٥٧٢٤٨٦١" },
+    email: ""
+  },
+  features: [
+    { en: "Cash only", ar: "الدفع نقدي فقط" },
+    { en: "No reservations", ar: "لا يقبل الحجوزات" },
+    { en: "Vegan options", ar: "خيارات خالية من المنتجات الحيوانية" },
+    { en: "Open 24 hours", ar: "يعمل على مدار الساعة" }
+  ]
 }
-// مصدر: دلائل محلية وTripAdvisor. :contentReference[oaicite:6]{index=6}
 
 ,
 {
@@ -1176,6 +1550,278 @@ openingHours: {
   ],
 
 }
+,
+{
+  id: "arkan_minya",
+  name: { en: "Arkan Restaurant", ar: "مطعم أركان" },
+  description: {
+    en: "Popular local restaurant in Minya city center serving a variety of grilled and family dishes. Busy at dinner and suitable for groups.",
+    ar: "مطعم شعبي في مركز المنيا يقدم مشاوي وأطباق عائلية متنوعة. مزدحم غالباً في وقت العشاء ومناسب للجروبات."
+  },
+  imageUrl: "assets/images/unnamed (6).webp",
+  // إحداثيات تقريبية لمركز المدينة — استبدليها بالإحداثيات الدقيقة لو متوفرة
+  latitude: 28.0955,
+  longitude: 30.7605,
+  rating: 4.3,
+  reviewCount: 855,
+  cuisineType: { en: "Grill / Local", ar: "مشاوي / محلي" },
+  priceRange: { en: "Low to Mid", ar: "منخفض إلى متوسط" },
+  openingHours: {
+    en:
+      "Mon 11:00 AM – 12:00 AM\nTue 11:00 AM – 12:00 AM\nWed 11:00 AM – 12:00 AM\nThu 11:00 AM – 12:00 AM\nFri 11:00 AM – 12:00 AM\nSat 11:00 AM – 12:00 AM\nSun 11:00 AM – 12:00 AM",
+    ar:
+      "الاثنين ١١:٠٠ص–١٢:٠٠ص\nالثلاثاء ١١:٠٠ص–١٢:٠٠ص\nالأربعاء ١١:٠٠ص–١٢:٠٠ص\nالخميس ١١:٠٠ص–١٢:٠٠ص\nالجمعة ١١:٠٠ص–١٢:٠٠ص\nالسبت ١١:٠٠ص–١٢:٠٠ص\nالأحد ١١:٠٠ص–١٢:٠٠ص"
+  },
+  specialties: [
+    { en: "Grills", ar: "مشاوي" },
+    { en: "Family platters", ar: "أطباق عائلية" },
+    { en: "Traditional dishes", ar: "أكلات شعبية" }
+  ],
+  center: { en: "Minya Center", ar: "مركز المنيا" },
+  menu: [], // املئي لاحقاً بـ MenuItem[]
+  menuUrl: undefined,
+  contactInfo: {
+    phone: { en: "01093337343", ar: "٠١٠٩٣٣٣٧٣٤٣" },
+    email: ""
+  },
+  features: [
+    { en: "Takeaway", ar: "طلبات خارجية" },
+    { en: "Indoor seating", ar: "جلسات داخلية" },
+    { en: "Group-friendly", ar: "مناسب للمجموعات" }
+  ],
+  address: {
+    en: "Minya District, Minya Center, Minya Governorate 2451204",
+    ar: "قسم المنيا، مركز المنيا، محافظة المنيا 2451204"
+  },
+  imageGallery: [
+    "assets/images/2023-01-03.webp",
+    "assets/images/2023-01-03 (1).webp",
+     "assets/images/2023-01-03 (2).webp",
+    "assets/images/2023-01-03 (3).webp", 
+    "assets/images/2023-01-03 (4).webp",
+    "assets/images/2023-01-03 (6).webp",
+     "assets/images/2023-01-03 (7).webp",
+    "assets/images/2023-01-03 (8).webp",
+     "assets/images/2023-01-03 (9).webp",
+    "assets/images/2023-01-03 (10).webp",
+     "assets/images/2023-01-03 (11).webp",
+      "assets/images/2023-01-03 (12).webp",
+       "assets/images/2023-01-03 (13).webp",
+       "assets/images/2023-01-03 (15).webp",
+          "assets/images/2023-01-03 (16).webp",
+           "assets/images/unnamed (7).webp",
+            "assets/images/2023-01-03 (17).webp",
+    "assets/images/2023-01-03 (18).webp",
+
+
+
+    "assets/images/unnamed (8).webp",
+    "assets/images/unnamed (9).webp",
+   
+  ]
+}
+,
+
+{
+  id: "see_foul_minya",
+  name: { en: "See Foul", ar: "سي فول" },
+  description: {
+    en: "Traditional Egyptian restaurant specializing in ful, taameya and classic breakfast & casual dishes. Located on the Corniche by the Nile — popular for early mornings and all-day casual dining.",
+    ar: "مطعم مصري تقليدي متخصص في الفول والطعمية وأطباق الإفطار والأكلات الخفيفة. يقع على الكورنيش بمحاذاة النيل — مشهور للصباح والمأكولات اليومية."
+  },
+  imageUrl: "assets/images/unnamed (10).webp",
+  // إحداثيات تقريبية للكورنيش - استبدليها بإحداثيات دقيقة إن وُجدت
+  latitude: 28.0980,
+  longitude: 30.7615,
+  rating: 3.9,
+  reviewCount: 862,
+  cuisineType: { en: "Egyptian / Breakfast", ar: "مصري / إفطار" },
+  priceRange: { en: "Low", ar: "منخفض" },
+  openingHours: {
+    en:
+      "Mon Open 24 hours\nTue Open 24 hours\nWed Open 24 hours\nThu Open 24 hours\nFri Open 24 hours\nSat Open 24 hours\nSun Open 24 hours",
+    ar:
+      "الاثنين نعمل على مدار 24 ساعة\nالثلاثاء نعمل على مدار 24 ساعة\nالأربعاء نعمل على مدار 24 ساعة\nالخميس نعمل على مدار 24 ساعة\nالجمعة نعمل على مدار 24 ساعة\nالسبت نعمل على مدار 24 ساعة\nالأحد نعمل على مدار 24 ساعة"
+  },
+  specialties: [
+    { en: "Ful (fava beans)", ar: "فول" },
+    { en: "Taameya (falafel)", ar: "طعمية" },
+    { en: "Traditional breakfast", ar: "إفطار تقليدي" }
+  ],
+  center: { en: "Corniche / Minya Center", ar: "الكورنيش / مركز المنيا" },
+  menu: [], // أضيفي MenuItem[] لاحقاً إذا رغبتِ
+  menuUrl: undefined,
+  contactInfo: {
+    phone: { en: "0862324999", ar: "٠٨٦ ٢٣٢٤٩٩٩" },
+    email: ""
+  },
+  features: [
+    { en: "Takeaway", ar: "طلبات خارجية" },
+    { en: "Outdoor seating", ar: "جلسات خارجية" },
+    { en: "Open 24/7", ar: "مفتوح على مدار 24 ساعة" }
+  ],
+  address: {
+    en: "4Q43+R6P, Corniche El Nil, Minya District, Minya Governorate 2451175",
+    ar: "4Q43+R6P، كورنيش النيل، قسم المنيا، مركز المنيا، محافظة المنيا 2451175"
+  },
+  imageGallery: [
+    "assets/images/unnamed (11).webp",
+  
+  ]
+},
+{
+  id: "famous_burger_minya",
+  name: { en: "Famous Burger", ar: "فيماس برجر" },
+  description: {
+    en: "Casual burger joint known for classic burgers, fries and quick takeaway. Located on Taha Hussein Street near local landmarks.",
+    ar: "مطعم برجر بسيط يشتهر بالبرجر الكلاسيكي والبطاطس وطلبات السريع. يقع في شارع طه حسين قرب معالم محلية."
+  },
+  imageUrl: "assets/images/unnamed (13).webp",
+  // إحداثيات تقريبية — أرسلي إحداثيات خرائط أو رابط للتثبيت الدقيق
+  latitude: 28.0975,
+  longitude: 30.7608,
+  rating: 4.4,
+  reviewCount: 165,
+  cuisineType: { en: "Burgers / Fast Food", ar: "برجر / وجبات سريعة" },
+  priceRange: { en: "Low to Mid", ar: "منخفض إلى متوسط" },
+  openingHours: {
+    en: "", // لم تُزود ساعات العمل — اتركيه فارغاً أو ضعي أحد الاقتراحات
+    ar: ""
+  },
+  specialties: [
+    { en: "Burgers", ar: "برجر" },
+    { en: "Fries & Sides", ar: "بطاطس ومقبلات" },
+    { en: "Takeaway", ar: "طلبات خارجية" }
+  ],
+  center: { en: "Taha Hussein, Minya", ar: "طه حسين، أول المنيا" },
+  menu: [], // املئي لاحقاً بـ MenuItem[] إذا حابة
+  menuUrl: undefined,
+  contactInfo: {
+    phone: { en: "", ar: "" },
+    email: ""
+  },
+  features: [
+    { en: "Takeaway", ar: "طلبات خارجية" },
+    { en: "Fast service", ar: "خدمة سريعة" },
+    { en: "Delivery (if available)", ar: "توصيل (إن وُجد)" }
+  ],
+  address: {
+    en: "Next to Dr. Mohamed Farghaly Pharmacy, Taha Hussein St., Minya (in front of Bandokka Grills), 61111",
+    ar: "بجوار صيدلية د. محمد فرغلي، شارع طه حسين، المنيا (أمام مشويات بندقة)، 61111"
+  },
+  imageGallery: [
+    "assets/images/unnamed (12).webp",
+     "assets/images/202678602_125463026379368_955375323180507063_n.webp"
+  ]
+},
+{
+  id: "mcdonalds_minya",
+  name: { en: "McDonald's Minya", ar: "ماكدونالدز المنيا" },
+  description: {
+    en: "International fast-food chain serving burgers, fries, coffee, and breakfast. Located at Nefertiti Hotel, Minya Corniche.",
+    ar: "سلسلة الوجبات السريعة العالمية تقدم البرجر والبطاطس والقهوة والإفطار. تقع داخل فندق نفرتيتي بكورنيش المنيا."
+  },
+  imageUrl: "assets/images/unnamed (14).webp",
+  // الإحداثيات تقريبية قرب فندق نفرتيتي على كورنيش المنيا
+  latitude: 28.0959,
+  longitude: 30.7598,
+  rating: 4.2,
+  reviewCount: 1315,
+  cuisineType: { en: "Fast Food / Burgers", ar: "وجبات سريعة / برجر" },
+  priceRange: { en: "Mid", ar: "متوسط" },
+  openingHours: {
+    en:
+      "Mon 07:00 AM – 03:00 AM\nTue 07:00 AM – 03:00 AM\nWed 07:00 AM – 03:00 AM\nThu 07:00 AM – 03:00 AM\nFri 07:00 AM – 03:00 AM\nSat 07:00 AM – 03:00 AM\nSun 07:00 AM – 03:00 AM",
+    ar:
+      "الاثنين ٧:٠٠ص–٣:٠٠ص\nالثلاثاء ٧:٠٠ص–٣:٠٠ص\nالأربعاء ٧:٠٠ص–٣:٠٠ص\nالخميس ٧:٠٠ص–٣:٠٠ص\nالجمعة ٧:٠٠ص–٣:٠٠ص\nالسبت ٧:٠٠ص–٣:٠٠ص\nالأحد ٧:٠٠ص–٣:٠٠ص"
+  },
+  specialties: [
+    { en: "Burgers", ar: "برجر" },
+    { en: "Fries", ar: "بطاطس" },
+    { en: "Breakfast Menu", ar: "قائمة الإفطار" },
+    { en: "Coffee & Desserts", ar: "قهوة وحلويات" }
+  ],
+  center: { en: "Corniche / Nefertiti Hotel", ar: "كورنيش المنيا / فندق نفرتيتي" },
+  menu: [], // أضيفي عناصر القائمة إذا حابة لاحقاً
+  menuUrl: undefined,
+  contactInfo: {
+    phone: { en: "0221600377", ar: "٠٢ ٢١٦٠٠٣٧٧" },
+    email: ""
+  },
+  features: [
+    { en: "Delivery", ar: "توصيل" },
+    { en: "Drive-thru", ar: "طلب من السيارة" },
+    { en: "Family seating", ar: "جلسات عائلية" },
+    { en: "Breakfast available", ar: "إفطار متاح" }
+  ],
+  address: {
+    en: "Nefertiti Hotel, Minya Corniche, Minya District, Minya Governorate 2451176",
+    ar: "فندق نفرتيتي، كورنيش المنيا، قسم المنيا، أول المنيا، محافظة المنيا 2451176"
+  },
+  imageGallery: [
+    "assets/images/mcdonalds-minya_1.jpg",
+    "assets/images/mcdonalds-minya_2.jpg"
+  ]
+}
+,
+{
+  id: "mr_chix_minya",
+  name: { en: "Mr. Chix", ar: "مستر شيكس" },
+  description: {
+    en: "Popular fried chicken and sandwich restaurant on Taha Hussein Street, offering crispy chicken meals, sandwiches, and fast service.",
+    ar: "مطعم دجاج مقلي وسندوتشات شهير في شارع طه حسين، يقدم وجبات دجاج مقرمشة وسندوتشات وخدمة سريعة."
+  },
+  imageUrl: "assets/images/unnamed (15).webp",
+  // إحداثيات تقريبية لشارع طه حسين بالمنيا
+  latitude: 28.0972,
+  longitude: 30.7609,
+  rating: 4.2,
+  reviewCount: 154,
+  cuisineType: { en: "Fried Chicken / Fast Food", ar: "دجاج مقلي / وجبات سريعة" },
+  priceRange: { en: "Low to Mid", ar: "منخفض إلى متوسط" },
+  openingHours: {
+    en:
+      "Mon 12:00 PM – 02:00 AM\nTue 12:00 PM – 02:00 AM\nWed 12:00 PM – 02:00 AM\nThu 12:00 PM – 02:00 AM\nFri 12:00 PM – 02:00 AM\nSat 12:00 PM – 02:00 AM\nSun 12:00 PM – 02:00 AM",
+    ar:
+      "الاثنين ١٢:٠٠م–٢:٠٠ص\nالثلاثاء ١٢:٠٠م–٢:٠٠ص\nالأربعاء ١٢:٠٠م–٢:٠٠ص\nالخميس ١٢:٠٠م–٢:٠٠ص\nالجمعة ١٢:٠٠م–٢:٠٠ص\nالسبت ١٢:٠٠م–٢:٠٠ص\nالأحد ١٢:٠٠م–٢:٠٠ص"
+  },
+  specialties: [
+    { en: "Fried Chicken", ar: "دجاج مقلي" },
+    { en: "Chicken Sandwiches", ar: "ساندوتشات دجاج" },
+    { en: "Family Meals", ar: "وجبات عائلية" }
+  ],
+  center: { en: "Taha Hussein, Minya", ar: "طه حسين، مركز المنيا" },
+  menu: [], // أضيفي عناصر المينيو لاحقاً
+  menuUrl: undefined,
+  contactInfo: {
+    phone: { en: "01029292199", ar: "٠١٠٢٩٢٩٢١٩٩" },
+    email: ""
+  },
+  features: [
+    { en: "Delivery", ar: "توصيل" },
+    { en: "Takeaway", ar: "طلبات خارجية" },
+    { en: "Indoor seating", ar: "جلسات داخلية" }
+  ],
+  address: {
+    en: "Taha Hussein Street, Minya District, Minya Governorate 2451140",
+    ar: "طه حسين، قسم المنيا، مركز المنيا، محافظة المنيا 2451140"
+  },
+  imageGallery: [
+    "assets/images/unnamed (16).webp",
+    "assets/images/unnamed (18).webp"
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
 
   // === نهاية قائمة مطاعم مركز المنيا (نسخة مبدئية) ===
 ];
@@ -1192,6 +1838,8 @@ for (const r of RAW_RESTAURANTS) {
 // Ensure exported `restaurants` conforms to Restaurant model and includes a `menuUrl` for each entry.
 export const restaurants: Restaurant[] = RAW_RESTAURANTS.map((r: any) => ({
   ...r,
+  // Ensure every exported restaurant has an imageGallery (use the provided fallback image when missing)
+  imageGallery: r?.imageGallery ?? ["/assets/images/470498594_933892548838992_4009911687513985324_n (1).jpg"],
   // menuUrl is guaranteed by the loop above; keep compatibility for cases where explicit values exist
   menuUrl: r?.menuUrl ?? r?.menu ?? `/assets/menus/${r?.id}.pdf`,
 } as Restaurant));

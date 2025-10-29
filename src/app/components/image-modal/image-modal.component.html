@@ -1,0 +1,21 @@
+<div class="image-modal-overlay" *ngIf="isOpen" role="dialog" (click)="closeModal()">
+  <div class="image-modal" (click)="$event.stopPropagation()">
+    <button class="close-btn" (click)="closeModal()" aria-label="Close">×</button>
+
+    <div class="image-wrap" *ngIf="images && images.length > 0; else noImage">
+      <button class="nav prev" (click)="prev($event)" aria-label="Previous" [disabled]="images.length <= 1">‹</button>
+      <img [src]="images[currentIndex]" [alt]="altText || ('image-'+currentIndex)" loading="lazy">
+      <button class="nav next" (click)="next($event)" aria-label="Next" [disabled]="images.length <= 1">›</button>
+    </div>
+
+    <ng-template #noImage>
+      <div class="no-image">{{ 'No image available' }}</div>
+    </ng-template>
+
+    <div class="thumbs" *ngIf="images && images.length > 1">
+      <button *ngFor="let img of images; let i = index" (click)="goTo(i)" [class.active]="i === currentIndex">
+        <img [src]="img" [alt]="'thumb-'+i" loading="lazy">
+      </button>
+    </div>
+  </div>
+</div>

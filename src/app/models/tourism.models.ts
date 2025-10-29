@@ -44,12 +44,14 @@ export interface Hotel {
     website?: LocalizedText;
   };
   starRating: number;
+  
 }
 
 export interface Restaurant {
   id: string;
   name: LocalizedText;
   description: LocalizedText;
+  imageGallery: string[];
   imageUrl: string;
   latitude: number;
   longitude: number;
@@ -59,6 +61,7 @@ export interface Restaurant {
   priceRange: LocalizedText;
   openingHours: LocalizedText;
   specialties: LocalizedArray;
+  center : LocalizedText;
   /** Optional menu URL (can be a localized object or a plain URL string) */
   menuUrl?: LocalizedText;
   contactInfo: {
