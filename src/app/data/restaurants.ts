@@ -1762,7 +1762,246 @@ openingHours: {
     "assets/images/mcdonalds-minya_1.jpg",
     "assets/images/mcdonalds-minya_2.jpg"
   ]
+},
+
+
+
+{
+  id: "pizza_suwaisy_minya",
+  name: { en: "Pizza & Pastries El-Suwaisy", ar: "بيتزا وفطائر السويسي" },
+  description: {
+    en: "Local pizzeria and pastry shop in Minya serving pizzas, savory pies and baked pastries — popular for takeaways and family meals.",
+    ar: "محل بيتزا وفطائر محلي في المنيا يقدم بيتزا، فطائر مملحة ومعجنات مخبوزة — مشهور للسفري والوجبات العائلية."
+  },
+  imageUrl: "assets/images/unnamed (50).webp",
+  // إحداثيات مُقدّرة لمركز المنيا — أستطيع تحديثها بدقّة لو عندك رابط Google Maps
+  latitude: 28.095000,
+  longitude: 30.760000,
+  rating: 3.7,
+  reviewCount: 185,
+  cuisineType: { en: "Pizza & Pastries", ar: "بيتزا وفطائر" },
+  priceRange: { en: "Affordable", ar: "اقتصادي" },
+  openingHours: {
+    en: "Wed 10:00 AM – 12:00 AM\nThu 10:00 AM – 12:00 AM\nFri 10:00 AM – 2:00 AM\nSat 10:00 AM – 12:00 AM\nSun 10:00 AM – 12:00 AM\nMon 10:00 AM – 12:00 AM\nTue 10:00 AM – 12:00 AM",
+    ar: "الأربعاء ١٠:٠٠ص–١٢:٠٠ص\nالخميس ١٠:٠٠ص–١٢:٠٠ص\nالجمعة ١٠:٠٠ص–٢:٠٠ص\nالسبت ١٠:٠٠ص–١٢:٠٠ص\nالأحد ١٠:٠٠ص–١٢:٠٠ص\nالاثنين ١٠:٠٠ص–١٢:٠٠ص\nالثلاثاء ١٠:٠٠ص–١٢:٠٠ص"
+  },
+  imageGallery: [
+    "assets/images/unnamed (51).webp",
+    "assets/images/unnamed (52).webp",
+     "assets/images/unnamed (53).webp",
+      "assets/images/unnamed (54).webp",
+       "assets/images/unnamed (55).webp",
+        "assets/images/unnamed (56).webp"
+  ],
+  specialties: [
+    { en: "Wood-fired Pizza", ar: "بيتزا" },
+    { en: "Savory Pies", ar: "فطائر مملحة" },
+    { en: "Sweet & Savory Pastries", ar: "معجنات حلوة ومالحة" },
+    { en: "Takeaway Orders", ar: "سفري" }
+  ],
+  contactInfo: {
+    phone: { en: "0862368442", ar: "٠٨٦٢٣٦٨٤٤٢" },
+    email: ""
+  },
+  features: [
+    { en: "Dine-in & takeaway", ar: "تناول داخل المطعم وسفري" },
+    { en: "Family seating", ar: "جلسات عائلية" },
+    { en: "Late hours on Fridays", ar: "ساعات متأخرة يوم الجمعة" },
+    { en: "Cash payment", ar: "الدفع نقدي" }
+  ],
+  address: {
+    en: "3QX4+5XR, Minya District, Minya Center, Minya Governorate 2451153",
+    ar: "3QX4+5XR، قسم المنيا، مركز المنيا، محافظة المنيا 2451153"
+  }
+},
+{
+  id: "doctorbox_minya",
+  name: { en: "DOCTOR BOX Fried Chicken & Burger", ar: "دكتور بوكس - فرايد تشيكن وبرجر" },
+  description: {
+    en: "Popular fast-food spot in Minya specializing in fried chicken and burgers, with late-night hours and takeaway options.",
+    ar: "مطعم فاست فود شهير بالمنيا متخصص في الفرايد تشيكن والبرجر، يعمل لساعات متأخرة ويوفر خدمة السفري."
+  },
+  imageUrl: "assets/images/unnamed (57).webp",
+  // إحداثيات مُقدّرة (عدّلي لو عندك رابط Google Maps)
+  latitude: 28.098500,
+  longitude: 30.756500,
+  rating: 4.7,
+  reviewCount: 513,
+  cuisineType: { en: "Fried Chicken & Burgers", ar: "فرايد تشيكن وبرجر" },
+  priceRange: { en: "200–400 E£ per person", ar: "٢٠٠–٤٠٠ جنيه للفرد" },
+  openingHours: {
+    en: "Sun 12:00 PM – 3:00 AM\nMon 12:00 PM – 3:00 AM\nTue 12:00 PM – 3:00 AM\nWed 12:00 PM – 3:00 AM\nThu 12:00 PM – 3:00 AM\nFri 12:00 PM – 3:00 AM\nSat 12:00 PM – 3:00 AM",
+    ar: "الأحد ١٢:٠٠م–٣:٠٠ص\nالاثنين ١٢:٠٠م–٣:٠٠ص\nالثلاثاء ١٢:٠٠م–٣:٠٠ص\nالأربعاء ١٢:٠٠م–٣:٠٠ص\nالخميس ١٢:٠٠م–٣:٠٠ص\nالجمعة ١٢:٠٠م–٣:٠٠ص\nالسبت ١٢:٠٠م–٣:٠٠ص"
+  },
+  imageGallery: [
+    // "assets/images/doctorbox_1.jpg",
+    // "assets/images/doctorbox_2.jpg"
+  ],
+  specialties: [
+    { en: "Fried Chicken Buckets", ar: "دلاء فرايد تشيكن" },
+    { en: "Signature Burgers", ar: "برجر مميز" },
+    { en: "Fries & Sides", ar: "بطاطس ومقبلات" },
+    { en: "Takeaway & Delivery", ar: "سفري وتوصيل" }
+  ],
+  contactInfo: {
+    phone: { en: "01501010158", ar: "٠١٥٠١٠١٠١٥٨" },
+    email: ""
+  },
+  features: [
+    { en: "Late-night service", ar: "خدمة لساعات متأخرة" },
+    { en: "Takeaway & delivery", ar: "سفري وتوصيل" },
+    { en: "Cash & card payment", ar: "الدفع نقدي وبطاقة" }
+  ],
+  address: {
+    en: "4P7X+H6H, Minya District, Old Minya, Minya Governorate 2451145",
+    ar: "4P7X+H6H، قسم المنيا، أول المنيا، محافظة المنيا 2451145"
+  }
+},
+{
+  id: "cesar_cafe_minya",
+  name: { en: "Cesar Cafe", ar: "سيزار كافية" },
+  description: {
+    en: "Riverside cafe on Minya Corniche offering coffee, light meals and pastries — popular for relaxed gatherings and views of the Nile.",
+    ar: "كافية على كورنيش النيل بالمنيا تقدم القهوة، وجبات خفيفة ومعجنات — منتشرة للاجتماعات الهادئة والاستمتاع بمنظر النيل."
+  },
+  imageUrl: "assets/images/2024-06-26.webp",
+  // إحداثيات مُقدّرة لموقع كورنيش النيل بالمنيا — أستطيع تعديلها بدقة لو تبعتي لينك Google Maps
+  latitude: 28.095500,
+  longitude: 30.759000,
+  rating: 3.9,
+  reviewCount: 713,
+  cuisineType: { en: "Cafe", ar: "كافية" },
+  priceRange: { en: "Mid-range", ar: "متوسط" },
+  openingHours: {
+    en: "Wed 9:00 AM – 1:00 AM\nThu 9:00 AM – 1:00 AM\nFri 9:00 AM – 1:00 AM\nSat 9:00 AM – 1:00 AM\nSun 9:00 AM – 1:00 AM\nMon 9:00 AM – 1:00 AM\nTue 9:00 AM – 1:00 AM",
+    ar: "الأربعاء ٩:٠٠ص–١:٠٠ص\nالخميس ٩:٠٠ص–١:٠٠ص\nالجمعة ٩:٠٠ص–١:٠٠ص\nالسبت ٩:٠٠ص–١:٠٠ص\nالأحد ٩:٠٠ص–١:٠٠ص\nالاثنين ٩:٠٠ص–١:٠٠ص\nالثلاثاء ٩:٠٠ص–١:٠٠ص"
+  },
+  imageGallery: [
+    "assets/images/cesar_cafe_1.jpg",
+    "assets/images/cesar_cafe_2.jpg"
+  ],
+  specialties: [
+    { en: "Specialty Coffee", ar: "قهوة مميزة" },
+    { en: "Pastries & Desserts", ar: "معجنات وحلويات" },
+    { en: "Breakfast & Brunch", ar: "فطار وبرانش" },
+    { en: "Light Meals", ar: "وجبات خفيفة" }
+  ],
+  contactInfo: {
+    phone: { en: "01202191191", ar: "٠١٢٠٢١٩١١٩١" },
+    email: ""
+  },
+  features: [
+    { en: "Riverside seating", ar: "جلسات على النيل" },
+    { en: "Wi-Fi", ar: "واي فاي" },
+    { en: "Dine-in & takeaway", ar: "تناول داخل الكافية وسفري" }
+  ],
+  address: {
+    en: "Corniche El Nil, Minya District, Minya Center, Minya Governorate 2451173",
+    ar: "كورنيش النيل، قسم المنيا، مركز المنيا، محافظة المنيا 2451173"
+  }
+},
+
+
+
+{
+  id: "brego_minya",
+  name: { en: "Brego", ar: "بريجو" },
+  description: {
+    en: "24-hour restaurant in Minya offering a variety of casual dining dishes and quick bites.",
+    ar: "مطعم يعمل على مدار الساعة في المنيا يقدم أطباق كاجوال وسندوتشات ووجبات سريعة."
+  },
+  imageUrl: "assets/images/unnamed (29).webp",
+  // إحداثيات مُقدّرة لمركز المنيا — أستطيع تعديلها بدقة لو عندك رابط جوجل مابس
+  latitude: 28.098000,
+  longitude: 30.757000,
+  rating: 4.1,
+  reviewCount: 535,
+  cuisineType: { en: "Casual Dining", ar: "مطاعم كاجوال" },
+  priceRange: { en: "Mid-range", ar: "متوسط" },
+  openingHours: {
+    en: "Sun Open 24 hours\nMon Open 24 hours\nTue Open 24 hours\nWed Open 24 hours\nThu Open 24 hours\nFri Open 24 hours\nSat Open 24 hours",
+    ar: "الأحد نعمل على مدار 24 ساعة\nالاثنين نعمل على مدار 24 ساعة\nالثلاثاء نعمل على مدار 24 ساعة\nالأربعاء نعمل على مدار 24 ساعة\nالخميس نعمل على مدار 24 ساعة\nالجمعة نعمل على مدار 24 ساعة\nالسبت نعمل على مدار 24 ساعة"
+  },
+  imageGallery: [
+    "assets/images/unnamed (30).webp",
+    "assets/images/unnamed (31).webp",
+      "assets/images/unnamed (33).webp",
+        "assets/images/unnamed (34).webp",
+          "assets/images/unnamed (35).webp",
+            "assets/images/unnamed (36).webp",
+            "assets/images/unnamed (41).webp",
+            "assets/images/unnamed (40).webp",
+            "assets/images/unnamed (39).webp",
+            "assets/images/unnamed (38).webp",
+
+  ],
+  specialties: [
+    { en: "Sandwiches & Fast Meals", ar: "سندوتشات ووجبات سريعة" },
+    { en: "Grills", ar: "مشويات" },
+    { en: "Coffee & Desserts", ar: "قهوة وحلويات" }
+  ],
+  contactInfo: {
+    phone: { en: "", ar: "" },
+    email: ""
+  },
+  features: [
+    { en: "Open 24 hours", ar: "يعمل على مدار الساعة" },
+    { en: "Dine-in & takeaway", ar: "تناول داخل المطعم وسفري" }
+  ],
+  address: {
+    en: "4Q53+36V, Minya District, Old Minya, Minya Governorate 2451175",
+    ar: "4Q53+36V، قسم المنيا، أول المنيا، محافظة المنيا 2451175"
+  }
 }
+,
+{
+  id: "carbiano_minya",
+  name: { en: "Carbiano", ar: "كربيانو" },
+  description: {
+    en: "Casual dining restaurant in Minya offering a variety of fast food and grilled dishes with comfortable seating.",
+    ar: "مطعم كاجوال في المنيا يقدم وجبات سريعة ومشويات متنوعة مع جلسات مريحة."
+  },
+  imageUrl: "assets/images/unnamed (19).webp",
+  latitude: 28.109920,
+  longitude: 30.750450,
+  rating: 3.7,
+  reviewCount: 475,
+  cuisineType: { en: "Fast Food & Grills", ar: "وجبات سريعة ومشويات" },
+  priceRange: { en: "Mid-range", ar: "متوسط" },
+  openingHours: {
+    en: "Sun 11:00 AM – 1:00 AM\nMon 11:00 AM – 1:00 AM\nTue 11:00 AM – 1:00 AM\nWed 11:00 AM – 1:00 AM\nThu 11:00 AM – 1:00 AM\nFri 11:00 AM – 1:00 AM\nSat 11:00 AM – 1:00 AM",
+    ar: "الأحد ١١:٠٠ص–١:٠٠ص\nالاثنين ١١:٠٠ص–١:٠٠ص\nالثلاثاء ١١:٠٠ص–١:٠٠ص\nالأربعاء ١١:٠٠ص–١:٠٠ص\nالخميس ١١:٠٠ص–١:٠٠ص\nالجمعة ١١:٠٠ص–١:٠٠ص\nالسبت ١١:٠٠ص–١:٠٠ص"
+  },
+  imageGallery: [
+    "assets/images/2024-12-17.webp",
+    "assets/images/unnamed (20).webp",
+      "assets/images/unnamed (21).webp",
+        "assets/images/unnamed (22).webp",
+          "assets/images/2024-12-17 (1).webp",
+            "assets/images/unnamed (23).webp",
+              "assets/images/unnamed (24).webp",
+                "assets/images/unnamed (25).webp",
+                  "assets/images/unnamed (26).webp",
+                    "assets/images/unnamed (27).webp",
+                      "assets/images/unnamed (28).webp"
+  ],
+  specialties: [
+    { en: "Burgers", ar: "برجر" },
+    { en: "Grilled Chicken", ar: "دجاج مشوي" },
+    { en: "Pasta Dishes", ar: "مكرونات" },
+    { en: "Sandwiches", ar: "سندوتشات" }
+  ],
+  contactInfo: {
+    phone: { en: "01064116662", ar: "٠١٠٦٤١١٦٦٦٢" },
+    email: ""
+  },
+  features: [
+    { en: "Family seating", ar: "جلسات عائلية" },
+    { en: "Dine-in & takeaway", ar: "تناول داخل المطعم وسفري" },
+    { en: "Cash payment", ar: "الدفع نقدي" }
+  ]
+}
+
 ,
 {
   id: "mr_chix_minya",
